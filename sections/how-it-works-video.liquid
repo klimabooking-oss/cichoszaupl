@@ -3,12 +3,6 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         
         <div class="text-center mb-16" data-animate="fade-up">
-            {% if section.settings.pill_text != blank %}
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#f20df2]/30 bg-[#f20df2]/10 mb-6 font-black uppercase tracking-widest text-[#f20df2] text-xs">
-                {{ section.settings.pill_text }}
-            </div>
-            {% endif %}
-            
             {% if section.settings.title != blank %}
             {% assign title_words = section.settings.title | split: ' ' %}
             {% assign first_word = title_words | first %}
@@ -26,13 +20,7 @@
             </div>
             {% endif %}
             
-            {% if section.settings.subtitle != blank %}
-            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-                {{ section.settings.subtitle }}
-            </p>
-            {% endif %}
-            
-            <div class="line-glow-scroll w-full h-[1px] mt-8 bg-gradient-to-r from-transparent via-[#f20df2] to-transparent shadow-[0_0_20px_rgba(242,13,242,0.8)]"></div>
+            <div class="line-glow-scroll w-full h-[1px] mt-8" style="background: linear-gradient(to right, transparent, #f20df2, transparent); box-shadow: 0 0 20px rgba(242,13,242,0.8);"></div>
         </div>
 
         <div class="flex flex-col lg:flex-col items-center gap-12">

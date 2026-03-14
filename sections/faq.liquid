@@ -3,10 +3,6 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-16" data-animate="fade-up">
-            <span class="text-gray-400 font-bold uppercase tracking-widest text-sm mb-2 flex items-center justify-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-                Baza Wiedzy
-            </span>
             <div class="mt-6 flex justify-center">
                 <h2 class="sr-only">Wypożyczalnia CICHOSZAU - Najczęstsze Pytania i Odpowiedzi (FAQ)</h2>
                 <div aria-hidden="true" class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
@@ -18,10 +14,7 @@
                     </span>
                 </div>
             </div>
-            <p class="text-gray-400 max-w-lg mx-auto mt-4">
-                {{ section.settings.subtitle | default: 'Wszystko, co musisz wiedzieć o organizacji cichej imprezy.' }}
-            </p>
-            <div class="line-glow-scroll w-full h-[1px] mt-8 bg-gradient-to-r from-transparent via-[#f20df2] to-transparent shadow-[0_0_20px_rgba(242,13,242,0.8)]"></div>
+            <div class="line-glow-scroll w-full h-[1px] mt-8" style="background: linear-gradient(to right, transparent, #f20df2, transparent); box-shadow: 0 0 20px rgba(242,13,242,0.8);"></div>
         </div>
 
         <div class="space-y-4" id="faq-accordion" data-animate-stagger="fade-up">

@@ -4,9 +4,6 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <div class="text-center mb-16" data-animate="fade-up">
-            <span class="text-[#f20df2] font-bold tracking-widest uppercase text-sm border border-[#f20df2]/30 bg-[#f20df2]/10 px-4 py-1 rounded-full">
-                {{ section.settings.subtitle | default: 'Metodologia' }}
-            </span>
             <div class="mt-6 flex justify-center">
                 <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
                     <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 origin-bottom-left">
@@ -18,7 +15,7 @@
                     </span>
                 </h2>
             </div>
-            <div class="line-glow-scroll w-full h-[1px] mt-8 bg-gradient-to-r from-transparent via-[#f20df2] to-transparent shadow-[0_0_20px_rgba(242,13,242,0.8)]"></div>
+            <div class="line-glow-scroll w-full h-[1px] mt-8" style="background: linear-gradient(to right, transparent, #f20df2, transparent); box-shadow: 0 0 20px rgba(242,13,242,0.8);"></div>
         </div>
 
         <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-center">

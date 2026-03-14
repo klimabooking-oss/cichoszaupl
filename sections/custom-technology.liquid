@@ -39,9 +39,6 @@
         </div>
 
         <div class="w-full lg:w-1/2 relative z-10">
-            <span class="text-[#f20df2] font-black uppercase tracking-widest text-sm mb-2 block border-l-2 border-[#f20df2] pl-3">
-                {{ section.settings.subtitle }}
-            </span>
             {% assign title_words = section.settings.title | split: ' ' %}
             {% assign first_word = title_words | first %}
             {% assign rest_words = section.settings.title | remove_first: first_word | strip %}
@@ -55,7 +52,7 @@
                         {{ rest_words }}
                     </span>
                 </h2>
-                <div class="line-glow-scroll w-full h-[1px] mt-6 bg-gradient-to-r from-transparent via-[#f20df2] to-transparent shadow-[0_0_20px_rgba(242,13,242,0.8)]"></div>
+                <div class="line-glow-scroll w-full h-[1px] mt-6 style="background: linear-gradient(to right, transparent, #f20df2, transparent); box-shadow: 0 0 20px rgba(242,13,242,0.8);"></div>
             </div>
             <div class="text-gray-300 text-lg mb-8 leading-relaxed">
                 {{ section.settings.description | newline_to_br }}
