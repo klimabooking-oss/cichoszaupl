@@ -333,6 +333,49 @@
       window.addEventListener('load', function() {
         window.scrollTo(0, 0);
       });
+
+      // Global Scroll Listener for Glow Lines
+      document.addEventListener('DOMContentLoaded', () => {
+        const glowLines = document.querySelectorAll('.line-glow-scroll');
+        if (!glowLines.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+            } else {
+              entry.target.style.opacity = '0';
+            }
+          });
+        }, {
+          threshold: [0, 0.5, 1],
+          rootMargin: '-50px 0px -50px 0px'
+        });
+
+        // Better approach: use scroll event to dynamically map offset to opacity
+        const handleScroll = () => {
+            const h = window.innerHeight;
+            glowLines.forEach(line => {
+                const rect = line.getBoundingClientRect();
+                const center = rect.top + rect.height / 2;
+                
+                // Calculate distance from center of screen
+                const distanceFromCenter = Math.abs(h / 2 - center);
+                
+                // Max distance to start fading
+                const maxDist = h * 0.4;
+                
+                let opacity = 1 - (distanceFromCenter / maxDist);
+                if(opacity < 0) opacity = 0;
+                if(opacity > 1) opacity = 1;
+                
+                line.style.opacity = opacity.toFixed(2);
+            });
+        };
+        
+        window.addEventListener('scroll', handleScroll, {passive: true});
+        handleScroll(); // init
+      });
     </script>
   </shopify-store>
 </body>

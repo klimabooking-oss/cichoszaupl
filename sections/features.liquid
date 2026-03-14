@@ -72,7 +72,7 @@
                     {%- assign title_size = 'text-3xl' -%}
                 {%- endif -%}
 
-                <div class="group relative {{ padding }} rounded-3xl glass-card-strong {{ border_hover }} transition-all duration-300 {{ shadow_hover }} {{ offset_class }} {{ col_span }}{% if block.settings.feature_image %} overflow-hidden{% endif %}" data-tilt{% if block.settings.feature_image %} style="min-height:340px"{% endif %}>
+                <div class="group relative {{ padding }} rounded-3xl glass-card-strong border border-[#f20df2]/25 shadow-[0_0_15px_rgba(242,13,242,0.05)] {{ border_hover }} transition-all duration-300 {{ shadow_hover }} {{ offset_class }} {{ col_span }}{% if block.settings.feature_image %} overflow-hidden{% endif %}" data-tilt{% if block.settings.feature_image %} style="min-height:340px"{% endif %}>
                     {% if block.settings.feature_image %}
                         <div class="absolute inset-0 rounded-3xl overflow-hidden">
                             <img src="{{ block.settings.feature_image | image_url: width: 800 }}"
@@ -105,7 +105,7 @@
             
             {% if section.blocks.size == 0 %}
                 <!-- Fallback: Card 1 - Cisza nocna (primary/pink) -->
-                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#f20df2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(242,13,242,0.2)]" style="background-color:#221022">
+                <div class="group relative p-8 rounded-3xl border border-[#f20df2]/25 shadow-[0_0_15px_rgba(242,13,242,0.05)] hover:border-[#f20df2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(242,13,242,0.2)]" style="background-color:#221022">
                     <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-[#f20df2] text-white flex items-center justify-center mb-6 shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
@@ -116,7 +116,7 @@
                     </div>
                 </div>
                 <!-- Fallback: Card 2 - 3 kanały (orange, offset) -->
-                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#ff5f1f]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,95,31,0.2)] mt-0 lg:mt-12" style="background-color:#221022">
+                <div class="group relative p-8 rounded-3xl border border-[#f20df2]/25 shadow-[0_0_15px_rgba(242,13,242,0.05)] hover:border-[#ff5f1f]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,95,31,0.2)] mt-0 lg:mt-12" style="background-color:#221022">
                     <div class="absolute inset-0 bg-gradient-to-br from-[#ff5f1f]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-[#ff5f1f] text-white flex items-center justify-center mb-6 shadow-lg transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <!-- Fallback: Card 3 - Zero kabli (yellow) -->
-                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#ffd700]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,215,0,0.2)]" style="background-color:#221022">
+                <div class="group relative p-8 rounded-3xl border border-[#f20df2]/25 shadow-[0_0_15px_rgba(242,13,242,0.05)] hover:border-[#ffd700]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,215,0,0.2)]" style="background-color:#221022">
                     <div class="absolute inset-0 bg-gradient-to-br from-[#ffd700]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-[#ffd700] flex items-center justify-center mb-6 shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300" style="color:#0a050a">
@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <!-- Fallback: Card 4 - Marketing PRO (primary, offset) -->
-                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#f20df2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(242,13,242,0.2)] mt-0 lg:mt-12" style="background-color:#221022">
+                <div class="group relative p-8 rounded-3xl border border-[#f20df2]/25 shadow-[0_0_15px_rgba(242,13,242,0.05)] hover:border-[#f20df2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(242,13,242,0.2)] mt-0 lg:mt-12" style="background-color:#221022">
                     <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-white text-[#f20df2] flex items-center justify-center mb-6 shadow-lg transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
