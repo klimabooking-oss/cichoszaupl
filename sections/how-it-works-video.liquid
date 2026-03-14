@@ -10,9 +10,20 @@
             {% endif %}
             
             {% if section.settings.title != blank %}
-            <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">
-                {{ section.settings.title }}
-            </h2>
+            {% assign title_words = section.settings.title | split: ' ' %}
+            {% assign first_word = title_words | first %}
+            {% assign rest_words = section.settings.title | remove_first: first_word | strip %}
+            <div class="mt-6 flex justify-center">
+                <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
+                    <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 origin-bottom-left">
+                        {{ first_word }}
+                    </span>
+                    <br class="hidden md:block" />
+                    <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f] transform rotate-2 group-hover:rotate-0 transition-transform duration-500 origin-bottom-right pb-2">
+                        {{ rest_words }}
+                    </span>
+                </h2>
+            </div>
             {% endif %}
             
             {% if section.settings.subtitle != blank %}
@@ -20,6 +31,8 @@
                 {{ section.settings.subtitle }}
             </p>
             {% endif %}
+            
+            <div class="line-glow-scroll w-full h-[1px] mt-8 bg-gradient-to-r from-transparent via-[#f20df2] to-transparent shadow-[0_0_20px_rgba(242,13,242,0.8)]"></div>
         </div>
 
         <div class="flex flex-col lg:flex-col items-center gap-12">
