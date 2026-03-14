@@ -1,4 +1,4 @@
-<section class="min-h-screen pt-32 pb-20" style="background-color:#0a050a">
+<section class="min-h-screen pt-32 pb-20" style="background-color:#221022">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Breadcrumb -->
@@ -20,7 +20,7 @@
             <!-- Left: Product Media -->
             <div class="space-y-4">
                 <!-- Main image -->
-                <div class="w-full aspect-square rounded-3xl overflow-hidden" style="background-color:#0a050a">
+                <div class="w-full aspect-square rounded-3xl overflow-hidden" style="background-color:#221022">
                     {% if product.featured_image %}
                         <img id="main-product-image"
                              src="{{ product.featured_image | img_url: '800x' }}"
@@ -40,7 +40,7 @@
                         {% for image in product.images limit: 4 %}
                             <button onclick="document.getElementById('main-product-image').src='{{ image | img_url: '800x' }}'"
                                     class="aspect-square rounded-2xl overflow-hidden border-2 transition-all duration-200 hover:border-[#f20df2]"
-                                    style="border-color: {% if forloop.first %}#f20df2{% else %}rgba(255,255,255,0.1){% endif %}; background-color:#0a050a;">
+                                    style="border-color: {% if forloop.first %}#f20df2{% else %}rgba(255,255,255,0.1){% endif %}; background-color:#221022;">
                                 <img src="{{ image | img_url: '200x' }}" alt="{{ image.alt }}" class="w-full h-full object-cover">
                             </button>
                         {% endfor %}
@@ -89,7 +89,7 @@
                             {% for option in product.options_with_values %}
                                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest">{{ option.name }}</label>
                                 <select name="id" class="w-full rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-[#f20df2] focus:ring-1 focus:ring-[#f20df2] transition-colors"
-                                        style="background-color:#0a050a; border:1px solid rgba(255,255,255,0.1);">
+                                        style="background-color:#221022; border:1px solid rgba(255,255,255,0.1);">
                                     {% for variant in product.variants %}
                                         <option value="{{ variant.id }}"
                                                 {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
@@ -113,7 +113,7 @@
                                     style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)">−</button>
                             <input type="number" id="qty" name="quantity" value="1" min="1"
                                    class="w-16 text-center text-white font-bold py-2 rounded-xl focus:outline-none"
-                                   style="background-color:#0a050a; border:1px solid rgba(255,255,255,0.1)">
+                                   style="background-color:#221022; border:1px solid rgba(255,255,255,0.1)">
                             <button type="button" onclick="var q=document.getElementById('qty');q.value=parseInt(q.value)+1"
                                     class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-[#f20df2] transition-all"
                                     style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)">+</button>
@@ -156,9 +156,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {% for related_product in collection.products limit: 4 %}
                         {% unless related_product.handle == product.handle %}
-                            <a href="{{ related_product.url }}" class="group border border-white/5 rounded-2xl overflow-hidden hover:border-[#f20df2]/40 transition-all duration-300 hover:-translate-y-1" style="background-color:#0a050a; text-decoration:none">
+                            <a href="{{ related_product.url }}" class="group border border-white/5 rounded-2xl overflow-hidden hover:border-[#f20df2]/40 transition-all duration-300 hover:-translate-y-1" style="background-color:#221022; text-decoration:none">
                                 {% if related_product.featured_image %}
-                                    <div class="aspect-square overflow-hidden" style="background-color:#0a050a">
+                                    <div class="aspect-square overflow-hidden" style="background-color:#221022">
                                         <img src="{{ related_product.featured_image | img_url: '400x' }}"
                                              alt="{{ related_product.title }}"
                                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
