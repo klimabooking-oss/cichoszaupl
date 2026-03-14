@@ -8,13 +8,27 @@
  * ------------------------------------------------------------
  */
 {
-    "sections": {
-        "seo-cities": {
-            "type": "seo-cities",
-            "settings": {}
-        }
+  "sections": {
+    "seo-cities": {
+      "type": "seo-cities",
+      "settings": {}
     },
-    "order": [
-        "seo-cities"
-    ]
+    "seo_copywriting": {
+      "type": "seo-copywriting",
+      "settings": {
+        "title": "Wynajem Silent Disco dla Każdego",
+        "pill_text": "Impreza we własnych rękach",
+        "box1_title": "Zastosowanie",
+        "box1_content": "<p>Domówki, 18-stki, poprawiny weselne, imprezy urodzinowe i spontaniczne wydarzenia w garażu lub tarasie bez specjalistycznej wiedzy technicznej.</p>",
+        "box2_title": "Wyzwanie",
+        "box2_content": "<p>Brak dostępu do potężnego sprzętu nagłośnieniowego, rygor ciszy nocnej na osiedlach oraz międzypokoleniowe walki o puszczanie konkretnego gatunku muzyki pomiędzy dziadkiem a młodzieżą.</p>",
+        "box3_title": "Rozwiązanie",
+        "box3_content": "<p>W pełni sparowany i naładowany zestaw sterylizowanych słuchawek, docierający kurierem pod drzwi. Podpinacie telefony przez kable lub bluetooth do 3 nadajników i jednocześnie bawicie się do rapów, disco klasyków i rockowych ballad – żyjąc w całkowitej zgodzie z sąsiadami.</p>"
+      }
+    }
+  },
+  "order": [
+    "seo-cities",
+    "seo_copywriting"
+  ]
 }

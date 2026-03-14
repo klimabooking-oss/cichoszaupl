@@ -271,15 +271,15 @@
     },
     "kalkulator": {
       "type": "booking-calculator",
-      "settings": {}
+      "settings": {
+        "title": "Kalkulator",
+        "highlight": "Silent Disco",
+        "subtitle": "Skonfiguruj idealny zestaw w 3 minuty."
+      }
     },
     "faq": {
       "type": "faq",
-      "settings": {
-        "title": "Masz pytania dotyczące współpracy B2B?",
-        "highlight": "Pytania",
-        "subtitle": "FAQ dla Organizatorów"
-      }
+      "settings": {}
     },
     "seo_copywriting": {
       "type": "seo-copywriting",

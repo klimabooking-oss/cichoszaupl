@@ -183,6 +183,20 @@
         "show_stats": true
       }
     },
+    "how_it_works_video": {
+      "type": "how-it-works-video",
+      "settings": {
+        "pill_text": "PLUG & PLAY",
+        "title": "ZOBACZ JAK TO DZIAŁA W PRAKTYCE",
+        "subtitle": "To bajecznie proste. 3 proste kroki do samodzielnego uruchomienia imprezy.",
+        "step1_title": "Odbierasz Paczkę",
+        "step1_desc": "Kurier dostarcza sterylną skrzynię pełną naładowanych w 100% słuchawek prosto pod Twoje drzwi.",
+        "step2_title": "Podpinasz Kable",
+        "step2_desc": "Podłączasz nadajnik do prądu i wpinasz telefon/laptopa załączonym minijackiem. Zero dodatkowej konfiguracji.",
+        "step3_title": "Rozdajesz i Grasz",
+        "step3_desc": "Włączasz słuchawki jednym suwakiem na nauszniku i ustawiasz kanał. Koniec instrukcji. Czas na imprezę!"
+      }
+    },
     "services_grid": {
       "type": "services-grid",
       "disabled": true,
@@ -518,11 +532,7 @@
     },
     "faq": {
       "type": "faq",
-      "settings": {
-        "title": "Częste",
-        "highlight": "Pytania",
-        "subtitle": "Wszystko, co musisz wiedzieć o organizacji cichej imprezy."
-      }
+      "settings": {}
     },
     "cta_banner": {
       "type": "cta-banner",
@@ -553,6 +563,7 @@
     "custom_technology_yXHW6Y",
     "process_iezBYp",
     "logo_ticker",
+    "how_it_works_video",
     "services_grid",
     "process",
     "event_slider",

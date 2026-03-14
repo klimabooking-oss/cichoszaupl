@@ -14,7 +14,6 @@
       "settings": {
         "title": "",
         "hook": "",
-        "hero_image": "shopify://shop_images/freepik__zrb-to-samo-ale-nasza-postac-o-20-w-prawo__37735.png",
         "show_roi": false,
         "sales_copy": "",
         "seo_text": ""
@@ -279,11 +278,7 @@
     },
     "faq": {
       "type": "faq",
-      "settings": {
-        "title": "Masz pytania dotyczące współpracy B2B?",
-        "highlight": "Pytania",
-        "subtitle": "FAQ dla Organizatorów"
-      }
+      "settings": {}
     }
   },
   "order": [

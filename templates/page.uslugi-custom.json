@@ -54,8 +54,8 @@
   },
   "order": [
     "hero",
+    "seo_copywriting",
     "tech",
-    "cta",
-    "seo_copywriting"
+    "cta"
   ]
 }
