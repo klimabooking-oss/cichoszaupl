@@ -1,0 +1,88 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "seo_b2b_landing_DHJUNg": {
+      "type": "seo-b2b-landing",
+      "name": "B2B Oferty SEO",
+      "settings": {
+        "title": "",
+        "hook": "",
+        "show_roi": false,
+        "sales_copy": "",
+        "seo_text": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "hardware": {
+      "type": "pricing-hardware",
+      "settings": {}
+    },
+    "calculator": {
+      "type": "booking-calculator",
+      "settings": {
+        "title": "Cennik Wynajmu",
+        "highlight": "Silent Disco",
+        "subtitle": "Sprawdź koszt Twojego eventu w kilka sekund."
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "title": "Ready to Party?",
+        "subtitle": "Złap nas na czacie, zanim termin ucieknie.",
+        "btn1_text": "WhatsApp",
+        "whatsapp_url": "",
+        "btn2_text": "Messenger",
+        "messenger_url": ""
+      }
+    },
+    "process_qxgDGA": {
+      "type": "process",
+      "name": "Process Pipeline",
+      "settings": {
+        "subtitle": "Metodologia",
+        "title": "3 etapy do",
+        "highlight_text": "PERFEKCJI",
+        "step1_title": "1. Konsultacja",
+        "step1_desc": "Analiza potrzeb technicznych, wybór skali oraz rezerwacja terminu realizacji.",
+        "step2_title": "2. Przygotowanie",
+        "step2_desc": "Konfiguracja, testy jakościowe oraz bezpieczna wysyłka zestawu pod wskazany adres.",
+        "step3_title": "3. Realizacja",
+        "step3_desc": "Bezproblemowy przebieg wydarzenia pod nadzorem naszego zaplecza wsparcia."
+      }
+    },
+    "services_grid_PwmDYM": {
+      "type": "services-grid",
+      "name": "Services Grid",
+      "settings": {
+        "title": "Nasze",
+        "highlight_text": "Pakiety",
+        "description": "Wybierz bazę swojego wydarzenia i skonfiguruj ją w naszym sklepie, aby otrzymać natychmiastową wycenę.",
+        "url_pakiet_a": "",
+        "url_pakiet_b": "",
+        "url_pakiet_c": ""
+      }
+    }
+  },
+  "order": [
+    "seo_b2b_landing_DHJUNg",
+    "main",
+    "process_qxgDGA",
+    "services_grid_PwmDYM",
+    "hardware",
+    "calculator",
+    "cta"
+  ]
+}

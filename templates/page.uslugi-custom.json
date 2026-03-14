@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-landing",
+      "settings": {
+        "title": "Usługi Cichoszau",
+        "subtitle": "Spersonalizowana oferta dla Twojego eventu.",
+        "cta_text": "Sprawdź ofertę",
+        "features_heading": "Dlaczego my?",
+        "show_festival_channels": false
+      }
+    },
+    "tech": {
+      "type": "custom-technology",
+      "settings": {
+        "subtitle": "Poznaj sprzęt",
+        "title": "Technologia <br/><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
+        "description": "Nasze słuchawki to nie tylko rewelacyjny design, ale przede wszystkim genialna izolacja akustyczna i czysty przekaz audio na 3 niezależnych kanałach. Zobacz z bliska, co zamawiasz.",
+        "button_label": "Pobierz PDF (Specyfikacja)"
+      }
+    },
+    "cta": {
+      "type": "custom-cta",
+      "settings": {
+        "badge_text": "🔥 Rozszerzenie Pakietu",
+        "title": "Impreza na gotowo? <br/> <span class=\"text-black\">Zatrudnij naszego DJ-a!</span>",
+        "description": "Nie wiesz, jaka muzyka sprawdzi się najlepiej, albo nie masz sprzętu konsoletowego? Załatwimy to kompleksowo.",
+        "button_label": "Wyślij zapytanie",
+        "button_link": "/pages/kontakt"
+      }
+    },
+    "seo_copywriting": {
+      "type": "seo-copywriting",
+      "settings": {
+        "title": "Wynajem Silent Disco dla Każdego",
+        "pill_text": "Impreza we własnych rękach",
+        "box1_title": "Zastosowanie",
+        "box1_content": "<p>Domówki, 18-stki, poprawiny weselne, imprezy urodzinowe i spontaniczne wydarzenia w garażu lub tarasie bez specjalistycznej wiedzy technicznej.</p>",
+        "box2_title": "Wyzwanie",
+        "box2_content": "<p>Brak dostępu do potężnego sprzętu nagłośnieniowego, rygor ciszy nocnej na osiedlach oraz międzypokoleniowe walki o puszczanie konkretnego gatunku muzyki pomiędzy dziadkiem a młodzieżą.</p>",
+        "box3_title": "Rozwiązanie",
+        "box3_content": "<p>W pełni sparowany i naładowany zestaw sterylizowanych słuchawek, docierający kurierem pod drzwi. Podpinacie telefony przez kable lub bluetooth do 3 nadajników i jednocześnie bawicie się do rapów, disco klasyków i rockowych ballad – żyjąc w całkowitej zgodzie z sąsiadami.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "tech",
+    "cta",
+    "seo_copywriting"
+  ]
+}

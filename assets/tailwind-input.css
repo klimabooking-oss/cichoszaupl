@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #f20df2;
+  --color-primary-dark: #d90bd9;
+  --color-accent-orange: #ff5f1f;
+  --color-accent-yellow: #ffd700;
+  --color-background-light: #f8f5f8;
+  --color-background-dark: #221022;
+  --color-surface-dark: #2d152d;
+  --color-surface-darker: #1a0c1a;
+
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Manrope", sans-serif;
+  
+  --breakpoint-xs: 475px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-background-dark); }
+::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 5px; }
+
+/* === Base & Global Tags === */
+@layer base {
+  html, body {
+    background-color: var(--color-background-dark) !important;
+    color: #ededed;
+    font-family: var(--font-sans);
+  }
+
+  /* Range Slider Custom Styling */
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 9999px;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.2s;
+  }
+  input[type=range]:hover { opacity: 0.95; }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #f20df2;
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow: 0 0 0 4px rgba(242,13,242,0.15), 0 0 12px rgba(242,13,242,0.5);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+    box-shadow: 0 0 0 6px rgba(242,13,242,0.2), 0 0 20px rgba(242,13,242,0.7);
+  }
+  
+  /* Date Input Styling */
+  input[type=date] {
+    color-scheme: dark;
+    background: rgba(242,13,242,0.06);
+    border: 1px solid rgba(242,13,242,0.25);
+    border-radius: 10px;
+    padding: 8px 12px;
+    color: #fff;
+    outline: none;
+    width: 100%;
+  }
+}
+
+/* === Components === */
+@layer components {
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    color: transparent;
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(242, 13, 242, 0.5);
+  }
+  
+  .btn-glow {
+    box-shadow: 0 0 20px rgba(242, 13, 242, 0.4);
+    animation: pulse-glow 2s infinite;
+  }
+  
+  .animate-blob {
+    animation: blob 7s infinite alternate ease-in-out;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 8s infinite ease-in-out;
+  }
+  
+  .gradient-text-festival {
+    background: linear-gradient(to right, #f20df2, #ff5f1f, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.09);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.20);
+    transform-style: preserve-3d;
+    transition: transform 0.12s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-card-strong {
+    background: rgba(255,255,255,0.055);
+    backdrop-filter: blur(32px) saturate(200%) brightness(1.1);
+    -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.1);
+    border: 1px solid rgba(255,255,255,0.13);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), inset 0 1.5px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.25), 0 0 60px rgba(242,13,242,0.06);
+    transform-style: preserve-3d;
+    transition: transform 0.12s ease, box-shadow 0.3s ease;
+  }
+
+  .logo-float-anim {
+    animation: logo-float 4.5s ease-in-out infinite;
+    display: inline-block;
+    transform-style: preserve-3d;
+  }
+
+  /* Sticky CTA Button */
+  #sticky-booking-cta {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    z-index: 9998;
+    opacity: 0;
+    transform: translateY(16px) scale(0.92);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+  }
+  #sticky-booking-cta.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  #sticky-booking-cta a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: #f20df2;
+    color: #fff;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 0 24px rgba(242,13,242,0.55), 0 0 60px rgba(242,13,242,0.18), 0 4px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    animation: sticky-bounce 2.5s infinite;
+  }
+  #sticky-booking-cta a:hover {
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 0 36px rgba(242,13,242,0.7), 0 0 80px rgba(242,13,242,0.25), 0 4px 24px rgba(0,0,0,0.5);
+    animation-play-state: paused;
+  }
+
+  /* Scroll Reveal Utilities */
+  [data-animate] {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1), filter 0.7s cubic-bezier(.22,1,.36,1);
+  }
+  [data-animate="fade-up"]    { transform: translateY(48px); }
+  [data-animate="fade-down"]  { transform: translateY(-40px); }
+  [data-animate].is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  
+  .portfolio-tab-btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.25s ease !important;
+  }
+  .portfolio-tab-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.2s;
+    border-radius: inherit;
+  }
+  .portfolio-tab-btn:hover::after  { background: rgba(255,255,255,0.06); }
+  .portfolio-tab-btn:hover         { transform: scale(1.04); }
+  
+  .glass-light {
+    position: absolute;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%,-50%);
+    transition: opacity 0.2s;
+    opacity: 0;
+    z-index: 2;
+    mix-blend-mode: screen;
+  }
+  .glass-card:hover .glass-light,
+  .glass-card-strong:hover .glass-light { opacity: 1; }
+
+  .float-anim { animation: float-y 4s ease-in-out infinite; }
+  .float-anim-slow { animation: float-y 6s ease-in-out infinite; }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(242,13,242,0.04) 50%, transparent 60%);
+    animation: scan 6s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+@keyframes float-y {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Privacy Banner Overrides */
+#shopify-pc__banner {
+  background: #221022 !important;
+  border-top: 2px solid rgba(242,13,242,0.4) !important;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.8), 0 -10px 40px rgba(242,13,242,0.1) !important;
+  color: #ededed !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+@keyframes pulse-glow {
+  0%   { box-shadow: 0 0 20px rgba(242, 13, 242, 0.4); }
+  50%  { box-shadow: 0 0 40px rgba(242, 13, 242, 0.7); }
+  100% { box-shadow: 0 0 20px rgba(242, 13, 242, 0.4); }
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -50px) scale(1.1); }
+  66%       { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes sticky-bounce {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 24px rgba(242,13,242,0.55); }
+  50% { transform: translateY(-8px); box-shadow: 0 0 40px rgba(242,13,242,0.85); }
+}
+
+@keyframes logo-float {
+  0%,100% { transform: rotate(-2deg) translateY(0px); }
+  25%      { transform: rotate(-1.5deg) translateY(-5px) rotate3d(0,1,0,4deg); }
+  50%      { transform: rotate(-2deg) translateY(-8px); }
+  75%      { transform: rotate(-2.5deg) translateY(-4px) rotate3d(0,1,0,-3deg); }
+}
+
+@keyframes scan {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+@keyframes blink-cursor {
+  from, to { border-color: transparent; }
+  50%       { border-color: #f20df2; }
+}

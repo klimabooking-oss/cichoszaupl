@@ -1,0 +1,76 @@
+<div class="mb-24 mt-12" id="custom-cta-{{ section.id }}">
+    <div class="max-w-6xl mx-auto bg-[#ff5f1f] rounded-[2rem] p-8 md:p-14 relative overflow-hidden group">
+        <!-- Tło SVG/Gradient -->
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+        <!-- Animowana plama na hover -->
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-[#ffd700] rounded-full filter blur-[100px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000 z-0"></div>
+
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="md:w-2/3">
+                {% if section.settings.badge_text != blank %}
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/20 text-white text-[10px] font-black uppercase tracking-widest mb-6 border border-white/10">
+                    {{ section.settings.badge_text }}
+                </div>
+                {% endif %}
+                
+                <h2 class="text-4xl md:text-5xl font-black text-white italic tracking-tighter mb-4 leading-none">
+                    {{ section.settings.title }}
+                </h2>
+                
+                <div class="text-white/90 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
+                    {{ section.settings.description | newline_to_br }}
+                </div>
+            </div>
+            
+            {% if section.settings.button_label != blank %}
+            <div class="md:w-1/3 w-full flex justify-center md:justify-end">
+                <a href="{{ section.settings.button_link | default: '/pages/kontakt' }}" class="px-10 py-5 bg-[#0a050a] text-white font-black text-sm uppercase tracking-widest rounded-full hover:scale-105 hover:bg-black transition-all shadow-xl whitespace-nowrap">
+                    {{ section.settings.button_label }}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pomarańczowe CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Tekst Plakietki",
+      "default": "🔥 Rozszerzenie Pakietu"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Nagłówek (można użyć <br/> i <span>)",
+      "default": "Impreza na gotowo? <br/> <span class=\"text-black\">Zatrudnij naszego DJ-a!</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Opis",
+      "default": "Nie wiesz, jaka muzyka sprawdzi się najlepiej, albo nie masz sprzętu konsoletowego? Załatwimy to kompleksowo."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Tekst Przycisku",
+      "default": "Odbierz wycenę"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link Przycisku"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pomarańczowe CTA"
+    }
+  ]
+}
+{% endschema %}

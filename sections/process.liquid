@@ -1,0 +1,135 @@
+<section class="py-12 bg-[#221022] relative overflow-hidden" id="process">
+    <div class="section-sep" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+    <div class="bg-[#f20df2]/20 w-[500px] h-[500px] rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 blur-[100px] pointer-events-none" style="animation: blob 7s infinite alternate ease-in-out;"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <div class="text-center mb-16" data-animate="fade-up">
+            <span class="text-[#f20df2] font-bold tracking-widest uppercase text-sm border border-[#f20df2]/30 bg-[#f20df2]/10 px-4 py-1 rounded-full">
+                {{ section.settings.subtitle | default: 'Metodologia' }}
+            </span>
+            <div class="mt-6 flex justify-center">
+                <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
+                    <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 origin-bottom-left">
+                        {{ section.settings.title | default: '3 etapy do' }}
+                    </span>
+                    <br class="hidden md:block" />
+                    <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] transform rotate-2 group-hover:rotate-0 transition-transform duration-500 origin-bottom-right pb-2">
+                        {{ section.settings.highlight_text | default: 'PERFEKCJI' }}
+                    </span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-center">
+            
+            <!-- Etap 1 -->
+            <div class="group glass-card rounded-3xl p-8" data-animate="fade-up" data-tilt>
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-[#221022] border border-white/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-all duration-300 transform group-hover:rotate-6 shadow-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2] group-hover:text-white"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                </div>
+                <h3 class="text-xl md:text-2xl font-black text-white mb-4 uppercase">{{ section.settings.step1_title | default: '1. Konsultacja' }}</h3>
+                <p class="text-gray-400 font-medium text-sm md:text-base px-4">{{ section.settings.step1_desc | default: 'Analiza potrzeb technicznych, wybór skali oraz rezerwacja terminu realizacji.' }}</p>
+            </div>
+
+            <!-- Etap 2 -->
+            <div class="group glass-card rounded-3xl p-8" data-animate="fade-up" data-animate-delay="200" data-tilt>
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-[#221022] border border-white/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-[#ff5f1f] group-hover:border-[#ff5f1f] transition-all duration-300 transform group-hover:-rotate-6 shadow-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#ff5f1f] group-hover:text-white"><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 18h.01"/><path d="M10 18h.01"/><path d="M15 18h.01"/><path d="M18 18h.01"/><path d="M8 14v-1a4 4 0 0 1 8 0v1"/></svg>
+                </div>
+                <h3 class="text-xl md:text-2xl font-black text-white mb-4 uppercase">{{ section.settings.step2_title | default: '2. Przygotowanie' }}</h3>
+                <p class="text-gray-400 font-medium text-sm md:text-base px-4">{{ section.settings.step2_desc | default: 'Konfiguracja, testy jakościowe oraz bezpieczna wysyłka zestawu pod wskazany adres.' }}</p>
+            </div>
+
+            <!-- Etap 3 -->
+            <div class="group glass-card rounded-3xl p-8" data-animate="fade-up" data-animate-delay="400" data-tilt>
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-[#221022] border border-white/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-[#ffd700] group-hover:border-[#ffd700] transition-all duration-300 transform group-hover:rotate-6 shadow-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#ffd700] group-hover:text-[#0a050a]"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17"/><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.91 9 5.52 9 6.23V7"/><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/></svg>
+                </div>
+                <h3 class="text-xl md:text-2xl font-black text-white mb-4 uppercase">{{ section.settings.step3_title | default: '3. Realizacja' }}</h3>
+                <p class="text-gray-400 font-medium text-sm md:text-base px-4">{{ section.settings.step3_desc | default: 'Bezproblemowy przebieg wydarzenia pod nadzorem naszego zaplecza wsparcia.' }}</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Process Pipeline",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Metodologia"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "3 etapy do"
+    },
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Highlight Text",
+      "default": "PERFEKCJI"
+    },
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "text",
+      "id": "step1_title",
+      "label": "Title",
+      "default": "1. Konsultacja"
+    },
+    {
+      "type": "textarea",
+      "id": "step1_desc",
+      "label": "Description",
+      "default": "Analiza potrzeb technicznych, wybór skali oraz rezerwacja terminu realizacji."
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "text",
+      "id": "step2_title",
+      "label": "Title",
+      "default": "2. Przygotowanie"
+    },
+    {
+      "type": "textarea",
+      "id": "step2_desc",
+      "label": "Description",
+      "default": "Konfiguracja, testy jakościowe oraz bezpieczna wysyłka zestawu pod wskazany adres."
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "text",
+      "id": "step3_title",
+      "label": "Title",
+      "default": "3. Realizacja"
+    },
+    {
+      "type": "textarea",
+      "id": "step3_desc",
+      "label": "Description",
+      "default": "Bezproblemowy przebieg wydarzenia pod nadzorem naszego zaplecza wsparcia."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process Pipeline"
+    }
+  ]
+}
+{% endschema %}

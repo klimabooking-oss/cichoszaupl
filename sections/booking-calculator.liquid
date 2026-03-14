@@ -1,0 +1,555 @@
+<section class="py-12 md:py-24 bg-[#221022] relative overflow-hidden" id="rental">
+    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none z-10 mix-blend-overlay"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+
+        <div class="mb-8 md:mb-12">
+            <h2 class="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter mb-4">
+                {{ section.settings.title | default: 'Kalkulator' }}
+                <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]">{{ section.settings.highlight | default: 'Silent Disco' }}</span>
+            </h2>
+            <p class="text-gray-400 text-sm md:text-lg">{{ section.settings.subtitle | default: 'Skonfiguruj idealny zestaw w 3 minuty.' }}</p>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-8">
+
+            <!-- CONFIGURATION -->
+            <div class="xl:col-span-8 space-y-4 md:space-y-6">
+
+                <!-- Headphones -->
+                <div class="bg-[#221022]/90 backdrop-blur border border-white/5 rounded-2xl md:rounded-3xl p-5 md:p-8 shadow-lg">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-[#f20df2]/20 flex items-center justify-center text-[#f20df2]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                            </div>
+                            <h3 class="text-sm md:text-lg font-bold text-white uppercase tracking-wider">Słuchawki</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input
+                                type="number"
+                                id="calc-hp-input"
+                                value="20"
+                                min="20" max="2000"
+                                class="w-16 md:w-24 bg-[#221022] border border-white/10 rounded-lg px-2 py-1.5 text-base md:text-lg font-black text-white text-right focus:border-[#f20df2] outline-none transition-colors"
+                            />
+                            <span class="text-gray-500 text-xs font-bold">szt.</span>
+                        </div>
+                    </div>
+
+                    <input
+                        type="range"
+                        id="calc-hp-slider"
+                        min="20"
+                        max="1000"
+                        step="10"
+                        value="20"
+                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#f20df2] mb-2"
+                        style="background: linear-gradient(to right, #f20df2 5%, #374151 5%);"
+                    />
+                    <div class="flex justify-between text-[10px] text-gray-500 font-bold uppercase">
+                        <span>0</span>
+                        <span>500</span>
+                        <span>1000+</span>
+                    </div>
+                </div>
+
+                <!-- Channels & Dates Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-[#221022]/90 backdrop-blur border border-white/5 rounded-2xl p-5 shadow-lg">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Kanały</h3>
+                            </div>
+                            <span id="calc-ch-val" class="text-xl font-black text-white">3</span>
+                        </div>
+                        <input
+                            type="range"
+                            id="calc-ch-slider"
+                            min="0" max="3" step="1"
+                            value="3"
+                            class="w-full h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#f20df2]"
+                            style="background: linear-gradient(to right, #f20df2 100%, #374151 100%);"
+                        />
+                    </div>
+
+                    <div class="bg-[#221022]/90 backdrop-blur border border-white/5 rounded-2xl p-5 shadow-lg grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Od</label>
+                            <input type="date" id="calc-date-start" class="w-full bg-black/30 border border-white/10 rounded px-2 py-1 text-xs text-white outline-none" />
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Do</label>
+                            <input type="date" id="calc-date-end" class="w-full bg-black/30 border border-white/10 rounded px-2 py-1 text-xs text-white outline-none" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery Methods -->
+                <div class="bg-[#221022]/90 backdrop-blur border border-white/5 rounded-2xl p-5 shadow-lg">
+                    <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Dostawa</h3>
+                    <div class="grid grid-cols-3 gap-2" id="calc-delivery-group">
+                        <button data-val="courier" class="calc-del-btn active flex flex-col items-center justify-center py-3 rounded-xl border bg-[#f20df2]/20 border-[#f20df2] text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l4 4v5c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                            <span class="text-[10px] font-bold uppercase">Kurier</span>
+                        </button>
+                        <button data-val="pickup" class="calc-del-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="text-[10px] font-bold uppercase">Odbiór</span>
+                        </button>
+                        <button data-val="full" class="calc-del-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                            <span class="text-[10px] font-bold uppercase">Obsługa</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Extras -->
+                <div class="bg-[#221022]/90 backdrop-blur border border-white/5 rounded-2xl p-5 shadow-lg">
+                    <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Dodatki</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2" id="calc-extras-group">
+                        <button data-xtra="dj" data-color="#ff5f1f" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></svg>
+                            <span class="text-[10px] font-bold uppercase">DJ</span>
+                        </button>
+                        <button data-xtra="marketing" data-color="#a855f7" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                            <span class="text-[10px] font-bold uppercase">Mkt</span>
+                        </button>
+                        <button data-xtra="video" data-color="#ffd700" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
+                            <span class="text-[10px] font-bold uppercase">Video</span>
+                        </button>
+                        <button data-xtra="lighting" data-color="#3b82f6" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                            <span class="text-[10px] font-bold uppercase">Light</span>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="xl:col-span-4">
+                <div class="sticky top-24">
+                    <div class="bg-[#221022]/95 backdrop-blur border border-white/5 rounded-2xl p-6 shadow-2xl">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-black text-white uppercase italic">Twoja Wycena</h3>
+                                <p class="text-[10px] text-gray-500 font-bold uppercase tracking-wider"><span id="calc-days-out">1</span> dni wynajmu</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><line x1="4" x2="20" y1="21" y2="14"/><line x1="4" x2="20" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="14"/><line x1="12" x2="12" y1="10" y2="3"/></svg>
+                        </div>
+
+                        <div class="space-y-2 mb-6 text-sm border-b border-white/10 pb-6" id="calc-breakdown">
+                            <!-- Injected by JS -->
+                        </div>
+
+                        <div class="mb-2 flex justify-between items-end">
+                            <span class="text-gray-500 text-xs font-bold uppercase">Suma Netto</span>
+                            <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ffd700]" id="calc-total-out">
+                                0 zł
+                            </div>
+                        </div>
+                        <div class="mb-8 flex justify-between items-end">
+                            <span class="text-gray-500 text-[10px] font-bold uppercase">Suma Brutto (z 23% VAT)</span>
+                            <div class="text-sm font-bold text-gray-400" id="calc-gross-out">
+                                0 zł
+                            </div>
+                        </div>
+
+                        <div class="mb-6 text-center text-gray-400 text-sm">
+                            Cena za sztukę: <span id="calc-price-per">0</span> zł
+                        </div>
+
+                        <button
+                            id="btn-open-form"
+                            class="w-full py-5 rounded-2xl font-black uppercase tracking-widest text-sm text-[#0a050a] flex items-center justify-center gap-2 btn-glow hover:scale-[1.03] active:scale-[0.98] transition-transform"
+                            style="background: linear-gradient(to right, #f20df2, #ff5f1f, #ffd700);"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                            Odbierz wycenę
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Shopify form for CSRF token -->
+    {% form 'contact', id: 'shopify-csrf-form' %}
+    {% endform %}
+
+    <!-- Booking Form Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] bg-[#221022]/90 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-[#221022] border border-white/10 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl animate-fade-in-up">
+            <div class="bg-[#221022] p-5 border-b border-white/10 flex justify-between items-center">
+                <h3 class="text-lg font-black text-white uppercase italic">Dane kontaktowe</h3>
+                <button id="btn-close-form" class="text-gray-400 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+
+            <div id="form-success" class="hidden p-10 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mx-auto mb-4"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <h4 class="text-xl font-bold text-white mb-2">Wysłano!</h4>
+                <p class="text-gray-400 text-sm">Skontaktujemy się z Tobą niebawem.</p>
+            </div>
+            
+            <form id="booking-form" class="p-6 space-y-4">
+                <input type="hidden" name="contact[rental_details]" id="form-hidden-details" value="" />
+                <input required type="text" name="contact[name]" placeholder="Imię i nazwisko" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                <div class="grid grid-cols-2 gap-4">
+                    <input required type="email" name="contact[email]" placeholder="Email" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                    <input required type="tel" name="contact[phone]" placeholder="Telefon" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                </div>
+                <input type="text" name="contact[company]" placeholder="Firma (opcjonalnie)" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                <textarea name="contact[body]" placeholder="Dodatkowe informacje..." rows="2" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none resize-none transition-colors"></textarea>
+
+                <button type="submit" id="btn-submit-form" class="w-full py-3 bg-[#f20df2] text-white font-black uppercase text-xs tracking-widest rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                    Odbierz wycenę
+                </button>
+            </form>
+            
+        </div>
+    </div>
+
+    <!-- Calc App JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Internal Pricing Configuration
+            const Tiers = [
+                { min: 0, max: 100, price: 20 },
+                { min: 101, max: 200, price: 19 },
+                { min: 201, max: 300, price: 18 },
+                { min: 301, max: 400, price: 17 },
+                { min: 401, max: 500, price: 16 },
+                { min: 501, max: 10000, price: 15 }
+            ];
+
+            const PRICES = {
+                transmitter: 50,
+                courier: 50,
+                dj: 1500,
+                marketing: 500,
+                video: 2000,
+                lighting: 1000,
+                
+            };
+
+            // State
+            let state = {
+                headphones: 20,
+                channels: 3,
+                startDate: new Date().toISOString().split('T')[0],
+                endDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+                days: 1,
+                delivery: 'courier',
+                extras: { dj: false, marketing: false, video: false, lighting: false,  }
+            };
+
+            // Elements
+            const hpInput = document.getElementById('calc-hp-input');
+            const hpSlider = document.getElementById('calc-hp-slider');
+            const chSlider = document.getElementById('calc-ch-slider');
+            const chVal = document.getElementById('calc-ch-val');
+            const dateStart = document.getElementById('calc-date-start');
+            const dateEnd = document.getElementById('calc-date-end');
+            
+            const delBtns = document.querySelectorAll('.calc-del-btn');
+            const xtBtns = document.querySelectorAll('.calc-xt-btn');
+
+            const outDays = document.getElementById('calc-days-out');
+            const outBreakdown = document.getElementById('calc-breakdown');
+            const outNet = document.getElementById('calc-total-out');
+            const outGross = document.getElementById('calc-gross-out');
+            const outPricePer = document.getElementById('calc-price-per');
+
+            const modal = document.getElementById('booking-modal');
+            const btnOpen = document.getElementById('btn-open-form');
+            const btnClose = document.getElementById('btn-close-form');
+            const form = document.getElementById('booking-form');
+            const formSuccess = document.getElementById('form-success');
+            const hiddenDetails = document.getElementById('form-hidden-details');
+
+            // Init Dates
+            dateStart.value = state.startDate;
+            dateStart.min = state.startDate;
+            dateEnd.value = state.endDate;
+            dateEnd.min = state.startDate;
+
+            // Logic
+            function calculate() {
+                // Tier pricing
+                let hpTier = Tiers.find(t => state.headphones >= t.min && state.headphones <= t.max) || Tiers[0];
+                let pricePer = hpTier.price;
+                
+                // Days
+                let d1 = new Date(state.startDate);
+                let d2 = new Date(state.endDate);
+                let msDiff = d2.getTime() - d1.getTime();
+                state.days = Math.max(1, Math.ceil(msDiff / (1000 * 3600 * 24)));
+                let dayMult = state.days === 1 ? 1 : 1 + ((state.days - 1) * 0.5);
+
+                let costHp = Math.round(state.headphones * pricePer * dayMult);
+                let costTx = Math.round(state.channels * PRICES.transmitter * dayMult);
+                let costDel = state.delivery === 'courier' ? PRICES.courier : 0;
+                
+                let costXt = 0;
+                for (let k in state.extras) {
+                    if (state.extras[k]) costXt += PRICES[k] || 0;
+                }
+
+                let total = costHp + costTx + costDel + costXt;
+                render(pricePer, costHp, costTx, costDel, total);
+            }
+
+            function render(pricePer, costHp, costTx, costDel, total) {
+                outPricePer.textContent = pricePer;
+                outDays.textContent = state.days;
+
+                // Sync UI Sliders gradients
+                hpSlider.style.background = `linear-gradient(to right, #f20df2 ${(state.headphones/1000)*100}%, #374151 ${(state.headphones/1000)*100}%)`;
+                chSlider.style.background = `linear-gradient(to right, #f20df2 ${(state.channels/3)*100}%, #374151 ${(state.channels/3)*100}%)`;
+
+                let bdHtml = `
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">${state.headphones}x Słuchawki</span>
+                        <span class="text-white font-bold">${costHp} zł</span>
+                    </div>
+                `;
+                if(state.channels > 0) {
+                    bdHtml += `
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">${state.channels}x Nadajniki</span>
+                        <span class="text-white font-bold">${costTx} zł</span>
+                    </div>`;
+                } else {
+                    bdHtml += `<div class="flex justify-between"><span class="text-gray-400">Bez nadajników</span></div>`;
+                }
+                if(state.delivery === 'courier') {
+                    bdHtml += `
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Kurier</span>
+                        <span class="text-white font-bold">${costDel} zł</span>
+                    </div>`;
+                }
+                
+                for(let k in state.extras) {
+                    if(state.extras[k]) {
+                        bdHtml += `
+                        <div class="flex justify-between text-[#f20df2]">
+                            <span class="capitalize">${k}</span>
+                            <span class="font-bold">+${PRICES[k] || 500} zł</span>
+                        </div>`;
+                    }
+                }
+
+                outBreakdown.innerHTML = bdHtml;
+
+                if (state.delivery === 'full') {
+                    outNet.textContent = 'WYCENA IND.';
+                    outGross.textContent = '-';
+                } else {
+                    outNet.textContent = `${total} zł`;
+                    outGross.textContent = `${Math.round(total * 1.23)} zł`;
+                }
+
+                hiddenDetails.value = JSON.stringify({
+                    headphones: state.headphones,
+                    channels: state.channels,
+                    startDate: state.startDate,
+                    endDate: state.endDate,
+                    days: state.days,
+                    delivery: state.delivery,
+                    extras: state.extras,
+                    estimated_total: total
+                });
+            }
+
+            // Listeners
+            hpInput.addEventListener('input', (e) => {
+                let v = parseInt(e.target.value) || 0;
+                if(v > 2000) v = 2000;
+                state.headphones = v;
+                hpSlider.value = v > 1000 ? 1000 : v;
+                calculate();
+            });
+
+            hpSlider.addEventListener('input', (e) => {
+                let v = parseInt(e.target.value);
+                state.headphones = v;
+                hpInput.value = v;
+                calculate();
+            });
+
+            chSlider.addEventListener('input', (e) => {
+                let v = parseInt(e.target.value);
+                if (v > 3) v = 3;
+                state.channels = v;
+                chVal.textContent = v;
+                calculate();
+            });
+
+            dateStart.addEventListener('change', (e) => {
+                state.startDate = e.target.value;
+                dateEnd.min = state.startDate;
+                if(new Date(state.endDate) < new Date(state.startDate)) {
+                    state.endDate = state.startDate;
+                    dateEnd.value = state.startDate;
+                }
+                calculate();
+            });
+
+            dateEnd.addEventListener('change', (e) => {
+                state.endDate = e.target.value;
+                calculate();
+            });
+
+            delBtns.forEach(btn => btn.addEventListener('click', () => {
+                delBtns.forEach(b => {
+                    b.classList.remove('bg-[#f20df2]/20', 'border-[#f20df2]', 'text-white', 'active');
+                    b.classList.add('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                });
+                btn.classList.add('bg-[#f20df2]/20', 'border-[#f20df2]', 'text-white', 'active');
+                btn.classList.remove('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                state.delivery = btn.getAttribute('data-val');
+                calculate();
+            }));
+
+            xtBtns.forEach(btn => btn.addEventListener('click', () => {
+                let xtra = btn.getAttribute('data-xtra');
+                let clr = btn.getAttribute('data-color');
+                state.extras[xtra] = !state.extras[xtra];
+
+                if(state.extras[xtra]) {
+                    btn.classList.remove('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                    btn.style.backgroundColor = `${clr}20`; // 20 hex alpha ≈ 12%
+                    btn.style.borderColor = clr;
+                    btn.style.color = 'white';
+                } else {
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.style.color = '';
+                    btn.classList.add('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                }
+                calculate();
+            }));
+
+            // Modal
+            btnOpen.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+            btnClose.addEventListener('click', () => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btnSubmit = document.getElementById('btn-submit-form');
+                btnSubmit.textContent = 'Trwa wysyłanie...';
+                btnSubmit.disabled = true;
+
+                // Build full message with rental details
+                const details = JSON.parse(hiddenDetails.value || '{}');
+                const formatDate = (d) => d ? new Date(d).toLocaleDateString('pl-PL') : '-';
+                const deliveryLabel = { courier: 'Kurier', pickup: 'Odbiór własny', full: 'Pełna obsługa' };
+                const nameVal    = form.querySelector('[name="contact[name]"]').value;
+                const emailVal   = form.querySelector('[name="contact[email]"]').value;
+                const phoneVal   = form.querySelector('[name="contact[phone]"]').value;
+                const companyVal = form.querySelector('[name="contact[company]"]').value;
+                const noteVal    = form.querySelector('textarea').value;
+                const msgBody = [
+                    `=== ZAPYTANIE O WYNAJEM SILENT DISCO ===`,
+                    ``,
+                    `--- DANE KONTAKTOWE ---`,
+                    `Imię i nazwisko: ${nameVal}`,
+                    `Email: ${emailVal}`,
+                    `Telefon: ${phoneVal}`,
+                    `Firma: ${companyVal || 'brak'}`,
+                    ``,
+                    `--- SZCZEGÓŁY ZAMÓWIENIA ---`,
+                    `Słuchawki: ${details.headphones || '-'} szt.`,
+                    `Kanały muzyczne: ${details.channels || '-'}`,
+                    `Termin: ${formatDate(details.startDate)} – ${formatDate(details.endDate)} (${details.days || 1} dni)`,
+                    `Dostawa: ${deliveryLabel[details.delivery] || details.delivery || '-'}`,
+                    `Dodatki: ${Object.keys(details.extras || {}).filter(k => details.extras[k]).join(', ') || 'brak'}`,
+                    `Wycena netto: ${details.estimated_total || 0} zł`,
+                    ``,
+                    `Dodatkowe info: ${noteVal || '-'}`,
+                ].join('\n');
+
+                try {
+                    const res = await fetch('https://formspree.io/f/mnjbkgge', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            name: nameVal,
+                            email: emailVal,
+                            telefon: phoneVal,
+                            firma: companyVal || 'brak',
+                            wiadomosc: msgBody
+                        })
+                    });
+
+                    if (res.ok || res.redirected) {
+                        form.classList.add('hidden');
+                        formSuccess.classList.remove('hidden');
+                        setTimeout(() => {
+                            modal.classList.remove('flex');
+                            modal.classList.add('hidden');
+                            form.reset();
+                            form.classList.remove('hidden');
+                            formSuccess.classList.add('hidden');
+                            btnSubmit.textContent = 'Odbierz wycenę';
+                            btnSubmit.disabled = false;
+                        }, 3000);
+                    } else {
+                        throw new Error('Błąd serwera');
+                    }
+                } catch (err) {
+                    btnSubmit.textContent = '⚠ Błąd – spróbuj ponownie';
+                    btnSubmit.disabled = false;
+                    setTimeout(() => { btnSubmit.textContent = 'Odbierz wycenę'; }, 3000);
+                }
+            });
+
+            // Initial calculation
+            calculate();
+        });
+    </script>
+</section>
+
+{% schema %}
+{
+  "name": "Booking Calculator",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Kalkulator"
+    },
+    {
+      "type": "text",
+      "id": "highlight",
+      "label": "Highlight Text",
+      "default": "Silent Disco"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Skonfiguruj idealny zestaw w 3 minuty."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Booking Calculator"
+    }
+  ]
+}
+{% endschema %}

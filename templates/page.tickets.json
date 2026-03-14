@@ -1,0 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ticket_system_QHMjYE": {
+      "type": "ticket-system",
+      "name": "Bilety z Produktów (Automat)",
+      "settings": {
+        "ticket_collection": "bilety",
+        "heading": "ZŁAP <span class=\"text-transparent\" style=\"-webkit-text-stroke: 1px gray;\">BILET</span> NA EVENT",
+        "subheading": ""
+      }
+    },
+    "blog_aktualnosci": {
+      "type": "blog-aktualnosci",
+      "settings": {
+        "subtitle": "Aktualnosci",
+        "title": "AKTUALNOSCI",
+        "highlight": "",
+        "show_view_all": true,
+        "show_tags": false,
+        "blog_handle": "aktualnosci"
+      }
+    },
+    "seo_copywriting": {
+      "type": "seo-copywriting",
+      "settings": {
+        "title": "Wynajem Silent Disco dla Każdego",
+        "pill_text": "Impreza we własnych rękach",
+        "box1_title": "Zastosowanie",
+        "box1_content": "<p>Domówki, 18-stki, poprawiny weselne, imprezy urodzinowe i spontaniczne wydarzenia w garażu lub tarasie bez specjalistycznej wiedzy technicznej.</p>",
+        "box2_title": "Wyzwanie",
+        "box2_content": "<p>Brak dostępu do potężnego sprzętu nagłośnieniowego, rygor ciszy nocnej na osiedlach oraz międzypokoleniowe walki o puszczanie konkretnego gatunku muzyki pomiędzy dziadkiem a młodzieżą.</p>",
+        "box3_title": "Rozwiązanie",
+        "box3_content": "<p>W pełni sparowany i naładowany zestaw sterylizowanych słuchawek, docierający kurierem pod drzwi. Podpinacie telefony przez kable lub bluetooth do 3 nadajników i jednocześnie bawicie się do rapów, disco klasyków i rockowych ballad – żyjąc w całkowitej zgodzie z sąsiadami.</p>"
+      }
+    }
+  },
+  "order": [
+    "ticket_system_QHMjYE",
+    "blog_aktualnosci",
+    "seo_copywriting"
+  ]
+}

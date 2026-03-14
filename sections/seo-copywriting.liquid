@@ -1,0 +1,118 @@
+<section class="py-2.5 bg-[#221022] relative overflow-hidden" id="seo-copywriting-structured">
+    <!-- Dekoracje w tle -->
+    <div class="absolute inset-0 bg-grainy opacity-10 pointer-events-none z-10 mix-blend-overlay"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[400px] bg-gradient-to-br from-[#f20df2]/10 to-[#ff5f1f]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        
+        <div class="text-center mb-16" data-animate="fade-up">
+            {% if section.settings.pill_text != blank %}
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#f20df2]/30 bg-[#f20df2]/10 mb-6 font-black uppercase tracking-widest text-[#f20df2] text-xs">
+                {{ section.settings.pill_text }}
+            </div>
+            {% endif %}
+            
+            {% if section.settings.title != blank %}
+            <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">
+                {{ section.settings.title }}
+            </h2>
+            {% endif %}
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Box 1: Zastosowanie -->
+            <div class="group bg-[#221022]/80 backdrop-blur-xl border border-white/5 hover:border-[#f20df2]/40 rounded-3xl p-8 transition-all duration-500 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#f20df2]/5 rounded-full blur-3xl group-hover:bg-[#f20df2]/10 transition-colors"></div>
+                <div class="w-14 h-14 rounded-2xl bg-[#f20df2]/10 border border-[#f20df2]/20 flex items-center justify-center text-[#f20df2] mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                </div>
+                <h3 class="text-xl font-black text-white uppercase tracking-wider mb-4">{{ section.settings.box1_title | default: "Zastosowanie" }}</h3>
+                <div class="text-gray-100 font-medium leading-relaxed prose prose-sm prose-invert max-w-none prose-p:text-gray-100 prose-p:mb-4 prose-ul:list-none prose-ul:p-0 prose-ul:m-0 prose-li:p-0 prose-li:m-0 prose-li:marker:text-transparent">
+                    {{ section.settings.box1_content }}
+                </div>
+            </div>
+
+            <!-- Box 2: Problem -->
+            <div class="group bg-[#221022]/80 backdrop-blur-xl border border-white/5 hover:border-[#ff5f1f]/40 rounded-3xl p-8 transition-all duration-500 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#ff5f1f]/5 rounded-full blur-3xl group-hover:bg-[#ff5f1f]/10 transition-colors"></div>
+                <div class="w-14 h-14 rounded-2xl bg-[#ff5f1f]/10 border border-[#ff5f1f]/20 flex items-center justify-center text-[#ff5f1f] mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 class="text-xl font-black text-white uppercase tracking-wider mb-4">{{ section.settings.box2_title | default: "Wyzwanie" }}</h3>
+                <div class="text-gray-100 font-medium leading-relaxed prose prose-sm prose-invert max-w-none prose-p:text-gray-100 prose-p:mb-4 prose-ul:list-none prose-ul:p-0 prose-ul:m-0 prose-li:p-0 prose-li:m-0 prose-li:marker:text-transparent">
+                    {{ section.settings.box2_content }}
+                </div>
+            </div>
+
+            <!-- Box 3: Rozwiązanie -->
+            <div class="group bg-[#221022]/80 backdrop-blur-xl border border-white/5 hover:border-[#ffd700]/40 rounded-3xl p-8 transition-all duration-500 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#ffd700]/5 rounded-full blur-3xl group-hover:bg-[#ffd700]/10 transition-colors"></div>
+                <div class="w-14 h-14 rounded-2xl bg-[#ffd700]/10 border border-[#ffd700]/20 flex items-center justify-center text-[#ffd700] mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </div>
+                <h3 class="text-xl font-black text-white uppercase tracking-wider mb-4">{{ section.settings.box3_title | default: "Rozwiązanie" }}</h3>
+                <div class="text-gray-100 font-medium leading-relaxed prose prose-sm prose-invert max-w-none prose-p:text-gray-100 prose-p:mb-4 prose-ul:list-none prose-ul:p-0 prose-ul:m-0 prose-li:p-0 prose-li:m-0 prose-li:marker:text-transparent">
+                    {{ section.settings.box3_content }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "SEO Copywriting",
+  "settings": [
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Tekst w pigułce nad tytułem",
+      "default": "Skuteczne Rozwiązania"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Główny Tytuł Sekcji",
+      "default": "Zbuduj niezapomniane wydarzenie"
+    },
+    {
+      "type": "text",
+      "id": "box1_title",
+      "label": "Tytuł Box 1",
+      "default": "Zastosowanie"
+    },
+    {
+      "type": "richtext",
+      "id": "box1_content",
+      "label": "Treść Box 1 (Zastosowanie)"
+    },
+    {
+      "type": "text",
+      "id": "box2_title",
+      "label": "Tytuł Box 2",
+      "default": "Wyzwanie"
+    },
+    {
+      "type": "richtext",
+      "id": "box2_content",
+      "label": "Treść Box 2 (Problem)"
+    },
+    {
+      "type": "text",
+      "id": "box3_title",
+      "label": "Tytuł Box 3",
+      "default": "Rozwiązanie"
+    },
+    {
+      "type": "richtext",
+      "id": "box3_content",
+      "label": "Treść Box 3 (Rozwiązanie)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SEO Copywriting (3 boxy)"
+    }
+  ]
+}
+{% endschema %}

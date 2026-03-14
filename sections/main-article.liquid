@@ -1,0 +1,167 @@
+<section class="min-h-screen pt-32 pb-20 px-4" style="background-color:#221022">
+    <div class="max-w-3xl mx-auto">
+
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-10">
+            <a href="{{ routes.root_url }}" class="hover:text-white transition-colors">Start</a>
+            <span>/</span>
+            <a href="{{ blog.url }}" class="hover:text-white transition-colors">{{ blog.title }}</a>
+            <span>/</span>
+            <span class="text-gray-400">{{ article.title | truncate: 40 }}</span>
+        </nav>
+
+        <!-- Tags -->
+        {% if article.tags.size > 0 %}
+            <div class="flex flex-wrap gap-2 mb-6">
+                {% for tag in article.tags %}
+                    <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border" style="background-color:rgba(242,13,242,0.1); color:#f20df2; border-color:rgba(242,13,242,0.2)">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter leading-tight mb-6">{{ article.title }}</h1>
+
+        <!-- Meta -->
+        <div class="flex items-center gap-4 text-sm text-gray-500 mb-10 pb-10" style="border-bottom: 1px solid rgba(255,255,255,0.05)">
+            <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d.%m.%Y' }}</time>
+            {% if article.author %}
+                <span>·</span>
+                <span>{{ article.author }}</span>
+            {% endif %}
+            {% if article.read_time %}
+                <span>·</span>
+                <span>{{ article.read_time }} min czytania</span>
+            {% endif %}
+        </div>
+
+        <!-- Featured Image -->
+        {% if article.image %}
+            <div class="w-full aspect-video rounded-3xl overflow-hidden mb-10">
+                <img src="{{ article.image | image_url: width: 1200 }}"
+                     alt="{{ article.image.alt | default: article.title }}"
+                     class="w-full h-full object-cover"
+                     loading="lazy">
+            </div>
+        {% endif %}
+
+        <!-- Content -->
+        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed" style="--tw-prose-body: #9ca3af; --tw-prose-headings: #ffffff; --tw-prose-links: #f20df2;">
+            {{ article.content }}
+        </div>
+
+        <!-- Internal Linking — powiązane usługi -->
+        <div class="mt-12 p-6 rounded-3xl border border-white/10 bg-white/[0.02]">
+            <p class="text-xs font-black uppercase tracking-widest text-gray-500 mb-4">Sprawdź też</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <a href="/pages/wynajem-sluchawek-silent-disco"
+                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-[#f20df2]/10 border border-[#f20df2]/20 hover:bg-[#f20df2]/20 transition-all text-sm font-bold text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f20df2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    Wynajem słuchawek →
+                </a>
+                <a href="/#rental"
+                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-[#ff5f1f]/10 border border-[#ff5f1f]/20 hover:bg-[#ff5f1f]/20 transition-all text-sm font-bold text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff5f1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                    Kalkulator wyceny →
+                </a>
+                <a href="{{ blog.url }}"
+                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-sm font-bold text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+                    Więcej artykułów →
+                </a>
+            </div>
+        </div>
+
+        <!-- Back link -->
+        <div class="mt-10 pt-10" style="border-top: 1px solid rgba(255,255,255,0.05)">
+            <a href="{{ blog.url }}" class="inline-flex items-center gap-3 font-black uppercase tracking-widest text-sm text-gray-400 hover:text-white transition-colors group">
+                <span class="w-8 h-8 rounded-full flex items-center justify-center transition-all group-hover:bg-[#f20df2]" style="background-color:rgba(255,255,255,0.05)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                </span>
+                Wróć do Strefy Wiedzy
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SEO Schema Markup for Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ shop.url }}{{ article.url }}"
+  },
+  "url": "{{ shop.url }}{{ article.url }}",
+  "headline": {{ article.title | json }},
+  "description": {{ article.excerpt_or_content | strip_html | truncatewords: 30 | json }},
+  "inLanguage": "pl-PL",
+  "articleSection": {{ blog.title | json }},
+  {% if article.tags.size > 0 %}
+  "keywords": [{% for tag in article.tags %}"{{ tag }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  {% endif %}
+  "wordCount": {{ article.content | strip_html | split: ' ' | size }},
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".prose h2", ".prose p"]
+  },
+  {% if article.image %}
+  "image": [
+    "https:{{ article.image | image_url: width: 1200 }}"
+  ],
+  {% endif %}
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
+  "dateModified": "{{ article.updated_at | default: article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ article.author | default: shop.name }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ shop.name }}",
+    "url": "{{ shop.url }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:{{ settings.logo | image_url: width: 600 }}",
+      "width": 600,
+      "height": 120
+    }
+  }
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "{{ shop.url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ blog.title | json }},
+      "item": "{{ shop.url }}{{ blog.url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ article.title | json }},
+      "item": "{{ shop.url }}{{ article.url }}"
+    }
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

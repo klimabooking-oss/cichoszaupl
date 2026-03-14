@@ -1,0 +1,286 @@
+<section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden" id="hero-section">
+    <!-- === WARSTWA 1: Gradient fioletowy (najniżej) === -->
+    <div class="absolute inset-0 pointer-events-none" style="z-index: 0;">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/90 to-[#221022]/30"></div>
+    </div>
+
+    <!-- === WARSTWA 2: Film / Zdjęcie (po prawej, za napisami) === -->
+    {% if section.settings.bg_video != blank %}
+        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+            <video
+                id="hero-bg-video"
+                class="w-full h-full object-cover will-change-transform"
+                style="opacity: 0.85;"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+                fetchpriority="high"
+            >
+                {% for source in section.settings.bg_video.sources %}
+                    <source src="{{ source.url }}" type="video/{{ source.format }}">
+                {% endfor %}
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+        </div>
+    {% elsif section.settings.bg_image %}
+        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+            <img
+                alt="CICHOSZAU Silent Disco"
+                class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                style="opacity: 0.85;"
+                id="hero-bg-img"
+                src="{{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }}"
+                srcset="{{ section.settings.bg_image | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.bg_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }} 1920w"
+                sizes="100vw"
+                fetchpriority="high"
+                loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+        </div>
+    {% else %}
+        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+            <img
+                alt="Silent Disco Party Crowd"
+                class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                style="opacity: 0.85;"
+                id="hero-bg-img"
+                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1920&auto=format&fit=crop"
+                fetchpriority="high"
+                loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+        </div>
+    {% endif %}
+
+    <!-- Dynamic overlay gradients -->
+    <div class="absolute inset-0 z-[15] pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#221022]/90 via-[#221022]/40 to-[#221022] z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[#f20df2]/10 mix-blend-overlay z-10"></div>
+        <!-- Pulsing mesh gradient overlay -->
+        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_50%,rgba(242,13,242,0.2),transparent_70%)]" style="animation: pulse-slow 8s infinite ease-in-out;"></div>
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_30%,rgba(255,95,31,0.2),transparent_50%)]" style="animation: pulse-slow 8s infinite ease-in-out; animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Animated Blobs with Wavy Motion -->
+    <div class="bg-[#f20df2] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full absolute top-[-10%] left-[-10%] blur-[120px] opacity-30 z-10" style="animation: blob 7s infinite alternate ease-in-out;" data-parallax="0.15"></div>
+    <div class="bg-[#ff5f1f] w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full absolute bottom-[-5%] right-[-5%] blur-[100px] opacity-30 z-10" style="animation: blob 7s infinite alternate ease-in-out; animation-delay: 3s;" data-parallax="-0.12"></div>
+    <div class="bg-[#ffd700] w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full absolute top-[40%] right-[10%] opacity-10 blur-[80px] z-10" style="animation: blob 7s infinite alternate ease-in-out; animation-delay: 5s;" data-parallax="0.08"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20 py-10">
+        <div class="inline-flex items-center px-6 py-2 rounded-full border border-[#f20df2]/50 bg-[#221022]/80 backdrop-blur-md mb-8 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+            <span class="flex h-3 w-3 rounded-full bg-[#ffd700] mr-3 animate-ping"></span>
+            <span class="text-sm font-bold text-white tracking-widest uppercase">High Energy Events Agency</span>
+        </div>
+        
+        <h1 class="sr-only">Wypożyczalnia słuchawek Silent Disco, organizacja imprez i festiwali bezprzewodowych | CICHOSZAU</h1>
+        <div aria-hidden="true" class="text-5xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.9] drop-shadow-2xl">
+            <div class="transform -rotate-1 hover:rotate-0 transition-transform duration-500"><span id="hero-typewriter">SILENT DISCO</span><span class="hero-cursor" style="border-right:3px solid #f20df2;margin-left:2px;animation:blink-cursor 0.75s step-end infinite;"> </span></div>
+            <div class="text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] transform rotate-2 hover:rotate-0 transition-transform duration-500 pb-2">TECHNOLOGIA</div>
+            <div class="transform -rotate-1 hover:rotate-0 transition-transform duration-500" style="-webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); color: transparent;">DOŚWIADCZENIE</div>
+        </div>
+        
+        <p class="mt-8 max-w-3xl mx-auto text-lg md:text-2xl text-gray-200 mb-12 font-medium leading-relaxed drop-shadow-lg">
+            Tworzymy <span class="text-[#ffd700] font-bold">niezapomniane</span> wydarzenia. Połącz magię dźwięku z festiwalową energią Twojej marki.
+        </p>
+        
+        <!-- ═══ SPLIT HERO — 3-Card Segment Selector ═══ -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16 max-w-6xl mx-auto w-full" id="split-hero-cards">
+
+            <!-- Card 1: B2B -->
+            <a href="#rental"
+               onclick="document.getElementById('rental')?.scrollIntoView({ behavior: 'smooth' })"
+               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-7 rounded-3xl border border-white/10 bg-[#221022]/60 backdrop-blur-md overflow-hidden cursor-pointer hover:border-blue-400/60 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(96,165,250,0.25)] text-left"
+               data-accent="blue" data-tilt>
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"></div>
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-400/30 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-500/25 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                    </div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400 mb-2">Dla Firm</div>
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-blue-300 transition-colors">Eventy B2B<br>& Integracje</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">Firmówki, wigilie, konferencje, budowanie zespołu. Pełna obsługa + faktura VAT.</p>
+                </div>
+                <div class="mt-8 inline-flex justify-center items-center gap-2 text-white font-black text-[12px] md:text-sm uppercase tracking-widest rounded-[1.5rem] px-6 py-4 w-full group-hover:scale-[1.02] transition-all duration-300 text-center transform hover:-translate-y-1 active:translate-y-0 active:border-b-0" style="background-color: #3b82f6; border-bottom: 5px solid #2563eb; box-shadow: 0 10px 20px rgba(59,130,246,0.4), 0 0 15px rgba(59,130,246,0.6);">
+                    Odbierz wycenę
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="group-hover:translate-x-1 transition-transform" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <!-- Card 2: Wynajem (center — primary) -->
+            <a href="#rental"
+               onclick="document.getElementById('rental')?.scrollIntoView({ behavior: 'smooth' })"
+               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-7 rounded-3xl border border-[#f20df2]/40 bg-[#f20df2]/5 backdrop-blur-md overflow-hidden cursor-pointer hover:border-[#f20df2]/80 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_25px_70px_rgba(242,13,242,0.35)] text-left scale-[1.02]"
+               data-accent="pink">
+                <!-- Badge -->
+                <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#f20df2] text-white text-[10px] font-black uppercase tracking-widest">Popularne</div>
+                <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2]/15 to-transparent pointer-events-none rounded-3xl"></div>
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-[#f20df2]/20 border border-[#f20df2]/40 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#f20df2]/30 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                    </div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-[#f20df2] mb-2">Wynajem Sprzętu</div>
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-[#f20df2] transition-colors">Słuchawki<br>Plug & Play</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">Dostawa kurierem, 10h bateria, zasięg 500m. Domówka, wesele, własny event.</p>
+                </div>
+                <div class="mt-8 inline-flex justify-center items-center gap-2 text-white font-black text-[12px] md:text-sm uppercase tracking-widest rounded-[1.5rem] px-6 py-4 w-full group-hover:scale-[1.02] transition-all duration-300 text-center transform hover:-translate-y-1 active:translate-y-0 active:border-b-0" style="background-color: #f20df2; border-bottom: 5px solid #b800b8; box-shadow: 0 10px 20px rgba(242,13,242,0.4), 0 0 15px rgba(242,13,242,0.6);">
+                    Odbierz wycenę
+                </div>
+            </a>
+
+            <!-- Card 3: B2C / Imprezy -->
+            <a href="#rental"
+               onclick="document.getElementById('rental')?.scrollIntoView({ behavior: 'smooth' })"
+               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-7 rounded-3xl border border-white/10 bg-[#221022]/60 backdrop-blur-md overflow-hidden cursor-pointer hover:border-yellow-400/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(255,215,0,0.2)] text-left"
+               data-accent="yellow">
+                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"></div>
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-yellow-400/15 border border-yellow-400/30 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-yellow-400/25 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+                    </div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400 mb-2">Imprezy & Bilety</div>
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-yellow-300 transition-colors">Najbliższe<br>Eventy</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">Beach bary, festiwale, kino plenerowe. Kup bilet i dołącz do następnej imprezy.</p>
+                </div>
+                <div class="mt-8 inline-flex justify-center items-center gap-2 font-black text-[12px] md:text-sm uppercase tracking-widest rounded-[1.5rem] px-6 py-4 w-full group-hover:scale-[1.02] text-center transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 active:border-b-0 text-[#0a050a]" style="background-color: #ffd700; border-bottom: 5px solid #ccac00; box-shadow: 0 10px 20px rgba(255,215,0,0.4), 0 0 15px rgba(255,215,0,0.6);">
+                    Odbierz wycenę
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="group-hover:translate-x-1 transition-transform" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
+            </a>
+
+        </div>
+        <!-- ═══ END SPLIT HERO ═══ -->
+
+        <!-- Stats Grid with Count-up Animations -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto" style="perspective: 1000px;">
+            <div data-val="200" data-suffix="+" data-float="false" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#ffd700]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 -rotate-2">
+                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#ffd700] transition-colors"><span class="counter">0</span>+</div>
+                <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Liczba Eventów</div>
+            </div>
+            <div data-val="10" data-suffix="K+" data-float="false" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#ff5f1f]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 rotate-2">
+                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#ff5f1f] transition-colors"><span class="counter">0</span>K+</div>
+                <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Uczestników</div>
+            </div>
+            <div data-val="7.4" data-suffix="%" data-float="true" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#f20df2]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 -rotate-2">
+                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#f20df2] transition-colors"><span class="counter">0</span>%</div>
+                <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">ROAS</div>
+            </div>
+            <div data-val="24" data-suffix="h" data-float="false" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#ffd700]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 rotate-2">
+                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#ffd700] transition-colors"><span class="counter">0</span>h</div>
+                <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Support</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Parallax scroll effect (działa dla wideo i zdjęcia)
+            const bgEl = document.getElementById('hero-bg-video') || document.getElementById('hero-bg-img');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                if(scrollY < window.innerHeight) {
+                    if (bgEl) {
+                        bgEl.style.transform = `translateY(${scrollY * 0.2}px) scale(${1.1 + scrollY * 0.0005})`;
+                    }
+                }
+            }, { passive: true });
+
+            // Stat Counter Animation
+            const statCards = document.querySelectorAll('.stat-card');
+
+            const animateCounter = (el) => {
+                if (el.dataset.animated) return;
+                el.dataset.animated = 'true';
+                const counterSpan = el.querySelector('.counter');
+                const targetVal = parseFloat(el.getAttribute('data-val'));
+                const isFloat = el.getAttribute('data-float') === 'true';
+                const duration = 2000;
+                const startTime = performance.now();
+
+                const updateCount = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = 1 - Math.pow(1 - progress, 4);
+                    const currentVal = easeProgress * targetVal;
+
+                    if (isFloat) {
+                        // Polish decimal comma (7,4 instead of 7.4)
+                        counterSpan.innerText = currentVal.toFixed(1).replace('.', ',');
+                    } else {
+                        counterSpan.innerText = Math.floor(currentVal);
+                    }
+
+                    if (progress < 1) requestAnimationFrame(updateCount);
+                    else counterSpan.innerText = isFloat
+                        ? targetVal.toFixed(1).replace('.', ',')
+                        : targetVal;
+                };
+
+                requestAnimationFrame(updateCount);
+            };
+
+            // Fire immediately for visible elements, then watch for scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+            statCards.forEach(card => {
+                // Check if already visible on load
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    setTimeout(() => animateCounter(card), 300);
+                } else {
+                    observer.observe(card);
+                }
+            });
+        });
+    </script>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tlo Hero"
+    },
+    {
+      "type": "video",
+      "id": "bg_video",
+      "label": "Video tla Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Zdjecie tla (fallback)"
+    },
+    {
+      "type": "header",
+      "content": "Przyciski CTA"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

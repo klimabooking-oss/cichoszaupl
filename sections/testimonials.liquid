@@ -1,0 +1,211 @@
+<section class="py-24 bg-[#221022] relative overflow-hidden" id="testimonials">
+    <div class="section-sep" aria-hidden="true"></div>
+    <div class="absolute -right-40 top-20 w-80 h-80 bg-[#f20df2] rounded-full blur-[120px] opacity-15 pointer-events-none"></div>
+    <div class="absolute -left-40 bottom-20 w-80 h-80 bg-[#ff5f1f] rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16" data-animate="fade-up">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#f20df2]/30 bg-[#f20df2]/10 mb-6">
+                <span class="text-[#f20df2] text-xs font-black uppercase tracking-widest">Zweryfikowane referencje</span>
+            </div>
+            <h2 class="sr-only">Opinie Klientów Wypożyczalni CICHOSZAU - Zobacz Co O Nas Mówią</h2>
+            <div aria-hidden="true" class="text-4xl md:text-6xl font-black text-white uppercase tracking-tight">
+                Co mówią<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]">nasi klienci?</span>
+            </div>
+            <p class="text-gray-400 mt-4 font-medium">Prawdziwe referencje na piśmie od firm i instytucji, z którymi współpracowaliśmy.</p>
+        </div>
+
+        <!-- Carousel wrapper -->
+        <div class="relative w-full overflow-hidden" id="testimonials-wrapper">
+            <style>
+                .no-scrollbar::-webkit-scrollbar { display: none; }
+                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            </style>
+            <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pt-4 pb-12 no-scrollbar" id="testimonials-track" style="scroll-behavior: smooth;">
+                <div class="flex-shrink-0 w-[calc(50vw-170px-12px)] md:w-[calc(50vw-190px-12px)] pointer-events-none"></div>
+
+                <!-- 1. GOKiS Kąty Wrocławskie -->
+                <div class="testimonial-card flex-shrink-0 w-[340px] md:w-[380px] glass-card-strong rounded-3xl p-8 flex flex-col justify-between" data-tilt>
+                    <div>
+                        <div class="flex text-[#ffd700] mb-4 gap-0.5">{% for s in (1..5) %}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+                        <p class="text-gray-300 font-medium leading-relaxed text-sm mb-6">"Organizowaliśmy wydarzenie plenerowe, którego główną atrakcją było Silent Disco – i był to strzał w dziesiątkę! Bardzo dobry kontakt z Panem Mateuszem. DJ-e świetni, bardzo zróżnicowana muzyka. Z pełnym przekonaniem polecamy."</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] flex items-center justify-center text-white font-black text-sm flex-shrink-0">G</div>
+                        <div>
+                            <div class="text-white font-black text-sm">GOKiS Kąty Wrocławskie</div>
+                            <div class="text-gray-500 text-xs font-bold uppercase tracking-wider">Wydarzenie plenerowe Silent Disco</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Radio Wrocław -->
+                <div class="testimonial-card flex-shrink-0 w-[340px] md:w-[380px] glass-card-strong rounded-3xl p-8 flex flex-col justify-between" data-tilt>
+                    <div>
+                        <div class="flex text-[#ffd700] mb-4 gap-0.5">{% for s in (1..5) %}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+                        <p class="text-gray-300 font-medium leading-relaxed text-sm mb-6">"Silent Disco z okazji 100-lecia Radia Wrocław na Placu Solnym przyciągnęło 300 uczestników. Cichoszau zapewniło kompleksową obsługę techniczną i logistyczną. Współpraca przebiegła sprawnie, profesjonalnie i w pełni zgodnie z naszymi oczekiwaniami. Z pełnym przekonaniem polecamy jako rzetelnego partnera."</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] flex items-center justify-center text-white font-black text-sm flex-shrink-0">R</div>
+                        <div>
+                            <div class="text-white font-black text-sm">Radio Wrocław S.A.</div>
+                            <div class="text-gray-500 text-xs font-bold uppercase tracking-wider">Szef Działu Promocji · 300 uczestników</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Hygge Hotel Opole -->
+                <div class="testimonial-card flex-shrink-0 w-[340px] md:w-[380px] glass-card-strong rounded-3xl p-8 flex flex-col justify-between" data-tilt>
+                    <div>
+                        <div class="flex text-[#ffd700] mb-4 gap-0.5">{% for s in (1..5) %}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+                        <p class="text-gray-300 font-medium leading-relaxed text-sm mb-6">"Organizacja każdego z eventów była dopracowana w najmniejszych szczegółach – od technicznego przygotowania, przez dobór muzyki i DJ-ów. Silent Disco w wykonaniu Cichoszau to nowoczesna forma rozrywki, która nie zakłóca ciszy nocnej w hotelu. Ze względu na pozytywne doświadczenia planujemy kontynuację w sezonie 2025."</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] flex items-center justify-center text-white font-black text-sm flex-shrink-0">H</div>
+                        <div>
+                            <div class="text-white font-black text-sm">Mateusz Dereń</div>
+                            <div class="text-gray-500 text-xs font-bold uppercase tracking-wider">Dyrektor · Hygge Hotel Opole ★★★</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Wrocław Airport -->
+                <div class="testimonial-card flex-shrink-0 w-[340px] md:w-[380px] glass-card-strong rounded-3xl p-8 flex flex-col justify-between" data-tilt>
+                    <div>
+                        <div class="flex text-[#ffd700] mb-4 gap-0.5">{% for s in (1..5) %}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+                        <p class="text-gray-300 font-medium leading-relaxed text-sm mb-6">"Współpraca przy organizacji Silent Disco na terenie Portu Lotniczego Wrocław była niezwykle udanym doświadczeniem. Cichoszau wykazał się pełnym profesjonalizmem i kreatywnością. Potrafią połączyć pasję do muzyki z doskonałą organizacją. Z pełnym przekonaniem polecamy każdemu, kto szuka sprawdzonego partnera."</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] flex items-center justify-center text-white font-black text-sm flex-shrink-0">W</div>
+                        <div>
+                            <div class="text-white font-black text-sm">Monika Półtorzycka-Jan</div>
+                            <div class="text-gray-500 text-xs font-bold uppercase tracking-wider">Manager Marketingu · Port Lotniczy Wrocław</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Platinum Mountain Hotel & SPA -->
+                <div class="testimonial-card flex-shrink-0 w-[340px] md:w-[380px] glass-card-strong rounded-3xl p-8 flex flex-col justify-between" data-tilt>
+                    <div>
+                        <div class="flex text-[#ffd700] mb-4 gap-0.5">{% for s in (1..5) %}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+                        <p class="text-gray-300 font-medium leading-relaxed text-sm mb-6">"Mieliśmy przyjemność współpracować z Cichoszau przy organizacji dwóch wydarzeń w Platinum Mountain Resort & SPA. Obsługa przebiegała płynnie, uwzględniając nasze potrzeby. Formuła Silent Disco zapewniła dobrą zabawę i integrację, nie zakłócając spokoju pozostałych gości. Planujemy wspólnie kolejne realizacje."</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] flex items-center justify-center text-white font-black text-sm flex-shrink-0">P</div>
+                        <div>
+                            <div class="text-white font-black text-sm">Gabriela Burzyńska</div>
+                            <div class="text-gray-500 text-xs font-bold uppercase tracking-wider">HR Manager · Platinum Mountain Hotel & SPA ★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Kola+Brandy / Gastro Miasto -->
+                <div class="testimonial-card flex-shrink-0 w-[340px] md:w-[380px] glass-card-strong rounded-3xl p-8 flex flex-col justify-between" data-tilt>
+                    <div>
+                        <div class="flex text-[#ffd700] mb-4 gap-0.5">{% for s in (1..5) %}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+                        <p class="text-gray-300 font-medium leading-relaxed text-sm mb-6">"Jako organizatorzy Festiwalu Gastro Miasto 2024 mieliśmy przyjemność współpracować z Cichoszau. Cichoszau wykazało się pełnym zaangażowaniem, elastycznością i profesjonalizmem. Niezapomnianym momentem było wspólne śpiewanie hitu Grubsona. Z czystym sumieniem polecamy – to profesjonaliści z pasją do muzyki!"</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] flex items-center justify-center text-white font-black text-sm flex-shrink-0">K</div>
+                        <div>
+                            <div class="text-white font-black text-sm">Maciej Koła</div>
+                            <div class="text-gray-500 text-xs font-bold uppercase tracking-wider">Kola+Brandy · Festiwal Gastro Miasto 2024</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Polish Dreamin' / coffee&force -->
+                <div class="testimonial-card flex-shrink-0 w-[340px] md:w-[380px] glass-card-strong rounded-3xl p-8 flex flex-col justify-between" data-tilt>
+                    <div>
+                        <div class="flex text-[#ffd700] mb-4 gap-0.5">{% for s in (1..5) %}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+                        <p class="text-gray-300 font-medium leading-relaxed text-sm mb-6">"Współpraca z Cichoszau podczas Polish Dreamin' 2025 i CharITy Hackathon 2024 była w pełni profesjonalna i bezproblemowa. Całość zrealizowana z dużą dbałością o detale – od sprawnej logistyki, przez świetnych DJ-ów, aż po niezawodną obsługę techniczną. Zdecydowanie polecamy i chętnie będziemy kontynuować!"</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] flex items-center justify-center text-white font-black text-sm flex-shrink-0">P</div>
+                        <div>
+                            <div class="text-white font-black text-sm">Paulina Pytowska</div>
+                            <div class="text-gray-500 text-xs font-bold uppercase tracking-wider">Board Member · coffee&force / Polish Dreamin'</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 w-[calc(50vw-170px-12px)] md:w-[calc(50vw-190px-12px)] pointer-events-none"></div>
+            </div>
+
+            <!-- Gradient fades -->
+            <div class="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style="background:linear-gradient(to right,#221022,transparent)"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style="background:linear-gradient(to left,#221022,transparent)"></div>
+        </div>
+
+        <!-- Dot indicators -->
+        <div class="flex justify-center gap-2 mt-8" id="testimonial-dots"></div>
+
+        <!-- Trust badges -->
+        <div class="mt-12 flex flex-wrap justify-center items-center gap-6 opacity-50" data-animate="fade-up">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Referencje od:</span>
+            <span class="text-gray-300 text-xs font-bold">Radio Wrocław</span>
+            <span class="text-gray-600">·</span>
+            <span class="text-gray-300 text-xs font-bold">Port Lotniczy Wrocław</span>
+            <span class="text-gray-600">·</span>
+            <span class="text-gray-300 text-xs font-bold">Platinum Mountain ★★★★★</span>
+            <span class="text-gray-600">·</span>
+            <span class="text-gray-300 text-xs font-bold">Hygge Hotel</span>
+            <span class="text-gray-600">·</span>
+            <span class="text-gray-300 text-xs font-bold">+ więcej</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('testimonials-track');
+            const dotsContainer = document.getElementById('testimonial-dots');
+            if (!track || !dotsContainer) return;
+            
+            const cards = track.querySelectorAll('.testimonial-card');
+            
+            // Build dots
+            cards.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.style.cssText = 'height:8px;border-radius:9999px;border:none;cursor:pointer;transition:all 0.3s;background:rgba(255,255,255,0.2)';
+                dot.addEventListener('click', () => {
+                    cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('button');
+            
+            // Observe scrolling
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(cards).indexOf(entry.target);
+                        dots.forEach((d, i) => {
+                            if (i === index) {
+                                d.style.background = '#f20df2';
+                                d.style.width = '24px';
+                                d.style.boxShadow = '0 0 8px rgba(242,13,242,0.6)';
+                            } else {
+                                d.style.background = 'rgba(255,255,255,0.2)';
+                                d.style.width = '8px';
+                                d.style.boxShadow = 'none';
+                            }
+                        });
+                    }
+                });
+            }, { root: track, threshold: 0.6 });
+
+            cards.forEach(card => observer.observe(card));
+        });
+    </script>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [],
+  "presets": [{ "name": "Testimonials" }]
+}
+{% endschema %}

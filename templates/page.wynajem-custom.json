@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-landing",
+      "settings": {
+        "title": "Wynajem Sprzętu",
+        "subtitle": "Krótkoterminowy i długoterminowy wynajem słuchawek silent disco.",
+        "cta_text": "Sprawdź Cennik",
+        "features_heading": "Dlaczego nasz sprzęt?",
+        "show_festival_channels": true
+      }
+    },
+    "tech": {
+      "type": "custom-technology",
+      "settings": {
+        "subtitle": "Poznaj nasz sprzęt",
+        "title": "Słuchawki <br/><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Najwyższej Klasy</span>",
+        "description": "Zasięg do 500m, wbudowane diody LED pulsujące w rytm muzyki, 3 kanały częstotliwości i bateria wystarczająca na 12 godzin imprezy.",
+        "button_label": "Pobierz PDF"
+      }
+    },
+    "cta": {
+      "type": "custom-cta",
+      "settings": {
+        "badge_text": "🚀 Super Szybka Dostawa",
+        "title": "Sprzęt na <br/> <span class=\"text-black\">kiedy tylko potrzebujesz!</span>",
+        "description": "Wysyłamy kurierem w całej Polsce. Paczka trafia do Ciebie zazwyczaj 1-2 dni przed eventem.",
+        "button_label": "Zarezerwuj Termin",
+        "button_link": "/pages/kontakt"
+      }
+    },
+    "seo_copywriting": {
+      "type": "seo-copywriting",
+      "settings": {
+        "title": "Wynajem Silent Disco dla Każdego",
+        "pill_text": "Impreza we własnych rękach",
+        "box1_title": "Zastosowanie",
+        "box1_content": "<p>Domówki, 18-stki, poprawiny weselne, imprezy urodzinowe i spontaniczne wydarzenia w garażu lub tarasie bez specjalistycznej wiedzy technicznej.</p>",
+        "box2_title": "Wyzwanie",
+        "box2_content": "<p>Brak dostępu do potężnego sprzętu nagłośnieniowego, rygor ciszy nocnej na osiedlach oraz międzypokoleniowe walki o puszczanie konkretnego gatunku muzyki pomiędzy dziadkiem a młodzieżą.</p>",
+        "box3_title": "Rozwiązanie",
+        "box3_content": "<p>W pełni sparowany i naładowany zestaw sterylizowanych słuchawek, docierający kurierem pod drzwi. Podpinacie telefony przez kable lub bluetooth do 3 nadajników i jednocześnie bawicie się do rapów, disco klasyków i rockowych ballad – żyjąc w całkowitej zgodzie z sąsiadami.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "tech",
+    "cta",
+    "seo_copywriting"
+  ]
+}

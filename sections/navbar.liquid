@@ -1,0 +1,278 @@
+<nav id="main-navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent py-[10px]">
+    <div class="max-w-[1920px] mx-auto px-6">
+        <div class="flex justify-between items-center h-20 relative">
+
+            <a href="/" class="flex-shrink-0 flex items-center cursor-pointer group logo-float-anim" style="transform-origin:center bottom">
+                <span class="text-3xl md:text-4xl font-black uppercase tracking-tighter group-hover:scale-105 transition-transform" style="background: linear-gradient(135deg, #f20df2, #ff7b00); -webkit-background-clip: text; color: transparent;">
+                    Cichoszau
+                </span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center space-x-1 bg-[#221022]/40 px-2 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
+                <a href="/pages/bilety-silent-disco" class="group px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all flex items-center gap-2 text-gray-300 hover:text-white hover:bg-white/5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform duration-300"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+                    Bilety
+                </a>
+
+                <!-- Services Dropdown Placeholder (Simplified for Liquid structure) -->
+                <div class="relative group" id="services-dropdown-container">
+                    <button class="group px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all flex items-center gap-2 text-gray-300 hover:text-white hover:bg-white/5" id="services-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:animate-pulse"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                        Usługi
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300" id="services-chevron"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+
+                    <div id="services-menu" class="absolute top-full -left-10 mt-4 w-[600px] bg-[#221022] border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4 transition-all duration-500 grid grid-cols-2 gap-2 origin-top-left opacity-0 translate-y-4 scale-95 invisible pointer-events-none">
+                        <a href="/pages/imprezy-firmowe-silent-disco" class="group flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-[#221022] border border-white/5 flex items-center justify-center transition-all duration-500 text-blue-400 group-hover:shadow-[0_0_15px_rgba(96,165,250,0.4)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-white font-bold text-sm group-hover:text-[#f20df2] transition-colors flex items-center gap-2">Eventy B2B</div>
+                                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">Odkryj więcej</div>
+                            </div>
+                        </a>
+                        <a href="/pages/kino-plenerowe-silent-disco" class="group flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-[#221022] border border-white/5 flex items-center justify-center transition-all duration-500 text-[#f20df2] group-hover:shadow-[0_0_15px_rgba(242,13,242,0.4)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-white font-bold text-sm group-hover:text-[#f20df2] transition-colors flex items-center gap-2">Kino Plenerowe</div>
+                                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">Odkryj więcej</div>
+                            </div>
+                        </a>
+                        <a href="/pages/konferencje-na-sluchawkach-silent-disco" class="group flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-[#221022] border border-white/5 flex items-center justify-center transition-all duration-500 text-yellow-500 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-white font-bold text-sm group-hover:text-[#f20df2] transition-colors flex items-center gap-2">Konferencje</div>
+                                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">Odkryj więcej</div>
+                            </div>
+                        </a>
+                        <a href="/pages/silent-disco-na-festiwalach" class="group flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-[#221022] border border-white/5 flex items-center justify-center transition-all duration-500 text-red-500 group-hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3v14l5 3 5-3V5z"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-white font-bold text-sm group-hover:text-[#f20df2] transition-colors flex items-center gap-2">Festiwale</div>
+                                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">Odkryj więcej</div>
+                            </div>
+                        </a>
+                        <a href="/pages/teatr-silent-disco" class="group flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-[#221022] border border-white/5 flex items-center justify-center transition-all duration-500 text-purple-500 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3.8 20.6"/><path d="M6 3.5v17"/><path d="M18 3.5v17"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-white font-bold text-sm group-hover:text-[#f20df2] transition-colors flex items-center gap-2">Teatr Silent</div>
+                                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">Odkryj więcej</div>
+                            </div>
+                        </a>
+                        <a href="/pages/beach-bary-silent-disco" class="group flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-[#221022] border border-white/5 flex items-center justify-center transition-all duration-500 text-green-400 group-hover:shadow-[0_0_15px_rgba(74,222,128,0.4)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-white font-bold text-sm group-hover:text-[#f20df2] transition-colors flex items-center gap-2">Beach Bary</div>
+                                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">Odkryj więcej</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Wynajem -->
+                <a href="/pages/wynajem-sluchawek-silent-disco" class="group px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all flex items-center gap-2 text-gray-300 hover:text-white hover:bg-white/5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-y-0.5 transition-transform"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                    Wynajem
+                </a>
+
+                <a href="https://cichoszau.pl/pages/cennik-silent-disco" class="px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] text-[#f20df2] hover:text-white hover:bg-[#f20df2]/10 transition-all flex items-center gap-2 border border-[#f20df2]/20">
+                    Cennik
+                </a>
+                <a href="/pages/kontakt" class="px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] text-gray-300 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2">
+                    Kontakt
+                </a>
+            </div>
+
+            <!-- Right Side Actions -->
+            <div class="hidden md:flex items-center space-x-4">
+
+                {% if customer %}
+                    <!-- Logged in state dropdown -->
+                    <div class="relative group" id="profile-dropdown-container">
+                        <button class="flex items-center gap-3 bg-[#f20df2]/10 border border-[#f20df2]/20 px-4 py-2 rounded-full hover:bg-[#f20df2]/20 transition-all cursor-pointer" id="profile-btn">
+                            <div class="w-8 h-8 rounded-full bg-[#f20df2] flex items-center justify-center text-white font-black text-xs uppercase">
+                                {{ customer.first_name | slice: 0, 1 | default: 'U' }}
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2] transition-transform" id="profile-chevron"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                        <div id="profile-menu" class="absolute right-0 mt-3 w-56 bg-[#221022] border border-white/10 rounded-2xl shadow-2xl p-2 transition-all origin-top-right opacity-0 scale-95 invisible pointer-events-none">
+                            <a href="/account" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Panel Użytkownika
+                            </a>
+                            <div class="h-px bg-white/5 my-2"></div>
+                            <div class="px-6 pb-6 pt-4 border-t border-white/10 mt-auto">
+                                <a href="/account" class="w-full flex justify-center items-center py-4 bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] text-[#0a050a] rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-105 transition-all btn-glow shadow-none">
+                                    Mój profil
+                                </a>
+                            </div>
+                            <a href="/account/logout" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-red-500 hover:bg-red-500/10 rounded-xl transition-all cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg> Wyloguj się
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Logged out state -->
+                    <a href="{{ routes.account_login_url }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 font-black text-sm uppercase tracking-widest rounded-full hover:scale-105 transition-all btn-glow text-white" style="background:#f20df2; box-shadow:0 0 20px rgba(242,13,242,0.5)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+                        Zaloguj się
+                    </a>
+                {% endif %}
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="p-2 text-white border border-white/10 rounded-lg cursor-pointer">
+                    <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden bg-[#221022]/75 backdrop-blur-xl border-b border-white/5 transition-all duration-500 overflow-hidden max-h-0">
+        <div class="px-4 space-y-4 pb-8">
+            <a href="/pages/bilety-silent-disco" class="block w-full text-left px-4 py-3 text-2xl font-black text-white uppercase italic">Bilety</a>
+            
+            <div class="px-4 py-3">
+                <div class="text-[10px] text-[#f20df2] font-black uppercase tracking-widest mb-4">Usługi</div>
+                <div class="flex flex-col gap-3 pl-4 border-l border-white/10">
+                    <a href="/pages/imprezy-firmowe-silent-disco" class="text-white font-bold uppercase text-lg">Eventy B2B</a>
+                    <a href="/pages/kino-plenerowe-silent-disco" class="text-white font-bold uppercase text-lg">Kino Plenerowe</a>
+                    <a href="/pages/konferencje-na-sluchawkach-silent-disco" class="text-white font-bold uppercase text-lg">Konferencje</a>
+                    <a href="/pages/silent-disco-na-festiwalach" class="text-white font-bold uppercase text-lg">Festiwale</a>
+                    <a href="/pages/teatr-silent-disco" class="text-white font-bold uppercase text-lg">Teatr Silent</a>
+                    <a href="/pages/beach-bary-silent-disco" class="text-white font-bold uppercase text-lg">Beach Bary</a>
+                </div>
+            </div>
+
+            <a href="/pages/wynajem-sluchawek-silent-disco" class="block w-full text-left px-4 py-3 text-2xl font-black text-white uppercase italic">Wynajem</a>
+
+            <a href="https://cichoszau.pl/pages/cennik-silent-disco" class="block w-full text-left px-4 py-3 text-2xl font-black text-[#f20df2] uppercase italic">Cennik</a>
+
+            <a href="/pages/kontakt" class="block w-full text-left px-4 py-3 text-2xl font-black text-white uppercase italic">Kontakt</a>
+            <div class="pt-8 flex flex-col gap-4">
+                {% if customer %}
+                    <a href="/account" class="w-full py-4 text-center bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] text-[#0a050a] rounded-2xl font-black uppercase inline-block btn-glow">Mój Profil</a>
+                {% else %}
+                    <a href="/account/login" class="w-full py-4 text-center font-black uppercase inline-block btn-glow rounded-2xl text-white" style="background:#f20df2; box-shadow:0 0 20px rgba(242,13,242,0.5)">Zaloguj się</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.getElementById('main-navbar');
+        
+        // Scroll Effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-[#221022]/65', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'shadow-2xl');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('bg-[#221022]/65', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'shadow-2xl');
+                nav.classList.add('bg-transparent');
+            }
+        });
+
+        // Services Dropdown (Desktop)
+        const servicesContainer = document.getElementById('services-dropdown-container');
+        const servicesMenu = document.getElementById('services-menu');
+        const servicesBtn = document.getElementById('services-btn');
+        const servicesChevron = document.getElementById('services-chevron');
+        let timeout;
+
+        if(servicesContainer && servicesMenu) {
+            servicesContainer.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                servicesMenu.classList.remove('opacity-0', 'translate-y-4', 'scale-95', 'invisible', 'pointer-events-none');
+                servicesMenu.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'visible', 'pointer-events-auto');
+                servicesBtn.classList.add('bg-white/10', 'text-white');
+                servicesChevron.classList.add('rotate-180');
+            });
+
+            servicesContainer.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    servicesMenu.classList.add('opacity-0', 'translate-y-4', 'scale-95', 'invisible', 'pointer-events-none');
+                    servicesMenu.classList.remove('opacity-100', 'translate-y-0', 'scale-100', 'visible', 'pointer-events-auto');
+                    servicesBtn.classList.remove('bg-white/10', 'text-white');
+                    servicesChevron.classList.remove('rotate-180');
+                }, 200);
+            });
+        }
+
+        // Profile Dropdown (Desktop)
+        const profileContainer = document.getElementById('profile-dropdown-container');
+        const profileMenu = document.getElementById('profile-menu');
+        const profileBtn = document.getElementById('profile-btn');
+        const profileChevron = document.getElementById('profile-chevron');
+
+        if(profileContainer && profileMenu) {
+            profileBtn.addEventListener('click', () => {
+                profileMenu.classList.toggle('opacity-0');
+                profileMenu.classList.toggle('scale-95');
+                profileMenu.classList.toggle('invisible');
+                profileMenu.classList.toggle('pointer-events-none');
+                
+                profileMenu.classList.toggle('opacity-100');
+                profileMenu.classList.toggle('scale-100');
+                profileMenu.classList.toggle('visible');
+                profileMenu.classList.toggle('pointer-events-auto');
+                
+                profileChevron.classList.toggle('rotate-180');
+            });
+            // Click outside to close
+            document.addEventListener('click', (e) => {
+                if(!profileContainer.contains(e.target) && !profileMenu.classList.contains('opacity-0')) {
+                    profileMenu.classList.add('opacity-0', 'scale-95', 'invisible', 'pointer-events-none');
+                    profileMenu.classList.remove('opacity-100', 'scale-100', 'visible', 'pointer-events-auto');
+                    profileChevron.classList.remove('rotate-180');
+                }
+            });
+        }
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+        
+        if(mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('py-8');
+                if (isOpen) {
+                    mobileMenu.classList.remove('max-h-[85vh]', 'overflow-y-auto', 'py-8');
+                    mobileMenu.classList.add('max-h-0');
+                    iconMenu.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                } else {
+                    mobileMenu.classList.remove('max-h-0');
+                    mobileMenu.classList.add('max-h-[85vh]', 'overflow-y-auto', 'py-8');
+                    iconMenu.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                }
+            });
+        }
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Navbar",
+  "settings": []
+}
+{% endschema %}

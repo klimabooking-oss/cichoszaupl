@@ -1,0 +1,520 @@
+<section class="py-24 bg-[#221022] relative" id="case-studies">
+    <div class="section-sep" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 text-center md:text-left">
+            <div class="mb-8 md:mb-0">
+                <span class="text-[#ff5f1f] font-bold uppercase tracking-widest text-xs md:text-sm mb-2 block">Nasze Realizacje</span>
+                <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
+                    <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 origin-bottom-left">Portfolio</span>
+                    <br class="hidden md:block" />
+                    <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] transform rotate-2 group-hover:rotate-0 transition-transform duration-500 origin-bottom-right pb-2">PRO</span>
+                </h2>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex gap-2 p-1.5 rounded-full" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)" id="portfolio-tabs">
+                <button data-tab="photos" class="portfolio-tab-btn px-7 py-3 rounded-full font-black text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-2 text-[#0a050a]" style="background:linear-gradient(to right,#f20df2,#ff5f1f); box-shadow:0 0 16px rgba(242,13,242,0.5)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    Zdjęcia
+                </button>
+                <button data-tab="video" class="portfolio-tab-btn px-7 py-3 rounded-full font-black text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-2 text-white" style="background:transparent; border:1.5px solid rgba(255,255,255,0.25)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    ▶ Video
+                </button>
+            </div>
+        </div>
+
+        <!-- Video Tab -->
+        <!-- Adding custom CSS for infinite scrolling marquee -->
+        <style>
+            @keyframes marquee-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+            .animate-marquee-left {
+                animation: marquee-left 30s linear infinite;
+                display: flex;
+                width: max-content;
+            }
+            .animate-marquee-left:hover {
+                animation-play-state: paused;
+            }
+            .hide-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .hide-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+        </style>
+        <div id="tab-content-video" class="hidden overflow-hidden relative w-full pb-12 md:pb-0">
+            <div class="animate-marquee-left gap-8 md:gap-10 px-4 md:px-0">
+            {% for i in (1..2) %}
+                {% assign videos = section.blocks | where: "type", "video" %}
+                {% for video in videos %}
+                    <div class="relative group w-[280px] md:w-[320px] shrink-0">
+                        <div class="absolute -inset-4 bg-gradient-to-b from-[#f20df2]/40 via-purple-600/20 to-[#ff5f1f]/40 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"></div>
+                        <div class="portfolio-video-btn cursor-pointer relative aspect-[9/18] rounded-[2.5rem] bg-black border-[6px] border-[#1a1a1a] shadow-2xl overflow-hidden ring-1 ring-white/10 transform transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2" data-video-url="{{ video.settings.video_url }}" data-title="{{ video.settings.title | default: 'Mój Film' }}">
+                            <div class="relative w-full h-full">
+                                {% if video.settings.thumbnail %}
+                                    <img src="{{ video.settings.thumbnail | img_url: '800x1400' }}" alt="{{ video.settings.title }}" class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105" loading="lazy" />
+                                {% else %}
+                                    <div class="w-full h-full flex items-center justify-center" style="background:linear-gradient(180deg,rgba(242,13,242,0.15),rgba(26,12,26,1))"></div>
+                                {% endif %}
+                                <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/90"></div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-40 pointer-events-none"></div>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                    <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 left-0 w-full p-6 text-center">
+                                    <div class="inline-block px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 mb-3">
+                                        <div class="text-[#f20df2] text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+                                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                                            Live Story
+                                        </div>
+                                    </div>
+                                    <h3 class="text-white font-bold text-lg leading-tight drop-shadow-md mb-2">{{ video.settings.title | default: 'Mój Film' }}</h3>
+                                    <div class="w-1/3 h-1 bg-white/30 rounded-full mx-auto mt-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Fallback defaults -->
+                    {% assign def_videos = 'Festiwal Kolorów Wrocław,Corporate Event Google,Silent Cinema Plaża,Rooftop Party Warsaw' | split: ',' %}
+                    {% assign def_imgs = 'https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=800&auto=format&fit=crop,https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?q=80&w=800&auto=format&fit=crop,https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=800&auto=format&fit=crop,https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=800&auto=format&fit=crop' | split: ',' %}
+                    {% for title in def_videos %}
+                        <div class="relative group w-[280px] md:w-[320px] shrink-0">
+                            <div class="absolute -inset-4 bg-gradient-to-b from-[#f20df2]/40 via-purple-600/20 to-[#ff5f1f]/40 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"></div>
+                            <div class="portfolio-video-btn cursor-pointer relative aspect-[9/18] rounded-[2.5rem] bg-black border-[6px] border-[#1a1a1a] shadow-2xl overflow-hidden ring-1 ring-white/10 transform transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2" data-video-url="https://www.w3schools.com/html/mov_bbb.mp4" data-title="{{ title }}">
+                                <div class="relative w-full h-full">
+                                    <img src="{{ def_imgs[forloop.index0] }}" alt="{{ title }}" class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105" loading="lazy" />
+                                    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/90"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-40 pointer-events-none"></div>
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-all duration-300">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 w-full p-6 text-center">
+                                        <div class="inline-block px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 mb-3">
+                                            <div class="text-[#f20df2] text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+                                                <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                                                Live Story
+                                            </div>
+                                        </div>
+                                        <h3 class="text-white font-bold text-lg leading-tight drop-shadow-md mb-2">{{ title }}</h3>
+                                        <div class="w-1/3 h-1 bg-white/30 rounded-full mx-auto mt-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </div>
+
+        <!-- Photos Tab -->
+        <div id="tab-content-photos" class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 md:gap-6 pb-8 md:pb-0 hide-scrollbar">
+            {% assign photos = section.blocks | where: "type", "photo" %}
+            {% assign photo_index = 0 %}
+            {% for photo in photos %}
+                {% assign size_class = "col-span-1" %}
+                {% if forloop.index0 == 0 or forloop.index0 == 3 %}
+                    {% assign size_class = "md:col-span-2" %}
+                {% endif %}
+                <div
+                    data-lightbox-index="{{ photo_index }}"
+                    data-img="{% if photo.settings.image %}{{ photo.settings.image | img_url: '1200x800' }}{% endif %}"
+                    data-title="{{ photo.settings.title }}"
+                    data-category="{{ photo.settings.category }}"
+                    class="portfolio-img-btn group relative h-[400px] rounded-[32px] overflow-hidden cursor-pointer border-[3px] border-transparent min-w-[85vw] md:min-w-0 snap-center hover:border-white/20 hover:shadow-[0_0_40px_rgba(0,0,0,0.5)] active:scale-[0.98] active:border-[#f20df2] transition-all duration-300 ease-out {{ size_class }}"
+                >
+                    {% if photo.settings.image %}
+                        <img src="{{ photo.settings.image | img_url: '1200x800' }}" alt="{{ photo.settings.title }}" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110 filter brightness-90 group-hover:brightness-100" loading="lazy" />
+                    {% else %}
+                        <div class="w-full h-full flex items-center justify-center" style="background:linear-gradient(135deg,rgba(242,13,242,0.1),rgba(26,12,26,1))">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(242,13,242,0.3)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                        </div>
+                    {% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col justify-end items-center md:items-start z-10 text-center md:text-left">
+                        <span class="inline-block px-3 py-1 mb-3 rounded-full bg-[#f20df2]/20 border border-[#f20df2]/30 backdrop-blur-md text-[#f20df2] text-[10px] font-black uppercase tracking-widest group-hover:bg-[#f20df2] group-hover:text-white transition-colors duration-300">
+                            {{ photo.settings.category }}
+                        </span>
+                        <h3 class="text-white font-black text-4xl uppercase italic leading-none drop-shadow-xl group-hover:translate-x-2 transition-transform duration-300">
+                            {{ photo.settings.title }}
+                        </h3>
+                    </div>
+                    <div class="absolute top-6 right-6 z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
+                        <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg>
+                        </div>
+                    </div>
+                </div>
+                {% assign photo_index = photo_index | plus: 1 %}
+            {% else %}
+                <!-- Fallback Photo defaults -->
+                 {% assign def_p_titles = 'Neon Stage,Pink Vibe,Crowd Energy,Spotlight' | split: ',' %}
+                 {% assign def_p_cats = 'Event,Sprzęt,Festival,Koncert' | split: ',' %}
+                 {% assign def_p_imgs = 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop,https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop,https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop,https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=800&auto=format&fit=crop' | split: ',' %}
+                 
+                 {% for title in def_p_titles %}
+                    {% assign size_class = "col-span-1" %}
+                    {% if forloop.index0 == 0 or forloop.index0 == 3 %}
+                        {% assign size_class = "md:col-span-2" %}
+                    {% endif %}
+                     <div
+                        data-lightbox-index="{{ forloop.index0 }}"
+                        data-img="{{ def_p_imgs[forloop.index0] }}"
+                        data-title="{{ title }}"
+                        data-category="{{ def_p_cats[forloop.index0] }}"
+                        class="portfolio-img-btn group relative h-[400px] rounded-[32px] overflow-hidden cursor-pointer border-[3px] border-transparent min-w-[85vw] md:min-w-0 snap-center hover:border-white/20 hover:shadow-[0_0_40px_rgba(0,0,0,0.5)] active:scale-[0.98] active:border-[#f20df2] transition-all duration-300 ease-out {{ size_class }}"
+                    >
+                        <img src="{{ def_p_imgs[forloop.index0] }}" alt="{{ title }}" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110 filter brightness-90 group-hover:brightness-100" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col justify-end items-center md:items-start z-10 text-center md:text-left">
+                            <span class="inline-block px-3 py-1 mb-3 rounded-full bg-[#f20df2]/20 border border-[#f20df2]/30 backdrop-blur-md text-[#f20df2] text-[10px] font-black uppercase tracking-widest group-hover:bg-[#f20df2] group-hover:text-white transition-colors duration-300">
+                                {{ def_p_cats[forloop.index0] }}
+                            </span>
+                            <h3 class="text-white font-black text-4xl uppercase italic leading-none drop-shadow-xl group-hover:translate-x-2 transition-transform duration-300">
+                                {{ title }}
+                            </h3>
+                        </div>
+                        <div class="absolute top-6 right-6 z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
+                            <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                 {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="mt-8 md:mt-16 flex justify-center">
+            <a href="https://instagram.com/cichoszau/" target="_blank" rel="noreferrer"
+               class="group flex items-center gap-4 px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-transform btn-glow text-white"
+               style="background:#f20df2; box-shadow:0 0 24px rgba(242,13,242,0.55), 0 0 60px rgba(242,13,242,0.2)">
+                <div class="bg-white/20 backdrop-blur-sm p-2.5 rounded-full text-white border border-white/30 group-hover:bg-white group-hover:text-[#f20df2] transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </div>
+                <div class="text-left">
+                    <div class="text-[10px] font-black text-white/70 uppercase tracking-widest">Dołącz do nas</div>
+                    <div class="text-white font-black text-xl tracking-tight">@cichoszau</div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Lightbox Element -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-[#221022]/95 backdrop-blur-2xl hidden items-center justify-center p-4">
+        <button id="lb-close" class="absolute top-6 right-6 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <button id="lb-prev" class="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button id="lb-next" class="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="relative max-w-7xl w-full h-[85vh] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <img id="lb-img" src="" alt="Lightbox image" class="object-contain w-full h-full" />
+            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 to-transparent p-6 md:p-10 pointer-events-none flex justify-between items-end">
+                <div>
+                    <span id="lb-category" class="text-[#f20df2] text-sm font-bold uppercase tracking-wider mb-2 block">Category</span>
+                    <h3 id="lb-title" class="text-white font-black text-3xl uppercase tracking-wider">Title</h3>
+                </div>
+                <div class="text-gray-400 font-bold text-sm"><span id="lb-current">1</span> / <span id="lb-total">1</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-2xl hidden items-center justify-center p-4">
+        <button id="vm-close" class="absolute top-6 right-6 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <!-- Prev -->
+        <button id="vm-prev" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-[#f20df2] rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <!-- Next -->
+        <button id="vm-next" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-[#f20df2] rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="relative w-full max-w-[420px] mx-auto" style="aspect-ratio:9/16">
+            <div id="vm-container" class="w-full h-full rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-white/10">
+                <!-- iframe or video injected here by JS -->
+            </div>
+            <h3 id="vm-title" class="text-white font-bold text-xl text-center mt-6 px-4"></h3>
+            <p id="vm-counter" class="text-gray-500 text-sm text-center mt-1"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tabs logic
+            const tabBtns = document.querySelectorAll('.portfolio-tab-btn');
+            const cPhotos = document.getElementById('tab-content-photos');
+            const cVideo = document.getElementById('tab-content-video');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const tab = btn.getAttribute('data-tab');
+                    
+                    // Reset all buttons to inactive style
+                    tabBtns.forEach(b => {
+                        b.style.background = 'transparent';
+                        b.style.border = '1.5px solid rgba(255,255,255,0.25)';
+                        b.style.boxShadow = 'none';
+                        b.style.color = 'white';
+                    });
+
+                    // Active button styling
+                    btn.style.background = 'linear-gradient(to right,#f20df2,#ff5f1f)';
+                    btn.style.border = 'none';
+                    btn.style.boxShadow = '0 0 16px rgba(242,13,242,0.5)';
+                    btn.style.color = '#0a050a';
+
+                    // Toggle content
+                    if(tab === 'photos') {
+                        cPhotos.classList.remove('hidden');
+                        cPhotos.classList.add('flex', 'md:grid');
+                        cVideo.classList.add('hidden');
+                        cVideo.classList.remove('flex', 'md:grid');
+                    } else {
+                        cVideo.classList.remove('hidden');
+                        cVideo.classList.add('flex', 'md:grid');
+                        cPhotos.classList.add('hidden');
+                        cPhotos.classList.remove('flex', 'md:grid');
+                    }
+                });
+            });
+
+            // Lightbox logic
+            const lightbox = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lb-img');
+            const lbTitle = document.getElementById('lb-title');
+            const lbCategory = document.getElementById('lb-category');
+            const lbCurrent = document.getElementById('lb-current');
+            const lbTotal = document.getElementById('lb-total');
+            const btnPrev = document.getElementById('lb-prev');
+            const btnNext = document.getElementById('lb-next');
+            const btnClose = document.getElementById('lb-close');
+
+            const imgs = Array.from(document.querySelectorAll('.portfolio-img-btn'));
+            lbTotal.textContent = imgs.length;
+            let currentIndex = null;
+
+            const openLightbox = (index) => {
+                if(index < 0 || index >= imgs.length) return;
+                currentIndex = index;
+                const data = imgs[index];
+                lbImg.src = data.getAttribute('data-img');
+                lbTitle.textContent = data.getAttribute('data-title');
+                lbCategory.textContent = data.getAttribute('data-category');
+                lbCurrent.textContent = index + 1;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                document.body.style.overflow = '';
+                currentIndex = null;
+            };
+
+            imgs.forEach((img, idx) => {
+                img.addEventListener('click', () => openLightbox(idx));
+            });
+
+            btnClose.addEventListener('click', closeLightbox);
+            
+            btnNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openLightbox((currentIndex + 1) % imgs.length);
+            });
+            
+            btnPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openLightbox((currentIndex - 1 + imgs.length) % imgs.length);
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if(e.target === lightbox) closeLightbox();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if(currentIndex !== null) {
+                    if(e.key === 'Escape') closeLightbox();
+                    if(e.key === 'ArrowRight') openLightbox((currentIndex + 1) % imgs.length);
+                    if(e.key === 'ArrowLeft') openLightbox((currentIndex - 1 + imgs.length) % imgs.length);
+                }
+            });
+
+            // ── Video Modal ──────────────────────────────────────────────
+            const videoModal  = document.getElementById('video-modal');
+            const vmContainer = document.getElementById('vm-container');
+            const vmTitle     = document.getElementById('vm-title');
+            const vmCounter   = document.getElementById('vm-counter');
+            const vmClose     = document.getElementById('vm-close');
+            const vmPrev      = document.getElementById('vm-prev');
+            const vmNext      = document.getElementById('vm-next');
+
+            // Collect all unique video cards (deduplicate the marquee x2 loop)
+            const allVideoCards = Array.from(document.querySelectorAll('.portfolio-video-btn'));
+            const videoCards = allVideoCards.filter((el, i, arr) =>
+                i < arr.length / 2  // marquee duplicates the list twice — take first half
+            );
+            let currentVideoIndex = 0;
+
+            function resolveVideoUrl(raw) {
+                if (!raw) return { type: 'none', src: '' };
+                const gdrive = raw.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+                if (gdrive) return { type: 'iframe', src: `https://drive.google.com/file/d/${gdrive[1]}/preview` };
+                const yt = raw.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]+)/);
+                if (yt) return { type: 'iframe', src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0` };
+                const vimeo = raw.match(/vimeo\.com\/(\d+)/);
+                if (vimeo) return { type: 'iframe', src: `https://player.vimeo.com/video/${vimeo[1]}?autoplay=1` };
+                if (/\.(mp4|webm|ogg|mov)(\?|$)/i.test(raw)) return { type: 'video', src: raw };
+                return { type: 'iframe', src: raw };
+            }
+
+            function loadVideo(index) {
+                if (videoCards.length === 0) return;
+                currentVideoIndex = ((index % videoCards.length) + videoCards.length) % videoCards.length;
+                const card = videoCards[currentVideoIndex];
+                const rawUrl = card.getAttribute('data-video-url');
+                const title  = card.getAttribute('data-title');
+                const { type, src } = resolveVideoUrl(rawUrl);
+
+                vmContainer.innerHTML = '';
+                if (type === 'iframe') {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = src;
+                    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+                    iframe.setAttribute('allowfullscreen', '');
+                    iframe.style.cssText = 'width:100%;height:100%;border:none;';
+                    vmContainer.appendChild(iframe);
+                } else if (type === 'video') {
+                    const vid = document.createElement('video');
+                    vid.src = src; vid.controls = true; vid.autoplay = true; vid.playsInline = true;
+                    vid.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+                    vmContainer.appendChild(vid);
+                } else {
+                    vmContainer.innerHTML = '<div style="color:white;text-align:center;padding:2rem;">Nie można załadować wideo.</div>';
+                }
+
+                vmTitle.textContent   = title || '';
+                vmCounter.textContent = videoCards.length > 1 ? `${currentVideoIndex + 1} / ${videoCards.length}` : '';
+
+                // Show/hide arrows
+                vmPrev.style.display = videoCards.length > 1 ? 'flex' : 'none';
+                vmNext.style.display = videoCards.length > 1 ? 'flex' : 'none';
+            }
+
+            function openVideoModal(index) {
+                videoModal.classList.remove('hidden');
+                videoModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                loadVideo(index);
+            }
+
+            function closeVideoModal() {
+                vmContainer.innerHTML = '';
+                videoModal.classList.add('hidden');
+                videoModal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+
+            // Attach click to each card (both originals and marquee clones)
+            allVideoCards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    const url = card.getAttribute('data-video-url');
+                    // Find matching index in deduplicated list
+                    const idx = videoCards.findIndex(c => c.getAttribute('data-video-url') === url);
+                    openVideoModal(idx >= 0 ? idx : 0);
+                });
+            });
+
+            vmClose.addEventListener('click', closeVideoModal);
+            vmPrev.addEventListener('click', (e) => { e.stopPropagation(); loadVideo(currentVideoIndex - 1); });
+            vmNext.addEventListener('click', (e) => { e.stopPropagation(); loadVideo(currentVideoIndex + 1); });
+            videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideoModal(); });
+            document.addEventListener('keydown', e => {
+                if (!videoModal.classList.contains('hidden')) {
+                    if (e.key === 'Escape')      closeVideoModal();
+                    if (e.key === 'ArrowRight')  loadVideo(currentVideoIndex + 1);
+                    if (e.key === 'ArrowLeft')   loadVideo(currentVideoIndex - 1);
+                }
+            });
+        });
+    </script>
+</section>
+
+{% schema %}
+{
+  "name": "Portfolio Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Zdjęcie portfolio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Zdjęcie"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tytuł",
+          "default": "Nasza Realizacja"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Kategoria",
+          "default": "Event"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Film (TikTok/Reels)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Miniatura (cover zdjęcie)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tytuł",
+          "default": "Mój Film"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Link do video (YouTube / bezpośredni URL)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio Grid"
+    }
+  ]
+}
+{% endschema %}

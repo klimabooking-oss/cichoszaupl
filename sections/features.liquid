@@ -1,0 +1,250 @@
+<section class="py-32 bg-[#221022] relative overflow-hidden" id="features">
+    <div class="section-sep" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+    <div class="absolute -right-40 top-40 w-96 h-96 bg-[#f20df2] rounded-full blur-[120px] opacity-20"></div>
+    <div class="absolute -left-40 bottom-40 w-96 h-96 bg-[#ff5f1f] rounded-full blur-[120px] opacity-20"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-20" data-animate="fade-up">
+            <span class="text-[#ffd700] font-black tracking-widest uppercase text-base border-b-2 border-[#ffd700] pb-1">{{ section.settings.subtitle | default: 'Dlaczego my?' }}</span>
+            <div class="mt-6 flex justify-center">
+                <h2 class="sr-only">Wypożyczalnia Sprzętu Silent Disco - Dlaczego Warto?</h2>
+                <div aria-hidden="true" class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
+                    <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 origin-bottom-left">
+                        {{ section.settings.title | default: 'Cztery powody' }}
+                    </span>
+                    <br class="hidden md:block" />
+                    <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] transform rotate-2 group-hover:rotate-0 transition-transform duration-500 origin-bottom-right pb-2">
+                        {{ section.settings.highlight_text | default: 'WARTO' }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-auto gap-8" data-animate-stagger="fade-up">
+            {% for block in section.blocks %}
+                {% assign color_class = '' %}
+                {% assign border_hover = '' %}
+                {% assign shadow_hover = '' %}
+                {% assign gradient_from = '' %}
+                {% assign icon_text = '' %}
+
+                {% if block.settings.color == 'primary' %}
+                    {% assign color_class = 'bg-[#f20df2]' %}
+                    {% assign border_hover = 'hover:border-[#f20df2]/50' %}
+                    {% assign shadow_hover = 'hover:shadow-[0_0_30px_rgba(242,13,242,0.2)]' %}
+                    {% assign gradient_from = 'from-[#f20df2]/10' %}
+                    {% assign icon_text = 'text-white' %}
+                {% elsif block.settings.color == 'orange' %}
+                    {% assign color_class = 'bg-[#ff5f1f]' %}
+                    {% assign border_hover = 'hover:border-[#ff5f1f]/50' %}
+                    {% assign shadow_hover = 'hover:shadow-[0_0_30px_rgba(255,95,31,0.2)]' %}
+                    {% assign gradient_from = 'from-[#ff5f1f]/10' %}
+                    {% assign icon_text = 'text-white' %}
+                {% elsif block.settings.color == 'yellow' %}
+                    {% assign color_class = 'bg-[#ffd700]' %}
+                    {% assign border_hover = 'hover:border-[#ffd700]/50' %}
+                    {% assign shadow_hover = 'hover:shadow-[0_0_30px_rgba(255,215,0,0.2)]' %}
+                    {% assign gradient_from = 'from-[#ffd700]/10' %}
+                    {% assign icon_text = 'text-[#0a050a]' %}
+                {% endif %}
+
+                {% assign offset_class = '' %}
+                {% assign offset_rotate = '-rotate-6' %}
+                {% assign icon_wrap_style = color_class | append: ' ' | append: icon_text %}
+
+                {% if block.settings.offset %}
+                    {% assign offset_class = 'mt-0 lg:mt-12' %}
+                    {% assign offset_rotate = 'rotate-6' %}
+                    {% if block.settings.color == 'primary' %}
+                        {% assign icon_wrap_style = 'bg-white text-[#f20df2]' %}
+                    {% endif %}
+                {% endif %}
+
+                {%- assign card_size = block.settings.card_size | default: 'normal' -%}
+                {%- assign col_span = '' -%}
+                {%- assign padding = 'p-8' -%}
+                {%- assign title_size = 'text-2xl' -%}
+                {%- if card_size == 'wide' -%}
+                    {%- assign col_span = 'md:col-span-2' -%}
+                {%- elsif card_size == 'tall' -%}
+                    {%- assign padding = 'p-10 pb-12' -%}
+                    {%- assign title_size = 'text-3xl' -%}
+                {%- endif -%}
+
+                <div class="group relative {{ padding }} rounded-3xl glass-card-strong {{ border_hover }} transition-all duration-300 {{ shadow_hover }} {{ offset_class }} {{ col_span }}{% if block.settings.feature_image %} overflow-hidden{% endif %}" data-tilt{% if block.settings.feature_image %} style="min-height:340px"{% endif %}>
+                    {% if block.settings.feature_image %}
+                        <div class="absolute inset-0 rounded-3xl overflow-hidden">
+                            <img src="{{ block.settings.feature_image | image_url: width: 800 }}"
+                                 alt="{{ block.settings.title }}"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                 loading="lazy">
+                            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,5,10,0.92) 40%, rgba(10,5,10,0.55) 70%, rgba(10,5,10,0.3) 100%)"></div>
+                        </div>
+                    {% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-br {{ gradient_from }} to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="w-16 h-16 rounded-2xl {{ icon_wrap_style }} flex items-center justify-center mb-6 shadow-lg transform {{ offset_rotate }} group-hover:rotate-0 transition-transform duration-300 flex-shrink-0">
+                            {% if block.settings.icon == 'volume-x' %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                            {% elsif block.settings.icon == 'radio' %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+                            {% elsif block.settings.icon == 'unplug' %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.3 14.3L22 6.6"></path><path d="M22 17.5l-6-6"></path><path d="M11 11l-2.4-2.4c-1.2-1.2-1.2-3.1 0-4.2s3.1-1.2 4.2 0L15.3 6.9"></path><path d="M14.3 14.3l-2.4 2.4c-1.2 1.2-3.1 1.2-4.2 0s-1.2-3.1 0-4.2l2.4-2.4"></path><path d="M7.7 8.3l-6 6"></path><path d="M2 17.5l6-6"></path></svg>
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 7.5l2-2"></path><path d="M11.5 19H14"></path><path d="M11.5 5H4v14h16V5h-7.5z"></path></svg>
+                            {% endif %}
+                        </div>
+                        <h3 class="{{ title_size }} font-black text-white mb-4 uppercase">{{ block.settings.title }}</h3>
+                        <p class="{% if block.settings.feature_image %}text-gray-200{% else %}text-gray-400{% endif %} font-medium leading-relaxed mb-0">
+                            {{ block.settings.description }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            {% if section.blocks.size == 0 %}
+                <!-- Fallback: Card 1 - Cisza nocna (primary/pink) -->
+                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#f20df2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(242,13,242,0.2)]" style="background-color:#221022">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-[#f20df2] text-white flex items-center justify-center mb-6 shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4 uppercase">Cisza nocna</h3>
+                        <p class="text-gray-400 font-medium leading-relaxed">Baw się do rana bez sąsiadów na głowie. Zero konfliktów, 100% energii na parkiecie.</p>
+                    </div>
+                </div>
+                <!-- Fallback: Card 2 - 3 kanały (orange, offset) -->
+                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#ff5f1f]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,95,31,0.2)] mt-0 lg:mt-12" style="background-color:#221022">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#ff5f1f]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-[#ff5f1f] text-white flex items-center justify-center mb-6 shadow-lg transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4 uppercase">3 kanały</h3>
+                        <p class="text-gray-400 font-medium leading-relaxed">Techno, Pop, Rock? Wszystko naraz! Każdy znajdzie swój rytm na jednym evencie.</p>
+                    </div>
+                </div>
+                <!-- Fallback: Card 3 - Zero kabli (yellow) -->
+                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#ffd700]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,215,0,0.2)]" style="background-color:#221022">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#ffd700]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-[#ffd700] flex items-center justify-center mb-6 shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300" style="color:#0a050a">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.3 14.3L22 6.6"></path><path d="M22 17.5l-6-6"></path><path d="M11 11l-2.4-2.4c-1.2-1.2-1.2-3.1 0-4.2s3.1-1.2 4.2 0L15.3 6.9"></path><path d="M14.3 14.3l-2.4 2.4c-1.2 1.2-3.1 1.2-4.2 0s-1.2-3.1 0-4.2l2.4-2.4"></path><path d="M7.7 8.3l-6 6"></path><path d="M2 17.5l6-6"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4 uppercase">Zero kabli</h3>
+                        <p class="text-gray-400 font-medium leading-relaxed">Bezprzewodowa wolność. Taniec na plaży, w lesie czy na dachu wieżowca.</p>
+                    </div>
+                </div>
+                <!-- Fallback: Card 4 - Marketing PRO (primary, offset) -->
+                <div class="group relative p-8 rounded-3xl border border-white/5 hover:border-[#f20df2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(242,13,242,0.2)] mt-0 lg:mt-12" style="background-color:#221022">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-white text-[#f20df2] flex items-center justify-center mb-6 shadow-lg transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 7.5l2-2"></path><path d="M11.5 19H14"></path><path d="M11.5 5H4v14h16V5h-7.5z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4 uppercase">Marketing PRO</h3>
+                        <p class="text-gray-400 font-medium leading-relaxed">Nie tylko sprzęt. Dajemy Ci kompletne wsparcie promocyjne i contentowe.</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Features Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Dlaczego my?"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Cztery powody"
+    },
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Highlight Text",
+      "default": "WARTO"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "volume-x", "label": "Volume X" },
+            { "value": "radio", "label": "Radio" },
+            { "value": "unplug", "label": "Unplugged" },
+            { "value": "megaphone", "label": "Megaphone" }
+          ],
+          "default": "volume-x"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Cisza nocna"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Baw się do rana bez sąsiadów na głowie."
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Accent Color",
+          "options": [
+            { "value": "primary", "label": "Pink" },
+            { "value": "orange", "label": "Orange" },
+            { "value": "yellow", "label": "Yellow" }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "checkbox",
+          "id": "offset",
+          "label": "Offset downward on desktop",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "card_size",
+          "label": "Rozmiar karty",
+          "options": [
+            { "value": "normal", "label": "Normalny (1 kolumna)" },
+            { "value": "wide", "label": "Szeroki (2 kolumny)" },
+            { "value": "tall", "label": "Wysoki (większy padding)" }
+          ],
+          "default": "normal"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Zdjęcie pod opisem (opcjonalne)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Section"
+    }
+  ]
+}
+{% endschema %}

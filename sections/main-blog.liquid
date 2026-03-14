@@ -1,0 +1,64 @@
+<div class="bg-[#221022] min-h-screen py-16">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black text-white uppercase italic tracking-wider mb-4">Aktualności</h1>
+            <p class="text-gray-400 text-lg">Najnowsze wiadomości ze świata Cichoszau</p>
+        </div>
+        
+        {% paginate blog.articles by 9 %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {% for article in blog.articles %}
+                    <article class="bg-[#221022] border border-white/10 rounded-3xl overflow-hidden group hover:border-[#f20df2]/30 transition-all duration-300">
+                        {% if article.image %}
+                            <a href="{{ article.url }}" class="block overflow-hidden h-48">
+                                <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </a>
+                        {% else %}
+                            <div class="h-48 bg-gradient-to-br from-[#f20df2]/20 to-purple-900/20 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-[#f20df2]/40"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/><path d="M10 2v4h4V2"/></svg>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="p-6">
+                            {% if article.tags.size > 0 %}
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    {% for tag in article.tags %}
+                                        <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full bg-[#f20df2]/10 text-[#f20df2] border border-[#f20df2]/20">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            
+                            <h2 class="text-white font-black text-xl mb-3 group-hover:text-[#f20df2] transition-colors leading-tight">
+                                <a href="{{ article.url }}">{{ article.title }}</a>
+                            </h2>
+                            
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-3">{{ article.excerpt_or_content | strip_html | truncate: 150 }}</p>
+                            
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d.%m.%Y' }}</time>
+                                <a href="{{ article.url }}" class="text-[#f20df2] font-bold hover:text-white transition-colors uppercase tracking-wider">Czytaj →</a>
+                            </div>
+                        </div>
+                    </article>
+                {% else %}
+                    <div class="col-span-3 text-center py-20">
+                        <p class="text-gray-500 text-lg">Brak artykułów. Dodaj pierwsze wpisy przez panel admina.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            {% if paginate.pages > 1 %}
+                <div class="flex justify-center gap-2 mt-8">
+                    {{ paginate | default_pagination }}
+                </div>
+            {% endif %}
+        {% endpaginate %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": []
+}
+{% endschema %}

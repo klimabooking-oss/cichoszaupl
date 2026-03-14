@@ -1,0 +1,232 @@
+<script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+<shopify-store store-domain="8bf936-41.myshopify.com" country="PL" language="pl">
+    <div class="pt-24 min-h-screen pb-20 font-sans" style="background-color:#221022">
+        <section class="relative py-16 md:py-32 overflow-hidden border-b border-white/5 flex items-center min-h-[80vh]" style="background-color:#221022">
+            
+            <!-- Dynamic Background Layer with Wavy Pulsing Effects -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-b from-background-dark/90 via-background-dark/40 to-background-dark z-10"></div>
+                <!-- Pulsing mesh gradient overlay -->
+                <div class="absolute inset-0 opacity-40 animate-pulse-slow bg-[radial-gradient(circle_at_50%_50%,rgba(242,13,242,0.2),transparent_70%)]"></div>
+                <div class="absolute inset-0 opacity-20 animate-pulse-slow bg-[radial-gradient(circle_at_20%_30%,rgba(255,95,31,0.2),transparent_50%)]" style="animation-delay: 2s"></div>
+            </div>
+
+            <!-- Animated Blobs with Wavy Motion -->
+            <div class="blob bg-[#f20df2] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full absolute top-[-10%] left-[-10%] animate-blob blur-[120px] opacity-30 z-10 pointer-events-none"></div>
+            <div class="blob bg-[#ff5f1f] w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full absolute bottom-[-5%] right-[-5%] animate-blob blur-[100px] opacity-30 z-10 pointer-events-none" style="animation-delay: 3s"></div>
+
+            <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.15%22/%3E%3C/svg%3E')"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col md:flex-row justify-between items-start md:items-end w-full">
+                <div class="max-w-3xl">
+                    <span class="text-[#f20df2] font-bold uppercase tracking-widest text-[10px] mb-4 block border-l-2 border-[#f20df2] pl-4">Digital Storehouse</span>
+                    <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6 uppercase italic">Elite <span style="-webkit-text-stroke: 1px rgba(255, 255, 255, 0.3); color: transparent;">Shop</span></h1>
+                    <p class="text-gray-400 text-lg font-medium leading-relaxed">
+                        Zarządzaj swoim wydarzeniem z poziomu najbardziej zaawansowanego sprzętu Silent Disco na rynku.
+                    </p>
+                </div>
+                    <a href="/cart" class="group px-8 py-4 rounded-full bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] text-[#0a050a] font-black text-sm uppercase tracking-widest transition-all btn-glow shadow-none flex items-center justify-center gap-3 hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                        Twój Koszyk
+                    </a>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <shopify-list-context type="product" handle="frontpage" query="collection:frontpage" first="12">
+                        <template>
+                            <div style="background-color:#221022" class="group relative  border border-white/5 rounded-[40px] overflow-hidden cursor-pointer transition-all duration-500 hover:border-[#f20df2]/50 hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] flex flex-col h-full hover:-translate-y-3">
+                                <div class="relative aspect-[16/10] overflow-hidden m-3 rounded-[32px]">
+                                    <shopify-media width="800" height="500" query="product.selectedOrFirstAvailableVariant.image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"></shopify-media>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                </div>
+                                
+                                <div class="p-8 pt-4 flex flex-col flex-grow">
+                                    <h3 class="text-2xl font-black text-white mb-3 group-hover:text-[#f20df2] transition-colors tracking-tight uppercase italic">
+                                        <shopify-data query="product.title"></shopify-data>
+                                    </h3>
+                                    
+                                    <div class="mt-auto flex justify-between items-center">
+                                        <div>
+                                            <p class="text-[10px] font-bold text-gray-600 uppercase mb-1">Cena netto od</p>
+                                            <p class="text-2xl font-black text-white flex gap-1 items-baseline">
+                                                <shopify-money format="money_without_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                                                <span class="text-sm font-bold">PLN</span>
+                                            </p>
+                                        </div>
+                                        <button class="w-12 h-12 rounded-2xl bg-white/5 group-hover:bg-[#f20df2] flex items-center justify-center text-white transition-all duration-300 border-2 border-transparent" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </shopify-list-context>
+                </div>
+            </div>
+        </section>
+        
+        <shopify-cart id="main-cart"></shopify-cart>
+
+        <dialog id="product-modal" style="background-color:#221022" class="product-modal  border border-white/10 w-full md:w-[90vw] md:max-w-7xl md:rounded-[48px] overflow-hidden shadow-2xl relative m-auto">
+            <shopify-context id="product-modal-context" type="product" wait-for-update>
+                <template>
+                    <div class="flex flex-col md:flex-row h-full md:h-[85vh]">
+                        <button class="absolute top-8 right-8 z-50 w-12 h-12 bg-white/10 hover:bg-[#f20df2] rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 text-xl border-0 cursor-pointer" onclick="document.getElementById('product-modal').close();">
+                            ✕
+                        </button>
+                        
+                        <div class="w-full md:w-1/2 h-[40vh] md:h-full relative overflow-hidden flex-shrink-0">
+                            <shopify-media layout="fullWidth" query="product.selectedOrFirstAvailableVariant.image" class="w-full h-full object-cover"></shopify-media>
+                            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#221022] via-[#221022]/40 to-transparent"></div>
+                            <div class="absolute bottom-10 left-10 right-10 z-10">
+                                <span class="bg-[#f20df2] px-4 py-1.5 rounded-full text-[10px] font-black text-white uppercase tracking-widest mb-4 inline-block">
+                                    <shopify-data query="product.vendor"></shopify-data>
+                                </span>
+                                <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter leading-[0.9] mb-4">
+                                    <shopify-data query="product.title"></shopify-data>
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div style="background-color:#221022" class="flex-grow p-8 md:p-16 overflow-y-auto er custom-scrollbar">
+                            <div class="space-y-10 max-w-xl mx-auto">
+                                <div class="flex justify-between items-center pb-8 border-b border-white/10">
+                                    <div>
+                                        <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">Cena jednostkowa</p>
+                                        <div class="text-5xl font-black text-white flex items-center gap-2">
+                                            <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                                        </div>
+                                    </div>
+                                    <div class="bg-green-500/10 text-green-500 text-[10px] font-black px-4 py-2 rounded-full uppercase flex items-center gap-2 border border-green-500/20">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                        Dostępny od ręki
+                                    </div>
+                                </div>
+                                
+                                <div class="text-gray-400 text-sm leading-relaxed font-medium">
+                                    <shopify-data query="product.descriptionHtml"></shopify-data>
+                                </div>
+
+                                <div class="pt-4">
+                                    <shopify-variant-selector></shopify-variant-selector>
+                                </div>
+
+                                <div class="pt-6 flex flex-col gap-4">
+                                    <button onclick="document.getElementById('main-cart').addLine(event).showModal(); document.getElementById('product-modal').close();" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale" class="w-full py-5 bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] text-[#0a050a] font-black uppercase tracking-widest rounded-2xl flex items-center justify-center gap-4 hover:scale-105 transition-all btn-glow group cursor-pointer text-[13px] border-2 border-transparent disabled:opacity-50 disabled:cursor-not-allowed">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                                        Dodaj do koszyka
+                                    </button>
+                                    
+                                    <button onclick="document.querySelector('shopify-store').buyNow(event)" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale" class="w-full py-5 bg-transparent text-white font-black uppercase tracking-widest rounded-2xl flex items-center justify-center gap-4 hover:border-[#f20df2] transition-all group cursor-pointer text-[13px] border-2 border-white/20 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed">
+                                        Kup teraz
+                                    </button>
+
+                                    <div class="flex items-center justify-center gap-8 py-5 border-y border-white/5 mt-6">
+                                        <div class="flex items-center gap-2 text-[10px] font-bold text-gray-500 uppercase">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f20df2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                                            Bezpieczna płatność
+                                        </div>
+                                        <div class="flex items-center gap-2 text-[10px] font-bold text-gray-500 uppercase">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f20df2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                                            Szybka wysyłka
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </shopify-context>
+        </dialog>
+    </div>
+
+    <style>
+        .product-modal {
+            padding: 0;
+            border-radius: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 0;
+            margin: auto;
+        }
+        .product-modal::backdrop {
+            background-color: rgba(10, 5, 10, 0.95);
+            backdrop-filter: blur(16px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(242, 13, 242, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(242, 13, 242, 0.8);
+        }
+        shopify-cart::part(dialog) {
+            background-color: #0a050a;
+            color: white;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+        shopify-cart::part(primary-button) {
+            background-color: #f20df2;
+            color: white;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 16px;
+        }
+        shopify-cart::part(secondary-button) {
+            background-color: rgba(255,255,255,0.05);
+            color: white;
+            fill: white;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+        shopify-variant-selector::part(form) {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        shopify-variant-selector::part(label) {
+            color: #9ca3af;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            display: block;
+        }
+        shopify-variant-selector::part(select) {
+            background-color: rgba(255,255,255,0.05);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 16px;
+            width: 100%;
+            font-weight: bold;
+            outline: none;
+        }
+        shopify-variant-selector::part(select):focus {
+            border-color: #f20df2;
+        }
+    </style>
+</shopify-store>
+
+{% schema %}
+{
+  "name": "Cichoszau Home Section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cichoszau Home Section"
+    }
+  ]
+}
+{% endschema %}

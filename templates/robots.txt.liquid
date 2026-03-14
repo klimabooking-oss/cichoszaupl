@@ -1,0 +1,41 @@
+{% comment %}
+  Custom robots.txt.liquid — Cichoszau Silent Disco
+  Rozszerza domyślny robots.txt Shopify o reguły SEO dla botów i crawlerów.
+  Shopify renderuje ten plik jako robots.txt automatycznie.
+{% endcomment %}
+{% for group in robots.default_groups %}
+  {% assign downcase_useragent = group.user_agent | downcase %}
+  User-agent: {{ group.user_agent }}
+  {% if downcase_useragent == 'googlebot' %}
+    {% comment %} Allow Googlebot to crawl all important sections {% endcomment %}
+    Allow: /pages/
+    Allow: /blogs/
+    Allow: /collections/
+    Allow: /products/
+  {% endif %}
+  {% for rule in group.rules %}
+    {{ rule.directive }}: {{ rule.value }}
+  {% endfor %}
+
+{% endfor %}
+
+# Cichoszau Silent Disco — SEO Config
+User-agent: Googlebot
+Allow: /pages/
+Allow: /blogs/
+Allow: /collections/
+Allow: /products/
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /cdn/shop/files/
+
+User-agent: Bingbot
+Allow: /pages/
+Allow: /blogs/
+Allow: /collections/
+Allow: /products/
+Crawl-delay: 5
+
+Sitemap: https://cichoszau.pl/sitemap.xml
+Sitemap: https://cichoszau.pl/sitemap_pages.xml

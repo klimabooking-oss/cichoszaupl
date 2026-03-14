@@ -1,0 +1,298 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "seo-b2b-landing",
+      "settings": {
+        "title": "",
+        "hook": "",
+        "hero_image": "shopify://shop_images/freepik__zrb-to-samo-ale-nasza-postac-o-20-w-prawo__37735.png",
+        "show_roi": false,
+        "sales_copy": "",
+        "seo_text": ""
+      }
+    },
+    "custom_technology_zL7Wqb": {
+      "type": "custom-technology",
+      "name": "Technologia (PDF)",
+      "settings": {
+        "tech_video": "shopify://files/videos/0311 (1)(1).mp4",
+        "subtitle": "Poznaj sprzęt",
+        "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
+        "description": "Nasze słuchawki to nie tylko rewelacyjny design, ale przede wszystkim genialna izolacja akustyczna i czysty przekaz audio na 3 niezależnych kanałach. Zobacz z bliska, co zamawiasz.",
+        "button_label": "Pobierz PDF (Specyfikacja)",
+        "button_link": ""
+      }
+    },
+    "zaufanie": {
+      "type": "logo-ticker",
+      "blocks": {
+        "logo_wagayB": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/6_ec1500fc-6948-4638-aed2-602ff11e4d76.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_waYEEX": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/1.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_MchkEM": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/10_da9efdea-85eb-4836-8eb1-22d18fb669ba.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_UpzEwf": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/17_dcf64bc8-d8ef-49d4-8e60-1af694754527.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_iLfGDU": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/8_19c89732-7c6c-40f3-97e0-65182f664d8f.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_GhV7XP": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/11_15889e6d-020d-42cf-a63d-68b2ca16e80c.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_FVVMXE": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/15_5527fc07-47e1-41f0-abd3-97ba341d77ea.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_TgRiTc": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/14_b0ddaed6-c60d-4d17-8075-2a3f6f9500af.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_6EQXhF": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/13_e9ebb761-c6bd-4e92-904d-92c71026c1d9.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_n6BGch": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/13_095321fa-4774-4026-b138-94961d769a06.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_ATmapq": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/12_20d9f603-28fa-4b3b-a328-2d50ef607a5d.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_wXyEyy": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/9_2cf74311-217f-4831-9fb3-7226f01bf3c7.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_QceqjK": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/9_fa00c1ea-5653-4999-9d70-02fd778a7ed7.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_kMf4T6": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/5_6871bc5a-fb85-43cd-b940-1c93c17ae886.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_68w9V9": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/6_7853a0ad-9443-4110-af26-e2b438feca25.png",
+            "logo_name": "Nazwa firmy"
+          }
+        }
+      },
+      "block_order": [
+        "logo_wagayB",
+        "logo_waYEEX",
+        "logo_MchkEM",
+        "logo_UpzEwf",
+        "logo_iLfGDU",
+        "logo_GhV7XP",
+        "logo_FVVMXE",
+        "logo_TgRiTc",
+        "logo_6EQXhF",
+        "logo_n6BGch",
+        "logo_ATmapq",
+        "logo_wXyEyy",
+        "logo_QceqjK",
+        "logo_kMf4T6",
+        "logo_68w9V9"
+      ],
+      "settings": {
+        "heading": "Zaufali nam najlepsi",
+        "columns": 5,
+        "show_stats": true
+      }
+    },
+    "opinie": {
+      "type": "testimonials",
+      "settings": {}
+    },
+    "galeria": {
+      "type": "event-slider",
+      "blocks": {
+        "image_JBWPf7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/155_f9c4d0a8-71b4-4f2f-ab9d-fc4a37cee6c2.png"
+          }
+        },
+        "image_DyReCB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/25.png"
+          }
+        },
+        "image_WaeAUm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/149_6be6ad65-2e29-4b30-ad08-e67f9c0818cd.png"
+          }
+        },
+        "image_jUYfbR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/19.png"
+          }
+        },
+        "image_9PqVyq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/167.png"
+          }
+        },
+        "image_yetw63": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/170.png"
+          }
+        },
+        "image_6BEhHx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/149_a82e57fa-d456-48f5-81ec-817c15576828.png"
+          }
+        },
+        "image_BmDPCg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/26.png"
+          }
+        },
+        "image_KNwdET": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/147_9f62fb5a-0023-4c66-8c6f-87c70d0fe12e.png"
+          }
+        },
+        "image_MXVpyc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/179_527eade8-cf78-49ce-913a-549d7d5cf100.png"
+          }
+        },
+        "image_LtyreQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/180.png"
+          }
+        },
+        "image_7GVKAc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/178.png"
+          }
+        },
+        "image_EEzBkk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/172.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_JBWPf7",
+        "image_DyReCB",
+        "image_WaeAUm",
+        "image_jUYfbR",
+        "image_9PqVyq",
+        "image_yetw63",
+        "image_6BEhHx",
+        "image_BmDPCg",
+        "image_KNwdET",
+        "image_MXVpyc",
+        "image_LtyreQ",
+        "image_7GVKAc",
+        "image_EEzBkk"
+      ],
+      "settings": {
+        "title": "Nasze Eventy"
+      }
+    },
+    "kalkulator": {
+      "type": "booking-calculator",
+      "settings": {
+        "title": "Kalkulator",
+        "highlight": "Silent Disco",
+        "subtitle": "Skonfiguruj idealny zestaw w 3 minuty."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "title": "Masz pytania dotyczące współpracy B2B?",
+        "highlight": "Pytania",
+        "subtitle": "FAQ dla Organizatorów"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_technology_zL7Wqb",
+    "zaufanie",
+    "opinie",
+    "galeria",
+    "kalkulator",
+    "faq"
+  ]
+}

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}" style="background-color:#221022; color:#ededed">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-59TNWQ5Z');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Global site tag (gtag.js) - Google Ads: 16732141783 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16732141783"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'AW-16732141783', {'allow_enhanced_conversions': true});
+    gtag('config', 'G-PMNKPRT86T');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '1916413455709770');
+  
+  // META PIXEL PAGEVIEW SEGMENTATION
+  (function() {
+      let fbSegment = 'General';
+      const path = window.location.pathname;
+      if (path.includes('firmowe') || path.includes('b2b') || path.includes('konferencje') || path.includes('festiwal') || path.includes('teatr')) fbSegment = 'B2B';
+      else if (path.includes('wynajem') || path.includes('cennik')) fbSegment = 'Wynajem';
+      
+      fbq('track', 'PageView', {
+          content_category: fbSegment
+      });
+  })();
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1916413455709770&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <meta charset="utf-8">
+  <style>
+    html, body {
+      background-color: #221022 !important;
+      color: #ededed !important;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+    img, video, iframe, canvas {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#221022">
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Strona {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}">
+
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:site_name" content="{{ shop.name }}">
+  <meta property="og:title" content="{% if page_title contains shop.name %}{{ page_title }}{% else %}{{ page_title }} – {{ shop.name }}{% endif %}">
+  <meta property="og:description" content="{{ page_description | default: 'Wynajem słuchawek Silent Disco z darmową dostawą kurierską w całej Polsce. Imprezy firmowe, wesela, festiwale, kino plenerowe — sprzęt Plug & Play.' | escape }}">
+  <meta property="og:image" content="{% if page.image %}{{ page.image | image_url: width: 1200 }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 1200 }}{% else %}{{ 'og-cover.png' | asset_url }}{% endif %}">
+  <meta property="og:locale" content="pl_PL">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page_title contains shop.name %}{{ page_title }}{% else %}{{ page_title }} – {{ shop.name }}{% endif %}">
+  <meta name="twitter:description" content="{{ page_description | default: 'Wynajem słuchawek Silent Disco w całej Polsce. Imprezy firmowe, wesela, festiwale, kino plenerowe.' | escape }}">
+  <meta name="twitter:image" content="{% if page.image %}{{ page.image | image_url: width: 1200 }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 1200 }}{% else %}{{ 'og-cover.png' | asset_url }}{% endif %}">
+  
+  {{ content_for_header }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
+  {{ 'tailwind-prod.min.css' | asset_url | stylesheet_tag }}
+  <script>
+    window.CS_CONFIG = {
+      neonCSS: `
+        div.Polaris-ShadowBevel, div.Polaris-Box, section {
+          background-color: #221022 !important;
+          color: #ededed !important;
+        }
+        [data-polaris-layer] {
+          background-color: #221022 !important;
+          border-top: 1px solid rgba(242,13,242,0.3) !important;
+          box-shadow: 0 -10px 30px rgba(0,0,0,0.9), 0 -10px 30px rgba(242,13,242,0.1) !important;
+        }
+        h2, .Polaris-Text--headingLg {
+          color: #fff !important;
+          font-family: 'Manrope', sans-serif !important;
+          font-weight: 800 !important;
+        }
+        p, .Polaris-Text--bodyMd, .Polaris-Text--root {
+          color: #a1a1aa !important;
+          font-family: 'Manrope', sans-serif !important;
+        }
+        a, .Polaris-Link {
+          color: #f20df2 !important;
+          text-decoration: underline !important;
+        }
+        button {
+          font-family: 'Manrope', sans-serif !important;
+          border-radius: 9999px !important;
+          font-weight: 800 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.05em !important;
+          transition: all 0.25s ease !important;
+          font-size: 11px !important;
+          padding: 10px 20px !important;
+        }
+        /* Zaakceptuj */
+        .Polaris-Button--pressed, .Polaris-Button--primary, button.Polaris-Button--primary, [data-primary-button] {
+          background: #f20df2 !important;
+          color: #fff !important;
+          border: none !important;
+          box-shadow: 0 0 15px rgba(242,13,242,0.4) !important;
+        }
+        .Polaris-Button--primary:hover, [data-primary-button]:hover {
+          transform: scale(1.05) !important;
+          box-shadow: 0 0 25px rgba(242,13,242,0.7) !important;
+        }
+        /* Odrzuc / Ustawienia */
+        .Polaris-Button:not(.Polaris-Button--primary) {
+          background: rgba(255,255,255,0.05) !important;
+          border: 1px solid rgba(242,13,242,0.3) !important;
+          color: #f20df2 !important;
+        }
+        .Polaris-Button:not(.Polaris-Button--primary):hover {
+          background: rgba(242,13,242,0.1) !important;
+          color: #fff !important;
+        }
+        #shopify-pc__banner {
+          background: rgba(34,16,34,0.96) !important;
+          backdrop-filter: blur(20px) !important;
+          border-top: 1px solid rgba(242,13,242,0.4) !important;
+          box-shadow: 0 -10px 40px rgba(0,0,0,0.8), 0 -10px 40px rgba(242,13,242,0.1) !important;
+          color: #ffffff !important;
+          font-family: 'Manrope', sans-serif !important;
+          border-radius: 24px !important;
+          overflow: hidden !important;
+        }
+        #shopify-pc__banner h2, #shopify-pc__banner h2 * { color: #ffffff !important; font-weight: 800 !important; }
+        #shopify-pc__banner p, #shopify-pc__banner div, #shopify-pc__banner span, #shopify-pc__banner a, #shopify-pc__banner section { color: #ffffff !important; }
+        #shopify-pc__banner button {
+          border-radius: 9999px !important;
+          font-family: 'Manrope', sans-serif !important;
+          font-weight: 800 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.05em !important;
+          transition: all 0.3s ease !important;
+        }
+        #shopify-pc__banner .Polaris-Button--primary {
+          background: #f20df2 !important;
+          color: #fff !important;
+          border: none !important;
+          box-shadow: 0 0 15px rgba(242,13,242,0.4) !important;
+        }
+        #shopify-pc__banner .Polaris-Button--primary:hover {
+          transform: scale(1.05) !important;
+          box-shadow: 0 0 25px rgba(242,13,242,0.7) !important;
+        }
+      `,
+      cities: {% if metaobject and metaobject.nazwa %}['{{ metaobject.nazwa.value }}']{% else %}['Warszawa','Wrocław','Kraków','Gdańsk','Poznań','Katowice','Łódź','Rzeszów','Lublin','Toruń']{% endif %}
+    };
+  </script>
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+
+
+  <!-- LocalBusiness Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://cichoszau.pl/#business",
+        "name": "Cichoszau",
+        "legalName": "Cichoszau",
+        "description": "Wynajem słuchawek Silent Disco z darmową dostawą kurierską do całej Polski. Kompleksowa obsługa imprez firmowych, festiwali, wesel, kina plenerowego i konferencji.",
+        "url": "https://cichoszau.pl",
+        "email": "oferty@cichoszau.pl",
+        "taxID": "8992994107",
+        "logo": "https://cichoszau.pl/cdn/shop/files/cichoszau-logo.png",
+        "image": "https://cichoszau.pl/cdn/shop/files/og-cover.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Kobierzycka 3/9",
+          "addressLocality": "Wrocław",
+          "postalCode": "52-315",
+          "addressCountry": "PL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.0942",
+          "longitude": "17.0385"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Poland"
+        },
+        "priceRange": "$$",
+        "currenciesAccepted": "PLN",
+        "paymentAccepted": "Przelew, karta kredytowa",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Wynajem Silent Disco",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Wynajem słuchawek Silent Disco",
+                "description": "Wynajem kompletu słuchawek bezprzewodowych z nadajnikami i pełnym okablowaniem. Dostawa kurierska w całej Polsce, system Plug & Play."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Silent Disco na eventy B2B i imprezy firmowe",
+                "description": "Profesjonalna obsługa integracji i eventów korporacyjnych z technologią Silent Disco."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Kino plenerowe Silent Disco",
+                "description": "Wynajem sprzętu Silent Disco na kino plenerowe – emisja dźwięku przez słuchawki bezprzewodowe bez głośników."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Silent Disco na festiwale i konferencje",
+                "description": "Obsługa festiwali muzycznych, konferencji i wydarzeń publicznych z systemem słuchawek bezprzewodowych."
+              }
+            }
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/cichoszau",
+          "https://www.instagram.com/cichoszau"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cichoszau.pl/#website",
+        "url": "https://cichoszau.pl",
+        "name": "Cichoszau",
+        "description": "Wynajem Silent Disco w całej Polsce",
+        "publisher": {
+          "@id": "https://cichoszau.pl/#business"
+        },
+        "inLanguage": "pl-PL"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body style="background-color:#221022" class="antialiased overflow-x-hidden">
+  <!-- ANTI-FOUC SCRIPT / CURTAIN -->
+  <div id="flicker-preloader" style="position:fixed;top:0;left:0;width:100%;height:100%;background-color:#221022;z-index:2147483647;pointer-events:none;transition:opacity 0.4s ease-out;"></div>
+  <script>
+    window.addEventListener("load", function() {
+      setTimeout(function() {
+        var preloader = document.getElementById("flicker-preloader");
+        if(preloader) {
+          preloader.style.opacity = '0';
+          setTimeout(function(){ preloader.parentNode.removeChild(preloader); }, 400);
+        }
+      }, 50); // Minimal time for paint to finish
+    });
+  </script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59TNWQ5Z"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+  
+  <shopify-store store-domain="8bf936-41.myshopify.com" country="PL" language="pl">
+    
+    {% section 'navbar' %}
+    
+    <main class="min-h-screen">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <!-- ══ Particle Cursor Canvas ══ -->
+    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-[9998]" aria-hidden="true"></canvas>
+
+    <!-- ══ Sticky Booking CTA ══ -->
+    <div id="sticky-booking-cta" aria-label="Zamów ofertę">
+      <a href="#rental">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+        Zamów ofertę
+      </a>
+    </div>
+
+    <script>
+      // Prevent browser from restoring previous scroll position on mobile
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+      });
+    </script>
+  </shopify-store>
+</body>
+</html>

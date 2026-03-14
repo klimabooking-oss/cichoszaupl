@@ -1,0 +1,186 @@
+<section class="min-h-screen pt-32 pb-20" style="background-color:#0a050a">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-10">
+            <a href="{{ routes.root_url }}" class="hover:text-white transition-colors">Start</a>
+            <span>/</span>
+            {% if collection %}
+                <a href="{{ collection.url }}" class="hover:text-white transition-colors">{{ collection.title }}</a>
+                <span>/</span>
+            {% else %}
+                <a href="{{ routes.all_products_collection_url }}" class="hover:text-white transition-colors">Sklep</a>
+                <span>/</span>
+            {% endif %}
+            <span class="text-gray-400">{{ product.title | truncate: 40 }}</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+            <!-- Left: Product Media -->
+            <div class="space-y-4">
+                <!-- Main image -->
+                <div class="w-full aspect-square rounded-3xl overflow-hidden" style="background-color:#0a050a">
+                    {% if product.featured_image %}
+                        <img id="main-product-image"
+                             src="{{ product.featured_image | img_url: '800x' }}"
+                             alt="{{ product.featured_image.alt | default: product.title }}"
+                             class="w-full h-full object-cover"
+                             loading="eager">
+                    {% else %}
+                        <div class="w-full h-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(242,13,242,0.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Thumbnails -->
+                {% if product.images.size > 1 %}
+                    <div class="grid grid-cols-4 gap-3">
+                        {% for image in product.images limit: 4 %}
+                            <button onclick="document.getElementById('main-product-image').src='{{ image | img_url: '800x' }}'"
+                                    class="aspect-square rounded-2xl overflow-hidden border-2 transition-all duration-200 hover:border-[#f20df2]"
+                                    style="border-color: {% if forloop.first %}#f20df2{% else %}rgba(255,255,255,0.1){% endif %}; background-color:#0a050a;">
+                                <img src="{{ image | img_url: '200x' }}" alt="{{ image.alt }}" class="w-full h-full object-cover">
+                            </button>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Right: Product Info -->
+            <div class="space-y-8 lg:sticky lg:top-32">
+                <!-- Type / Category badge -->
+                {% if product.type != blank %}
+                    <span class="inline-block text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
+                          style="background-color:rgba(242,13,242,0.1); color:#f20df2; border:1px solid rgba(242,13,242,0.2)">
+                        {{ product.type }}
+                    </span>
+                {% endif %}
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter leading-tight">{{ product.title }}</h1>
+
+                <!-- Price -->
+                <div class="space-y-1">
+                    {% if product.compare_at_price_max > product.price_min %}
+                        <div class="text-gray-500 line-through text-lg">{{ product.compare_at_price_max | money }}</div>
+                    {% endif %}
+                    <div class="text-4xl font-black text-transparent bg-clip-text" style="background-image: linear-gradient(to right, #f20df2, #ff5f1f)">
+                        {{ product.price_min | money }}
+                    </div>
+                    {% if product.price_min != product.price_max %}
+                        <div class="text-gray-500 text-sm">– {{ product.price_max | money }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Description -->
+                {% if product.description != blank %}
+                    <div class="text-gray-400 leading-relaxed border-t border-white/5 pt-8">
+                        {{ product.description }}
+                    </div>
+                {% endif %}
+
+                <!-- Add to Cart form -->
+                {%- form 'product', product, class: 'space-y-4' -%}
+                    <!-- Variant selector if multiple variants -->
+                    {% if product.has_only_default_variant == false %}
+                        <div class="space-y-2">
+                            {% for option in product.options_with_values %}
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest">{{ option.name }}</label>
+                                <select name="id" class="w-full rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-[#f20df2] focus:ring-1 focus:ring-[#f20df2] transition-colors"
+                                        style="background-color:#0a050a; border:1px solid rgba(255,255,255,0.1);">
+                                    {% for variant in product.variants %}
+                                        <option value="{{ variant.id }}"
+                                                {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+                                                {% unless variant.available %}disabled{% endunless %}>
+                                            {{ variant.title }} — {{ variant.price | money }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    {% endif %}
+
+                    <!-- Quantity -->
+                    <div class="flex items-center gap-4">
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Ilość</label>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="var q=document.getElementById('qty');if(q.value>1)q.value=parseInt(q.value)-1"
+                                    class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-[#f20df2] transition-all"
+                                    style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)">−</button>
+                            <input type="number" id="qty" name="quantity" value="1" min="1"
+                                   class="w-16 text-center text-white font-bold py-2 rounded-xl focus:outline-none"
+                                   style="background-color:#0a050a; border:1px solid rgba(255,255,255,0.1)">
+                            <button type="button" onclick="var q=document.getElementById('qty');q.value=parseInt(q.value)+1"
+                                    class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-[#f20df2] transition-all"
+                                    style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    {% if product.selected_or_first_available_variant.available %}
+                        <button type="submit" name="add"
+                                class="w-full py-5 rounded-2xl font-black uppercase tracking-widest text-white transition-all duration-300 shadow-[0_0_30px_rgba(242,13,242,0.3)] hover:shadow-none hover:scale-[0.98]"
+                                style="background-color:#f20df2">
+                            Dodaj do koszyka
+                        </button>
+                    {% else %}
+                        <button type="button" disabled
+                                class="w-full py-5 rounded-2xl font-black uppercase tracking-widest text-gray-500 cursor-not-allowed"
+                                style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)">
+                            Niedostępny
+                        </button>
+                    {% endif %}
+                {%- endform -%}
+
+                <!-- Meta info -->
+                <div class="grid grid-cols-2 gap-4 pt-6 border-t border-white/5 text-sm text-gray-500">
+                    {% if product.vendor != blank %}
+                        <div><span class="text-gray-600 uppercase tracking-widest text-xs font-bold">Marka</span><br>{{ product.vendor }}</div>
+                    {% endif %}
+                    {% if product.sku != blank %}
+                        <div><span class="text-gray-600 uppercase tracking-widest text-xs font-bold">SKU</span><br>{{ product.selected_or_first_available_variant.sku }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        {% if collection %}
+            {% assign related = collection.products | where: 'handle', product.handle | map: 'handle' %}
+            <div class="mt-24">
+                <h2 class="text-2xl font-black text-white uppercase italic tracking-tighter mb-10">Podobne produkty</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {% for related_product in collection.products limit: 4 %}
+                        {% unless related_product.handle == product.handle %}
+                            <a href="{{ related_product.url }}" class="group border border-white/5 rounded-2xl overflow-hidden hover:border-[#f20df2]/40 transition-all duration-300 hover:-translate-y-1" style="background-color:#0a050a; text-decoration:none">
+                                {% if related_product.featured_image %}
+                                    <div class="aspect-square overflow-hidden" style="background-color:#0a050a">
+                                        <img src="{{ related_product.featured_image | img_url: '400x' }}"
+                                             alt="{{ related_product.title }}"
+                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                             loading="lazy">
+                                    </div>
+                                {% endif %}
+                                <div class="p-4">
+                                    <p class="text-white font-bold text-sm uppercase tracking-tight truncate">{{ related_product.title }}</p>
+                                    <p class="text-[#f20df2] font-black text-lg mt-1">{{ related_product.price_min | money }}</p>
+                                </div>
+                            </a>
+                        {% endunless %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}

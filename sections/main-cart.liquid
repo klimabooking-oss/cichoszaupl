@@ -1,0 +1,173 @@
+<div class="min-h-screen bg-[#110811] text-white pt-24 pb-12 font-sans relative overflow-hidden">
+    <!-- Ambient Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#f20df2] opacity-10 blur-[120px] rounded-full mix-blend-screen"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#ff7b00] opacity-10 blur-[120px] rounded-full mix-blend-screen"></div>
+        <div class="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-[#60a5fa] opacity-5 blur-[100px] rounded-full mix-blend-screen"></div>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto px-6 relative z-10 w-full mb-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-center tracking-tighter italic mb-2 mt-8">
+            Twój <span style="background: linear-gradient(135deg, #f20df2, #ff7b00); -webkit-background-clip: text; color: transparent;">Koszyk</span>
+        </h1>
+        <p class="text-gray-400 text-center font-bold tracking-widest uppercase text-xs md:text-sm mt-2 mb-12">
+            Sprawdź swoje zamówienie przed drogą na parkiet
+        </p>
+
+        {% if cart.item_count > 0 %}
+            <form action="{{ routes.cart_url }}" method="post" novalidate id="cart-form" class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Lewa strona: Produkty -->
+                <div class="lg:col-span-8 flex flex-col gap-6">
+                    {% for item in cart.items %}
+                        <div class="bg-[#221022]/80 backdrop-blur-xl border border-white/5 rounded-[2rem] p-4 md:p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-white/10 transition-colors">
+                            
+                            <!-- Obrazek -->
+                            <div class="w-full sm:w-32 h-32 rounded-2xl overflow-hidden bg-black/50 shrink-0 border border-white/10 relative">
+                                {% if item.image %}
+                                    <img src="{{ item.image | img_url: '300x' }}" alt="{{ item.title | escape }}" class="w-full h-full object-cover">
+                                {% else %}
+                                    <div class="w-full h-full flex flex-col items-center justify-center text-gray-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2 opacity-50"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                                    </div>
+                                {% endif %}
+                                <a href="{{ item.url_to_remove }}" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500/80 text-white flex items-center justify-center sm:hidden hover:bg-red-500 transition-colors" title="Usuń produkt">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                                </a>
+                            </div>
+
+                            <!-- Szczegóły Produktu -->
+                            <div class="flex-grow flex flex-col justify-between self-stretch">
+                                <div>
+                                    <a href="{{ item.url }}" class="text-xl md:text-2xl font-black uppercase tracking-tight hover:text-[#f20df2] transition-colors line-clamp-2">{{ item.product.title }}</a>
+                                    
+                                    {%- if item.product.has_only_default_variant == false or item.properties.size > 0 -%}
+                                        <div class="mt-2 text-sm text-gray-400 font-bold tracking-wider">
+                                            {%- for option in item.options_with_values -%}
+                                                <span class="inline-block bg-white/5 px-2 py-1 rounded-md mr-2 mb-2">{{ option.name }}: <strong class="text-gray-200">{{ option.value }}</strong></span>
+                                            {%- endfor -%}
+                                        </div>
+                                    {%- endif -%}
+                                </div>
+                                
+                                <div class="flex flex-wrap items-center justify-between gap-4 mt-4 xs:mt-0">
+                                    <!-- Ilość -->
+                                    <div class="flex items-center gap-3 bg-black/40 p-1.5 rounded-full border border-white/10">
+                                        <button type="button" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors shadow-inner" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); document.getElementById('cart-form').submit();">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+                                        </button>
+                                        
+                                        <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" 
+                                            class="w-8 text-center bg-transparent text-white font-bold p-0 border-0 focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none"
+                                            onchange="document.getElementById('cart-form').submit();">
+                                            
+                                        <button type="button" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors shadow-inner" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); document.getElementById('cart-form').submit();">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Cena Cząstkowa (Ilość x Cena) -->
+                                    <div class="text-right">
+                                        {% if item.original_line_price != item.final_line_price %}
+                                            <p class="text-gray-500 line-through text-sm font-bold">{{ item.original_line_price | money }}</p>
+                                        {% endif %}
+                                        <p class="text-2xl font-black text-[#f20df2]">{{ item.final_line_price | money }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Usunięcie (Tylko Desktop) -->
+                            <div class="hidden sm:block shrink-0 absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <a href="{{ item.url_to_remove }}" class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-500/10 rounded-xl transition-all block" title="Usuń z koszyka">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                                </a>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <a href="/collections/all" class="text-sm font-bold tracking-widest uppercase text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg> Kontynuuj zakupy
+                        </a>
+                        <button type="submit" name="update" class="text-sm font-bold tracking-widest uppercase text-white bg-white/5 hover:bg-white/10 px-6 py-2 rounded-full border border-white/10 transition-colors">
+                            Zaktualizuj
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prawa strona: Podsumowanie -->
+                <div class="lg:col-span-4 self-start sticky top-28">
+                    <div class="bg-[#221022] rounded-[2.5rem] p-8 border border-[#f20df2]/20 shadow-[0_0_40px_rgba(242,13,242,0.1)] relative overflow-hidden">
+                        
+                        <!-- Dekoracja tła -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-[#ff7b00] opacity-10 blur-[50px] rounded-full pointer-events-none"></div>
+
+                        <h2 class="text-2xl font-black uppercase italic mb-8 flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M4 10h16"/><path d="m4 10 1.25-6h13.5L20 10"/><path d="M4 10v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9"/><path d="M12 10v11"/></svg>
+                            Podsumowanie
+                        </h2>
+                        
+                        <!-- Notatki (Opcjonalne dla klienta) -->
+                        {% if settings.cart_notes_enable %}
+                            <div class="mb-6">
+                                <label for="CartSpecialInstructions" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Instrukcje specjalne dla sprzedawcy</label>
+                                <textarea name="note" id="CartSpecialInstructions" class="w-full bg-black/30 border border-white/10 rounded-xl p-3 text-white focus:border-[#f20df2] focus:ring-1 focus:ring-[#f20df2] transition-colors resize-none placeholder-gray-600" rows="3" placeholder="Dodatkowy komentarz do wejściówek, np. prośba o rezerwację stolika..."></textarea>
+                            </div>
+                        {% endif %}
+
+                        <div class="border-t border-white/10 py-6 my-2">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-400 font-bold uppercase tracking-widest">Suma częściowa</span>
+                                <span class="text-2xl font-black text-white">{{ cart.total_price | money }}</span>
+                            </div>
+                            <p class="text-xs text-gray-500">Podatki i ewentualne koszty wysyłki są naliczane przy kasie.</p>
+                        </div>
+
+                        <!-- Checkaut Button -->
+                        <button type="submit" name="checkout" class="w-full relative group inline-flex items-center justify-center gap-3 px-8 py-5 text-lg font-black uppercase tracking-widest text-[#0a050a] rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(242,13,242,0.5)] transition-all hover:scale-[1.02] cursor-pointer" style="background: linear-gradient(90deg, #f20df2, #ff5f1f, #ffd700); background-size: 200% auto; animation: gradientShift 5s ease infinite;">
+                            Przejdź do kasy
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </button>
+                        
+                        <!-- Security Badges -->
+                        <div class="mt-6 flex items-center justify-center gap-4 text-gray-500 opacity-60">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" title="Bezpieczne Płatności"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" title="Gwarancja Satysfakcji"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" title="Wsparcie Klienta"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        {% else %}
+            <!-- Pusty Koszyk -->
+            <div class="flex flex-col items-center justify-center py-20 text-center">
+                <div class="w-32 h-32 rounded-full bg-[#221022] border border-[#f20df2]/30 flex items-center justify-center shadow-[0_0_30px_rgba(242,13,242,0.2)] mb-8 animate-pulse-slow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#pink-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="pink-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f20df2" />
+                                <stop offset="100%" stop-color="#ff7b00" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-black uppercase italic mb-4">Twój Koszyk śpi.</h2>
+                <p class="text-gray-400 font-bold max-w-md mx-auto mb-10">
+                    Rozkręć imprezę dodając do niego chociaż jeden bilet lub usługę przed pójściem do kasy.
+                </p>
+                <a href="/" class="inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-black uppercase tracking-widest rounded-full transition-all hover:scale-105 btn-glow shadow-none" style="background: linear-gradient(135deg, #f20df2, #ff7b00);">
+                    Wróć na stronę główną
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

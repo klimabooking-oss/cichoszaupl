@@ -1,0 +1,197 @@
+{% if customer %}
+<div class="min-h-screen bg-[#221022] pt-32 pb-20 px-4 md:px-8" id="customer-tickets">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+            <div>
+                <a href="{{ routes.account_url }}" class="text-[#f20df2] font-bold uppercase tracking-widest text-[10px] hover:underline mb-4 inline-block">&larr; Wróć do panelu</a>
+                <h1 class="text-4xl md:text-5xl font-black text-white uppercase italic tracking-wider mb-2">Moje Bilety</h1>
+                <p class="text-gray-400 text-lg">Pokaż poniższy kod QR obsłudze przy wejściu w celu odbioru sprzętu</p>
+            </div>
+        </div>
+
+        <!-- Stan Ładowania -->
+        <div id="tickets-loading" class="text-center py-20 flex flex-col items-center justify-center">
+            <svg class="animate-spin h-10 w-10 text-[#f20df2] mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="text-white font-bold tracking-widest uppercase">Szukam Twoich biletów...</p>
+        </div>
+
+        <!-- Pusty Stan -->
+        <div id="tickets-empty" class="text-center py-16 bg-black/30 rounded-3xl border border-white/5 hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-gray-600 mb-4"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/><path d="M6 10v4"/></svg>
+            <p class="text-gray-400 mb-6 max-w-sm mx-auto">Masz 0 przypisanych wejściówek z ważnym QR kodem na ten adres e-mail ({{ customer.email }}).</p>
+            <a href="/" class="inline-block px-8 py-3 bg-[#f20df2] text-white font-black uppercase tracking-widest rounded-xl hover:shadow-[0_0_20px_rgba(242,13,242,0.4)] transition-shadow">Przeglądaj Wypożyczalnię</a>
+        </div>
+
+        <!-- Zgrupowane Bilety -->
+        <div id="tickets-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <!-- Wstrzykiwane kafelki -->
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+<script>
+(async function initTickets() {
+    // Wait for supabase script to be available if loaded asynchronously
+    let attempts = 0;
+    while (!window.supabase && attempts < 10) {
+        await new Promise(r => setTimeout(r, 100));
+        attempts++;
+    }
+
+    if (!window.supabase) {
+        console.error("Supabase failed to load.");
+        document.getElementById('tickets-loading').style.display = 'none';
+        document.getElementById('tickets-empty').style.display = 'block';
+        return;
+    }
+
+    const SUPABASE_URL = 'https://jfxqhbfankbmvfbqawrm.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_fLf9uZAF8MdRCTk5DVL-Lg_RQ9DoucK';
+    const customerEmail = '{{ customer.email }}';
+
+    // Inicjalizacja Supabase w trybie "anon" dla użytkownika na froncie strony
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+    try {
+        const { data: profiles, error: profileErr } = await supabase
+            .from('profiles')
+            .select(\`
+                id,
+                tickets (
+                    id,
+                    ticket_type,
+                    qr_code,
+                    status,
+                    created_at,
+                    events (
+                        title,
+                        event_date,
+                        location
+                    )
+                )
+            \`)
+            .eq('email', customerEmail)
+            .single();
+
+        document.getElementById('tickets-loading').style.display = 'none';
+
+        if (profileErr || !profiles || !profiles.tickets || profiles.tickets.length === 0) {
+            document.getElementById('tickets-empty').style.display = 'block';
+            return;
+        }
+
+        const validTickets = profiles.tickets.filter(t => t.status === 'valid');
+        
+        if (validTickets.length === 0) {
+            document.getElementById('tickets-empty').style.display = 'block';
+            return;
+        }
+
+        const container = document.getElementById('tickets-container');
+        container.classList.remove('hidden');
+
+        // Generowanie dynamicznych bloków wizualnych kodu QR
+        validTickets.forEach((ticket, index) => {
+            const eventName = ticket.events?.title || 'Wydarzenie Cichoszau - Słuchawki';
+            const eventDateRaw = ticket.events?.event_date || '';
+            const eventLocation = ticket.events?.location || 'Strefa Wydawania';
+            
+            let eventDate = 'Sprawdź u organizatora';
+            if (eventDateRaw) {
+                const d = new Date(eventDateRaw);
+                eventDate = d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }) + ' ' + d.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
+            }
+
+            const ticketCard = document.createElement('div');
+            ticketCard.className = 'bg-[#221022] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#f20df2]/50 transition-colors flex flex-col justify-between shadow-lg';
+            
+            const qrCanvasId = \`qrcode-\${ticket.id}\`;
+            
+            ticketCard.innerHTML = \`
+                <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2]/5 to-transparent pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span class="text-[#f20df2] font-black uppercase tracking-widest text-[10px] mb-1 block">\${ticket.ticket_type} TICKET</span>
+                            <h3 class="text-xl font-black text-white uppercase italic tracking-tight">\${eventName}</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-2xl mx-auto inline-block mb-6 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        <canvas id="\${qrCanvasId}" class="block mx-auto"></canvas>
+                    </div>
+
+                    <div class="space-y-3 border-t border-white/10 pt-4 mt-auto">
+                        <div class="flex items-center gap-2 text-gray-400 text-xs font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                            \${eventDate}
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-400 text-xs font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                            \${eventLocation}
+                        </div>
+                        <div class="mt-4 text-center text-[9px] font-mono text-gray-500 bg-black/50 py-1.5 rounded uppercase tracking-wider">
+                            UID: \${ticket.qr_code.substring(0, 16)}
+                        </div>
+                    </div>
+                </div>
+            \`;
+            
+            container.appendChild(ticketCard);
+
+            // Aktywacja QR code na Canvasie po wstawieniu node'a HTML do DOM
+            QRCode.toCanvas(document.getElementById(qrCanvasId), ticket.qr_code, {
+                width: 180,
+                margin: 0,
+                color: {
+                    dark: '#000000',
+                    light: '#ffffff'
+                }
+            }, function (error) {
+                if (error) console.error("Render QR error", error);
+            });
+        });
+
+    } catch (err) {
+        console.error("Critical fetching err:", err);
+        document.getElementById('tickets-loading').style.display = 'none';
+        
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'text-center mt-8 text-red-500 font-bold uppercase tracking-wider text-xs border border-red-500/20 bg-red-500/10 p-4 rounded-xl';
+        errorMsg.innerText = 'Nie udało się nawiązać połączenia z serwerem autoryzacji biletów. Prosimy odświeżyć stronę lub wysłać maila ze zgłoszeniem do obsługi.';
+        document.getElementById('customer-tickets').appendChild(errorMsg);
+    }
+})();
+</script>
+{% else %}
+<div class="min-h-screen bg-[#221022] flex flex-col items-center justify-center p-4">
+    <div class="text-center p-12 border border-white/10 rounded-[40px] bg-black/40 backdrop-blur-xl shadow-2xl max-w-lg w-full relative overflow-hidden group">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#f20df2]/10 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-[#f20df2] mb-6"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h2 class="text-white text-3xl font-black uppercase tracking-tight mb-4">Pasażerze, Zaloguj się!</h2>
+        <p class="text-gray-400 mb-8 font-medium">Uzyskanie dostępu do Twojej elektronicznej rezerwacji kaucji i wirtualnego biletu dla barmana wymaga bycia na swoim koncie.</p>
+        <a href="{{ routes.account_login_url }}" class="inline-flex px-8 py-3 bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] text-[#0a050a] font-black uppercase tracking-widest rounded-xl hover:scale-105 transition-transform btn-glow mx-auto gap-2 items-center">
+            Zaloguj mnie
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+    </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Customer Tickets",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Customer Tickets"
+    }
+  ]
+}
+{% endschema %}

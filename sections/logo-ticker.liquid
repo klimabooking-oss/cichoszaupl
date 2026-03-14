@@ -1,0 +1,219 @@
+<section class="py-20 relative overflow-hidden" id="logo-ticker-section" style="background-color:#221022">
+    <div class="section-sep" aria-hidden="true"></div>
+    <!-- Top hairline border -->
+    <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Heading — duży, kolorowy, animowany -->
+        <div class="text-center mb-16 ticker-animate-in" style="opacity:0; transform:scale(0.85)">
+            <h2 class="sr-only">Klienci CICHOSZAU - Zaufali Nam Najlepsi Event Managerowie i Marki</h2>
+            <div aria-hidden="true" class="text-3xl md:text-5xl lg:text-6xl font-black uppercase italic tracking-tighter leading-none">
+                <span class="text-transparent bg-clip-text" style="background-image:linear-gradient(to right, #f20df2, #ff5f1f, #ffd700)">Zaufali Nam</span>
+                <span class="text-white"> Najlepsi</span>
+            </div>
+            <div class="mt-4 flex justify-center">
+                <div class="h-0.5 w-24 rounded-full" style="background:linear-gradient(to right,#f20df2,#ffd700)"></div>
+            </div>
+        </div>
+
+        <!-- Logo Grid — każda komórka animuje się osobno -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-{{ section.settings.columns | default: 5 }} gap-px" style="background:rgba(255,255,255,0.06)">
+            {% for block in section.blocks %}
+                <div class="logo-cell group flex items-center justify-center p-9 cursor-default ticker-animate-in"
+                     data-delay="{{ forloop.index0 | times: 60 }}"
+                     style="background:#221022; transition:background 0.3s; opacity:0; transform:scale(0.7)"
+                     onmouseenter="this.style.background='#2d152d'"
+                     onmouseleave="this.style.background='#221022'">
+                    {% if block.settings.logo_image %}
+                        <img src="{{ block.settings.logo_image | image_url: width: 300, format: 'webp' }}"
+                             alt="{{ block.settings.logo_name | default: 'Partner' }}"
+                             style="height:89px; width:auto; max-width:252px; object-fit:contain; filter:grayscale(100%) brightness(0.7); transition:all 0.4s"
+                             onmouseenter="this.style.filter='grayscale(0%) brightness(1)'; this.style.transform='scale(1.08)'"
+                             onmouseleave="this.style.filter='grayscale(100%) brightness(0.7)'; this.style.transform='scale(1)'"
+                             loading="lazy">
+                    {% elsif block.settings.logo_name != blank %}
+                        <span style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.3); white-space:nowrap; transition:color 0.3s"
+                              onmouseenter="this.style.color='rgba(242,13,242,0.9)'"
+                              onmouseleave="this.style.color='rgba(255,255,255,0.3)'">{{ block.settings.logo_name }}</span>
+                    {% endif %}
+                </div>
+            {% else %}
+                {% assign default_logos = "Platinum Mtn,Blue Mountain,Gorskie Resorty,Aperol Spritz,Phinance,Wroclaw Airport,Pasibus,Radio Wroclaw,Equinox,Budweiser" | split: "," %}
+                {% for logo in default_logos %}
+                    <div class="flex items-center justify-center p-9 ticker-animate-in"
+                         data-delay="{{ forloop.index0 | times: 60 }}"
+                        style="background:#221022; transition:background 0.3s; opacity:0; transform:scale(0.7)"
+                         onmouseenter="this.style.background='#2d152d'"
+                         onmouseleave="this.style.background='#221022'">
+                        <span style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.25); white-space:nowrap; transition:color 0.3s"
+                              onmouseenter="this.style.color='rgba(242,13,242,0.8)'"
+                              onmouseleave="this.style.color='rgba(255,255,255,0.25)'">{{ logo }}</span>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        <!-- Bottom stat strip — liczniki count-up -->
+        {% if section.settings.show_stats %}
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-8 mt-12 pt-10 border-t border-white/5">
+            <div class="text-center ticker-animate-in" data-delay="200" style="opacity:0; transform:translateY(20px)">
+                <div class="text-5xl font-black text-white leading-none">
+                    <span class="counter" data-target="200" data-suffix="+">0</span>
+                </div>
+                <div class="text-[11px] font-black text-gray-400 uppercase tracking-widest mt-2">Zrealizowanych Eventów</div>
+            </div>
+            <div class="hidden sm:block w-px h-12 bg-white/10"></div>
+            <div class="text-center ticker-animate-in" data-delay="300" style="opacity:0; transform:translateY(20px)">
+                <div class="text-5xl font-black leading-none">
+                    <span class="counter" data-target="10000" data-display-suffix="K+" data-threshold="1000" style="color:#ff5f1f">0</span>
+                </div>
+                <div class="text-[11px] font-black text-gray-400 uppercase tracking-widest mt-2">Uczestników</div>
+            </div>
+            <div class="hidden sm:block w-px h-12 bg-white/10"></div>
+            <div class="text-center ticker-animate-in" data-delay="400" style="opacity:0; transform:translateY(20px)">
+                <div class="text-5xl font-black leading-none">
+                    <span class="counter" data-target="{{ section.blocks.size | default: 15 }}" data-suffix="+" style="color:#ffd700">0</span>
+                </div>
+                <div class="text-[11px] font-black text-gray-400 uppercase tracking-widest mt-2">Partnerów</div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <!-- Bottom hairline -->
+    <div class="absolute bottom-0 left-0 right-0 h-px" style="background:linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)"></div>
+
+    <script>
+    (function() {
+        // ── IntersectionObserver — scroll-in animations ──────────────────
+        const animItems = document.querySelectorAll('#logo-ticker-section .ticker-animate-in');
+        if (!animItems.length) return;
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const delay = parseInt(el.dataset.delay || 0, 10);
+                setTimeout(function() {
+                    el.style.transition = 'opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1)';
+                    el.style.opacity = '1';
+                    el.style.transform = 'scale(1)';
+                }, delay);
+                observer.unobserve(el);
+            });
+        }, { threshold: 0.12 });
+
+        animItems.forEach(function(el) { observer.observe(el); });
+
+        // ── Count-up counters ─────────────────────────────────────────────
+        const counters = document.querySelectorAll('#logo-ticker-section .counter');
+
+        function easeOutQuart(t) {
+            return 1 - Math.pow(1 - t, 4);
+        }
+
+        function animateCounter(el) {
+            const target    = parseInt(el.dataset.target, 10);
+            const suffix    = el.dataset.suffix || '';
+            const threshold = parseInt(el.dataset.threshold || 0, 10);
+            const dispSuffix = el.dataset.displaySuffix || suffix;
+            const duration  = 2000;
+            const startTime = performance.now();
+
+            function tick(now) {
+                const elapsed  = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased    = easeOutQuart(progress);
+                const current  = Math.round(eased * target);
+
+                if (threshold && target >= threshold) {
+                    // Display as e.g. "10K+"
+                    el.textContent = Math.round(current / threshold) + dispSuffix;
+                } else {
+                    el.textContent = current + suffix;
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    // Final value
+                    if (threshold && target >= threshold) {
+                        el.textContent = Math.round(target / threshold) + dispSuffix;
+                    } else {
+                        el.textContent = target + suffix;
+                    }
+                }
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                const delay = parseInt(entry.target.closest('[data-delay]')?.dataset.delay || 0, 10);
+                setTimeout(function() { animateCounter(entry.target); }, delay);
+                counterObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(function(el) { counterObserver.observe(el); });
+    })();
+    </script>
+</section>
+
+{% schema %}
+{
+  "name": "Logo Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nagłówek nad gridiem",
+      "default": "Zaufali nam najlepsi"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Kolumny (desktop)",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Pokaż pasek statystyk pod gridiem",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo partnera",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo (PNG z przezroczystym tłem)"
+        },
+        {
+          "type": "text",
+          "id": "logo_name",
+          "label": "Nazwa (jeśli brak logo)",
+          "default": "Nazwa firmy"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Logo Grid"
+    }
+  ]
+}
+{% endschema %}

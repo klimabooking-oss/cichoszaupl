@@ -1,0 +1,86 @@
+<footer class="bg-[#221022] pt-16 pb-8 border-t border-white/10" id="contact">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between gap-10 mb-12 items-start">
+
+            <!-- Brand Column -->
+            <div class="space-y-8">
+                <h3 class="text-white font-black uppercase tracking-wider text-xl flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" class="text-[#f20df2] flex-shrink-0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    DANE FIRMY
+                </h3>
+                <div class="text-[17px] text-gray-400 font-medium space-y-5">
+                    <p class="text-white font-black text-2xl uppercase italic tracking-tight block mb-6">{{ shop.name | default: 'Cichoszau' }}</p>
+                    <p>ul. Kobierzycka 3 / 9</p>
+                    <p>52-315 Wrocław</p>
+                    <p class="pt-2">NIP: 8992994107</p>
+                    <p class="pt-6 flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-[#f20df2] flex-shrink-0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <a href="mailto:oferty@cichoszau.pl" class="text-[#f20df2] hover:text-white transition font-bold text-xl">oferty@cichoszau.pl</a>
+                    </p>
+                </div>
+
+                <div class="flex justify-start space-x-3 pt-4">
+                    <a href="{{ settings.social_facebook_link | default: 'https://www.facebook.com/cichoszau/?locale=pl_PL' }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 bg-[#120a12] flex items-center justify-center text-gray-400 hover:border-[#f20df2] hover:bg-[#f20df2] hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="{{ settings.social_instagram_link | default: 'https://www.instagram.com/cichoszau/' }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 bg-[#120a12] flex items-center justify-center text-gray-400 hover:border-[#f20df2] hover:bg-[#f20df2] hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="{{ settings.social_tiktok_link | default: 'https://www.tiktok.com/@cichoszau.silent' }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 bg-[#120a12] flex items-center justify-center text-gray-400 hover:border-[#f20df2] hover:bg-[#f20df2] hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Links Columns -->
+            <div class="space-y-6">
+                <h3 class="text-white font-black uppercase tracking-wider text-sm">USŁUGI</h3>
+                <ul class="space-y-4 text-[11px] text-gray-400 font-medium">
+                    <li><a href="/pages/imprezy-firmowe-silent-disco" class="hover:text-[#f20df2] transition uppercase text-left">EVENTY B2B</a></li>
+                    <li><a href="/pages/kino-plenerowe-silent-disco" class="hover:text-[#f20df2] transition uppercase text-left">KINO PLENEROWE</a></li>
+                    <li><a href="/pages/konferencje-na-sluchawkach-silent-disco" class="hover:text-[#f20df2] transition uppercase text-left">KONFERENCJE</a></li>
+                    <li><a href="/pages/silent-disco-na-festiwalach" class="hover:text-[#f20df2] transition uppercase text-left">FESTIWALE</a></li>
+                    <li><a href="https://cichoszau.pl/pages/cennik-silent-disco" class="hover:text-[#f20df2] transition uppercase text-left font-bold text-[#f20df2]">CENNIK</a></li>
+                </ul>
+            </div>
+            <div class="space-y-6">
+                <h3 class="text-white font-black uppercase tracking-wider text-sm">AGENCJA</h3>
+                <ul class="space-y-4 text-[11px] text-gray-400 font-medium">
+                    <li><a href="/pages/o-nas" class="hover:text-[#f20df2] transition uppercase">O NAS</a></li>
+                    <li><a href="/pages/realizacje" class="hover:text-[#f20df2] transition uppercase">REALIZACJE</a></li>
+                    <li><a href="/pages/kariera" class="hover:text-[#f20df2] transition uppercase">KARIERA</a></li>
+                    <li><a href="/pages/kontakt" class="hover:text-[#f20df2] transition uppercase">KONTAKT</a></li>
+                </ul>
+            </div>
+            <div class="space-y-6">
+                <h3 class="text-white font-black uppercase tracking-wider text-sm">LOKALIZACJE</h3>
+                <ul class="space-y-4 text-[11px] text-gray-400 font-medium mb-8">
+                    <li><a href="/pages/miasta#wroclaw" class="hover:text-[#f20df2] transition uppercase" title="Wynajem słuchawek silent disco Wrocław">Wrocław</a></li>
+                    <li><a href="/pages/miasta#warszawa" class="hover:text-[#f20df2] transition uppercase" title="Silent disco wynajem Warszawa">Warszawa</a></li>
+                    <li><a href="/pages/miasta#krakow" class="hover:text-[#f20df2] transition uppercase" title="Słuchawki na imprezę Kraków">Kraków</a></li>
+                    <li><a href="/pages/miasta" class="hover:text-[#f20df2] transition uppercase underline">CAŁA POLSKA →</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Usunięta Mapa Google -->
+        <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-medium space-y-4 md:space-y-0">
+            <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. High-Energy Vibes Only.</p>
+            <div class="flex gap-6 justify-center">
+                <a href="https://cichoszau.pl/pages/regulamin" class="hover:text-white transition uppercase tracking-wider">Regulamin</a>
+                <a href="https://cichoszau.pl/pages/polityka-prywatnosci" class="hover:text-white transition uppercase tracking-wider">Polityka Prywatności</a>
+            </div>
+            <div>
+                Designed for Impact. Engine: Shopify Web Context.
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

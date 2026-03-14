@@ -1,0 +1,125 @@
+<section class="pt-24 min-h-screen bg-[#221022] pb-24" id="ticket-system">
+    
+    <!-- Hero Header -->
+    <div class="pt-32 pb-16 border-b border-white/5 bg-[#221022] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="text-[#f20df2] font-bold uppercase tracking-widest text-[10px] mb-4 block">BILETSERWIS CICHOSZAU</span>
+            <h1 class="text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter leading-none mb-6">
+                {{ section.settings.heading | default: "ZŁAP <span class='text-transparent' style='-webkit-text-stroke: 1px gray;'>BILET</span> NA EVENT" }}
+            </h1>
+            <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto font-medium">
+                {{ section.settings.subheading | default: 'Zaloguj się, aby zakupić bilet. Każda wejściówka jest powiązana z Twoim kontem, co pozwala na sprawne przypisanie słuchawek przy wejściu.' }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="events-grid">
+                
+                {% assign ticket_collection = collections[section.settings.ticket_collection] %}
+                
+                {% if ticket_collection.products.size > 0 %}
+                    {% for product in ticket_collection.products %}
+                        <div 
+                            class="event-card group bg-[#221022] border border-white/5 rounded-[40px] overflow-hidden hover:border-[#f20df2]/50 transition-all duration-500 hover:-translate-y-3 relative flex flex-col justify-between"
+                        >
+                            <a href="{{ product.url }}" class="absolute inset-0 z-40"></a>
+                            <div>
+                                <div class="relative aspect-video overflow-hidden">
+                                    <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" loading="lazy" />
+                                    
+                                    <div class="absolute top-4 left-4 bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] text-[#0a050a] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                                        {{ product.type | default: 'Bilet' }}
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                </div>
+                                
+                                <div class="p-8 pb-0">
+                                    <h3 class="text-2xl font-black text-white uppercase italic tracking-tight mb-4 group-hover:text-[#f20df2] transition-colors line-clamp-2">{{ product.title }}</h3>
+                                    
+                                    {% if product.description != blank %}
+                                    <div class="text-gray-400 text-xs font-medium line-clamp-3 mb-6 relative z-10">
+                                        {{ product.description | strip_html | truncatewords: 25 }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="p-8 pt-6 mt-auto border-t border-white/5 relative z-30">
+                                <div class="flex justify-between items-end">
+                                    <div>
+                                        {% if product.price_varies %}
+                                            <p class="text-[10px] font-bold text-gray-600 uppercase mb-1">Cena od</p>
+                                        {% else %}
+                                            <p class="text-[10px] font-bold text-gray-600 uppercase mb-1">Cena</p>
+                                        {% endif %}
+                                        
+                                        <div class="flex items-center gap-2">
+                                            {% if product.compare_at_price > product.price %}
+                                                <p class="text-sm font-bold text-gray-500 line-through">{{ product.compare_at_price | money }}</p>
+                                            {% endif %}
+                                            <p class="text-2xl font-black text-white">{{ product.price | money }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="px-6 py-3 rounded-2xl bg-white/5 group-hover:bg-white group-hover:text-black border border-white/10 text-white font-black uppercase text-xs tracking-widest transition-all flex items-center gap-2 relative z-50 pointer-events-none group-hover:bg-gradient-to-r group-hover:from-[#f20df2] group-hover:via-[#ff5f1f] group-hover:to-[#ffd700] group-hover:text-[#0a050a] group-hover:border-transparent btn-glow shadow-none">
+                                        Kup bilet 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <!-- Pusty Stan / Brak Biletów w Kolekcji -->
+                    <div class="col-span-full p-12 text-center bg-white/5 border border-white/10 rounded-[40px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-gray-600 mb-6"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/><path d="M6 10v4"/></svg>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-wider mb-2">Brak Nadchodzących Wydarzeń</h3>
+                        <p class="text-gray-400 font-medium">Obecnie nie prowadzimy sprzedaży biletów na żadne wydarzenie z tej kategorii.</p>
+                        
+                        <!-- Panel dla administratora -->
+                        {% if request.design_mode %}
+                        <div class="mt-8 inline-block bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs px-6 py-4 rounded-2xl font-mono text-left max-w-lg mx-auto">
+                            <strong>[Tryb Edytora] Dlaczego tu pusto?</strong><br/><br/>
+                            1. Upewnij się, że przypiąłeś poniżej kolekcję (np. "Bilety").<br/>
+                            2. Upewnij się, że nowo dodany Produkt wpada do tej samej kolekcji z poziomu panelu Shopify.
+                        </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bilety z Produktów",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "ticket_collection",
+      "label": "Wybierz Kolekcję zawierającą Bilety",
+      "info": "Moduł automatycznie wyświetla każdy nowy bilet dodany do panelu sklepu w zakładce Produkty jako nowy kafel wizualny."
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Główny Nagłówek",
+      "default": "ZŁAP <span class='text-transparent' style='-webkit-text-stroke: 1px gray;'>BILET</span> NA EVENT"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Podtytuł sekcji"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bilety z Produktów (Automat)"
+    }
+  ]
+}
+{% endschema %}

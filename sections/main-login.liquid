@@ -1,0 +1,51 @@
+<div class="min-h-screen bg-[#221022] flex items-center justify-center p-4 pt-32">
+    <div class="max-w-md w-full bg-[#221022] border border-white/10 p-8 rounded-3xl relative overflow-hidden group">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#f20df2]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        
+        <div class="text-center mb-10 relative z-10">
+            <h1 class="text-3xl font-black text-white uppercase italic tracking-wider mb-2">Zaloguj Się</h1>
+            <p class="text-gray-400 text-sm">Witamy ponownie w Cichoszau</p>
+        </div>
+
+        {% form 'customer_login', class: 'space-y-6 relative z-10' %}
+            {{ form.errors | default_errors }}
+            
+            <div class="space-y-2">
+                <label for="CustomerEmail" class="block text-xs font-bold text-gray-400 uppercase tracking-widest">Email</label>
+                <input type="email"
+                    name="customer[email]"
+                    id="CustomerEmail"
+                    class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#f20df2] focus:ring-1 focus:ring-[#f20df2] transition-colors"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    aria-required="true"
+                    required
+                >
+            </div>
+
+            <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                    <label for="CustomerPassword" class="block text-xs font-bold text-gray-400 uppercase tracking-widest">Hasło</label>
+                    <a href="#recover" class="text-xs text-[#f20df2] hover:text-white transition-colors">Zapomniałeś hasła?</a>
+                </div>
+                <input type="password"
+                    name="customer[password]"
+                    id="CustomerPassword"
+                    class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#f20df2] focus:ring-1 focus:ring-[#f20df2] transition-colors"
+                    autocomplete="current-password"
+                    aria-required="true"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="w-full bg-white text-[#0a050a] font-black uppercase tracking-widest py-4 rounded-xl hover:bg-[#f20df2] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(242,13,242,0.3)] mt-4">
+                Zaloguj
+            </button>
+            
+            <div class="text-center mt-6">
+                <a href="{{ routes.account_register_url }}" class="text-sm text-gray-400 hover:text-white transition-colors">Nie masz konta? Zarejestruj się</a>
+            </div>
+        {% endform %}
+    </div>
+</div>
