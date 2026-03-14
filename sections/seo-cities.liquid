@@ -294,6 +294,29 @@
     });
     
     // Zablokuj skrolowanie pod modalem jeśli potrzeba (opcjonalnie)
+
+    // Intercept city card clicks to open the modal instead of redirecting
+    document.addEventListener('DOMContentLoaded', () => {
+        const cityCards = document.querySelectorAll('.city-card');
+        
+        cityCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault(); // Zatrzymaj domyślne otwieranie strony miasta
+                
+                // Pobierz nazwę miasta z h3
+                const cityNameElement = card.querySelector('h3');
+                const cityName = cityNameElement ? cityNameElement.innerText.trim() : 'Miasto';
+                
+                // Pobierz 'handle' z adresu URL (np. z /pages/miasto/warszawa -> warszawa)
+                // Używamy pathname aby upewnić się, że nie łapiemy domeny itp.
+                const url = new URL(card.href, window.location.origin);
+                const pathParts = url.pathname.split('/');
+                const handle = pathParts[pathParts.length - 1]; 
+                
+                openCityModal(handle, cityName);
+            });
+        });
+    });
 </script>
 
 {% schema %}
