@@ -1,11 +1,12 @@
-<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black" id="hero-video-section">
+<section id="hero-video-section" style="position: relative; width: 100%; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #000;">
     <!-- === WARSTWA: Film / Zdjęcie (video only bez gradientów) === -->
     {% if section.settings.bg_video != blank or section.settings.bg_video_mobile != blank %}
-        <div class="absolute inset-0 w-full h-full" style="z-index: 10;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
             {% if section.settings.bg_video != blank %}
             <video
                 id="hero-bg-video-desktop"
-                class="w-full h-full object-cover will-change-transform {% if section.settings.bg_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
+                class="will-change-transform {% if section.settings.bg_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
+                style="width: 100%; height: 100%; object-fit: cover;"
                 autoplay loop muted playsinline preload="auto" fetchpriority="high"
                 {% if section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 1920 }}"{% endif %}
             >
@@ -18,7 +19,8 @@
             {% if section.settings.bg_video_mobile != blank %}
             <video
                 id="hero-bg-video-mobile"
-                class="w-full h-full object-cover will-change-transform {% if section.settings.bg_video != blank %}block md:hidden{% else %}block{% endif %}"
+                class="will-change-transform {% if section.settings.bg_video != blank %}block md:hidden{% else %}block{% endif %}"
+                style="width: 100%; height: 100%; object-fit: cover;"
                 autoplay loop muted playsinline preload="auto" fetchpriority="high"
                 {% if section.settings.bg_image_mobile %}poster="{{ section.settings.bg_image_mobile | image_url: width: 800 }}"{% elsif section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 800 }}"{% endif %}
             >
@@ -29,7 +31,7 @@
             {% endif %}
         </div>
     {% elsif section.settings.bg_image or section.settings.bg_image_mobile %}
-        <div class="absolute inset-0 w-full h-full" style="z-index: 10;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
             <picture>
                 {% if section.settings.bg_image_mobile %}
                 <source media="(max-width: 767px)" srcset="{{ section.settings.bg_image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }} 800w">
@@ -38,7 +40,8 @@
                 <source media="(min-width: 768px)" srcset="{{ section.settings.bg_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }} 1920w">
                 <img
                     alt="{{ section.settings.bg_image.alt | default: 'CICHOSZAU Silent Disco' }}"
-                    class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                    class="transition-all duration-1000 will-change-transform"
+                    style="width: 100%; height: 100%; object-fit: cover;"
                     id="hero-bg-img"
                     src="{{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }}"
                     fetchpriority="high"
@@ -47,7 +50,8 @@
                 {% elsif section.settings.bg_image_mobile %}
                 <img
                     alt="{{ section.settings.bg_image_mobile.alt | default: 'CICHOSZAU Silent Disco Mobile' }}"
-                    class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                    class="transition-all duration-1000 will-change-transform"
+                    style="width: 100%; height: 100%; object-fit: cover;"
                     id="hero-bg-img"
                     src="{{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }}"
                     fetchpriority="high"
@@ -57,10 +61,11 @@
             </picture>
         </div>
     {% else %}
-        <div class="absolute inset-0 w-full h-full" style="z-index: 10;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
             <img
                 alt="Silent Disco Party Crowd"
-                class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                class="transition-all duration-1000 will-change-transform"
+                style="width: 100%; height: 100%; object-fit: cover;"
                 id="hero-bg-img"
                 src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1920&auto=format&fit=crop"
                 fetchpriority="high"
