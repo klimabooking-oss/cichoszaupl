@@ -1,91 +1,30 @@
 <section id="hero-video-section" style="position: relative; width: 100%; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #000;">
     <!-- === WARSTWA: Film / Zdjęcie (video only bez gradientów) === -->
-    {% if section.settings.bg_video != blank or section.settings.bg_video_mobile != blank %}
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
-            {% if section.settings.bg_video != blank %}
             <video
-                id="hero-bg-video-desktop"
-                class="will-change-transform {% if section.settings.bg_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
-                style="width: 100%; height: 100%; object-fit: cover;"
+                id="hero-bg-parallax"
+                class="will-change-transform"
+                style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"
                 autoplay loop muted playsinline preload="auto" fetchpriority="high"
-                {% if section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 1920 }}"{% endif %}
             >
-                {% for source in section.settings.bg_video.sources %}
-                    <source src="{{ source.url }}" type="video/{{ source.format }}">
-                {% endfor %}
+                <source src="{{ 'hero_parallax_video.mp4' | asset_url }}" type="video/mp4">
             </video>
-            {% endif %}
-
-            {% if section.settings.bg_video_mobile != blank %}
-            <video
-                id="hero-bg-video-mobile"
-                class="will-change-transform {% if section.settings.bg_video != blank %}block md:hidden{% else %}block{% endif %}"
-                style="width: 100%; height: 100%; object-fit: cover;"
-                autoplay loop muted playsinline preload="auto" fetchpriority="high"
-                {% if section.settings.bg_image_mobile %}poster="{{ section.settings.bg_image_mobile | image_url: width: 800 }}"{% elsif section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 800 }}"{% endif %}
-            >
-                {% for source in section.settings.bg_video_mobile.sources %}
-                    <source src="{{ source.url }}" type="video/{{ source.format }}">
-                {% endfor %}
-            </video>
-            {% endif %}
         </div>
-    {% elsif section.settings.bg_image or section.settings.bg_image_mobile %}
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
-            <picture>
-                {% if section.settings.bg_image_mobile %}
-                <source media="(max-width: 767px)" srcset="{{ section.settings.bg_image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }} 800w">
-                {% endif %}
-                {% if section.settings.bg_image %}
-                <source media="(min-width: 768px)" srcset="{{ section.settings.bg_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }} 1920w">
-                <img
-                    alt="{{ section.settings.bg_image.alt | default: 'CICHOSZAU Silent Disco' }}"
-                    class="transition-all duration-1000 will-change-transform"
-                    style="width: 100%; height: 100%; object-fit: cover;"
-                    id="hero-bg-img"
-                    src="{{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }}"
-                    fetchpriority="high"
-                    loading="eager"
-                />
-                {% elsif section.settings.bg_image_mobile %}
-                <img
-                    alt="{{ section.settings.bg_image_mobile.alt | default: 'CICHOSZAU Silent Disco Mobile' }}"
-                    class="transition-all duration-1000 will-change-transform"
-                    style="width: 100%; height: 100%; object-fit: cover;"
-                    id="hero-bg-img"
-                    src="{{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }}"
-                    fetchpriority="high"
-                    loading="eager"
-                />
-                {% endif %}
-            </picture>
-        </div>
-    {% else %}
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
-            <img
-                alt="Silent Disco Party Crowd"
-                class="transition-all duration-1000 will-change-transform"
-                style="width: 100%; height: 100%; object-fit: cover;"
-                id="hero-bg-img"
-                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1920&auto=format&fit=crop"
-                fetchpriority="high"
-                loading="eager"
-            />
-        </div>
-    {% endif %}
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Parallax scroll effect
-            const bgEl = document.getElementById('hero-bg-video-desktop') || document.getElementById('hero-bg-video-mobile') || document.getElementById('hero-bg-img');
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if(scrollY < window.innerHeight) {
-                    if (bgEl) {
-                        bgEl.style.transform = `translateY(${scrollY * 0.2}px) scale(${1.1 + scrollY * 0.0005})`;
+            // Strong Parallax scroll effect
+            const bgEl = document.getElementById('hero-bg-parallax');
+            
+            if (bgEl) {
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.scrollY;
+                    if(scrollY < window.innerHeight) {
+                        // Translate heavily by Y axis for parallax depth, scale lightly to prevent uncovering edges
+                        bgEl.style.transform = `translateY(${scrollY * 0.4}px) scale(${1.15 + scrollY * 0.0002})`;
                     }
-                }
-            }, { passive: true });
+                }, { passive: true });
+            }
         });
     </script>
 </section>
