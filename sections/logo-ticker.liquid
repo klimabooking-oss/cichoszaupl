@@ -15,9 +15,9 @@
         </div>
 
         <!-- Desktop Grid -->
-        <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-{{ section.settings.columns | default: 5 }} gap-px rounded-3xl overflow-hidden" style="background: rgba(242,13,242,0.5);">
+        <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-{{ section.settings.columns | default: 5 }} gap-0 rounded-3xl overflow-hidden bg-[#221022] border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
             {% for block in section.blocks %}
-                <div class="logo-cell group w-full flex items-center justify-center p-9 cursor-default ticker-animate-in"
+                <div class="logo-cell group w-full flex items-center justify-center p-9 cursor-default ticker-animate-in border-r border-b border-[#f20df2]/30 shadow-[0_0_10px_rgba(242,13,242,0.1)]"
                      data-delay="{{ forloop.index0 | times: 60 }}"
                      style="background:#221022; transition:background 0.3s, box-shadow 0.3s; opacity:0; transform:scale(0.7); box-shadow: inset 0 0 15px rgba(242,13,242,0.15);"
                      onmouseenter="this.style.background='#2d152d'; this.style.boxShadow='inset 0 0 25px rgba(242,13,242,0.3)'"
@@ -38,7 +38,7 @@
             {% else %}
                 {% assign default_logos = "Platinum Mtn,Blue Mountain,Gorskie Resorty,Aperol Spritz,Phinance,Wroclaw Airport,Pasibus,Radio Wroclaw,Equinox,Budweiser" | split: "," %}
                 {% for logo in default_logos %}
-                    <div class="logo-cell group w-full flex items-center justify-center p-9 ticker-animate-in"
+                    <div class="logo-cell group w-full flex items-center justify-center p-9 ticker-animate-in border-r border-b border-[#f20df2]/30 shadow-[0_0_10px_rgba(242,13,242,0.1)]"
                          data-delay="{{ forloop.index0 | times: 60 }}"
                         style="background:#221022; transition:background 0.3s, box-shadow 0.3s; opacity:0; transform:scale(0.7); box-shadow: inset 0 0 15px rgba(242,13,242,0.15);"
                          onmouseenter="this.style.background='#2d152d'; this.style.boxShadow='inset 0 0 25px rgba(242,13,242,0.3)'"
