@@ -1,30 +1,48 @@
-<section class="min-h-[90vh] bg-background-dark relative overflow-hidden" id="city-landing" style="padding-top: 60px; padding-bottom: 60px;">
+<section class="min-h-[90vh] bg-background-dark relative overflow-hidden" id="city-landing" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     
-    <!-- Hero Section -->
-    <div class="relative min-h-[90vh] flex items-center overflow-hidden">
-        
-        <!-- === WARSTWA 1: Gradient fioletowy (najniżej) === -->
-        <div class="absolute inset-0 pointer-events-none" style="z-index: 0;">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/90 to-[#221022]/30"></div>
-        </div>
+    <!-- === WARSTWA 1: Gradient fioletowy (najniżej) === -->
+    <div class="absolute inset-0 pointer-events-none" style="z-index: 0;">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/90 to-[#221022]/30"></div>
+    </div>
 
-        <!-- === WARSTWA 2: Film / Zdjęcie (po prawej, za napisami) === -->
-        {% if section.settings.hero_video != blank %}
-            <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
-                <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
-                <video
-                    class="absolute inset-0 w-full h-full object-cover"
-                    autoplay loop muted playsinline preload="auto"
-                    style="opacity: 0.85; z-index: 10;"
-                >
-                    {% for source in section.settings.hero_video.sources %}
-                        <source src="{{ source.url }}" type="video/{{ source.format }}">
-                    {% endfor %}
-                </video>
-            </div>
-        {% elsif section.settings.hero_image != blank %}
-            <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
-                <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+    <!-- === WARSTWA 2: Film / Zdjęcie (po prawej, za napisami) === -->
+    {% if section.settings.hero_video != blank or section.settings.hero_video_mobile != blank %}
+        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+            
+            {% if section.settings.hero_video != blank %}
+            <video
+                class="absolute inset-0 w-full h-full object-cover {% if section.settings.hero_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
+                autoplay loop muted playsinline preload="auto"
+                style="opacity: 0.85; z-index: 10;"
+            >
+                {% for source in section.settings.hero_video.sources %}
+                    <source src="{{ source.url }}" type="video/{{ source.format }}">
+                {% endfor %}
+            </video>
+            {% endif %}
+
+            {% if section.settings.hero_video_mobile != blank %}
+            <video
+                class="absolute inset-0 w-full h-full object-cover {% if section.settings.hero_video != blank %}block md:hidden{% else %}block{% endif %}"
+                autoplay loop muted playsinline preload="auto"
+                style="opacity: 0.85; z-index: 10;"
+            >
+                {% for source in section.settings.hero_video_mobile.sources %}
+                    <source src="{{ source.url }}" type="video/{{ source.format }}">
+                {% endfor %}
+            </video>
+            {% endif %}
+        </div>
+    {% elsif section.settings.hero_image != blank or section.settings.hero_image_mobile != blank %}
+        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+            <picture>
+                {% if section.settings.hero_image_mobile != blank %}
+                <source media="(max-width: 767px)" srcset="{{ section.settings.hero_image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.hero_image_mobile | image_url: width: 800, format: 'webp' }} 800w">
+                {% endif %}
+                {% if section.settings.hero_image != blank %}
+                <source media="(min-width: 768px)" srcset="{{ section.settings.hero_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }} 1920w">
                 <img
                     src="{{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }}"
                     alt="{{ metaobject.nazwa.value | default: 'Wynajem Słuchawek' }}"
@@ -33,29 +51,43 @@
                     loading="eager"
                     fetchpriority="high"
                 />
-            </div>
-        {% else %}
-            <!-- Fallback Image -->
-            <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
-                <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
-                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" style="opacity: 0.85; z-index: 10;" />
-            </div>
-        {% endif %}
+                {% elsif section.settings.hero_image_mobile != blank %}
+                <img
+                    src="{{ section.settings.hero_image_mobile | image_url: width: 800, format: 'webp' }}"
+                    alt="{{ metaobject.nazwa.value | default: 'Wynajem Słuchawek' }} Mobile"
+                    class="absolute inset-0 w-full h-full object-cover"
+                    style="opacity: 0.85; z-index: 10;"
+                    loading="eager"
+                    fetchpriority="high"
+                />
+                {% endif %}
+            </picture>
+        </div>
+    {% else %}
+        <!-- Fallback Image -->
+        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" style="opacity: 0.85; z-index: 10;" alt="" />
+        </div>
+    {% endif %}
 
+    <!-- Hero Section -->
+    <div class="relative min-h-[90vh] flex items-center overflow-hidden z-30 w-full">
+        
         <!-- === WARSTWA 3: Treść (napisów i przycisk po lewej) === -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-24 flex items-center" style="z-index: 30;">
+        <div class="relative max-w-7xl mx-auto px-5 w-full py-24 flex items-center" style="z-index: 30;">
             <div class="w-full max-w-2xl" data-animate="fade-up">
                 <span class="inline-block px-4 py-2 rounded-full bg-yellow-400/20 text-yellow-400 border border-yellow-400/50 font-bold uppercase tracking-widest text-sm mb-6 animate-fade-in-up">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-2 -mt-1"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Strefa Dostaw
                 </span>
                 
-                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 uppercase italic leading-none animate-fade-in-up md:delay-100 flex flex-col items-start">
+                <h1 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-black text-white mb-4 uppercase italic leading-none animate-fade-in-up md:delay-100 flex flex-col items-start" style="text-wrap: balance;">
                     <span class="text-sm md:text-base text-gray-300 font-bold tracking-widest uppercase mb-4 not-italic font-sans">Profesjonalny Wynajem Słuchawek</span>
                     <span>Silent Disco</span>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700]">{{ metaobject.nazwa.value }}</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] leading-[1.1]">{{ metaobject.nazwa.value }}</span>
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-gray-300 font-medium mb-12 leading-relaxed animate-fade-in-up md:delay-200 max-w-xl">
+                <p class="text-lg md:text-xl text-gray-300 font-medium mb-12 leading-relaxed animate-fade-in-up md:delay-200 max-w-xl" style="text-wrap: balance;">
                     {{ metaobject.krotki_opis.value | default: 'Wynajem bezprzewodowych słuchawek z szybką dostawą kurierską prosto pod Twoje drzwi.' }}
                 </p>
                 
@@ -71,11 +103,11 @@
     </div>
 
     <!-- Reszta zawartości na dole (Boxy itp) -->
-    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative z-20 max-w-7xl mx-auto px-5">
 
         <!-- 3 Info Boxy (Czas dostawy, Ilość słuchawek itp) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 max-w-5xl mx-auto" data-animate-stagger="fade-up">
-            <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm flex flex-col items-center text-center group hover:bg-[#f20df2]/5 hover:border-[#f20df2]/20 transition-all duration-300">
+            <div class="p-8 rounded-3xl bg-white/[0.02] border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] backdrop-blur-sm flex flex-col items-center text-center group hover:bg-[#f20df2]/5 hover:border-[#f20df2]/20 transition-all duration-300">
                 <div class="w-16 h-16 rounded-full bg-[#f20df2]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f20df2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.2a2 2 0 0 1 1.93 1.46l1.37 5.08A2 2 0 0 0 11.43 14h5.14a2 2 0 0 0 1.93-1.46l1.37-5.08A2 2 0 0 1 21.8 6H24"/><circle cx="8" cy="18" r="2"/><circle cx="19" cy="18" r="2"/></svg>
                 </div>
@@ -84,7 +116,7 @@
                 <p class="text-gray-400 text-sm">Przesyłki obsługiwane przez sprawdzone firmy kurierskie (DPD/DHL).</p>
             </div>
 
-            <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm flex flex-col items-center text-center group hover:bg-[#ff5f1f]/5 hover:border-[#ff5f1f]/20 transition-all duration-300">
+            <div class="p-8 rounded-3xl bg-white/[0.02] border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] backdrop-blur-sm flex flex-col items-center text-center group hover:bg-[#ff5f1f]/5 hover:border-[#ff5f1f]/20 transition-all duration-300">
                 <div class="w-16 h-16 rounded-full bg-[#ff5f1f]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff5f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
@@ -93,7 +125,7 @@
                 <p class="text-gray-400 text-sm">Wynajmujemy sprzęt na terenie miasta, przedmieść oraz całej Polski.</p>
             </div>
 
-            <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm flex flex-col items-center text-center group hover:bg-[#ffd700]/5 hover:border-[#ffd700]/20 transition-all duration-300">
+            <div class="p-8 rounded-3xl bg-white/[0.02] border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] backdrop-blur-sm flex flex-col items-center text-center group hover:bg-[#ffd700]/5 hover:border-[#ffd700]/20 transition-all duration-300">
                 <div class="w-16 h-16 rounded-full bg-[#ffd700]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
                 </div>
@@ -106,15 +138,16 @@
         <!-- Usunięty główny tekst SEO z tego miejsca - przeniesiony na dół pliku pod lejek -->
 
         <!-- Sekcja Technologiczna: Sprzęt 3D i PDF -->
-        <div class="mt-20 mb-20">
-            <div class="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto p-8 lg:p-12 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 shadow-2xl relative overflow-hidden group">
+        <div class="mt-20 mb-20 w-full">
+            <div class="flex flex-col justify-center items-center md:flex-row md:items-stretch gap-12 w-full mx-auto p-8 lg:p-12 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] shadow-2xl relative overflow-hidden group">
                 <!-- Tło do hovera -->
                 <div class="absolute inset-0 bg-[#f20df2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                 
-                <div class="w-full lg:w-1/2 relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(242,13,242,0.15)] bg-background-dark flex items-center justify-center">
+                <div class="w-full md:w-1/2 lg:w-5/12 mx-auto relative aspect-square rounded-2xl overflow-hidden border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] shadow-[0_0_30px_rgba(242,13,242,0.15)] bg-background-dark flex items-center justify-center">
                     {% if section.settings.tech_video != blank %}
                         <video
-                            class="absolute inset-0 w-full h-full object-cover filter brightness-75 group-hover:brightness-100 transition-all duration-700"
+                            class="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 group-hover:brightness-100 transition-all duration-700"
+                            style="width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center !important; position: absolute !important; top: 0 !important; left: 0 !important; margin: 0 !important; padding: 0 !important;"
                             autoplay loop muted playsinline preload="auto"
                         >
                             {% for source in section.settings.tech_video.sources %}
@@ -125,7 +158,8 @@
                         <img
                             src="{{ section.settings.tech_image | image_url: width: 800, format: 'webp' }}"
                             alt="Technologia Silent Disco"
-                            class="absolute inset-0 w-full h-full object-cover filter brightness-50 group-hover:brightness-75 transition-all duration-700"
+                            class="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 group-hover:brightness-100 transition-all duration-700"
+                            style="width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center !important; position: absolute !important; top: 0 !important; left: 0 !important;"
                             loading="lazy"
                         />
                     {% else %}
@@ -146,7 +180,7 @@
                     </span>
                 </div>
 
-                <div class="w-full lg:w-1/2">
+                <div class="w-full md:w-1/2 lg:w-7/12 relative z-10 flex flex-col justify-center">
                     <span class="text-[#f20df2] font-black uppercase tracking-widest text-sm mb-2 block border-l-2 border-[#f20df2] pl-3">Poznaj sprzęt</span>
                     <h2 class="text-3xl md:text-5xl font-black text-white italic tracking-tighter mb-6">
                         Technologia <br/>
@@ -176,7 +210,7 @@
 
                 <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
                     <div class="md:w-2/3">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/20 text-white text-[10px] font-black uppercase tracking-widest mb-6 border border-white/10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/20 text-white text-[10px] font-black uppercase tracking-widest mb-6 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                             🔥 Rozszerzenie Pakietu
                         </div>
                         <h2 class="text-4xl md:text-5xl font-black text-white italic tracking-tighter mb-4 leading-none">
@@ -209,7 +243,7 @@
                 </h2>
             </div>
 
-            <div class="p-8 md:p-14 rounded-[2.5rem] bg-[#221022]/80 border border-white/10 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl group">
+            <div class="p-8 md:p-14 rounded-[2.5rem] bg-[#221022]/80 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl group">
                 <!-- Dekoracyjne tło pod tekstem -->
                 <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#f20df2] rounded-full mix-blend-screen filter blur-[120px] opacity-10 group-hover:opacity-20 transition-opacity duration-1000 z-0"></div>
                 <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-[#ff5f1f] rounded-full mix-blend-screen filter blur-[120px] opacity-10 group-hover:opacity-20 transition-opacity duration-1000 z-0"></div>
@@ -228,7 +262,7 @@
                             prose-a:text-[#f20df2] prose-a:font-bold prose-a:no-underline hover:prose-a:text-[#ff5f1f] transition-all
                             text-[1.1rem]">
                     
-                    {{ metaobject.tekst_seo.value | replace: '<ul>', '<ul class="space-y-4 my-8">' | replace: '<li>', '<li class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-[#f20df2]/30 transition-colors"><div class="text-[#f20df2] mt-1 shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span class="block">' | replace: '</li>', '</span></li>' }}
+                    {{ metaobject.tekst_seo.value | replace: '<ul>', '<ul class="space-y-4 my-8">' | replace: '<li>', '<li class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:border-[#f20df2]/30 transition-colors"><div class="text-[#f20df2] mt-1 shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span class="block">' | replace: '</li>', '</span></li>' }}
                 </div>
             </div>
         </div>
@@ -279,12 +313,22 @@
     {
       "type": "video",
       "id": "hero_video",
-      "label": "Film w tle Hero (mp4)"
+      "label": "Film w tle Hero (Desktop 16:9)"
+    },
+    {
+      "type": "video",
+      "id": "hero_video_mobile",
+      "label": "Film w tle Hero (Mobile 9:16)"
     },
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Zdjęcie w tle Hero (fallback)"
+      "label": "Zdjęcie w tle Hero (Desktop 16:9 - fallback)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Zdjęcie w tle Hero (Mobile 9:16 - fallback)"
     },
     {
       "type": "header",
