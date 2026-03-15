@@ -1,0 +1,174 @@
+<section class="bg-[#221022] relative overflow-hidden" id="rental-products-{{ section.id }}" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
+    <div class="max-w-7xl mx-auto px-5 relative z-20">
+        
+        <div class="mb-12 text-center" data-animate="fade-up">
+            <h2 class="text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter mb-4">
+                {{ section.settings.title | default: 'Co zyskujesz w pakiecie?' }}
+            </h2>
+            {% if section.settings.subtitle != blank %}
+                <p class="text-gray-400 max-w-2xl mx-auto">{{ section.settings.subtitle }}</p>
+            {% endif %}
+            <div class="line-glow-scroll w-full h-px mt-6" style="margin-top: 20px !important; height: 1px; width: 100%; background: linear-gradient(to right, transparent, #f20df2, transparent); box-shadow: 0 0 20px rgba(242,13,242,0.8);"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for block in section.blocks %}
+                <div class="group relative glass-card p-6 md:p-8 rounded-3xl border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] hover:border-[#f20df2]/80 transition-all duration-500 flex flex-col h-full" {{ block.shopify_attributes }}>
+                    
+                    <div class="w-full aspect-video rounded-2xl overflow-hidden mb-6 bg-black/40 relative">
+                        {% if block.settings.image != blank %}
+                            <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="text-xl font-black text-white uppercase italic mb-3 group-hover:text-[#f20df2] transition-colors">
+                            {{ block.settings.title }}
+                        </h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            {{ block.settings.short_desc }}
+                        </p>
+
+                        <!-- Expandable Details -->
+                        <details class="group/details mt-auto">
+                            <summary class="flex items-center justify-between cursor-pointer text-[#f20df2] text-sm font-bold uppercase tracking-wider list-none outline-none">
+                                <span>Rozwiń szczegóły</span>
+                                <span class="bg-[#f20df2]/20 w-8 h-8 rounded-full flex items-center justify-center text-[#f20df2] transition-transform duration-300 group-open/details:rotate-180">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </span>
+                            </summary>
+                            <div class="pt-4 mt-4 border-t border-[#f20df2]/20 text-gray-300 text-sm leading-relaxed whitespace-pre-line animate-fade-in">
+                                {{ block.settings.full_desc }}
+                            </div>
+                        </details>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+<style>
+details > summary::-webkit-details-marker {
+  display: none;
+}
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Produkty Wynajmu",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tytuł Sekcji",
+      "default": "Co zyskujesz w pakiecie?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Opcjonalny Podtytuł",
+      "default": "Poznaj wszystkie elementy, które sprawią, że Twój event będzie niezapomniany."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Produkt/Usługa",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Zdjęcie Główne"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tytuł (np. Słuchawki)",
+          "default": "Słuchawki Silent Disco"
+        },
+        {
+          "type": "textarea",
+          "id": "short_desc",
+          "label": "Skrócony Opis",
+          "default": "Krótkie wprowadzenie widoczne od razu na karcie produktu."
+        },
+        {
+          "type": "richtext",
+          "id": "full_desc",
+          "label": "Pełny Opis (Rozwijany)",
+          "default": "<p>Szczegółowy opis, specyfikacja techniczna, co dokładnie zawiera ten element.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Produkty Wynajmu",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "title": "Transmiter",
+            "short_desc": "Serce systemu – profesjonalne rozwiązanie przesyłowe o ogromnym zasięgu z zasilaczem i niezbędnymi audio kablami, a to wszystko spakowane w torbę.",
+            "full_desc": "<p>- Nadawanie dźwięku na odległość nawet do 500 metrów.\n- 3 niezależne kanały nadawania, obsługujące różne strefy lub gatunki.\n- Stabilny, wolny od zakłóceń przesył bezprzewodowy (UHF).</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "Słuchawki",
+            "short_desc": "Nowoczesne, higieniczne słuchawki LED gwarantujące krystaliczny dźwięk. Zobacz jak tańczą w kolorach muzyki.",
+            "full_desc": "<p>- Czas pracy: do 10h bez ładowania.\n- Trzy kolory podświetlenia LED wskazujące aktualny kanał.\n- Dezynfekcja UV po każdym użyciu i nauszniki z ekoskóry łatwe w czyszczeniu.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "Aplikacja (Playlista)",
+            "short_desc": "Gotowe sety muzyczne, dedykowane playlisty dopasowane do charakteru Twojego wydarzenia.",
+            "full_desc": "<p>- Aplikacja z zestawem gotowych playlist na 3 kanały.\n- Możliwość dopasowania nagrań pod motyw imprezy (lata 80., techno, pop).\n- Płynne miksowanie bez udziału na żywo DJ-a.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "DJ na Wyłączność",
+            "short_desc": "Rozkręć imprezę dzięki profesjonalistom, którzy reagują na parkiet na żywo.",
+            "full_desc": "<p>- Interakcja z publiką i prowadzenie imprezy dostosowane do rytmu gości.\n- Dostęp do topowych, lokalnych DJ-ów z wieloletnim doświadczeniem.\n- Pełen profesjonalizm i oprawa zgodna z założeniami eventu.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "Dymiarki i Efekty",
+            "short_desc": "Nadaj imprezie unikalnego klimatu dzięki bezpiecznym i nowoczesnym wyrzutniom dymu.",
+            "full_desc": "<p>- Gęsty dym podkreślający oświetlenie LED na słuchawkach.\n- W pełni kontrolowalne wyrzutnie dymu bezpieczne dla przestrzeni hotelowych.\n- Krótki czas rozpraszania – mocny efekt, bez obciążania wentylacji.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "Reelsy i Content",
+            "short_desc": "Zachowaj wspomnienia lub stwórz viralowy materiał promujący Twoją firmę na social mediach.",
+            "full_desc": "<p>- Profesjonalny operator z systemem gimbal wspierający imprezę.\n- Dynamicznie zmontowane Reelsy/TikToki (pionowo) oddające klimat eventu.\n- Gotowy materiał w 48h od zakończenia wydarzenia, nagrywany najnowszą technologią.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

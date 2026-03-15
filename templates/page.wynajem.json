@@ -26,7 +26,7 @@
         "tech_video": "shopify://files/videos/0311 (1)(1).mp4",
         "subtitle": "Poznaj sprzęt",
         "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
-        "description": "Nasze słuchawki to nie tylko rewelacyjny design, ale przede wszystkim genialna izolacja akustyczna i czysty przekaz audio na 3 niezależnych kanałach. Zobacz z bliska, co zamawiasz.",
+        "description": "Potężny zasięg RF do 500 metrów, gwarancja 10 godzin pracy na baterii oraz rygorystyczny protokół dezynfekcji UV. Postaw na niezawodną technologię wynajmu z 3 niezależnymi kanałami audio.",
         "button_label": "Pobierz PDF (Specyfikacja)",
         "button_link": ""
       }
@@ -276,6 +276,71 @@
         "subtitle": "Skonfiguruj idealny zestaw w 3 minuty."
       }
     },
+    "produkty": {
+      "type": "rental-products",
+      "blocks": {
+        "prod_1": {
+          "type": "product",
+          "settings": {
+            "title": "Transmiter",
+            "short_desc": "Serce systemu – profesjonalne rozwiązanie przesyłowe o ogromnym zasięgu z zasilaczem i kablami audio.",
+            "full_desc": "<p>- Nadawanie dźwięku na odległość nawet do 500 metrów.<br>- 3 niezależne kanały nadawania, obsługujące różne strefy.<br>- Stabilny, wolny od zakłóceń przesył bezprzewodowy (UHF).</p>"
+          }
+        },
+        "prod_2": {
+          "type": "product",
+          "settings": {
+            "title": "Słuchawki",
+            "short_desc": "Nowoczesne, higieniczne słuchawki LED gwarantujące krystaliczny dźwięk. Zobacz jak tańczą w kolorach muzyki.",
+            "full_desc": "<p>- Czas pracy: do 10h bez ładowania.<br>- Trzy kolory podświetlenia LED wskazujące aktualny kanał.<br>- Dezynfekcja UV po każdym użyciu i łatwe w czyszczeniu nauszniki.</p>"
+          }
+        },
+        "prod_3": {
+          "type": "product",
+          "settings": {
+            "title": "Aplikacja z muzyką",
+            "short_desc": "Gotowe sety muzyczne, dedykowane playlisty dopasowane do charakteru Twojego wydarzenia.",
+            "full_desc": "<p>- Aplikacja z zestawem gotowych playlist na 3 kanały.<br>- Możliwość dopasowania nagrań pod motyw imprezy (lata 80., techno, pop).<br>- Płynne miksowanie bez udziału na żywo DJ-a.</p>"
+          }
+        },
+        "prod_4": {
+          "type": "product",
+          "settings": {
+            "title": "DJ na Wyłączność",
+            "short_desc": "Rozkręć imprezę dzięki profesjonalistom, którzy reagują na parkiet na żywo.",
+            "full_desc": "<p>- Interakcja z publiką i prowadzenie imprezy dostosowane do rytmu gości.<br>- Dostęp do topowych, lokalnych DJ-ów z wieloletnim doświadczeniem.<br>- Pełen profesjonalizm i oprawa zgodna z założeniami eventu.</p>"
+          }
+        },
+        "prod_5": {
+          "type": "product",
+          "settings": {
+            "title": "Dymiarki i Efekty",
+            "short_desc": "Nadaj imprezie unikalnego klimatu dzięki bezpiecznym i nowoczesnym wyrzutniom dymu.",
+            "full_desc": "<p>- Gęsty dym podkreślający oświetlenie LED na słuchawkach.<br>- W pełni kontrolowalne wyrzutnie dymu bezpieczne dla przestrzeni hotelowych.<br>- Krótki czas rozpraszania – mocny efekt, bez obciążania wentylacji.</p>"
+          }
+        },
+        "prod_6": {
+          "type": "product",
+          "settings": {
+            "title": "Reelsy i Content",
+            "short_desc": "Zachowaj wspomnienia lub stwórz viralowy materiał promujący Twoją firmę na social mediach.",
+            "full_desc": "<p>- Profesjonalny operator z systemem gimbal wspierający imprezę.<br>- Dynamicznie zmontowane Reelsy/TikToki (pionowo) oddające klimat eventu.<br>- Gotowy materiał w 48h od zakończenia wydarzenia, nagrywany najnowszą technologią.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "prod_1",
+        "prod_2",
+        "prod_3",
+        "prod_4",
+        "prod_5",
+        "prod_6"
+      ],
+      "settings": {
+        "title": "Co wchodzi w skład wynajmu?",
+        "subtitle": "Poznaj wszystkie elementy i opcje dodatkowe, które sprawią, że Twój event będzie niezapomniany."
+      }
+    },
     "faq": {
       "type": "faq",
       "settings": {}
@@ -288,6 +353,7 @@
     "opinie",
     "galeria",
     "kalkulator",
+    "produkty",
     "faq"
   ]
 }
