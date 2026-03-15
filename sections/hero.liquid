@@ -1,42 +1,70 @@
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="hero-section" style="padding-top: 60px; padding-bottom: 60px;">
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden" id="hero-section" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <!-- === WARSTWA 1: Gradient fioletowy (najniżej) === -->
     <div class="absolute inset-0 pointer-events-none" style="z-index: 0;">
         <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/90 to-[#221022]/30"></div>
     </div>
 
     <!-- === WARSTWA 2: Film / Zdjęcie (po prawej, za napisami) === -->
-    {% if section.settings.bg_video != blank %}
+    {% if section.settings.bg_video != blank or section.settings.bg_video_mobile != blank %}
         <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+            {% if section.settings.bg_video != blank %}
             <video
-                id="hero-bg-video"
-                class="w-full h-full object-cover will-change-transform"
+                id="hero-bg-video-desktop"
+                class="w-full h-full object-cover will-change-transform {% if section.settings.bg_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
                 style="opacity: 0.85;"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-                fetchpriority="high"
+                autoplay loop muted playsinline preload="auto" fetchpriority="high"
+                {% if section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 1920 }}"{% endif %}
             >
                 {% for source in section.settings.bg_video.sources %}
                     <source src="{{ source.url }}" type="video/{{ source.format }}">
                 {% endfor %}
             </video>
+            {% endif %}
+
+            {% if section.settings.bg_video_mobile != blank %}
+            <video
+                id="hero-bg-video-mobile"
+                class="w-full h-full object-cover will-change-transform {% if section.settings.bg_video != blank %}block md:hidden{% else %}block{% endif %}"
+                style="opacity: 0.85;"
+                autoplay loop muted playsinline preload="auto" fetchpriority="high"
+                {% if section.settings.bg_image_mobile %}poster="{{ section.settings.bg_image_mobile | image_url: width: 800 }}"{% elsif section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 800 }}"{% endif %}
+            >
+                {% for source in section.settings.bg_video_mobile.sources %}
+                    <source src="{{ source.url }}" type="video/{{ source.format }}">
+                {% endfor %}
+            </video>
+            {% endif %}
             <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
         </div>
-    {% elsif section.settings.bg_image %}
+    {% elsif section.settings.bg_image or section.settings.bg_image_mobile %}
         <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
-            <img
-                alt="CICHOSZAU Silent Disco"
-                class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
-                style="opacity: 0.85;"
-                id="hero-bg-img"
-                src="{{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }}"
-                srcset="{{ section.settings.bg_image | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.bg_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }} 1920w"
-                sizes="100vw"
-                fetchpriority="high"
-                loading="eager"
-            />
+            <picture>
+                {% if section.settings.bg_image_mobile %}
+                <source media="(max-width: 767px)" srcset="{{ section.settings.bg_image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }} 800w">
+                {% endif %}
+                {% if section.settings.bg_image %}
+                <source media="(min-width: 768px)" srcset="{{ section.settings.bg_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }} 1920w">
+                <img
+                    alt="{{ section.settings.bg_image.alt | default: 'CICHOSZAU Silent Disco' }}"
+                    class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                    style="opacity: 0.85;"
+                    id="hero-bg-img"
+                    src="{{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }}"
+                    fetchpriority="high"
+                    loading="eager"
+                />
+                {% elsif section.settings.bg_image_mobile %}
+                <img
+                    alt="{{ section.settings.bg_image_mobile.alt | default: 'CICHOSZAU Silent Disco Mobile' }}"
+                    class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                    style="opacity: 0.85;"
+                    id="hero-bg-img"
+                    src="{{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }}"
+                    fetchpriority="high"
+                    loading="eager"
+                />
+                {% endif %}
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
         </div>
     {% else %}
@@ -68,39 +96,39 @@
     <div class="bg-[#ff5f1f] w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full absolute bottom-[-5%] right-[-5%] blur-[100px] opacity-30 z-10" style="animation: blob 7s infinite alternate ease-in-out; animation-delay: 3s;" data-parallax="-0.12"></div>
     <div class="bg-[#ffd700] w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full absolute top-[40%] right-[10%] opacity-10 blur-[80px] z-10" style="animation: blob 7s infinite alternate ease-in-out; animation-delay: 5s;" data-parallax="0.08"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20 py-10">
-        <div class="inline-flex items-center px-6 py-2 rounded-full border border-[#f20df2]/50 bg-[#221022]/80 backdrop-blur-md mb-8 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+    <div class="relative w-full max-w-7xl mx-auto px-5 text-center z-20 py-10">
+        <div class="inline-flex items-center px-6 py-2 rounded-full border border-[#f20df2]/50 glass-card mb-8 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
             <span class="flex h-3 w-3 rounded-full bg-[#ffd700] mr-3 animate-ping"></span>
             <span class="text-sm font-bold text-white tracking-widest uppercase">High Energy Events Agency</span>
         </div>
         
         <h1 class="sr-only">Wypożyczalnia słuchawek Silent Disco, organizacja imprez i festiwali bezprzewodowych | CICHOSZAU</h1>
-        <div aria-hidden="true" class="text-5xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.9] drop-shadow-2xl">
+        <div aria-hidden="true" class="text-5xl md:text-7xl lg:text-[7rem] font-black text-white tracking-tighter mb-4 lg:mb-6 leading-[0.9] drop-shadow-2xl">
             <div class="transform -rotate-1 hover:rotate-0 transition-transform duration-500"><span id="hero-typewriter">SILENT DISCO</span><span class="hero-cursor" style="border-right:3px solid #f20df2;margin-left:2px;animation:blink-cursor 0.75s step-end infinite;"> </span></div>
             <div class="text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] transform rotate-2 hover:rotate-0 transition-transform duration-500 pb-2">TECHNOLOGIA</div>
             <div class="transform -rotate-1 hover:rotate-0 transition-transform duration-500" style="-webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); color: transparent;">DOŚWIADCZENIE</div>
         </div>
         
-        <p class="mt-8 max-w-3xl mx-auto text-lg md:text-2xl text-gray-200 mb-12 font-medium leading-relaxed drop-shadow-lg">
+        <p class="mt-4 lg:mt-6 max-w-3xl mx-auto text-base md:text-xl text-gray-200 mb-8 lg:mb-10 font-medium leading-relaxed drop-shadow-lg">
             Tworzymy <span class="text-[#ffd700] font-bold">niezapomniane</span> wydarzenia. Połącz magię dźwięku z festiwalową energią Twojej marki.
         </p>
         
         <!-- ═══ SPLIT HERO — 3-Card Segment Selector ═══ -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16 max-w-6xl mx-auto w-full" id="split-hero-cards">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 lg:mb-10 max-w-6xl mx-auto w-full" id="split-hero-cards">
 
             <!-- Card 1: B2B -->
-            <a href="#rental"
-               onclick="document.getElementById('rental')?.scrollIntoView({ behavior: 'smooth' })"
-               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-7 rounded-3xl border border-white/10 bg-[#221022]/60 backdrop-blur-md overflow-hidden cursor-pointer hover:border-blue-400/60 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(96,165,250,0.25)] text-left"
+            <a href="/pages/b2b"
+               aria-label="Przejdź do oferty dla Firm B2B"
+               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-5 rounded-3xl border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] glass-card overflow-hidden cursor-pointer hover:border-[#f20df2]/80 transition-all duration-500 hover:-translate-y-2 text-left"
                data-accent="blue" data-tilt>
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"></div>
+                <!-- Usunięto bg-gradient na prośbę ujednolicenia -->
                 <div>
-                    <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-400/30 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-500/25 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                    <div class="w-14 h-14 rounded-2xl glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-all duration-300 shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2] group-hover:text-white"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
                     </div>
-                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400 mb-2">Dla Firm</div>
-                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-blue-300 transition-colors">Eventy B2B<br>& Integracje</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed">Firmówki, wigilie, konferencje, budowanie zespołu. Pełna obsługa + faktura VAT.</p>
+                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-[#f20df2] mb-2 text-center">Dla Firm</div>
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-[#f20df2] transition-colors text-center">Eventy B2B<br>& Integracje</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed text-center">Firmówki, wigilie, konferencje, budowanie zespołu. Pełna obsługa + faktura VAT.</p>
                 </div>
                 <div class="mt-8 inline-flex justify-center items-center gap-2 text-white font-black text-[12px] md:text-sm uppercase tracking-widest rounded-[1.5rem] px-6 py-4 w-full group-hover:scale-[1.02] transition-all duration-300 text-center transform hover:-translate-y-1 active:translate-y-0 active:border-b-0" style="background-color: #3b82f6; border-bottom: 5px solid #2563eb; box-shadow: 0 10px 20px rgba(59,130,246,0.4), 0 0 15px rgba(59,130,246,0.6);">
                     Odbierz wycenę
@@ -109,20 +137,19 @@
             </a>
 
             <!-- Card 2: Wynajem (center — primary) -->
-            <a href="#rental"
-               onclick="document.getElementById('rental')?.scrollIntoView({ behavior: 'smooth' })"
-               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-7 rounded-3xl border border-[#f20df2]/40 bg-[#f20df2]/5 backdrop-blur-md overflow-hidden cursor-pointer hover:border-[#f20df2]/80 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_25px_70px_rgba(242,13,242,0.35)] text-left scale-[1.02]"
+            <a href="/pages/wynajem"
+               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-5 rounded-3xl glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-500 text-left"
                data-accent="pink">
                 <!-- Badge -->
                 <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#f20df2] text-white text-[10px] font-black uppercase tracking-widest">Popularne</div>
-                <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2]/15 to-transparent pointer-events-none rounded-3xl"></div>
+                <!-- Usunięto bg-gradient -->
                 <div>
-                    <div class="w-14 h-14 rounded-2xl bg-[#f20df2]/20 border border-[#f20df2]/40 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#f20df2]/30 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                    <div class="w-14 h-14 rounded-2xl glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-all duration-300 shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2] group-hover:text-white"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
                     </div>
-                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-[#f20df2] mb-2">Wynajem Sprzętu</div>
-                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-[#f20df2] transition-colors">Słuchawki<br>Plug & Play</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed">Dostawa kurierem, 10h bateria, zasięg 500m. Domówka, wesele, własny event.</p>
+                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-[#f20df2] mb-2 text-center">Wynajem Sprzętu</div>
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-[#f20df2] transition-colors text-center">Słuchawki<br>Plug & Play</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed text-center">Dostawa kurierem, 10h bateria, zasięg 500m. Domówka, wesele, własny event.</p>
                 </div>
                 <div class="mt-8 inline-flex justify-center items-center gap-2 text-white font-black text-[12px] md:text-sm uppercase tracking-widest rounded-[1.5rem] px-6 py-4 w-full group-hover:scale-[1.02] transition-all duration-300 text-center transform hover:-translate-y-1 active:translate-y-0 active:border-b-0" style="background-color: #f20df2; border-bottom: 5px solid #b800b8; box-shadow: 0 10px 20px rgba(242,13,242,0.4), 0 0 15px rgba(242,13,242,0.6);">
                     Odbierz wycenę
@@ -130,21 +157,21 @@
             </a>
 
             <!-- Card 3: B2C / Imprezy -->
-            <a href="#rental"
-               onclick="document.getElementById('rental')?.scrollIntoView({ behavior: 'smooth' })"
-               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-7 rounded-3xl border border-white/10 bg-[#221022]/60 backdrop-blur-md overflow-hidden cursor-pointer hover:border-yellow-400/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(255,215,0,0.2)] text-left"
+            <a href="/pages/bilety"
+               aria-label="Przejdź do kalendarza najbliższych imprez"
+               class="odbierz-wycene-trigger split-card group relative flex flex-col justify-between p-5 rounded-3xl glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-500 text-left"
                data-accent="yellow">
-                <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"></div>
+                <!-- Usunięto bg-gradient -->
                 <div>
-                    <div class="w-14 h-14 rounded-2xl bg-yellow-400/15 border border-yellow-400/30 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-yellow-400/25 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+                    <div class="w-14 h-14 rounded-2xl glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-all duration-300 shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2] group-hover:text-[#0a050a]"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
                     </div>
-                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400 mb-2">Imprezy & Bilety</div>
-                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-yellow-300 transition-colors">Najbliższe<br>Eventy</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed">Beach bary, festiwale, kino plenerowe. Kup bilet i dołącz do następnej imprezy.</p>
+                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-[#f20df2] mb-2 text-center">Imprezy & Bilety</div>
+                    <h2 class="text-xl md:text-2xl font-black text-white uppercase italic leading-tight mb-3 group-hover:text-[#f20df2] transition-colors text-center">Najbliższe<br>Eventy</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed text-center">Beach bary, festiwale, kino plenerowe. Kup bilet i dołącz do następnej imprezy.</p>
                 </div>
                 <div class="mt-8 inline-flex justify-center items-center gap-2 font-black text-[12px] md:text-sm uppercase tracking-widest rounded-[1.5rem] px-6 py-4 w-full group-hover:scale-[1.02] text-center transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 active:border-b-0 text-[#0a050a]" style="background-color: #ffd700; border-bottom: 5px solid #ccac00; box-shadow: 0 10px 20px rgba(255,215,0,0.4), 0 0 15px rgba(255,215,0,0.6);">
-                    Odbierz wycenę
+                    Złap bilet
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="group-hover:translate-x-1 transition-transform" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </div>
             </a>
@@ -153,21 +180,21 @@
         <!-- ═══ END SPLIT HERO ═══ -->
 
         <!-- Stats Grid with Count-up Animations -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto" style="perspective: 1000px;">
-            <div data-val="200" data-suffix="+" data-float="false" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#ffd700]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 -rotate-2">
-                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#ffd700] transition-colors"><span class="counter">0</span>+</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto mt-6 px-5 sm:px-5" style="perspective: 1000px;">
+            <div data-val="200" data-suffix="+" data-float="false" class="stat-card p-6 rounded-2xl glass-card transition duration-300 transform group" style="border: 1px solid rgba(242,13,242,0.2); box-shadow: 0 0 15px rgba(242,13,242,0.05);" onmouseenter="this.style.borderColor='rgba(242,13,242,0.5)'; this.style.boxShadow='0 0 25px rgba(242,13,242,0.2)'; this.style.transform='translateY(-6px) rotate(0)'" onmouseleave="this.style.borderColor='rgba(242,13,242,0.2)'; this.style.boxShadow='0 0 15px rgba(242,13,242,0.05)'; this.style.transform='translateY(0) rotate(-2deg)'">
+                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#f20df2] transition-colors"><span class="counter">0</span>+</div>
                 <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Liczba Eventów</div>
             </div>
-            <div data-val="10" data-suffix="K+" data-float="false" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#ff5f1f]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 rotate-2">
-                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#ff5f1f] transition-colors"><span class="counter">0</span>K+</div>
+            <div data-val="10" data-suffix="K+" data-float="false" class="stat-card p-6 rounded-2xl glass-card transition duration-300 transform group" style="border: 1px solid rgba(242,13,242,0.2); box-shadow: 0 0 15px rgba(242,13,242,0.05);" onmouseenter="this.style.borderColor='rgba(242,13,242,0.5)'; this.style.boxShadow='0 0 25px rgba(242,13,242,0.2)'; this.style.transform='translateY(-6px) rotate(0)'" onmouseleave="this.style.borderColor='rgba(242,13,242,0.2)'; this.style.boxShadow='0 0 15px rgba(242,13,242,0.05)'; this.style.transform='translateY(0) rotate(2deg)'">
+                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#f20df2] transition-colors"><span class="counter">0</span>K+</div>
                 <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Uczestników</div>
             </div>
-            <div data-val="7.4" data-suffix="%" data-float="true" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#f20df2]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 -rotate-2">
+            <div data-val="7.4" data-suffix="%" data-float="true" class="stat-card p-6 rounded-2xl glass-card transition duration-300 transform group" style="border: 1px solid rgba(242,13,242,0.2); box-shadow: 0 0 15px rgba(242,13,242,0.05);" onmouseenter="this.style.borderColor='rgba(242,13,242,0.5)'; this.style.boxShadow='0 0 25px rgba(242,13,242,0.2)'; this.style.transform='translateY(-6px) rotate(0)'" onmouseleave="this.style.borderColor='rgba(242,13,242,0.2)'; this.style.boxShadow='0 0 15px rgba(242,13,242,0.05)'; this.style.transform='translateY(0) rotate(-2deg)'">
                 <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#f20df2] transition-colors"><span class="counter">0</span>%</div>
                 <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">ROAS</div>
             </div>
-            <div data-val="24" data-suffix="h" data-float="false" class="stat-card p-4 md:p-6 rounded-2xl bg-[#221022]/60 backdrop-blur-md border border-white/10 hover:border-[#ffd700]/50 transition duration-300 transform hover:-translate-y-2 group hover:rotate-0 rotate-2">
-                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#ffd700] transition-colors"><span class="counter">0</span>h</div>
+            <div data-val="24" data-suffix="h" data-float="false" class="stat-card p-6 rounded-2xl glass-card transition duration-300 transform group" style="border: 1px solid rgba(242,13,242,0.2); box-shadow: 0 0 15px rgba(242,13,242,0.05);" onmouseenter="this.style.borderColor='rgba(242,13,242,0.5)'; this.style.boxShadow='0 0 25px rgba(242,13,242,0.2)'; this.style.transform='translateY(-6px) rotate(0)'" onmouseleave="this.style.borderColor='rgba(242,13,242,0.2)'; this.style.boxShadow='0 0 15px rgba(242,13,242,0.05)'; this.style.transform='translateY(0) rotate(2deg)'">
+                <div class="text-3xl md:text-5xl font-black text-white mb-2 group-hover:text-[#f20df2] transition-colors"><span class="counter">0</span>h</div>
                 <div class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Support</div>
             </div>
         </div>
@@ -255,12 +282,22 @@
     {
       "type": "video",
       "id": "bg_video",
-      "label": "Video tla Hero"
+      "label": "Video tla Hero (Desktop 16:9)"
+    },
+    {
+      "type": "video",
+      "id": "bg_video_mobile",
+      "label": "Video tla Hero (Mobile 9:16)"
     },
     {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Zdjecie tla (fallback)"
+      "label": "Zdjecie tla (Desktop 16:9 - fallback dla wideo or standalone)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Zdjecie tla (Mobile 9:16 - fallback dla wideo or standalone)"
     },
     {
       "type": "header",
