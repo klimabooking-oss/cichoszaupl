@@ -1,7 +1,7 @@
 <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black" id="hero-video-section">
     <!-- === WARSTWA: Film / Zdjęcie (video only bez gradientów) === -->
     {% if section.settings.bg_video != blank or section.settings.bg_video_mobile != blank %}
-        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+        <div class="absolute inset-0 w-full h-full" style="z-index: 10;">
             {% if section.settings.bg_video != blank %}
             <video
                 id="hero-bg-video-desktop"
@@ -29,7 +29,7 @@
             {% endif %}
         </div>
     {% elsif section.settings.bg_image or section.settings.bg_image_mobile %}
-        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+        <div class="absolute inset-0 w-full h-full" style="z-index: 10;">
             <picture>
                 {% if section.settings.bg_image_mobile %}
                 <source media="(max-width: 767px)" srcset="{{ section.settings.bg_image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }} 800w">
@@ -57,7 +57,7 @@
             </picture>
         </div>
     {% else %}
-        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
+        <div class="absolute inset-0 w-full h-full" style="z-index: 10;">
             <img
                 alt="Silent Disco Party Crowd"
                 class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
