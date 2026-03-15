@@ -1,8 +1,8 @@
-<section class="relative overflow-hidden" id="logo-ticker-section" style="background-color:#221022; padding-top: 60px; padding-bottom: 60px;">
+<section class="relative overflow-hidden" id="logo-ticker-section" style="background-color:#221022; padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <!-- Top hairline border -->
     <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-5">
 
         <!-- Heading — duży, kolorowy, animowany -->
         <div class="text-center mb-16 ticker-animate-in" style="opacity:0; transform:scale(0.85)">
@@ -14,10 +14,10 @@
             <div class="line-glow-scroll w-full h-px mt-6" style="margin-top: 20px !important; height: 1px; width: 100%; background: linear-gradient(to right, transparent, #f20df2, transparent); box-shadow: 0 0 20px rgba(242,13,242,0.8);"></div>
         </div>
 
-        <!-- Logo Grid — każda komórka animuje się osobno -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-{{ section.settings.columns | default: 5 }} gap-px" style="background:rgba(255,255,255,0.06)">
+        <!-- Desktop Grid -->
+        <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-{{ section.settings.columns | default: 5 }} gap-px rounded-3xl overflow-hidden border border-[#f20df2] shadow-[0_0_20px_rgba(242,13,242,0.8)]" style="background:#f20df2; box-shadow: inset 0 0 20px rgba(242,13,242,0.8);">
             {% for block in section.blocks %}
-                <div class="logo-cell group flex items-center justify-center p-9 cursor-default ticker-animate-in"
+                <div class="logo-cell group w-full flex items-center justify-center p-9 cursor-default ticker-animate-in"
                      data-delay="{{ forloop.index0 | times: 60 }}"
                      style="background:#221022; transition:background 0.3s; opacity:0; transform:scale(0.7)"
                      onmouseenter="this.style.background='#2d152d'"
@@ -25,7 +25,7 @@
                     {% if block.settings.logo_image %}
                         <img src="{{ block.settings.logo_image | image_url: width: 300, format: 'webp' }}"
                              alt="{{ block.settings.logo_name | default: 'Partner' }}"
-                             style="height:89px; width:auto; max-width:252px; object-fit:contain; filter:grayscale(100%) brightness(0.7); transition:all 0.4s"
+                             style="height:128px; w-auto; max-width:360px; object-fit:contain; filter:grayscale(100%) brightness(0.7); transition:all 0.4s"
                              onmouseenter="this.style.filter='grayscale(0%) brightness(1)'; this.style.transform='scale(1.08)'"
                              onmouseleave="this.style.filter='grayscale(100%) brightness(0.7)'; this.style.transform='scale(1)'"
                              loading="lazy">
@@ -38,7 +38,7 @@
             {% else %}
                 {% assign default_logos = "Platinum Mtn,Blue Mountain,Gorskie Resorty,Aperol Spritz,Phinance,Wroclaw Airport,Pasibus,Radio Wroclaw,Equinox,Budweiser" | split: "," %}
                 {% for logo in default_logos %}
-                    <div class="flex items-center justify-center p-9 ticker-animate-in"
+                    <div class="logo-cell group w-full flex items-center justify-center p-9 ticker-animate-in"
                          data-delay="{{ forloop.index0 | times: 60 }}"
                         style="background:#221022; transition:background 0.3s; opacity:0; transform:scale(0.7)"
                          onmouseenter="this.style.background='#2d152d'"
@@ -49,6 +49,76 @@
                     </div>
                 {% endfor %}
             {% endfor %}
+        </div>
+
+        <!-- Mobile Marquee CSS -->
+        <style>
+            @keyframes logo-marquee-left {
+                0% { transform: translate3d(0, 0, 0); }
+                100% { transform: translate3d(-100%, 0, 0); }
+            }
+            .mobile-marquee-container {
+                display: flex;
+                width: max-content;
+            }
+            .mobile-marquee-track {
+                display: flex;
+                animation: logo-marquee-left 150s linear infinite !important;
+            }
+        </style>
+
+        <!-- Mobile Marquee (slider logotypów idzie z predkoscia slidera obrazkow) -->
+        <div class="block md:hidden overflow-hidden relative">
+            <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#221022] to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#221022] to-transparent z-10"></div>
+            
+            <div class="mobile-marquee-container" style="background:rgba(255,255,255,0.06); gap:1px;">
+                <!-- Track 1 -->
+                <div class="mobile-marquee-track gap-px mr-px" style="background:rgba(255,255,255,0.06);">
+                    {% for block in section.blocks %}
+                        <div class="flex-shrink-0 flex items-center justify-center px-12 py-8" style="background:#221022; min-width:180px;">
+                            {% if block.settings.logo_image %}
+                                <img src="{{ block.settings.logo_image | image_url: width: 300, format: 'webp' }}"
+                                     alt="{{ block.settings.logo_name | default: 'Partner' }}"
+                                     style="height:103px; w-auto; max-width:311px; object-fit:contain; filter:grayscale(100%) brightness(0.7);"
+                                     loading="lazy">
+                            {% elsif block.settings.logo_name != blank %}
+                                <span style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.3); white-space:nowrap;">{{ block.settings.logo_name }}</span>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        {% assign default_logos = "Platinum Mtn,Blue Mountain,Aperol,Wroclaw Airport,Radio Wroclaw" | split: "," %}
+                        {% for logo in default_logos %}
+                            <div class="flex-shrink-0 flex items-center justify-center px-12 py-8" style="background:#221022; min-width:180px;">
+                                <span style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.25); white-space:nowrap;">{{ logo }}</span>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                
+                <!-- Track 2 (Duplicate for continuous looping) -->
+                <div class="mobile-marquee-track gap-px mr-px" style="background:rgba(255,255,255,0.06);" aria-hidden="true">
+                    {% for block in section.blocks %}
+                        <div class="flex-shrink-0 flex items-center justify-center px-12 py-8" style="background:#221022; min-width:180px;">
+                            {% if block.settings.logo_image %}
+                                <img src="{{ block.settings.logo_image | image_url: width: 300, format: 'webp' }}"
+                                     alt="Partner"
+                                     style="height:72px; w-auto; max-width:216px; object-fit:contain; filter:grayscale(100%) brightness(0.7);"
+                                     loading="lazy">
+                            {% elsif block.settings.logo_name != blank %}
+                                <span style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.3); white-space:nowrap;">{{ block.settings.logo_name }}</span>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        {% assign default_logos = "Platinum Mtn,Blue Mountain,Aperol,Wroclaw Airport,Radio Wroclaw" | split: "," %}
+                        {% for logo in default_logos %}
+                            <div class="flex-shrink-0 flex items-center justify-center px-12 py-8" style="background:#221022; min-width:180px;">
+                                <span style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.25); white-space:nowrap;">{{ logo }}</span>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
 
         <!-- Bottom stat strip — liczniki count-up -->
