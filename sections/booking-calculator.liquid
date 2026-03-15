@@ -85,11 +85,11 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Od</label>
-                                <input type="date" id="calc-date-start" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1 text-xs text-white outline-none" />
+                                <input type="date" id="calc-date-start" onclick="if(this.showPicker) this.showPicker()" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1.5 md:py-2 text-xs md:text-sm text-white outline-none cursor-pointer placeholder-gray-400" />
                             </div>
                             <div>
                                 <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Do</label>
-                                <input type="date" id="calc-date-end" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1 text-xs text-white outline-none" />
+                                <input type="date" id="calc-date-end" onclick="if(this.showPicker) this.showPicker()" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1.5 md:py-2 text-xs md:text-sm text-white outline-none cursor-pointer placeholder-gray-400" />
                             </div>
                         </div>
                         <div>
@@ -154,7 +154,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><line x1="4" x2="20" y1="21" y2="14"/><line x1="4" x2="20" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="14"/><line x1="12" x2="12" y1="10" y2="3"/></svg>
                         </div>
 
-                        <div class="space-y-2 mb-6 text-sm border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-6" id="calc-breakdown">
+                        <div class="space-y-2 mb-6 text-sm border-b border-[#f20df2]/40 pb-6" id="calc-breakdown">
                             <!-- Injected by JS -->
                         </div>
 
