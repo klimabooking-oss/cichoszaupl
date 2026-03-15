@@ -1,5 +1,5 @@
-<section class="bg-[#221022] relative" id="faq" style="padding-top: 60px; padding-bottom: 60px;">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="bg-[#221022] relative" id="faq" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
+    <div class="max-w-4xl mx-auto px-5">
         
         <div class="text-center mb-16" data-animate="fade-up">
             <div class="mt-6 flex justify-center">
@@ -19,15 +19,15 @@
         <div class="space-y-4" id="faq-accordion" data-animate-stagger="fade-up">
             {% assign faqs = section.blocks | where: "type", "faq" %}
             {% for block in faqs %}
-                <div class="faq-item border border-white/10 rounded-2xl bg-[#221022] overflow-hidden transition-all duration-300 hover:border-white/20">
-                    <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none group select-none">
+                <div class="faq-item rounded-3xl glass-card overflow-hidden transition-all duration-500 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)]">
+                    <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none group select-none" aria-expanded="false">
                         <span class="faq-question text-lg font-bold text-white group-hover:text-[#f20df2] transition-colors duration-300">
                             {{ block.settings.question }}
                         </span>
                     </button>
                     <div class="faq-content grid grid-rows-[0fr] opacity-0 transition-all duration-300 ease-in-out">
                         <div class="overflow-hidden">
-                            <div class="px-6 pb-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5 mt-2 pt-4">
+                            <div class="px-6 pb-6 pt-0 text-gray-400 leading-relaxed border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] mt-2 pt-4">
                                 {{ block.settings.answer }}
                             </div>
                         </div>
@@ -39,15 +39,15 @@
                 {% assign def_a = "Silent Disco to impreza, na której uczestnicy słuchają muzyki przez bezprzewodowe słuchawki, a nie z głośników. Każdy zestaw ma przełącznik kanałów, co pozwala wybierać między 3 różnymi stylami muzycznymi granymi przez DJ-ów jednocześnie. To idealne rozwiązanie na eventy w miejscach, gdzie hałas jest problemem.|Zalecamy rezerwację minimum 2 tygodnie przed planowanym wydarzeniem, szczególnie w sezonie letnim i karnawałowym. Jednak dzięki dużemu magazynowi często jesteśmy w stanie zrealizować zamówienia 'last minute' nawet z dnia na dzień.|Bezpieczeństwo i higiena to nasz priorytet. Każda para słuchawek po zwrocie przechodzi proces dezynfekcji i czyszczenia. Dodatkowo oferujemy jednorazowe nakładki higieniczne na nauszniki dla pełnego komfortu uczestników.|Absolutnie nie! Nasz system jest typu 'Plug & Play'. Wystarczy podłączyć nadajnik do prądu i źródła dźwięku (telefon, laptop, mikser DJ). Do każdego zestawu dołączamy prostą instrukcję wideo oraz checklistę. Słuchawki łączą się automatycznie.|W otwartej przestrzeni nasze nadajniki mają zasięg do 500 metrów. Wewnątrz budynków sygnał swobodnie przenika przez ściany i stropy, pokrywając zazwyczaj 2-3 kondygnacje lub kilka sal konferencyjnych bez zakłóceń.|Tak, nadajniki posiadają standardowe wejścia (RCA, Mini-Jack), co pozwala podłączyć telefon, laptopa, tablet czy profesjonalną konsolę DJ-ską. Możesz puścić gotową playlistę ze Spotify lub zatrudnić DJ-a." | split: '|' %}
                 
                 {% for question in def_q %}
-                    <div class="faq-item border border-white/10 rounded-2xl bg-[#221022] overflow-hidden transition-all duration-300 hover:border-white/20">
-                    <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none group select-none">
+                    <div class="faq-item rounded-3xl glass-card overflow-hidden transition-all duration-500 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)]">
+                    <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none group select-none" aria-expanded="false">
                         <span class="faq-question text-lg font-bold text-white group-hover:text-[#f20df2] transition-colors duration-300">
                             {{ question }}
                         </span>
                     </button>
                     <div class="faq-content grid grid-rows-[0fr] opacity-0 transition-all duration-300 ease-in-out">
                         <div class="overflow-hidden">
-                            <div class="px-6 pb-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5 mt-2 pt-4">
+                            <div class="px-6 pb-6 pt-0 text-gray-400 leading-relaxed border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] mt-2 pt-4">
                                 {{ def_a[forloop.index0] }}
                             </div>
                         </div>
@@ -58,9 +58,9 @@
         </div>
 
         <!-- Internal linking — powiązane strony -->
-        <div class="mt-14 pt-10 border-t border-white/5 grid grid-cols-1 sm:grid-cols-3 gap-4" data-animate="fade-up">
+        <div class="mt-14 pt-10 grid grid-cols-1 sm:grid-cols-3 gap-4" data-animate="fade-up">
             <a href="/#rental"
-               class="group flex items-center gap-3 p-4 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f20df2]/40 hover:bg-[#f20df2]/5 transition-all duration-300">
+               class="group flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] transition-all duration-300" style="border: 1px solid rgba(242,13,242,0.4); box-shadow: 0 0 20px rgba(242,13,242,0.15);" onmouseenter="this.style.borderColor='rgba(242,13,242,0.6)'; this.style.boxShadow='0 0 30px rgba(242,13,242,0.2)'" onmouseleave="this.style.borderColor='rgba(242,13,242,0.3)'; this.style.boxShadow='0 0 20px rgba(242,13,242,0.1)'">
                 <div class="w-8 h-8 rounded-full bg-[#f20df2]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#f20df2]/30 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f20df2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
                 </div>
@@ -70,7 +70,7 @@
                 </div>
             </a>
             <a href="/#rental"
-               class="group flex items-center gap-3 p-4 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#ff5f1f]/40 hover:bg-[#ff5f1f]/5 transition-all duration-300">
+               class="group flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] transition-all duration-300" style="border: 1px solid rgba(242,13,242,0.4); box-shadow: 0 0 20px rgba(242,13,242,0.15);" onmouseenter="this.style.borderColor='rgba(242,13,242,0.6)'; this.style.boxShadow='0 0 30px rgba(242,13,242,0.2)'" onmouseleave="this.style.borderColor='rgba(242,13,242,0.3)'; this.style.boxShadow='0 0 20px rgba(242,13,242,0.1)'">
                 <div class="w-8 h-8 rounded-full bg-[#ff5f1f]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#ff5f1f]/30 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff5f1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
                 </div>
@@ -80,7 +80,7 @@
                 </div>
             </a>
             <a href="/pages/imprezy-firmowe-silent-disco"
-               class="group flex items-center gap-3 p-4 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#ffd700]/40 hover:bg-[#ffd700]/5 transition-all duration-300">
+               class="group flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] transition-all duration-300" style="border: 1px solid rgba(242,13,242,0.4); box-shadow: 0 0 20px rgba(242,13,242,0.15);" onmouseenter="this.style.borderColor='rgba(242,13,242,0.6)'; this.style.boxShadow='0 0 30px rgba(242,13,242,0.2)'" onmouseleave="this.style.borderColor='rgba(242,13,242,0.3)'; this.style.boxShadow='0 0 20px rgba(242,13,242,0.1)'">
                 <div class="w-8 h-8 rounded-full bg-[#ffd700]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#ffd700]/30 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                 </div>

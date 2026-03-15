@@ -1,5 +1,5 @@
 <nav id="main-navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent py-[10px]">
-    <div class="max-w-[1920px] mx-auto px-6">
+    <div class="max-w-[1920px] mx-auto px-5">
         <div class="flex justify-between items-center h-20 relative">
 
             <a href="/" class="flex-shrink-0 flex items-center cursor-pointer group logo-float-anim" style="transform-origin:center bottom">
@@ -9,7 +9,7 @@
             </a>
 
             <!-- Desktop Navigation -->
-            <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center space-x-1 bg-[#221022]/40 px-2 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
+            <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center space-x-1 bg-[#221022]/40 px-2 py-1.5 rounded-full border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] backdrop-blur-md">
                 <a href="/pages/bilety-silent-disco" class="group px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all flex items-center gap-2 text-gray-300 hover:text-white hover:bg-white/5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform duration-300"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
                     Bilety
@@ -17,13 +17,13 @@
 
                 <!-- Services Dropdown Placeholder (Simplified for Liquid structure) -->
                 <div class="relative group" id="services-dropdown-container">
-                    <button class="group px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all flex items-center gap-2 text-gray-300 hover:text-white hover:bg-white/5" id="services-btn">
+                    <button aria-label="Rozwiń menu usług" class="group px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all flex items-center gap-2 text-gray-300 hover:text-white hover:bg-white/5" id="services-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:animate-pulse"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
                         Usługi
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300" id="services-chevron"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
 
-                    <div id="services-menu" class="absolute top-full -left-10 mt-4 w-[600px] bg-[#221022] border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4 transition-all duration-500 grid grid-cols-2 gap-2 origin-top-left opacity-0 translate-y-4 scale-95 invisible pointer-events-none">
+                    <div id="services-menu" class="absolute top-full -left-10 mt-4 w-[600px] bg-[#221022] border border-white/5 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4 transition-all duration-500 grid grid-cols-2 gap-2 origin-top-left opacity-0 translate-y-4 scale-95 invisible pointer-events-none">
                         <a href="/pages/imprezy-firmowe-silent-disco" class="group flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300">
                             <div class="w-12 h-12 rounded-xl bg-[#221022] border border-white/5 flex items-center justify-center transition-all duration-500 text-blue-400 group-hover:shadow-[0_0_15px_rgba(96,165,250,0.4)]">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
@@ -87,7 +87,7 @@
                     Wynajem
                 </a>
 
-                <a href="https://cichoszau.pl/pages/cennik-silent-disco" class="px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] text-[#f20df2] hover:text-white hover:bg-[#f20df2]/10 transition-all flex items-center gap-2 border border-[#f20df2]/20">
+                <a href="https://cichoszau.pl/pages/cennik-silent-disco" class="px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] text-[#f20df2] hover:text-white hover:bg-[#f20df2]/10 transition-all flex items-center gap-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                     Cennik
                 </a>
                 <a href="/pages/kontakt" class="px-5 py-2 rounded-full font-bold uppercase tracking-wider text-[11px] text-gray-300 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2">
@@ -101,18 +101,18 @@
                 {% if customer %}
                     <!-- Logged in state dropdown -->
                     <div class="relative group" id="profile-dropdown-container">
-                        <button class="flex items-center gap-3 bg-[#f20df2]/10 border border-[#f20df2]/20 px-4 py-2 rounded-full hover:bg-[#f20df2]/20 transition-all cursor-pointer" id="profile-btn">
+                        <button aria-label="Konto użytkownika" class="flex items-center gap-3 bg-[#f20df2]/10 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] px-4 py-2 rounded-full hover:bg-[#f20df2]/20 transition-all cursor-pointer" id="profile-btn">
                             <div class="w-8 h-8 rounded-full bg-[#f20df2] flex items-center justify-center text-white font-black text-xs uppercase">
                                 {{ customer.first_name | slice: 0, 1 | default: 'U' }}
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2] transition-transform" id="profile-chevron"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
-                        <div id="profile-menu" class="absolute right-0 mt-3 w-56 bg-[#221022] border border-white/10 rounded-2xl shadow-2xl p-2 transition-all origin-top-right opacity-0 scale-95 invisible pointer-events-none">
+                        <div id="profile-menu" class="absolute right-0 mt-3 w-56 bg-[#221022] border border-white/5 rounded-2xl shadow-2xl p-2 transition-all origin-top-right opacity-0 scale-95 invisible pointer-events-none">
                             <a href="/account" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Panel Użytkownika
                             </a>
                             <div class="h-px bg-white/5 my-2"></div>
-                            <div class="px-6 pb-6 pt-4 border-t border-white/10 mt-auto">
+                            <div class="px-6 pb-6 pt-4 border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] mt-auto">
                                 <a href="/account" class="w-full flex justify-center items-center py-4 bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] text-[#0a050a] rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-105 transition-all btn-glow shadow-none">
                                     Mój profil
                                 </a>
@@ -133,7 +133,7 @@
 
             <!-- Mobile Menu Button -->
             <div class="md:hidden flex items-center space-x-4">
-                <button id="mobile-menu-btn" class="p-2 text-white border border-white/10 rounded-lg cursor-pointer">
+                <button id="mobile-menu-btn" aria-label="Otwórz menu nawigacji" class="p-2 text-white border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg cursor-pointer">
                     <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                     <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>

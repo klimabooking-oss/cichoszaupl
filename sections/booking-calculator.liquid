@@ -1,7 +1,7 @@
-<section class="bg-[#221022] relative overflow-hidden" id="rental" style="padding-top: 60px; padding-bottom: 60px;">
+<section class="bg-[#221022] relative overflow-hidden" id="rental" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none z-10 mix-blend-overlay"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+    <div class="max-w-7xl mx-auto px-5 relative z-20">
 
         <div class="mb-16 text-center" data-animate="fade-up">
             <div class="mt-6 flex justify-center">
@@ -24,7 +24,7 @@
             <div class="xl:col-span-8 space-y-4 md:space-y-6">
 
                 <!-- Headphones -->
-                <div class="bg-[#221022]/90 backdrop-blur border border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] rounded-2xl md:rounded-3xl p-5 md:p-8">
+                <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl md:rounded-3xl p-5 md:p-8">
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-full bg-[#f20df2]/20 flex items-center justify-center text-[#f20df2]">
@@ -38,7 +38,7 @@
                                 id="calc-hp-input"
                                 value="20"
                                 min="20" max="2000"
-                                class="w-16 md:w-24 bg-[#221022] border border-white/10 rounded-lg px-2 py-1.5 text-base md:text-lg font-black text-white text-right focus:border-[#f20df2] outline-none transition-colors"
+                                class="w-16 md:w-24 glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-2 py-1.5 text-base md:text-lg font-black text-white text-right focus:border-[#f20df2] outline-none transition-colors"
                             />
                             <span class="text-gray-500 text-xs font-bold">szt.</span>
                         </div>
@@ -63,11 +63,11 @@
 
                 <!-- Channels & Dates Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-[#221022]/90 backdrop-blur border border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] rounded-2xl p-5">
+                    <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl p-5">
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex items-center gap-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Kanały</h3>
+                                <h3 class="text-[10px] md:text-xs font-bold text-white uppercase tracking-wider">Liczba DJ-ów (Kanały)</h3>
                             </div>
                             <span id="calc-ch-val" class="text-xl font-black text-white">3</span>
                         </div>
@@ -81,31 +81,37 @@
                         />
                     </div>
 
-                    <div class="bg-[#221022]/90 backdrop-blur border border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] rounded-2xl p-5 grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Od</label>
-                            <input type="date" id="calc-date-start" class="w-full bg-black/30 border border-white/10 rounded px-2 py-1 text-xs text-white outline-none" />
+                    <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl p-5 flex flex-col justify-between gap-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Od</label>
+                                <input type="date" id="calc-date-start" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1 text-xs text-white outline-none" />
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Do</label>
+                                <input type="date" id="calc-date-end" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1 text-xs text-white outline-none" />
+                            </div>
                         </div>
                         <div>
-                            <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Do</label>
-                            <input type="date" id="calc-date-end" class="w-full bg-black/30 border border-white/10 rounded px-2 py-1 text-xs text-white outline-none" />
+                            <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Lokalizacja (Miasto)</label>
+                            <input type="text" id="calc-location" placeholder="np. Wrocław, Warszawa" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1 text-xs text-white outline-none focus:border-[#f20df2] transition-colors" />
                         </div>
                     </div>
                 </div>
 
                 <!-- Delivery Methods -->
-                <div class="bg-[#221022]/90 backdrop-blur border border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] rounded-2xl p-5">
+                <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl p-5">
                     <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Dostawa</h3>
                     <div class="grid grid-cols-3 gap-2" id="calc-delivery-group">
-                        <button data-val="courier" class="calc-del-btn active flex flex-col items-center justify-center py-3 rounded-xl border bg-[#f20df2]/20 border-[#f20df2] text-white transition-all">
+                        <button data-val="courier" class="calc-del-btn active flex flex-col items-center justify-center py-3 rounded-xl border bg-[#f20df2]/20 border-[#f20df2] shadow-[0_0_20px_rgba(242,13,242,0.15)] text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l4 4v5c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
                             <span class="text-[10px] font-bold uppercase">Kurier</span>
                         </button>
-                        <button data-val="pickup" class="calc-del-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                        <button data-val="pickup" class="calc-del-btn flex flex-col items-center justify-center py-3 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                             <span class="text-[10px] font-bold uppercase">Odbiór</span>
                         </button>
-                        <button data-val="full" class="calc-del-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                        <button data-val="full" class="calc-del-btn flex flex-col items-center justify-center py-3 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                             <span class="text-[10px] font-bold uppercase">Obsługa</span>
                         </button>
@@ -113,26 +119,25 @@
                 </div>
 
                 <!-- Extras -->
-                <div class="bg-[#221022]/90 backdrop-blur border border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] rounded-2xl p-5">
-                    <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Dodatki</h3>
+                <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl p-5">
+                    <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Pakiety Dodatkowe</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-2" id="calc-extras-group">
-                        <button data-xtra="dj" data-color="#ff5f1f" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                        <button data-xtra="lasers" data-color="#ff5f1f" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></svg>
-                            <span class="text-[10px] font-bold uppercase">DJ</span>
+                            <span class="text-[10px] font-bold uppercase">Lasery</span>
                         </button>
-                        <button data-xtra="marketing" data-color="#a855f7" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                        <button data-xtra="marketing" data-color="#a855f7" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-                            <span class="text-[10px] font-bold uppercase">Mkt</span>
+                            <span class="text-[10px] font-bold uppercase">Reelsy</span>
                         </button>
-                        <button data-xtra="video" data-color="#ffd700" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
-                            <span class="text-[10px] font-bold uppercase">Video</span>
+                        <button data-xtra="smoke" data-color="#ef4444" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="M17.5 19H9"/><path d="M12 2v6"/><path d="M18 6v2"/><path d="M6 6v2"/><path d="M12 11c-1.5 2-4 3-4 6"/><path d="M12 11c1.5 2 4 3 4 6"/></svg>
+                            <span class="text-[10px] font-bold uppercase">Dym</span>
                         </button>
-                        <button data-xtra="lighting" data-color="#3b82f6" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border bg-[#221022]/50 border-white/5 text-gray-400 hover:bg-white/5 transition-all">
+                        <button data-xtra="lighting" data-color="#3b82f6" class="calc-xt-btn flex flex-col items-center justify-center py-3 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-                            <span class="text-[10px] font-bold uppercase">Light</span>
+                            <span class="text-[10px] font-bold uppercase">Światło</span>
                         </button>
-                        
                     </div>
                 </div>
             </div>
@@ -140,7 +145,7 @@
             <!-- SUMMARY -->
             <div class="xl:col-span-4">
                 <div class="sticky top-24">
-                    <div class="bg-[#221022]/95 backdrop-blur border border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] rounded-2xl p-6">
+                    <div class="bg-[#221022] border-y border-[#f20df2]/40 rounded-2xl p-6">
                         <div class="flex justify-between items-start mb-6">
                             <div>
                                 <h3 class="text-xl font-black text-white uppercase italic">Twoja Wycena</h3>
@@ -149,7 +154,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><line x1="4" x2="20" y1="21" y2="14"/><line x1="4" x2="20" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="14"/><line x1="12" x2="12" y1="10" y2="3"/></svg>
                         </div>
 
-                        <div class="space-y-2 mb-6 text-sm border-b border-white/10 pb-6" id="calc-breakdown">
+                        <div class="space-y-2 mb-6 text-sm border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-6" id="calc-breakdown">
                             <!-- Injected by JS -->
                         </div>
 
@@ -190,8 +195,8 @@
 
     <!-- Booking Form Modal -->
     <div id="booking-modal" class="fixed inset-0 z-[100] bg-[#221022]/90 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-[#221022] border border-white/10 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl animate-fade-in-up">
-            <div class="bg-[#221022] p-5 border-b border-white/10 flex justify-between items-center">
+        <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl animate-fade-in-up">
+            <div class="bg-[#221022] p-5 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] flex justify-between items-center">
                 <h3 class="text-lg font-black text-white uppercase italic">Dane kontaktowe</h3>
                 <button id="btn-close-form" class="text-gray-400 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -206,13 +211,13 @@
             
             <form id="booking-form" class="p-6 space-y-4">
                 <input type="hidden" name="contact[rental_details]" id="form-hidden-details" value="" />
-                <input required type="text" name="contact[name]" placeholder="Imię i nazwisko" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                <input required type="text" name="contact[name]" placeholder="Imię i nazwisko" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
                 <div class="grid grid-cols-2 gap-4">
-                    <input required type="email" name="contact[email]" placeholder="Email" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
-                    <input required type="tel" name="contact[phone]" placeholder="Telefon" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                    <input required type="email" name="contact[email]" placeholder="Email" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                    <input required type="tel" name="contact[phone]" placeholder="Telefon" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
                 </div>
-                <input type="text" name="contact[company]" placeholder="Firma (opcjonalnie)" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
-                <textarea name="contact[body]" placeholder="Dodatkowe informacje..." rows="2" class="w-full bg-[#221022] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none resize-none transition-colors"></textarea>
+                <input type="text" name="contact[company]" placeholder="Firma (opcjonalnie)" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                <textarea name="contact[body]" placeholder="Dodatkowe informacje..." rows="2" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none resize-none transition-colors"></textarea>
 
                 <button type="submit" id="btn-submit-form" class="w-full py-3 bg-[#f20df2] text-white font-black uppercase text-xs tracking-widest rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
                     Odbierz wycenę
@@ -251,9 +256,10 @@
                 channels: 3,
                 startDate: new Date().toISOString().split('T')[0],
                 endDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+                location: '',
                 days: 1,
                 delivery: 'courier',
-                extras: { dj: false, marketing: false, video: false, lighting: false,  }
+                extras: { lasers: false, marketing: false, smoke: false, lighting: false }
             };
 
             // Elements
@@ -263,6 +269,7 @@
             const chVal = document.getElementById('calc-ch-val');
             const dateStart = document.getElementById('calc-date-start');
             const dateEnd = document.getElementById('calc-date-end');
+            const locInput = document.getElementById('calc-location');
             
             const delBtns = document.querySelectorAll('.calc-del-btn');
             const xtBtns = document.querySelectorAll('.calc-xt-btn');
@@ -368,6 +375,7 @@
                     channels: state.channels,
                     startDate: state.startDate,
                     endDate: state.endDate,
+                    location: state.location,
                     days: state.days,
                     delivery: state.delivery,
                     extras: state.extras,
@@ -414,13 +422,18 @@
                 calculate();
             });
 
+            locInput.addEventListener('input', (e) => {
+                state.location = e.target.value;
+                calculate();
+            });
+
             delBtns.forEach(btn => btn.addEventListener('click', () => {
                 delBtns.forEach(b => {
-                    b.classList.remove('bg-[#f20df2]/20', 'border-[#f20df2]', 'text-white', 'active');
-                    b.classList.add('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                    b.classList.remove('bg-[#f20df2]/20', 'border-[#f20df2]', 'shadow-[0_0_20px_rgba(242,13,242,0.15)]', 'text-white', 'active');
+                    b.classList.add('bg-[#221022]/50', 'glass-card', 'border-[#f20df2]/40', 'shadow-[0_0_20px_rgba(242,13,242,0.15)]', 'text-gray-400');
                 });
-                btn.classList.add('bg-[#f20df2]/20', 'border-[#f20df2]', 'text-white', 'active');
-                btn.classList.remove('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                btn.classList.add('bg-[#f20df2]/20', 'border-[#f20df2]', 'shadow-[0_0_20px_rgba(242,13,242,0.15)]', 'text-white', 'active');
+                btn.classList.remove('bg-[#221022]/50', 'glass-card', 'border-[#f20df2]/40', 'text-gray-400');
                 state.delivery = btn.getAttribute('data-val');
                 calculate();
             }));
@@ -431,7 +444,7 @@
                 state.extras[xtra] = !state.extras[xtra];
 
                 if(state.extras[xtra]) {
-                    btn.classList.remove('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                    btn.classList.remove('bg-[#221022]/50', 'glass-card', 'border-[#f20df2]/40', 'shadow-[0_0_20px_rgba(242,13,242,0.15)]', 'text-gray-400');
                     btn.style.backgroundColor = `${clr}20`; // 20 hex alpha ≈ 12%
                     btn.style.borderColor = clr;
                     btn.style.color = 'white';
@@ -439,7 +452,7 @@
                     btn.style.backgroundColor = '';
                     btn.style.borderColor = '';
                     btn.style.color = '';
-                    btn.classList.add('bg-[#221022]/50', 'border-white/5', 'text-gray-400');
+                    btn.classList.add('bg-[#221022]/50', 'glass-card', 'border-[#f20df2]/40', 'shadow-[0_0_20px_rgba(242,13,242,0.15)]', 'text-gray-400');
                 }
                 calculate();
             }));
@@ -480,8 +493,9 @@
                     ``,
                     `--- SZCZEGÓŁY ZAMÓWIENIA ---`,
                     `Słuchawki: ${details.headphones || '-'} szt.`,
-                    `Kanały muzyczne: ${details.channels || '-'}`,
+                    `Liczba DJ (Kanały): ${details.channels || '-'}`,
                     `Termin: ${formatDate(details.startDate)} – ${formatDate(details.endDate)} (${details.days || 1} dni)`,
+                    `Lokalizacja: ${details.location || 'Nie podano'}`,
                     `Dostawa: ${deliveryLabel[details.delivery] || details.delivery || '-'}`,
                     `Dodatki: ${Object.keys(details.extras || {}).filter(k => details.extras[k]).join(', ') || 'brak'}`,
                     `Wycena netto: ${details.estimated_total || 0} zł`,
@@ -503,6 +517,36 @@
                     });
 
                     if (res.ok || res.redirected) {
+                        // ---> CONVERSION TRACKING (META & GOOGLE ADS) <---
+                        const leadValue = details.estimated_total || 0;
+                        
+                        // 1. DataLayer push (for GTM)
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'generate_lead',
+                            'value': leadValue,
+                            'currency': 'PLN',
+                            'lead_type': 'B2B_Quote'
+                        });
+
+                        // 2. Direct Meta Pixel fallback
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'Lead', {
+                                value: leadValue,
+                                currency: 'PLN',
+                                content_name: 'Wycena PDF B2B'
+                            });
+                        }
+
+                        // 3. Direct Google / gtag fallback
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'generate_lead', {
+                                value: leadValue,
+                                currency: 'PLN'
+                            });
+                        }
+                        // ----------------------------------------------------
+
                         form.classList.add('hidden');
                         formSuccess.classList.remove('hidden');
                         setTimeout(() => {
