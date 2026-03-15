@@ -13,13 +13,14 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for block in section.blocks %}
+                <!-- KARTA GŁÓWNA -->
                 <div class="group relative glass-card p-6 md:p-8 rounded-3xl border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] hover:border-[#f20df2]/80 transition-all duration-500 flex flex-col h-full" {{ block.shopify_attributes }}>
                     
-                    <div class="w-full aspect-video rounded-2xl overflow-hidden mb-6 bg-black/40 relative">
+                    <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-black/40 relative cursor-pointer" onclick="openRentalModal('RentalModal-{{ block.id }}')">
                         {% if block.settings.image != blank %}
-                            <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <img src="{{ block.settings.image | image_url: width: 600, height: 600, crop: 'center' }}" alt="{{ block.settings.title | escape }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
                         {% else %}
-                            <div class="w-full h-full flex items-center justify-center text-gray-500">
+                            <div class="absolute inset-0 flex items-center justify-center text-gray-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                             </div>
                         {% endif %}
@@ -33,20 +34,97 @@
                             {{ block.settings.short_desc }}
                         </p>
 
-                        <!-- Expandable Details -->
-                        <details class="group/details mt-auto">
-                            <summary class="flex items-center justify-between cursor-pointer text-[#f20df2] text-sm font-bold uppercase tracking-wider list-none outline-none">
-                                <span>Rozwiń szczegóły</span>
-                                <span class="bg-[#f20df2]/20 w-8 h-8 rounded-full flex items-center justify-center text-[#f20df2] transition-transform duration-300 group-open/details:rotate-180">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                                </span>
-                            </summary>
-                            <div class="pt-4 mt-4 border-t border-[#f20df2]/20 text-gray-300 text-sm leading-relaxed whitespace-pre-line animate-fade-in">
+                        <button type="button" onclick="openRentalModal('RentalModal-{{ block.id }}')" class="mt-auto flex items-center justify-between cursor-pointer text-[#f20df2] text-sm font-bold uppercase tracking-wider outline-none hover:text-white transition-colors group/btn">
+                            <span>Rozwiń szczegóły</span>
+                            <span class="bg-[#f20df2]/20 w-8 h-8 rounded-full flex items-center justify-center text-[#f20df2] transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:bg-[#f20df2] group-hover/btn:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MODAL POPUP -->
+                <div id="RentalModal-{{ block.id }}" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
+                    <!-- Tło zamykające -->
+                    <div class="absolute inset-0 cursor-pointer" onclick="closeRentalModal('RentalModal-{{ block.id }}')"></div>
+                    
+                    <!-- Zawartość Modala -->
+                    <div class="relative w-full max-w-5xl glass-card border border-[#f20df2]/40 rounded-[2rem] p-6 lg:p-10 shadow-[0_0_40px_rgba(242,13,242,0.3)] max-h-[90vh] overflow-y-auto flex flex-col md:flex-row gap-8 transform scale-95 transition-transform duration-300 modal-content">
+                        
+                        <!-- Prawy róg Zamknij -->
+                        <button type="button" onclick="closeRentalModal('RentalModal-{{ block.id }}')" class="absolute top-4 right-4 lg:top-6 lg:right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-[#f20df2] text-white flex items-center justify-center transition-colors z-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        </button>
+
+                        <!-- LEWA STRONA: MEDIA -->
+                        <div class="w-full md:w-1/2 flex flex-col gap-4">
+                            <!-- Główne wyświetlacze -->
+                            <div id="MainMediaDisplay-{{ block.id }}" class="w-full aspect-square rounded-2xl overflow-hidden bg-black/50 border border-white/10 relative">
+                                {% if block.settings.video != blank %}
+                                    <video id="MainVideo-{{ block.id }}" src="{{ block.settings.video.sources[1].url | default: block.settings.video.sources[0].url }}" class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline controls></video>
+                                    <img id="MainImage-{{ block.id }}" src="" class="absolute inset-0 w-full h-full object-cover hidden">
+                                {% elsif block.settings.image != blank %}
+                                    <video id="MainVideo-{{ block.id }}" src="" class="absolute inset-0 w-full h-full object-cover hidden" loop muted playsinline controls></video>
+                                    <img id="MainImage-{{ block.id }}" src="{{ block.settings.image | image_url: width: 1000 }}" class="absolute inset-0 w-full h-full object-cover">
+                                {% else %}
+                                    <div class="absolute inset-0 flex items-center justify-center text-gray-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Miniaturki -->
+                            <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                                <!-- Wideo minaturka -->
+                                {% if block.settings.video != blank %}
+                                <button type="button" onclick="setRentalMedia('{{ block.id }}', 'video', '{{ block.settings.video.sources[1].url | default: block.settings.video.sources[0].url }}')" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 border-[#f20df2] opacity-100 transition-opacity hover:opacity-100 relative group/thumb thumb-btn-{{ block.id }}">
+                                    <div class="absolute inset-0 bg-black/40 group-hover/thumb:bg-transparent transition-colors z-10 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                                    </div>
+                                    <img src="{{ block.settings.video.preview_image | image_url: width: 200 }}" class="w-full h-full object-cover">
+                                </button>
+                                {% endif %}
+
+                                <!-- Zdjęcie 1 -->
+                                {% if block.settings.image != blank %}
+                                <button type="button" onclick="setRentalMedia('{{ block.id }}', 'image', '{{ block.settings.image | image_url: width: 1000 }}', this)" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 {% if block.settings.video == blank %}border-[#f20df2] opacity-100{% else %}border-transparent opacity-70{% endif %} hover:border-[#f20df2] hover:opacity-100 transition-all thumb-btn-{{ block.id }}">
+                                    <img src="{{ block.settings.image | image_url: width: 200, height: 200, crop: 'center' }}" class="w-full h-full object-cover">
+                                </button>
+                                {% endif %}
+
+                                <!-- Zdjęcie 2 -->
+                                {% if block.settings.image_2 != blank %}
+                                <button type="button" onclick="setRentalMedia('{{ block.id }}', 'image', '{{ block.settings.image_2 | image_url: width: 1000 }}', this)" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[#f20df2] opacity-70 hover:opacity-100 transition-all thumb-btn-{{ block.id }}">
+                                    <img src="{{ block.settings.image_2 | image_url: width: 200, height: 200, crop: 'center' }}" class="w-full h-full object-cover">
+                                </button>
+                                {% endif %}
+
+                                <!-- Zdjęcie 3 -->
+                                {% if block.settings.image_3 != blank %}
+                                <button type="button" onclick="setRentalMedia('{{ block.id }}', 'image', '{{ block.settings.image_3 | image_url: width: 1000 }}', this)" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[#f20df2] opacity-70 hover:opacity-100 transition-all thumb-btn-{{ block.id }}">
+                                    <img src="{{ block.settings.image_3 | image_url: width: 200, height: 200, crop: 'center' }}" class="w-full h-full object-cover">
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- PRAWA STRONA: OPIS -->
+                        <div class="w-full md:w-1/2 flex flex-col justify-start pt-2">
+                            <h3 class="text-3xl lg:text-4xl font-black text-white uppercase italic mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+                                {{ block.settings.title }}
+                            </h3>
+                            <div class="w-16 h-1 bg-[#f20df2] mb-6 shadow-[0_0_10px_#f20df2]"></div>
+                            
+                            <p class="text-lg text-white font-bold mb-6 leading-relaxed">
+                                {{ block.settings.short_desc }}
+                            </p>
+
+                            <div class="prose prose-invert prose-p:text-gray-400 prose-p:leading-relaxed prose-li:text-gray-400 prose-ul:list-disc prose-ul:pl-4 marker:text-[#f20df2]">
                                 {{ block.settings.full_desc }}
                             </div>
-                        </details>
-                    </div>
 
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>
@@ -54,18 +132,84 @@
     </div>
 </section>
 
-<style>
-details > summary::-webkit-details-marker {
-  display: none;
-}
-.animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
+<script>
+    function openRentalModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // Allow browser to render display:flex before animating opacity
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+                modal.querySelector('.modal-content').classList.add('scale-100');
+            });
+            document.body.style.overflow = 'hidden';
+            
+            // Auto play video if present and visible
+            const videoElem = modal.querySelector('video:not(.hidden)');
+            if(videoElem) videoElem.play().catch(e => console.log(e));
+        }
+    }
+
+    function closeRentalModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            modal.querySelector('.modal-content').classList.remove('scale-100');
+            modal.querySelector('.modal-content').classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300); // match duration-300
+
+            // Pause video
+            const videoElems = modal.querySelectorAll('video');
+            videoElems.forEach(v => v.pause());
+        }
+    }
+
+    function setRentalMedia(blockId, type, src, btnElement) {
+        const imgElem = document.getElementById(`MainImage-${blockId}`);
+        const videoElem = document.getElementById(`MainVideo-${blockId}`);
+        
+        // Remove active state from all thumbs
+        const allThumbs = document.querySelectorAll(`.thumb-btn-${blockId}`);
+        allThumbs.forEach(t => {
+            t.classList.remove('border-[#f20df2]', 'opacity-100');
+            t.classList.add('border-transparent', 'opacity-70');
+        });
+
+        // Add active state to clicked thumb
+        if(btnElement) {
+            btnElement.classList.remove('border-transparent', 'opacity-70');
+            btnElement.classList.add('border-[#f20df2]', 'opacity-100');
+        } else if(event && event.currentTarget) {
+            event.currentTarget.classList.remove('border-transparent', 'opacity-70');
+            event.currentTarget.classList.add('border-[#f20df2]', 'opacity-100');
+        }
+
+        if (!imgElem || !videoElem) return;
+
+        if (type === 'image') {
+            videoElem.classList.add('hidden');
+            videoElem.pause();
+            
+            imgElem.src = src;
+            imgElem.classList.remove('hidden');
+        } else if (type === 'video') {
+            imgElem.classList.add('hidden');
+            
+            videoElem.src = src;
+            videoElem.classList.remove('hidden');
+            videoElem.play().catch(e => console.log(e));
+        }
+    }
+</script>
 
 {% schema %}
 {
@@ -92,7 +236,22 @@ details > summary::-webkit-details-marker {
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Zdjęcie Główne"
+          "label": "Zdjęcie Główne (Okładka 1:1)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Zdjęcie Dodatkowe 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Zdjęcie Dodatkowe 3"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Wideo Produktu"
         },
         {
           "type": "text",
@@ -109,7 +268,7 @@ details > summary::-webkit-details-marker {
         {
           "type": "richtext",
           "id": "full_desc",
-          "label": "Pełny Opis (Rozwijany)",
+          "label": "Pełny Opis (Rozwijany w Popupie)",
           "default": "<p>Szczegółowy opis, specyfikacja techniczna, co dokładnie zawiera ten element.</p>"
         }
       ]
