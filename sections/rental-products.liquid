@@ -1,12 +1,12 @@
-<section class="bg-[#221022] relative overflow-hidden" id="rental-products-{{ section.id }}" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
+<section class="bg-[#221022] relative overflow-hidden" id="nasza-oferta" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <div class="max-w-7xl mx-auto px-5 relative z-20">
         
         <div class="mb-12 text-center" data-animate="fade-up">
             <h2 class="text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter mb-4">
-                {{ section.settings.title | default: 'Co zyskujesz w pakiecie?' }}
+                {{ section.settings.title | default: 'Co zyskujesz w pakiecie?' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}
             </h2>
             {% if section.settings.subtitle != blank %}
-                <p class="text-gray-400 max-w-2xl mx-auto">{{ section.settings.subtitle }}</p>
+                <p class="text-gray-400 max-w-2xl mx-auto">{{ section.settings.subtitle | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}</p>
             {% endif %}
             <div class="line-glow-scroll w-full h-px mt-6" style="margin-top: 20px !important; height: 1px; width: 100%; background: linear-gradient(to right, transparent, #f20df2, transparent); box-shadow: 0 0 20px rgba(242,13,242,0.8);"></div>
         </div>
@@ -16,9 +16,9 @@
                 <!-- KARTA GŁÓWNA -->
                 <div class="group relative glass-card p-6 md:p-8 rounded-3xl border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] hover:border-[#f20df2]/80 transition-all duration-500 flex flex-col h-full" {{ block.shopify_attributes }}>
                     
-                    <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-black/40 relative cursor-pointer" onclick="openRentalModal('RentalModal-{{ block.id }}')">
+                    <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-black/20 relative cursor-pointer" onclick="openRentalModal('RentalModal-{{ block.id }}')">
                         {% if block.settings.image != blank %}
-                            <img src="{{ block.settings.image | image_url: width: 600, height: 600, crop: 'center' }}" alt="{{ block.settings.title | escape }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <img src="{{ block.settings.image | image_url: width: 600, height: 600 }}" alt="{{ block.settings.title | escape }}" class="absolute inset-0 w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-700" loading="lazy">
                         {% else %}
                             <div class="absolute inset-0 flex items-center justify-center text-gray-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
@@ -58,15 +58,30 @@
 
                         <!-- LEWA STRONA: MEDIA -->
                         <div class="w-full md:w-1/2 flex flex-col gap-4">
+                            {% assign video_url = '' %}
+                            {% if block.settings.video != blank %}
+                                {% for source in block.settings.video.sources %}
+                                    {% if source.format == 'mp4' %}
+                                        {% assign video_url = source.url %}
+                                        {% break %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if video_url == '' %}
+                                    {% assign video_url = block.settings.video.sources[0].url %}
+                                {% endif %}
+                            {% endif %}
+
                             <!-- Główne wyświetlacze -->
-                            <div id="MainMediaDisplay-{{ block.id }}" class="w-full aspect-[4/3] rounded-3xl overflow-hidden glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] relative">
+                            <div id="MainMediaDisplay-{{ block.id }}" class="w-full rounded-3xl overflow-hidden glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] relative bg-black/20" style="aspect-ratio: 1/1; min-height: 300px;">
                                 {% if block.settings.video != blank %}
-                                    <video id="MainVideo-{{ block.id }}" src="{{ block.settings.video.sources[1].url | default: block.settings.video.sources[0].url }}" class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline controls></video>
-                                    <img id="MainImage-{{ block.id }}" src="" class="absolute inset-0 w-full h-full object-cover hidden">
+                                    <video id="MainVideo-{{ block.id }}" src="{{ video_url }}" class="absolute inset-0 w-full h-full object-contain object-center" autoplay loop muted playsinline controls poster="{{ block.settings.video.preview_image | image_url: width: 1000 }}"></video>
+                                    <img id="MainImage-{{ block.id }}" src="{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1000 }}{% endif %}" class="absolute inset-0 w-full h-full object-contain object-center hidden">
                                 {% elsif block.settings.image != blank %}
-                                    <video id="MainVideo-{{ block.id }}" src="" class="absolute inset-0 w-full h-full object-cover hidden" loop muted playsinline controls></video>
-                                    <img id="MainImage-{{ block.id }}" src="{{ block.settings.image | image_url: width: 1000 }}" class="absolute inset-0 w-full h-full object-cover">
+                                    <video id="MainVideo-{{ block.id }}" src="" class="absolute inset-0 w-full h-full object-contain object-center hidden" loop muted playsinline controls></video>
+                                    <img id="MainImage-{{ block.id }}" src="{{ block.settings.image | image_url: width: 1000 }}" class="absolute inset-0 w-full h-full object-contain object-center block">
                                 {% else %}
+                                    <video id="MainVideo-{{ block.id }}" src="" class="absolute inset-0 w-full h-full object-contain object-center hidden" loop muted playsinline controls></video>
+                                    <img id="MainImage-{{ block.id }}" src="" class="absolute inset-0 w-full h-full object-contain object-center hidden">
                                     <div class="absolute inset-0 flex items-center justify-center text-gray-500">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                                     </div>
@@ -85,7 +100,7 @@
                             <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
                                 <!-- Wideo minaturka -->
                                 {% if block.settings.video != blank %}
-                                <button type="button" onclick="setRentalMedia('{{ block.id }}', 'video', '{{ block.settings.video.sources[1].url | default: block.settings.video.sources[0].url }}', this)" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 border-[#f20df2] opacity-100 transition-opacity hover:opacity-100 relative group/thumb thumb-btn-{{ block.id }}">
+                                <button type="button" onclick="setRentalMedia('{{ block.id }}', 'video', '{{ video_url }}', this)" class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 border-[#f20df2] opacity-100 transition-opacity hover:opacity-100 relative group/thumb thumb-btn-{{ block.id }}">
                                     <div class="absolute inset-0 bg-black/40 group-hover/thumb:bg-transparent transition-colors z-10 flex items-center justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                                     </div>
@@ -114,6 +129,10 @@
                                 </button>
                                 {% endif %}
                             </div>
+
+                            <p class="text-base text-gray-200 font-medium mt-2 mb-2 leading-relaxed">
+                                {{ block.settings.short_desc }}
+                            </p>
                         </div>
 
                         <!-- PRAWA STRONA: OPIS -->
@@ -123,10 +142,6 @@
                             </h3>
                             <div class="h-[3px] w-12 bg-[#f20df2] mb-6"></div>
                             
-                            <p class="text-base text-gray-200 font-medium mb-6 leading-relaxed">
-                                {{ block.settings.short_desc }}
-                            </p>
-
                             <div class="prose prose-invert prose-p:text-gray-400 prose-p:leading-relaxed prose-li:text-gray-400 prose-ul:list-none prose-ul:pl-0 space-y-2">
                                 {{ block.settings.full_desc }}
                             </div>
@@ -158,6 +173,15 @@
             // Auto play video if present and visible
             const videoElem = modal.querySelector('video:not(.hidden)');
             if(videoElem) videoElem.play().catch(e => console.log(e));
+            
+            // Force initialize the first active thumbnail just in case
+            const firstActiveThumb = modal.querySelector('.thumb-btn-' + modalId.replace('RentalModal-', '') + '.border-\\[\\#f20df2\\]');
+            if (firstActiveThumb) {
+                firstActiveThumb.click();
+            } else {
+                const anyThumb = modal.querySelector('.thumb-btn-' + modalId.replace('RentalModal-', ''));
+                if (anyThumb) anyThumb.click();
+            }
         }
     }
 
@@ -203,17 +227,21 @@
 
         if (!imgElem || !videoElem) return;
 
+        // Force reset display classes
+        imgElem.classList.remove('hidden', 'block');
+        videoElem.classList.remove('hidden', 'block');
+
         if (type === 'image') {
             videoElem.classList.add('hidden');
             videoElem.pause();
             
             imgElem.src = src;
-            imgElem.classList.remove('hidden');
+            imgElem.classList.add('block');
         } else {
             imgElem.classList.add('hidden');
             
             videoElem.src = src;
-            videoElem.classList.remove('hidden');
+            videoElem.classList.add('block');
             videoElem.play().catch(e => console.log(e));
         }
     }

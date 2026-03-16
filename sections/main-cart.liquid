@@ -6,7 +6,7 @@
         <div class="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-[#60a5fa] opacity-5 blur-[100px] rounded-full mix-blend-screen"></div>
     </div>
 
-    <div class="max-w-[1440px] mx-auto px-6 relative z-10 w-full mb-10">
+    <div class="max-w-[1440px] mx-auto px-5 relative z-10 w-full mb-10">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-center tracking-tighter italic mb-2 mt-8">
             Twój <span style="background: linear-gradient(135deg, #f20df2, #ff7b00); -webkit-background-clip: text; color: transparent;">Koszyk</span>
         </h1>
@@ -19,10 +19,10 @@
                 <!-- Lewa strona: Produkty -->
                 <div class="lg:col-span-8 flex flex-col gap-6">
                     {% for item in cart.items %}
-                        <div class="bg-[#221022]/80 backdrop-blur-xl border border-white/5 rounded-[2rem] p-4 md:p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-white/10 transition-colors">
+                        <div class="bg-[#221022]/80 backdrop-blur-xl border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-[2rem] p-4 md:p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-white/10 transition-colors">
                             
                             <!-- Obrazek -->
-                            <div class="w-full sm:w-32 h-32 rounded-2xl overflow-hidden bg-black/50 shrink-0 border border-white/10 relative">
+                            <div class="w-full sm:w-32 h-32 rounded-2xl overflow-hidden bg-black/50 shrink-0 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] relative">
                                 {% if item.image %}
                                     <img src="{{ item.image | img_url: '300x' }}" alt="{{ item.title | escape }}" class="w-full h-full object-cover">
                                 {% else %}
@@ -51,7 +51,7 @@
                                 
                                 <div class="flex flex-wrap items-center justify-between gap-4 mt-4 xs:mt-0">
                                     <!-- Ilość -->
-                                    <div class="flex items-center gap-3 bg-black/40 p-1.5 rounded-full border border-white/10">
+                                    <div class="flex items-center gap-3 bg-black/40 p-1.5 rounded-full border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                                         <button type="button" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors shadow-inner" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); document.getElementById('cart-form').submit();">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
                                         </button>
@@ -89,7 +89,7 @@
                         <a href="/collections/all" class="text-sm font-bold tracking-widest uppercase text-gray-400 hover:text-white transition-colors flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg> Kontynuuj zakupy
                         </a>
-                        <button type="submit" name="update" class="text-sm font-bold tracking-widest uppercase text-white bg-white/5 hover:bg-white/10 px-6 py-2 rounded-full border border-white/10 transition-colors">
+                        <button type="submit" name="update" class="text-sm font-bold tracking-widest uppercase text-white bg-white/5 hover:bg-white/10 px-6 py-2 rounded-full border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] transition-colors">
                             Zaktualizuj
                         </button>
                     </div>
@@ -97,7 +97,7 @@
 
                 <!-- Prawa strona: Podsumowanie -->
                 <div class="lg:col-span-4 self-start sticky top-28">
-                    <div class="bg-[#221022] rounded-[2.5rem] p-8 border border-[#f20df2]/20 shadow-[0_0_40px_rgba(242,13,242,0.1)] relative overflow-hidden">
+                    <div class="bg-[#221022] rounded-[2.5rem] p-8 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] shadow-[0_0_40px_rgba(242,13,242,0.1)] relative overflow-hidden">
                         
                         <!-- Dekoracja tła -->
                         <div class="absolute top-0 right-0 w-32 h-32 bg-[#ff7b00] opacity-10 blur-[50px] rounded-full pointer-events-none"></div>
@@ -111,11 +111,11 @@
                         {% if settings.cart_notes_enable %}
                             <div class="mb-6">
                                 <label for="CartSpecialInstructions" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Instrukcje specjalne dla sprzedawcy</label>
-                                <textarea name="note" id="CartSpecialInstructions" class="w-full bg-black/30 border border-white/10 rounded-xl p-3 text-white focus:border-[#f20df2] focus:ring-1 focus:ring-[#f20df2] transition-colors resize-none placeholder-gray-600" rows="3" placeholder="Dodatkowy komentarz do wejściówek, np. prośba o rezerwację stolika..."></textarea>
+                                <textarea name="note" id="CartSpecialInstructions" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-xl p-3 text-white focus:border-[#f20df2] focus:ring-1 focus:ring-[#f20df2] transition-colors resize-none placeholder-gray-600" rows="3" placeholder="Dodatkowy komentarz do wejściówek, np. prośba o rezerwację stolika..."></textarea>
                             </div>
                         {% endif %}
 
-                        <div class="border-t border-white/10 py-6 my-2">
+                        <div class="border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] py-6 my-2">
                             <div class="flex justify-between items-center mb-2">
                                 <span class="text-gray-400 font-bold uppercase tracking-widest">Suma częściowa</span>
                                 <span class="text-2xl font-black text-white">{{ cart.total_price | money }}</span>
@@ -142,7 +142,7 @@
         {% else %}
             <!-- Pusty Koszyk -->
             <div class="flex flex-col items-center justify-center py-20 text-center">
-                <div class="w-32 h-32 rounded-full bg-[#221022] border border-[#f20df2]/30 flex items-center justify-center shadow-[0_0_30px_rgba(242,13,242,0.2)] mb-8 animate-pulse-slow">
+                <div class="w-32 h-32 rounded-full glass-card border border-[#f20df2]/30 flex items-center justify-center shadow-[0_0_30px_rgba(242,13,242,0.2)] mb-8 animate-pulse-slow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#pink-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <defs>
                             <linearGradient id="pink-gradient" x1="0%" y1="0%" x2="100%" y2="100%">

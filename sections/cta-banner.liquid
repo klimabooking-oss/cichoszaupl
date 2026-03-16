@@ -1,9 +1,9 @@
-<section class="bg-gradient-to-r from-[#f20df2] via-purple-600 to-indigo-900 text-white relative overflow-hidden" style="padding-top: 60px; padding-bottom: 60px;">
+<section class="bg-gradient-to-r from-[#f20df2] via-purple-600 to-indigo-900 text-white relative overflow-hidden" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between relative z-10">
+    <div class="max-w-7xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between relative z-10">
         <div class="mb-8 md:mb-0 text-center md:text-left" data-animate="fade-right">
-            <h2 class="text-4xl font-black uppercase italic mb-2">{{ section.settings.title | default: 'Ready to Party?' }}</h2>
-            <p class="text-purple-100 font-medium text-lg">{{ section.settings.subtitle | default: 'Złap nas na czacie, zanim termin ucieknie.' }}</p>
+            <h2 class="text-4xl font-black uppercase italic mb-2">{{ section.settings.title | default: 'Ready to Party?' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}</h2>
+            <p class="text-purple-100 font-medium text-lg">{{ section.settings.subtitle | default: 'Złap nas na czacie, zanim termin ucieknie.' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}</p>
         </div>
         <div class="flex gap-4 flex-wrap justify-center md:justify-end mt-6 md:mt-0" data-animate="fade-left" data-animate-delay="200">
             <a href="/pages/wynajem-sluchawek-silent-disco" class="inline-flex items-center justify-center px-8 py-4 text-sm font-black tracking-widest text-[#0a050a] uppercase rounded-full hover:scale-105 transition-transform btn-glow" style="background:linear-gradient(to right,#f20df2,#ff5f1f,#ffd700); box-shadow:0 0 28px rgba(242,13,242,0.7), 0 0 60px rgba(242,13,242,0.3)">

@@ -1,5 +1,5 @@
-<section class="min-h-screen" style="background-color:#221022; padding-top: 60px; padding-bottom: 60px;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="min-h-screen" style="background-color:#221022; padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
+    <div class="max-w-7xl mx-auto px-5">
 
         <!-- Breadcrumb -->
         <nav class="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-10">
@@ -39,6 +39,7 @@
                     <div class="grid grid-cols-4 gap-3">
                         {% for image in product.images limit: 4 %}
                             <button onclick="document.getElementById('main-product-image').src='{{ image | img_url: '800x' }}'"
+                                    aria-label="Pokaż zdjęcie {{ forloop.index }}"
                                     class="aspect-square rounded-2xl overflow-hidden border-2 transition-all duration-200 hover:border-[#f20df2]"
                                     style="border-color: {% if forloop.first %}#f20df2{% else %}rgba(255,255,255,0.1){% endif %}; background-color:#221022;">
                                 <img src="{{ image | img_url: '200x' }}" alt="{{ image.alt }}" class="w-full h-full object-cover">
@@ -76,7 +77,7 @@
 
                 <!-- Description -->
                 {% if product.description != blank %}
-                    <div class="text-gray-400 leading-relaxed border-t border-white/5 pt-8">
+                    <div class="text-gray-400 leading-relaxed border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pt-8">
                         {{ product.description }}
                     </div>
                 {% endif %}
@@ -108,13 +109,13 @@
                     <div class="flex items-center gap-4">
                         <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Ilość</label>
                         <div class="flex items-center gap-2">
-                            <button type="button" onclick="var q=document.getElementById('qty');if(q.value>1)q.value=parseInt(q.value)-1"
+                            <button type="button" aria-label="Zmniejsz ilość" onclick="var q=document.getElementById('qty');if(q.value>1)q.value=parseInt(q.value)-1"
                                     class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-[#f20df2] transition-all"
                                     style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)">−</button>
                             <input type="number" id="qty" name="quantity" value="1" min="1"
                                    class="w-16 text-center text-white font-bold py-2 rounded-xl focus:outline-none"
                                    style="background-color:#221022; border:1px solid rgba(255,255,255,0.1)">
-                            <button type="button" onclick="var q=document.getElementById('qty');q.value=parseInt(q.value)+1"
+                            <button type="button" aria-label="Zwiększ ilość" onclick="var q=document.getElementById('qty');q.value=parseInt(q.value)+1"
                                     class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-[#f20df2] transition-all"
                                     style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1)">+</button>
                         </div>
@@ -137,7 +138,7 @@
                 {%- endform -%}
 
                 <!-- Meta info -->
-                <div class="grid grid-cols-2 gap-4 pt-6 border-t border-white/5 text-sm text-gray-500">
+                <div class="grid grid-cols-2 gap-4 pt-6 border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-sm text-gray-500">
                     {% if product.vendor != blank %}
                         <div><span class="text-gray-600 uppercase tracking-widest text-xs font-bold">Marka</span><br>{{ product.vendor }}</div>
                     {% endif %}
@@ -156,7 +157,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {% for related_product in collection.products limit: 4 %}
                         {% unless related_product.handle == product.handle %}
-                            <a href="{{ related_product.url }}" class="group border border-white/5 rounded-2xl overflow-hidden hover:border-[#f20df2]/40 transition-all duration-300 hover:-translate-y-1" style="background-color:#221022; text-decoration:none">
+                            <a href="{{ related_product.url }}" class="group border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl overflow-hidden hover:border-[#f20df2]/40 transition-all duration-300 hover:-translate-y-1" style="background-color:#221022; text-decoration:none">
                                 {% if related_product.featured_image %}
                                     <div class="aspect-square overflow-hidden" style="background-color:#221022">
                                         <img src="{{ related_product.featured_image | img_url: '400x' }}"

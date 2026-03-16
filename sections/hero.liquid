@@ -1,4 +1,4 @@
-<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden" id="hero-section" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
+<section class="relative aspect-video w-full flex items-center justify-center overflow-hidden" id="hero-section" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <!-- === WARSTWA 1: Gradient fioletowy (najniżej) === -->
     <div class="absolute inset-0 pointer-events-none" style="z-index: 0;">
         <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/90 to-[#221022]/30"></div>
@@ -203,16 +203,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Parallax scroll effect (działa dla wideo i zdjęcia)
-            const bgEl = document.getElementById('hero-bg-video') || document.getElementById('hero-bg-img');
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if(scrollY < window.innerHeight) {
-                    if (bgEl) {
-                        bgEl.style.transform = `translateY(${scrollY * 0.2}px) scale(${1.1 + scrollY * 0.0005})`;
-                    }
-                }
-            }, { passive: true });
+            // Parallax usunięty by zachować sztywne proporcje 16:9
+
 
             // Stat Counter Animation
             const statCards = document.querySelectorAll('.stat-card');

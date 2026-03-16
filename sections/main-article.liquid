@@ -1,4 +1,4 @@
-<section class="min-h-screen px-4" style="background-color:#221022; padding-top: 60px; padding-bottom: 60px;">
+<section class="min-h-screen px-4" style="background-color:#221022; padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <div class="max-w-3xl mx-auto">
 
         <!-- Breadcrumb -->
@@ -23,7 +23,7 @@
         <h1 class="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter leading-tight mb-6">{{ article.title }}</h1>
 
         <!-- Meta -->
-        <div class="flex items-center gap-4 text-sm text-gray-500 mb-10 pb-10" style="border-bottom: 1px solid rgba(255,255,255,0.05)">
+        <div class="flex items-center gap-4 text-sm text-gray-500 mb-10 pb-10" class=\"border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]\">
             <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d.%m.%Y' }}</time>
             {% if article.author %}
                 <span>·</span>
@@ -51,21 +51,21 @@
         </div>
 
         <!-- Internal Linking — powiązane usługi -->
-        <div class="mt-12 p-6 rounded-3xl border border-white/10 bg-white/[0.02]">
+        <div class="mt-12 p-6 rounded-3xl border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] bg-white/[0.02]">
             <p class="text-xs font-black uppercase tracking-widest text-gray-500 mb-4">Sprawdź też</p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <a href="/pages/wynajem-sluchawek-silent-disco"
-                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-[#f20df2]/10 border border-[#f20df2]/20 hover:bg-[#f20df2]/20 transition-all text-sm font-bold text-white">
+                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-[#f20df2]/10 border border-[#f20df2]/30 shadow-[0_0_10px_rgba(242,13,242,0.1)] hover:shadow-[0_0_20px_rgba(242,13,242,0.3)] hover:bg-[#f20df2]/20 transition-all text-sm font-bold text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f20df2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
                     Wynajem słuchawek →
                 </a>
                 <a href="/#rental"
-                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-[#ff5f1f]/10 border border-[#ff5f1f]/20 hover:bg-[#ff5f1f]/20 transition-all text-sm font-bold text-white">
+                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-[#ff5f1f]/10 border border-[#ff5f1f]/30 shadow-[0_0_10px_rgba(255,95,31,0.1)] hover:shadow-[0_0_20px_rgba(255,95,31,0.3)] hover:bg-[#ff5f1f]/20 transition-all text-sm font-bold text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff5f1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
                     Kalkulator wyceny →
                 </a>
                 <a href="{{ blog.url }}"
-                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-sm font-bold text-white">
+                   class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/20 shadow-[0_0_10px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:bg-white/10 transition-all text-sm font-bold text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
                     Więcej artykułów →
                 </a>
@@ -73,7 +73,7 @@
         </div>
 
         <!-- Back link -->
-        <div class="mt-10 pt-10" style="border-top: 1px solid rgba(255,255,255,0.05)">
+        <div class="mt-10 pt-10" class=\"border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]\">
             <a href="{{ blog.url }}" class="inline-flex items-center gap-3 font-black uppercase tracking-widest text-sm text-gray-400 hover:text-white transition-colors group">
                 <span class="w-8 h-8 rounded-full flex items-center justify-center transition-all group-hover:bg-[#f20df2]" style="background-color:rgba(255,255,255,0.05)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>

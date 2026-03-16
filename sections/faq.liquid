@@ -6,7 +6,7 @@
                 <h2 class="sr-only">Wypożyczalnia CICHOSZAU - Najczęstsze Pytania i Odpowiedzi (FAQ)</h2>
                 <div aria-hidden="true" class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
                     <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 origin-bottom-left">
-                        {{ section.settings.title | default: 'Częste' }}
+                        {{ section.settings.title | default: 'Częste' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}
                     </span>
                     <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] via-[#ff5f1f] to-[#ffd700] transform rotate-2 group-hover:rotate-0 transition-transform duration-500 origin-bottom-right pb-2">
                         {{ section.settings.highlight | default: 'Pytania' }}

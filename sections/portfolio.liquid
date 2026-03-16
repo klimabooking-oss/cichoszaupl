@@ -1,5 +1,5 @@
-<section class="bg-[#221022] relative" id="case-studies" style="padding-top: 0px; padding-bottom: 0px;">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="bg-[#221022] relative" id="case-studies" style="padding-top: clamp(50px, 6vw, 0px); padding-bottom: clamp(50px, 6vw, 0px);">
+    <div class="max-w-7xl mx-auto px-5">
 
         <div class="text-center mb-6">
             <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter group cursor-default inline-block">
@@ -53,7 +53,7 @@
                 {% for video in videos %}
                     <div class="relative group w-[280px] md:w-[320px] shrink-0">
                         <div class="absolute -inset-4 bg-gradient-to-b from-[#f20df2]/40 via-purple-600/20 to-[#ff5f1f]/40 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"></div>
-                        <div class="portfolio-video-btn cursor-pointer relative aspect-[9/18] rounded-[2.5rem] bg-black border-[3px] border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] overflow-hidden transform transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:border-[#f20df2] group-hover:shadow-[0_0_40px_rgba(242,13,242,0.4)]" data-video-url="{{ video.settings.video_url }}" data-title="{{ video.settings.title | default: 'Mój Film' }}">
+                        <div class="portfolio-video-btn cursor-pointer relative aspect-[9/18] rounded-[2.5rem] glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] overflow-hidden transform transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:border-[#f20df2]/80 group-hover:shadow-[0_0_30px_rgba(242,13,242,0.3)]" data-video-url="{{ video.settings.video_url }}" data-title="{{ video.settings.title | default: 'Mój Film' }}">
                             <div class="relative w-full h-full">
                                 {% if video.settings.thumbnail %}
                                     <img src="{{ video.settings.thumbnail | img_url: '800x1400' }}" alt="{{ video.settings.title }}" class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105" loading="lazy" />
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="absolute bottom-0 left-0 w-full p-6 text-center">
-                                    <div class="inline-block px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 mb-3">
+                                    <div class="inline-block px-3 py-1 rounded-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] mb-3">
                                         <div class="text-[#f20df2] text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
                                             <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
                                             Live Story
@@ -87,7 +87,7 @@
                     {% for title in def_videos %}
                         <div class="relative group w-[280px] md:w-[320px] shrink-0">
                             <div class="absolute -inset-4 bg-gradient-to-b from-[#f20df2]/40 via-purple-600/20 to-[#ff5f1f]/40 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"></div>
-                            <div class="portfolio-video-btn cursor-pointer relative aspect-[9/18] rounded-[2.5rem] bg-black border-[3px] border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] overflow-hidden transform transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:border-[#f20df2] group-hover:shadow-[0_0_40px_rgba(242,13,242,0.4)]" data-video-url="https://www.w3schools.com/html/mov_bbb.mp4" data-title="{{ title }}">
+                            <div class="portfolio-video-btn cursor-pointer relative aspect-[9/18] rounded-[2.5rem] glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] overflow-hidden transform transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:border-[#f20df2]/80 group-hover:shadow-[0_0_30px_rgba(242,13,242,0.3)]" data-video-url="https://www.w3schools.com/html/mov_bbb.mp4" data-title="{{ title }}">
                                 <div class="relative w-full h-full">
                                     <img src="{{ def_imgs[forloop.index0] }}" alt="{{ title }}" class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105" loading="lazy" />
                                     <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/90"></div>
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 left-0 w-full p-6 text-center">
-                                        <div class="inline-block px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 mb-3">
+                                        <div class="inline-block px-3 py-1 rounded-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] mb-3">
                                             <div class="text-[#f20df2] text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
                                                 <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
                                                 Live Story
@@ -130,7 +130,7 @@
                     data-img="{% if photo.settings.image %}{{ photo.settings.image | img_url: '1200x800' }}{% endif %}"
                     data-title="{{ photo.settings.title }}"
                     data-category="{{ photo.settings.category }}"
-                    class="portfolio-img-btn group relative h-[400px] rounded-[32px] overflow-hidden cursor-pointer border-[3px] border-[#f20df2]/40 shadow-[0_0_30px_rgba(242,13,242,0.15)] min-w-[85vw] md:min-w-0 snap-center hover:border-[#f20df2] hover:shadow-[0_0_40px_rgba(242,13,242,0.4)] active:scale-[0.98] transition-all duration-300 ease-out {{ size_class }}"
+                    class="portfolio-img-btn group relative h-[400px] rounded-[32px] overflow-hidden cursor-pointer border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] min-w-[85vw] md:min-w-0 snap-center hover:border-[#f20df2]/80 hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] active:scale-[0.98] transition-all duration-300 ease-out {{ size_class }}"
                 >
                     {% if photo.settings.image %}
                         <img src="{{ photo.settings.image | img_url: '1200x800' }}" alt="{{ photo.settings.title }}" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110 filter brightness-90 group-hover:brightness-100" loading="lazy" />
@@ -171,7 +171,7 @@
                         data-img="{{ def_p_imgs[forloop.index0] }}"
                         data-title="{{ title }}"
                         data-category="{{ def_p_cats[forloop.index0] }}"
-                        class="portfolio-img-btn group relative h-[400px] rounded-[32px] overflow-hidden cursor-pointer border-[3px] border-transparent min-w-[85vw] md:min-w-0 snap-center hover:border-white/20 hover:shadow-[0_0_40px_rgba(0,0,0,0.5)] active:scale-[0.98] active:border-[#f20df2] transition-all duration-300 ease-out {{ size_class }}"
+                        class="portfolio-img-btn group relative h-[400px] rounded-[32px] overflow-hidden cursor-pointer border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] min-w-[85vw] md:min-w-0 snap-center hover:border-[#f20df2]/80 hover:shadow-[0_0_30px_rgba(242,13,242,0.3)] active:scale-[0.98] transition-all duration-300 ease-out {{ size_class }}"
                     >
                         <img src="{{ def_p_imgs[forloop.index0] }}" alt="{{ title }}" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110 filter brightness-90 group-hover:brightness-100" loading="lazy" />
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-300"></div>
@@ -210,14 +210,14 @@
     </div>
 
     <!-- Lightbox Element -->
-    <div id="lightbox" class="fixed inset-0 z-[100] bg-[#221022]/95 backdrop-blur-2xl hidden items-center justify-center p-4">
-        <button id="lb-close" class="absolute top-6 right-6 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 z-50">
+    <div id="lightbox" class="fixed inset-0 z-[100] glass-card hidden items-center justify-center p-4">
+        <button id="lb-close" aria-label="Zamknij galerię" class="absolute top-6 right-6 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 z-50">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
-        <button id="lb-prev" class="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+        <button id="lb-prev" aria-label="Poprzednie zdjęcie" class="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </button>
-        <button id="lb-next" class="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+        <button id="lb-next" aria-label="Następne zdjęcie" class="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </button>
         <div class="relative max-w-7xl w-full h-[85vh] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
@@ -234,15 +234,15 @@
 
     <!-- Video Modal -->
     <div id="video-modal" class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-2xl hidden items-center justify-center p-4">
-        <button id="vm-close" class="absolute top-6 right-6 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 z-50">
+        <button id="vm-close" aria-label="Zamknij wideo" class="absolute top-6 right-6 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 z-50">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
         <!-- Prev -->
-        <button id="vm-prev" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-[#f20df2] rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+        <button id="vm-prev" aria-label="Poprzednie wideo" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-[#f20df2] rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </button>
         <!-- Next -->
-        <button id="vm-next" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-[#f20df2] rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
+        <button id="vm-next" aria-label="Następne wideo" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-[#f20df2] rounded-full flex items-center justify-center text-white transition-all z-50 hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </button>
         <div class="relative w-full max-w-[420px] mx-auto" style="aspect-ratio:9/16">

@@ -1,4 +1,4 @@
-<section class="overflow-hidden relative" id="event-slider" style="background-color:#221022; padding-top: 60px; padding-bottom: 60px;">
+<section class="overflow-hidden relative py-[0px] md:py-[60px]" id="event-slider" style="background-color:#221022; ">
     <div class="absolute inset-0 pointer-events-none" style="background-image:url('https://grainy-gradients.vercel.app/noise.svg');opacity:0.15;mix-blend-mode:overlay"></div>
 
     <div class="relative z-10">
@@ -11,10 +11,10 @@
              onmouseenter="this.querySelector('.mq1').style.animationPlayState='paused';this.querySelector('.mq1b').style.animationPlayState='paused'"
              onmouseleave="this.querySelector('.mq1').style.animationPlayState='running';this.querySelector('.mq1b').style.animationPlayState='running'">
             <div style="display:flex; width:max-content">
-                <div class="mq1" style="display:flex; gap:12px; animation:mq-fwd 40s linear infinite; flex-shrink:0">
+                <div class="mq1" style="display:flex; gap:12px; animation:mq-fwd 61s linear infinite; flex-shrink:0">
                     {% for block in all_blocks %}
                         {% if forloop.index0 < half or half == 0 %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(255,255,255,0.06)">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:rgba(34,16,34,0.8); backdrop-filter:blur(24px); border:1px solid rgba(242,13,242,0.4); box-shadow: 0 0 20px rgba(242,13,242,0.15); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 0 30px rgba(242,13,242,0.3)'; this.style.borderColor='rgba(242,13,242,0.8)'" onmouseout="this.style.boxShadow='0 0 20px rgba(242,13,242,0.1)'; this.style.borderColor='rgba(242,13,242,0.4)'">
                                 {% if block.settings.image %}
                                     <img src="{{ block.settings.image | img_url: '600x' }}" alt="Event" style="width:100%;height:100%;object-fit:cover" loading="lazy">
                                 {% else %}
@@ -27,7 +27,7 @@
                     {% else %}
                         {% comment %} Placeholder tiles when no blocks {% endcomment %}
                         {% for i in (1..8) %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.15); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.25); box-shadow: 0 0 15px rgba(242,13,242,0.1); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(242,13,242,0.3)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
                                 <p style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;color:rgba(242,13,242,0.4)">Dodaj zdjęcie</p>
                             </div>
@@ -35,10 +35,10 @@
                     {% endfor %}
                 </div>
                 {% comment %} Duplicate for seamless loop {% endcomment %}
-                <div class="mq1b" style="display:flex; gap:12px; animation:mq-fwd 40s linear infinite; flex-shrink:0" aria-hidden="true">
+                <div class="mq1b" style="display:flex; gap:12px; animation:mq-fwd 61s linear infinite; flex-shrink:0" aria-hidden="true">
                     {% for block in all_blocks %}
                         {% if forloop.index0 < half or half == 0 %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(255,255,255,0.06)">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:rgba(34,16,34,0.8); backdrop-filter:blur(24px); border:1px solid rgba(242,13,242,0.4); box-shadow: 0 0 20px rgba(242,13,242,0.15); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 0 30px rgba(242,13,242,0.3)'; this.style.borderColor='rgba(242,13,242,0.8)'" onmouseout="this.style.boxShadow='0 0 20px rgba(242,13,242,0.1)'; this.style.borderColor='rgba(242,13,242,0.4)'">
                                 {% if block.settings.image %}
                                     <img src="{{ block.settings.image | img_url: '600x' }}" alt="Event" style="width:100%;height:100%;object-fit:cover" loading="lazy">
                                 {% else %}
@@ -50,7 +50,7 @@
                         {% endif %}
                     {% else %}
                         {% for i in (1..8) %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.15); display:flex; align-items:center; justify-content:center">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.25); box-shadow: 0 0 15px rgba(242,13,242,0.1); display:flex; align-items:center; justify-content:center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(242,13,242,0.3)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
                             </div>
                         {% endfor %}
@@ -64,10 +64,10 @@
              onmouseenter="this.querySelector('.mq2').style.animationPlayState='paused';this.querySelector('.mq2b').style.animationPlayState='paused'"
              onmouseleave="this.querySelector('.mq2').style.animationPlayState='running';this.querySelector('.mq2b').style.animationPlayState='running'">
             <div style="display:flex; width:max-content">
-                <div class="mq2" style="display:flex; gap:12px; animation:mq-rev 45s linear infinite; flex-shrink:0">
+                <div class="mq2" style="display:flex; gap:12px; animation:mq-rev 69s linear infinite; flex-shrink:0">
                     {% for block in all_blocks %}
                         {% if forloop.index0 >= half %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(255,255,255,0.06)">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:rgba(34,16,34,0.8); backdrop-filter:blur(24px); border:1px solid rgba(242,13,242,0.4); box-shadow: 0 0 20px rgba(242,13,242,0.15); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 0 30px rgba(242,13,242,0.3)'; this.style.borderColor='rgba(242,13,242,0.8)'" onmouseout="this.style.boxShadow='0 0 20px rgba(242,13,242,0.1)'; this.style.borderColor='rgba(242,13,242,0.4)'">
                                 {% if block.settings.image %}
                                     <img src="{{ block.settings.image | img_url: '600x' }}" alt="Event" style="width:100%;height:100%;object-fit:cover" loading="lazy">
                                 {% else %}
@@ -79,16 +79,16 @@
                         {% endif %}
                     {% else %}
                         {% for i in (1..8) %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.15); display:flex; align-items:center; justify-content:center">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.25); box-shadow: 0 0 15px rgba(242,13,242,0.1); display:flex; align-items:center; justify-content:center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(242,13,242,0.3)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
                             </div>
                         {% endfor %}
                     {% endfor %}
                 </div>
-                <div class="mq2b" style="display:flex; gap:12px; animation:mq-rev 45s linear infinite; flex-shrink:0" aria-hidden="true">
+                <div class="mq2b" style="display:flex; gap:12px; animation:mq-rev 69s linear infinite; flex-shrink:0" aria-hidden="true">
                     {% for block in all_blocks %}
                         {% if forloop.index0 >= half %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(255,255,255,0.06)">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:rgba(34,16,34,0.8); backdrop-filter:blur(24px); border:1px solid rgba(242,13,242,0.4); box-shadow: 0 0 20px rgba(242,13,242,0.15); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 0 30px rgba(242,13,242,0.3)'; this.style.borderColor='rgba(242,13,242,0.8)'" onmouseout="this.style.boxShadow='0 0 20px rgba(242,13,242,0.1)'; this.style.borderColor='rgba(242,13,242,0.4)'">
                                 {% if block.settings.image %}
                                     <img src="{{ block.settings.image | img_url: '600x' }}" alt="Event" style="width:100%;height:100%;object-fit:cover" loading="lazy">
                                 {% else %}
@@ -100,7 +100,7 @@
                         {% endif %}
                     {% else %}
                         {% for i in (1..8) %}
-                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.15); display:flex; align-items:center; justify-content:center">
+                            <div style="width:260px; height:220px; flex-shrink:0; border-radius:20px; overflow:hidden; background-color:#221022; border:1px solid rgba(242,13,242,0.25); box-shadow: 0 0 15px rgba(242,13,242,0.1); display:flex; align-items:center; justify-content:center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(242,13,242,0.3)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
                             </div>
                         {% endfor %}

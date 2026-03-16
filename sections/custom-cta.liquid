@@ -8,13 +8,13 @@
         <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
             <div class="md:w-2/3">
                 {% if section.settings.badge_text != blank %}
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/20 text-white text-[10px] font-black uppercase tracking-widest mb-6 border border-white/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/20 text-white text-[10px] font-black uppercase tracking-widest mb-6 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                     {{ section.settings.badge_text }}
                 </div>
                 {% endif %}
                 
                 <h2 class="text-4xl md:text-5xl font-black text-white italic tracking-tighter mb-4 leading-none">
-                    {{ section.settings.title }}
+                    {{ section.settings.title | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}
                 </h2>
                 
                 <div class="text-white/90 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">

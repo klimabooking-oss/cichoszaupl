@@ -1,0 +1,569 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "bg_video": "shopify://files/videos/0311 (1)(1).mp4",
+        "primary_cta_link": "",
+        "secondary_cta_link": ""
+      }
+    },
+    "what_is_it": {
+      "type": "what-is-it",
+      "disabled": true,
+      "settings": {
+        "audio_url": ""
+      }
+    },
+    "custom_technology_yXHW6Y": {
+      "type": "custom-technology",
+      "name": "Technologia (PDF)",
+      "settings": {
+        "tech_video": "shopify://files/videos/0311 (1)(1).mp4",
+        "subtitle": "Poznaj sprzęt [MIASTO]",
+        "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span> [MIASTO]",
+        "description": "Potężny zasięg RF do 500 metrów, gwarancja 10 godzin pracy na baterii oraz rygorystyczny protokół dezynfekcji UV. Postaw na niezawodną technologię B2B z 3 niezależnymi kanałami audio.",
+        "button_label": "Dowiedz się więcej",
+        "button_link": "/pages/wynajem-sluchawek-silent-disco#nasza-oferta"
+      }
+    },
+    "process_iezBYp": {
+      "type": "process",
+      "name": "Process Pipeline",
+      "settings": {
+        "subtitle": "Metodologia [MIASTO]",
+        "title": "3 etapy do [MIASTO]",
+        "highlight_text": "PERFEKCJI",
+        "step1_title": "1. Konsultacja",
+        "step1_desc": "Analiza potrzeb, gwarancja zasięgu 500m oraz darmowa rezerwacja terminu z wyceną PDF w 30s.",
+        "step2_title": "2. Przygotowanie",
+        "step2_desc": "Protokół dezynfekcji, pełne naładowanie (10h działania) i bezpieczna wysyłka w sterylnej skrzyni.",
+        "step3_title": "3. Realizacja",
+        "step3_desc": "Wydawanie bez kolejek i strat dzięki naszej autorskiej aplikacji CichoszauRent.pl."
+      }
+    },
+    "logo_ticker": {
+      "type": "logo-ticker",
+      "blocks": {
+        "logo_wagayB": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/6_ec1500fc-6948-4638-aed2-602ff11e4d76.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_waYEEX": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/1.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_MchkEM": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/10_da9efdea-85eb-4836-8eb1-22d18fb669ba.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_UpzEwf": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/17_dcf64bc8-d8ef-49d4-8e60-1af694754527.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_iLfGDU": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/8_19c89732-7c6c-40f3-97e0-65182f664d8f.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_GhV7XP": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/11_15889e6d-020d-42cf-a63d-68b2ca16e80c.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_FVVMXE": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/15_5527fc07-47e1-41f0-abd3-97ba341d77ea.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_TgRiTc": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/14_b0ddaed6-c60d-4d17-8075-2a3f6f9500af.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_6EQXhF": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/13_e9ebb761-c6bd-4e92-904d-92c71026c1d9.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_n6BGch": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/13_095321fa-4774-4026-b138-94961d769a06.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_ATmapq": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/12_20d9f603-28fa-4b3b-a328-2d50ef607a5d.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_wXyEyy": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/9_2cf74311-217f-4831-9fb3-7226f01bf3c7.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_QceqjK": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/9_fa00c1ea-5653-4999-9d70-02fd778a7ed7.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_kMf4T6": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/5_6871bc5a-fb85-43cd-b940-1c93c17ae886.png",
+            "logo_name": "Nazwa firmy"
+          }
+        },
+        "logo_68w9V9": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/6_7853a0ad-9443-4110-af26-e2b438feca25.png",
+            "logo_name": "Nazwa firmy"
+          }
+        }
+      },
+      "block_order": [
+        "logo_wagayB",
+        "logo_waYEEX",
+        "logo_MchkEM",
+        "logo_UpzEwf",
+        "logo_iLfGDU",
+        "logo_GhV7XP",
+        "logo_FVVMXE",
+        "logo_TgRiTc",
+        "logo_6EQXhF",
+        "logo_n6BGch",
+        "logo_ATmapq",
+        "logo_wXyEyy",
+        "logo_QceqjK",
+        "logo_kMf4T6",
+        "logo_68w9V9"
+      ],
+      "settings": {
+        "heading": "Zaufali nam najlepsi",
+        "columns": 5,
+        "show_stats": true
+      }
+    },
+    "how_it_works_video": {
+      "type": "how-it-works-video",
+      "settings": {
+        "pill_text": "PLUG & PLAY",
+        "title": "ZOBACZ JAK TO DZIAŁA W PRAKTYCE [MIASTO]",
+        "subtitle": "To bajecznie proste. 3 proste kroki do samodzielnego uruchomienia imprezy. [MIASTO]",
+        "step1_title": "Odbierasz Paczkę",
+        "step1_desc": "Kurier dostarcza sterylną skrzynię pełną naładowanych w 100% słuchawek prosto pod Twoje drzwi.",
+        "step2_title": "Podpinasz Kable",
+        "step2_desc": "Podłączasz nadajnik do prądu i wpinasz telefon/laptopa załączonym minijackiem. Zero dodatkowej konfiguracji.",
+        "step3_title": "Rozdajesz i Grasz",
+        "step3_desc": "Włączasz słuchawki jednym suwakiem na nauszniku i ustawiasz kanał. Koniec instrukcji. Czas na imprezę!"
+      }
+    },
+    "services_grid": {
+      "type": "services-grid",
+      "disabled": true,
+      "settings": {
+        "title": "Nasze",
+        "highlight_text": "Pakiety",
+        "description": "Wybierz bazę swojego wydarzenia i skonfiguruj ją w naszym sklepie, aby otrzymać natychmiastową wycenę.",
+        "url_pakiet_a": "",
+        "url_pakiet_b": "",
+        "url_pakiet_c": ""
+      }
+    },
+    "process": {
+      "type": "process",
+      "disabled": true,
+      "settings": {
+        "subtitle": "Metodologia [MIASTO]",
+        "title": "3 etapy do [MIASTO]",
+        "highlight_text": "PERFEKCJI",
+        "step1_title": "1. Konsultacja",
+        "step1_desc": "Analiza potrzeb technicznych, wybór skali oraz rezerwacja terminu realizacji.",
+        "step2_title": "2. Przygotowanie",
+        "step2_desc": "Konfiguracja, testy jakościowe oraz bezpieczna wysyłka zestawu pod wskazany adres.",
+        "step3_title": "3. Realizacja",
+        "step3_desc": "Bezproblemowy przebieg wydarzenia pod nadzorem naszego zaplecza wsparcia."
+      }
+    },
+    "event_slider": {
+      "type": "event-slider",
+      "blocks": {
+        "image_JBWPf7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/155_f9c4d0a8-71b4-4f2f-ab9d-fc4a37cee6c2.png"
+          }
+        },
+        "image_DyReCB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/25.png"
+          }
+        },
+        "image_WaeAUm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/149_6be6ad65-2e29-4b30-ad08-e67f9c0818cd.png"
+          }
+        },
+        "image_jUYfbR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/19.png"
+          }
+        },
+        "image_9PqVyq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/167.png"
+          }
+        },
+        "image_yetw63": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/170.png"
+          }
+        },
+        "image_6BEhHx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/149_a82e57fa-d456-48f5-81ec-817c15576828.png"
+          }
+        },
+        "image_BmDPCg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/26.png"
+          }
+        },
+        "image_KNwdET": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/147_9f62fb5a-0023-4c66-8c6f-87c70d0fe12e.png"
+          }
+        },
+        "image_MXVpyc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/179_527eade8-cf78-49ce-913a-549d7d5cf100.png"
+          }
+        },
+        "image_LtyreQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/180.png"
+          }
+        },
+        "image_7GVKAc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/178.png"
+          }
+        },
+        "image_EEzBkk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/172.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_JBWPf7",
+        "image_DyReCB",
+        "image_WaeAUm",
+        "image_jUYfbR",
+        "image_9PqVyq",
+        "image_yetw63",
+        "image_6BEhHx",
+        "image_BmDPCg",
+        "image_KNwdET",
+        "image_MXVpyc",
+        "image_LtyreQ",
+        "image_7GVKAc",
+        "image_EEzBkk"
+      ],
+      "settings": {
+        "title": "Nasze Eventy"
+      }
+    },
+    "booking_calculator": {
+      "type": "booking-calculator",
+      "settings": {
+        "title": "Kalkulator",
+        "highlight": "Silent Disco",
+        "subtitle": "Skonfiguruj idealny zestaw w 3 minuty. [MIASTO]"
+      }
+    },
+    "portfolio": {
+      "type": "portfolio",
+      "blocks": {
+        "video_PpCBhr": {
+          "type": "video",
+          "settings": {
+            "title": "Zwodowani",
+            "video_url": ""
+          }
+        },
+        "video_PdyKmm": {
+          "type": "video",
+          "settings": {
+            "title": "Festiwal Pasibrzucha",
+            "video_url": "https://drive.google.com/file/d/1nNoP3vjupHCWGP5fRCzUqV6ESXpUx6V-/view?usp=drive_link"
+          }
+        },
+        "video_xqQaPg": {
+          "type": "video",
+          "settings": {
+            "title": "Festiwal Pasibrzucha",
+            "video_url": "https://drive.google.com/file/d/1impsj4ZhcmMOeyjC0kCAOVnxYhT-vJiw/view?usp=drive_link"
+          }
+        },
+        "video_gTLbwL": {
+          "type": "video",
+          "settings": {
+            "title": "Silent Disco na Lotnisku",
+            "video_url": "https://drive.google.com/file/d/1kx_ZQAUlknBFxXFshEDUcmh8h1lzjN7m/view?usp=drive_link"
+          }
+        },
+        "video_Pteebc": {
+          "type": "video",
+          "settings": {
+            "title": "Stary Klasztor",
+            "video_url": "https://drive.google.com/file/d/1GfghBvIRnbpbEM3iq0kUahIKs8JAIg5M/view?usp=drive_link"
+          }
+        },
+        "video_B6xPAz": {
+          "type": "video",
+          "settings": {
+            "title": "Gastro Miasto",
+            "video_url": "https://drive.google.com/file/d/1WFDrojfJltlB3L0f8ZrFSVi2tN-_Suvv/view?usp=drive_link"
+          }
+        },
+        "photo_4phkNX": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/195.png",
+            "title": "Nasza Realizacja",
+            "category": "Event"
+          }
+        },
+        "photo_L3DQNF": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/208.png",
+            "title": "Nasza Realizacja",
+            "category": "Event"
+          }
+        },
+        "photo_cH64cp": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/198.png",
+            "title": "Nasza Realizacja",
+            "category": "Event"
+          }
+        },
+        "photo_9C6Xt4": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/199.png",
+            "title": "Nasza Realizacja",
+            "category": "Event"
+          }
+        }
+      },
+      "block_order": [
+        "video_PpCBhr",
+        "video_PdyKmm",
+        "video_xqQaPg",
+        "video_gTLbwL",
+        "video_Pteebc",
+        "video_B6xPAz",
+        "photo_4phkNX",
+        "photo_L3DQNF",
+        "photo_cH64cp",
+        "photo_9C6Xt4"
+      ],
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {}
+    },
+    "event_slider_FftziA": {
+      "type": "event-slider",
+      "blocks": {
+        "image_KhQ8BU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/155_f9c4d0a8-71b4-4f2f-ab9d-fc4a37cee6c2.png"
+          }
+        },
+        "image_ktEktp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/25.png"
+          }
+        },
+        "image_fkzN3W": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/149_6be6ad65-2e29-4b30-ad08-e67f9c0818cd.png"
+          }
+        },
+        "image_mgEMrm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/19.png"
+          }
+        },
+        "image_Fw3pwK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/167.png"
+          }
+        },
+        "image_tKR3qA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/170.png"
+          }
+        },
+        "image_VMUwQG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/149_a82e57fa-d456-48f5-81ec-817c15576828.png"
+          }
+        },
+        "image_44bt8j": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/26.png"
+          }
+        },
+        "image_Bi4yL6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/147_9f62fb5a-0023-4c66-8c6f-87c70d0fe12e.png"
+          }
+        },
+        "image_hHNL94": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/179_527eade8-cf78-49ce-913a-549d7d5cf100.png"
+          }
+        },
+        "image_Dmkg9R": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/180.png"
+          }
+        },
+        "image_Wc7M9e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/178.png"
+          }
+        },
+        "image_kpErTV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/172.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_KhQ8BU",
+        "image_ktEktp",
+        "image_fkzN3W",
+        "image_mgEMrm",
+        "image_Fw3pwK",
+        "image_tKR3qA",
+        "image_VMUwQG",
+        "image_44bt8j",
+        "image_Bi4yL6",
+        "image_hHNL94",
+        "image_Dmkg9R",
+        "image_Wc7M9e",
+        "image_kpErTV"
+      ],
+      "settings": {
+        "title": "Nasze Eventy"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "cta_banner": {
+      "type": "cta-banner",
+      "settings": {
+        "title": "Ready to Party? [MIASTO]",
+        "subtitle": "Złap nas na czacie, zanim termin ucieknie. [MIASTO]",
+        "btn1_text": "WhatsApp",
+        "whatsapp_url": "",
+        "btn2_text": "Messenger",
+        "messenger_url": ""
+      }
+    },
+    "blog_preview": {
+      "type": "blog-preview",
+      "settings": {
+        "blog_handle": "strefa-wiedzy-silent-disco",
+        "subtitle": "Blog & News [MIASTO]",
+        "title": "Strefa [MIASTO]",
+        "highlight": "Wiedzy",
+        "show_view_all": true,
+        "show_tags": false
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "what_is_it",
+    "custom_technology_yXHW6Y",
+    "process_iezBYp",
+    "logo_ticker",
+    "how_it_works_video",
+    "services_grid",
+    "process",
+    "event_slider",
+    "booking_calculator",
+    "portfolio",
+    "testimonials",
+    "event_slider_FftziA",
+    "faq",
+    "cta_banner",
+    "blog_preview"
+  ]
+}

@@ -18,7 +18,7 @@
             {% elsif section.settings.tech_image != blank %}
                 <img
                     src="{{ section.settings.tech_image | image_url: width: 800, format: 'webp' }}"
-                    alt="{{ section.settings.title | escape }}"
+                    alt="{{ section.settings.title | escape | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}"
                     class="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 group-hover:brightness-100 transition-all duration-700"
                     style="width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center !important; position: absolute !important; top: 0 !important; left: 0 !important;"
                     loading="lazy"
@@ -63,7 +63,7 @@
             
             {% if section.settings.button_label != blank %}
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#rental-products-produkty" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/20 rounded-xl hover:bg-white/10 hover:border-white/40 transition-all text-white font-bold text-sm tracking-widest uppercase cursor-pointer">
+                <a href="{{ section.settings.button_link | default: '/pages/wynajem-sluchawek-silent-disco#nasza-oferta' }}" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/20 rounded-xl hover:bg-white/10 hover:border-white/40 transition-all text-white font-bold text-sm tracking-widest uppercase cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
                     {{ section.settings.button_label }}
                 </a>

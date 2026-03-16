@@ -1,4 +1,4 @@
-<section class="min-h-screen bg-[#221022] relative overflow-hidden" id="service-landing-{{ section.id }}" style="padding-top: 60px; padding-bottom: 60px;">
+<section class="min-h-screen bg-[#221022] relative overflow-hidden" id="service-landing-{{ section.id }}" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
 
     <!-- Hero Section -->
     <div class="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -9,11 +9,13 @@
         </div>
 
         <!-- === WARSTWA 2: Film / Zdjęcie (po prawej, za napisami) === -->
-        {% if section.settings.hero_video != blank %}
+        {% if section.settings.hero_video != blank or section.settings.hero_video_mobile != blank %}
             <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
+                
+                {% if section.settings.hero_video != blank %}
                 <video
-                    class="absolute inset-0 w-full h-full object-cover"
+                    class="absolute inset-0 w-full h-full object-cover {% if section.settings.hero_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
                     autoplay loop muted playsinline preload="auto"
                     style="opacity: 0.85; z-index: 10;"
                 >
@@ -21,40 +23,70 @@
                         <source src="{{ source.url }}" type="video/{{ source.format }}">
                     {% endfor %}
                 </video>
+                {% endif %}
+
+                {% if section.settings.hero_video_mobile != blank %}
+                <video
+                    class="absolute inset-0 w-full h-full object-cover {% if section.settings.hero_video != blank %}block md:hidden{% else %}block{% endif %}"
+                    autoplay loop muted playsinline preload="auto"
+                    style="opacity: 0.85; z-index: 10;"
+                >
+                    {% for source in section.settings.hero_video_mobile.sources %}
+                        <source src="{{ source.url }}" type="video/{{ source.format }}">
+                    {% endfor %}
+                </video>
+                {% endif %}
             </div>
-        {% elsif section.settings.hero_image != blank %}
+        {% elsif section.settings.hero_image != blank or section.settings.hero_image_mobile != blank %}
             <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
-                <img
-                    src="{{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }}"
-                    alt="{{ section.settings.title }}"
-                    class="absolute inset-0 w-full h-full object-cover"
-                    style="opacity: 0.85; z-index: 10;"
-                    loading="eager"
-                    fetchpriority="high"
-                />
+                <picture>
+                    {% if section.settings.hero_image_mobile != blank %}
+                    <source media="(max-width: 767px)" srcset="{{ section.settings.hero_image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.hero_image_mobile | image_url: width: 800, format: 'webp' }} 800w">
+                    {% endif %}
+                    {% if section.settings.hero_image != blank %}
+                    <source media="(min-width: 768px)" srcset="{{ section.settings.hero_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }} 1920w">
+                    <img
+                        src="{{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }}"
+                        alt="{{ section.settings.title | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}"
+                        class="absolute inset-0 w-full h-full object-cover"
+                        style="opacity: 0.85; z-index: 10;"
+                        loading="eager"
+                        fetchpriority="high"
+                    />
+                    {% elsif section.settings.hero_image_mobile != blank %}
+                    <img
+                        src="{{ section.settings.hero_image_mobile | image_url: width: 800, format: 'webp' }}"
+                        alt="{{ section.settings.title | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }} Mobile"
+                        class="absolute inset-0 w-full h-full object-cover"
+                        style="opacity: 0.85; z-index: 10;"
+                        loading="eager"
+                        fetchpriority="high"
+                    />
+                    {% endif %}
+                </picture>
             </div>
         {% else %}
             <!-- Fallback Image -->
             <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
-                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" style="opacity: 0.85; z-index: 10;" />
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" style="opacity: 0.85; z-index: 10;" alt="" />
             </div>
         {% endif %}
 
         <!-- === WARSTWA 3: Treść (napisów i przycisk po lewej) === -->
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-24 flex items-center" style="z-index: 30;">
+        <div class="relative max-w-7xl mx-auto px-5 w-full py-24 flex items-center" style="z-index: 30;">
             <div class="w-full max-w-2xl" data-animate="fade-up">
                 <span class="inline-block px-4 py-2 rounded-full bg-yellow-400/20 text-yellow-400 border border-yellow-400/50 font-bold uppercase tracking-widest text-sm mb-6 animate-fade-in-up">
                     Oferta Specjalna
                 </span>
                 
                 <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 uppercase italic leading-none animate-fade-in-up md:delay-100">
-                    {{ section.settings.title | default: page.title }}
+                    {{ section.settings.title | default: page.title | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}
                 </h1>
                 
                 <p class="text-xl md:text-2xl text-gray-300 font-medium mb-12 leading-relaxed animate-fade-in-up md:delay-200 max-w-xl">
-                    {{ section.settings.subtitle | default: 'Rozwiązania dopasowane do Twoich potrzeb.' }}
+                    {{ section.settings.subtitle | default: 'Rozwiązania dopasowane do Twoich potrzeb.' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}
                 </p>
                 
                 <button
@@ -69,17 +101,17 @@
     </div>
 
     <!-- EDUCATIONAL SECTION - "How it works" -->
-    <div class="py-24 bg-[#221022] relative border-t border-white/5 overflow-hidden">
+    <div class="py-24 bg-[#221022] relative border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] overflow-hidden">
         
         <!-- Decorative Cut-out Style Element -->
         <div class="hidden lg:block absolute right-0 bottom-0 w-1/3 h-full z-10 pointer-events-none mix-blend-lighten opacity-80">
             <div class="absolute inset-0 bg-gradient-to-l from-[#221022] to-transparent z-20"></div>
             {% if section.settings.cutout_image %}
-                <img src="{{ section.settings.cutout_image | image_url: width: 800 }}" class="absolute inset-0 w-full h-full object-cover object-top mask-image-gradient" style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);" />
+                <img src="{{ section.settings.cutout_image | image_url: width: 800 }}" class="absolute inset-0 w-full h-full object-cover object-top mask-image-gradient" style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);" alt="" />
             {% endif %}
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div class="max-w-7xl mx-auto px-5 relative z-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div>
                     <span class="text-[#f20df2] font-bold uppercase tracking-widest text-sm mb-2 flex items-center gap-2">
@@ -96,7 +128,7 @@
                         {% assign process_blocks = section.blocks | where: "type", "process" %}
                         {% for block in process_blocks %}
                             <div class="flex gap-6 group">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#221022] border border-white/10 flex items-center justify-center text-xl font-black text-white group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-colors">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] flex items-center justify-center text-xl font-black text-white group-hover:bg-[#f20df2] group-hover:border-[#f20df2] transition-colors">
                                     {{ forloop.index }}
                                 </div>
                                 <div>
@@ -109,7 +141,7 @@
                 </div>
 
                 <!-- Requirements Card -->
-                <div class="bg-[#221022]/80 backdrop-blur-md border border-white/10 rounded-3xl p-8 relative lg:mr-24 shadow-2xl">
+                <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl p-8 relative lg:mr-24 shadow-2xl">
                     <div class="absolute -top-6 -right-6 w-16 h-16 bg-yellow-400 text-[#0a050a] rounded-2xl flex items-center justify-center rotate-12 shadow-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
                     </div>
@@ -119,14 +151,14 @@
                     <ul class="space-y-4">
                         {% assign req_blocks = section.blocks | where: "type", "requirement" %}
                         {% for block in req_blocks %}
-                            <li class="flex items-start gap-3 text-gray-300 font-medium text-sm border-b border-white/5 pb-3 last:border-0">
+                            <li class="flex items-start gap-3 text-gray-300 font-medium text-sm border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3 last:border-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 mt-0.5 flex-shrink-0"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
                                 {{ block.settings.text }}
                             </li>
                         {% endfor %}
                     </ul>
 
-                    <div class="mt-8 bg-[#f20df2]/10 border border-[#f20df2]/20 rounded-xl p-4 flex items-start gap-3">
+                    <div class="mt-8 bg-[#f20df2]/10 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-xl p-4 flex items-start gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2] flex-shrink-0 mt-1"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                         <p class="text-xs text-[#f20df2] font-bold">
                             Pamiętaj: My dostarczamy cały sprzęt Silent Disco. Ty zapewniasz tylko prąd i muzykę (lub DJ-a).
@@ -139,8 +171,8 @@
 
     <!-- Festival Special Layout -->
     {% if section.settings.show_festival_channels %}
-        <div class="py-24 bg-[#221022] border-t border-white/5 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-24 glass-card border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] overflow-hidden">
+            <div class="max-w-7xl mx-auto px-5">
                 <div class="text-center mb-16">
                     <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter mb-4 group cursor-default">
                         <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500">3 Kanały,</span>
@@ -178,8 +210,8 @@
     {% endif %}
 
     <!-- Description & Benefits -->
-    <div class="py-24 bg-[#221022] relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-24 bg-[#221022] relative border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
+        <div class="max-w-7xl mx-auto px-5">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-black text-white uppercase italic mb-6">
@@ -204,8 +236,8 @@
                 <!-- Visual Card -->
                 <div class="relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-[#f20df2] to-[#ff5f1f] opacity-20 blur-3xl rounded-full"></div>
-                    <div class="relative bg-[#221022] border border-white/10 rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-2xl">
-                        <div class="flex items-center gap-4 mb-6 border-b border-white/10 pb-6">
+                    <div class="relative glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+                        <div class="flex items-center gap-4 mb-6 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" class="text-green-500" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             <div>
                                 <div class="text-white font-bold text-lg">Gwarancja Satysfakcji</div>
@@ -217,7 +249,7 @@
                             <div class="h-4 bg-white/10 rounded w-full"></div>
                             <div class="h-4 bg-white/10 rounded w-5/6"></div>
                         </div>
-                        <div class="mt-8 pt-6 border-t border-white/10">
+                        <div class="mt-8 pt-6 border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                             <div class="text-yellow-400 font-black uppercase text-xl">
                                 Oszczędź do 20%
                             </div>
@@ -241,12 +273,22 @@
     {
       "type": "video",
       "id": "hero_video",
-      "label": "Film w tle Hero (mp4)"
+      "label": "Film w tle Hero (Desktop 16:9)"
+    },
+    {
+      "type": "video",
+      "id": "hero_video_mobile",
+      "label": "Film w tle Hero (Mobile 9:16)"
     },
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Zdjęcie w tle Hero (fallback)"
+      "label": "Zdjęcie w tle Hero (Desktop 16:9 - fallback)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Zdjęcie w tle Hero (Mobile 9:16 - fallback)"
     },
     {
       "type": "text",

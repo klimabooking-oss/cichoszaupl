@@ -1,8 +1,8 @@
-<section class="bg-[#221022] relative overflow-hidden" id="hardware-pricing" style="padding-top: 60px; padding-bottom: 60px;">
+<section class="bg-[#221022] relative overflow-hidden" id="hardware-pricing" style="padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
     <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none z-10 mix-blend-overlay"></div>
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-br from-[#f20df2]/20 to-[#ff5f1f]/20 blur-[120px] rounded-full pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+    <div class="max-w-7xl mx-auto px-5 relative z-20">
         <div class="text-center mb-16" data-animate="fade-up">
             <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#f20df2]/30 bg-[#f20df2]/10 mb-6">
                 <span class="text-[#f20df2] text-xs font-black uppercase tracking-widest">Wypożyczalnia</span>
@@ -15,8 +15,8 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- 1. HEADPHONES -->
-            <div class="group bg-[#221022]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 lg:p-8 hover:border-[#f20df2]/50 transition-all duration-500 relative flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(242,13,242,0.3)]">
-                <div class="w-full h-56 bg-gradient-to-br from-[#f20df2]/10 to-transparent rounded-2xl mb-8 relative overflow-hidden flex items-center justify-center border border-white/5">
+            <div class="group glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl p-6 lg:p-8 hover:border-[#f20df2]/80 transition-all duration-500 relative flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(242,13,242,0.3)]">
+                <div class="w-full h-56 bg-gradient-to-br from-[#f20df2]/10 to-transparent rounded-2xl mb-8 relative overflow-hidden flex items-center justify-center border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                     {% if section.settings.image_hp != blank %}
                         <img src="{{ section.settings.image_hp | image_url: width: 600 }}" class="object-cover w-full h-full opacity-80 group-hover:scale-110 transition-transform duration-700" alt="Słuchawki" loading="lazy">
                     {% else %}
@@ -28,19 +28,19 @@
                 <div class="text-[#f20df2] font-black text-xl mb-6">od 12 PLN <span class="text-xs text-gray-400 font-bold tracking-widest uppercase">Netto / szt.</span></div>
                 
                 <div class="grid grid-cols-2 gap-3 mb-8">
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-[#f20df2]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h4l2-9 5 18 2-9h5"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">3 kanały</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-green-400" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">12h pracy</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-[#ff5f1f]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">Hi-Fi Audio</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-yellow-400" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">LED RGB</span>
                     </div>
@@ -54,8 +54,8 @@
             </div>
 
             <!-- 2. TRANSMITTERS -->
-            <div class="group bg-[#221022]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 lg:p-8 hover:border-[#ff5f1f]/50 transition-all duration-500 relative flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(255,95,31,0.3)]">
-                <div class="w-full h-56 bg-gradient-to-br from-[#ff5f1f]/10 to-transparent rounded-2xl mb-8 relative overflow-hidden flex items-center justify-center border border-white/5">
+            <div class="group glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl p-6 lg:p-8 hover:border-[#f20df2]/80 transition-all duration-500 relative flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(242,13,242,0.3)]">
+                <div class="w-full h-56 bg-gradient-to-br from-[#ff5f1f]/10 to-transparent rounded-2xl mb-8 relative overflow-hidden flex items-center justify-center border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                     {% if section.settings.image_tx != blank %}
                         <img src="{{ section.settings.image_tx | image_url: width: 600 }}" class="object-cover w-full h-full opacity-80 group-hover:scale-110 transition-transform duration-700" alt="Transmitery" loading="lazy">
                     {% else %}
@@ -67,19 +67,19 @@
                 <div class="text-[#ff5f1f] font-black text-xl mb-6">od 50 PLN <span class="text-xs text-gray-400 font-bold tracking-widest uppercase">Netto / szt.</span></div>
                 
                 <div class="grid grid-cols-2 gap-3 mb-8">
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-[#ff5f1f]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4"/><path d="M12 16V8"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">500m Zasięgu</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-blue-400" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">Bluetooth</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-gray-300" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">Wejście AUX</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-[#f20df2]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h4l2-9 5 18 2-9h5"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">3 kanały</span>
                     </div>
@@ -93,8 +93,8 @@
             </div>
 
             <!-- 3. PLAYLISTS -->
-            <div class="group bg-[#221022]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 lg:p-8 hover:border-[#a855f7]/50 transition-all duration-500 relative flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(168,85,247,0.3)]">
-                <div class="w-full h-56 bg-gradient-to-br from-[#a855f7]/10 to-transparent rounded-2xl mb-8 relative overflow-hidden flex items-center justify-center border border-white/5">
+            <div class="group glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl p-6 lg:p-8 hover:border-[#f20df2]/80 transition-all duration-500 relative flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(242,13,242,0.3)]">
+                <div class="w-full h-56 bg-gradient-to-br from-[#a855f7]/10 to-transparent rounded-2xl mb-8 relative overflow-hidden flex items-center justify-center border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                     {% if section.settings.image_pl != blank %}
                         <img src="{{ section.settings.image_pl | image_url: width: 600 }}" class="object-cover w-full h-full opacity-80 group-hover:scale-110 transition-transform duration-700" alt="Gotowe Playlisty" loading="lazy">
                     {% else %}
@@ -106,19 +106,19 @@
                 <div class="text-[#a855f7] font-black text-xl mb-6">od 250 PLN <span class="text-xs text-gray-400 font-bold tracking-widest uppercase">Netto</span></div>
                 
                 <div class="grid grid-cols-2 gap-3 mb-8">
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-[#a855f7]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">Gotowe Sety</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-[#ff5f1f]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">3 Gatunki</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-green-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 0 1 8 0"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">Spotify</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <div class="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)]">
                         <svg class="text-blue-400" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                         <span class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">Baza Kawałków</span>
                     </div>
@@ -134,10 +134,10 @@
     </div>
 
     <!-- Modals Backdrop -->
-    <div id="spec-modals-backdrop" class="fixed inset-0 z-50 bg-[#221022]/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+    <div id="spec-modals-backdrop" class="fixed inset-0 z-50 glass-card hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
         
         <!-- Słuchawki -->
-        <div id="modal-hp" class="spec-modal hidden bg-[#221022] border border-[#f20df2]/20 rounded-3xl w-full max-w-2xl transform scale-95 opacity-0 transition-all duration-300 shadow-[0_20px_60px_-15px_rgba(242,13,242,0.3)] overflow-hidden">
+        <div id="modal-hp" class="spec-modal hidden glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl w-full max-w-2xl transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
             <div class="p-6 md:p-10 relative">
                 <button onclick="closeSpecModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -149,10 +149,10 @@
                 <p class="text-gray-400 font-medium mb-8">Profesjonalne słuchawki bezprzewodowe zaprojektowane pod kątem najwyższej jakości dźwięku i niezawodności podczas wielogodzinnych imprez.</p>
                 
                 <ul class="space-y-4 text-sm text-gray-300 font-medium">
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Wbudowany potężny akumulator litowo-jonowy - do <strong>12 godzin</strong> ciągłego słuchania na jednym ładowaniu.</span></li>
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>3 oddzielne kanały Audio</strong> (częstotliwości 863-865 MHz) z płynnym przełączaniem na nauszniku.</span></li>
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Żywe <strong>diody LED RGB</strong> automatycznie zmieniające kolor w zależności od nastawionego kanału (niebieski, czerwony, zielony).</span></li>
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Indywidualna kontrola głośności za pomocą potencjometru na każdym urządzeniu.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Wbudowany potężny akumulator litowo-jonowy - do <strong>12 godzin</strong> ciągłego słuchania na jednym ładowaniu.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>3 oddzielne kanały Audio</strong> (częstotliwości 863-865 MHz) z płynnym przełączaniem na nauszniku.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Żywe <strong>diody LED RGB</strong> automatycznie zmieniające kolor w zależności od nastawionego kanału (niebieski, czerwony, zielony).</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Indywidualna kontrola głośności za pomocą potencjometru na każdym urządzeniu.</span></li>
                     <li class="flex items-start gap-3"><svg class="text-[#f20df2] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Wysokiej rozdzielczości membrany (Hi-Fi) gwarantujące głęboki bass i czyste soprany.</span></li>
                 </ul>
             </div>
@@ -165,7 +165,7 @@
         </div>
 
         <!-- Transmitery -->
-        <div id="modal-tx" class="spec-modal hidden bg-[#221022] border border-[#ff5f1f]/20 rounded-3xl w-full max-w-2xl transform scale-95 opacity-0 transition-all duration-300 shadow-[0_20px_60px_-15px_rgba(255,95,31,0.3)] overflow-hidden">
+        <div id="modal-tx" class="spec-modal hidden glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl w-full max-w-2xl transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
             <div class="p-6 md:p-10 relative">
                 <button onclick="closeSpecModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -177,9 +177,9 @@
                 <p class="text-gray-400 font-medium mb-8">Mózg całego systemu Silent Disco, wysyłający krystalicznie czysty dźwięk na niespotykaną odległość w technologii fal radiowych UHF.</p>
                 
                 <ul class="space-y-4 text-sm text-gray-300 font-medium">
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#ff5f1f] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Potężny zasięg anteny docierający <strong>aż do 500 metrów</strong> w otwartym terenie (przenika przez stropy i ściany).</span></li>
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#ff5f1f] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Wszechstronne możliwości podłączenia źródeł dźwięku: złącza <strong>RCA (chinche), mini-jack, moduł Bluetooth</strong>.</span></li>
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#ff5f1f] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Zasilanie z gniazdka sieciowego, z możliwością zastosowania alternatywnego zasilacza i użycia powerbanka w plenerze.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#ff5f1f] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Potężny zasięg anteny docierający <strong>aż do 500 metrów</strong> w otwartym terenie (przenika przez stropy i ściany).</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#ff5f1f] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Wszechstronne możliwości podłączenia źródeł dźwięku: złącza <strong>RCA (chinche), mini-jack, moduł Bluetooth</strong>.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#ff5f1f] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Zasilanie z gniazdka sieciowego, z możliwością zastosowania alternatywnego zasilacza i użycia powerbanka w plenerze.</span></li>
                     <li class="flex items-start gap-3"><svg class="text-[#ff5f1f] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Brak opóźnień (zero latency) - kluczowe znaczenie przy puszczaniu muzyki przez DJ oraz prowadzeniu wydarzeń.</span></li>
                 </ul>
             </div>
@@ -192,7 +192,7 @@
         </div>
 
         <!-- Playlisty -->
-        <div id="modal-pl" class="spec-modal hidden bg-[#221022] border border-[#a855f7]/20 rounded-3xl w-full max-w-2xl transform scale-95 opacity-0 transition-all duration-300 shadow-[0_20px_60px_-15px_rgba(168,85,247,0.3)] overflow-hidden">
+        <div id="modal-pl" class="spec-modal hidden glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl w-full max-w-2xl transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
             <div class="p-6 md:p-10 relative">
                 <button onclick="closeSpecModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -204,9 +204,9 @@
                 <p class="text-gray-400 font-medium mb-8">Zamiast opłacać 3 różnych Dj-ów, możesz skorzystać z naszych autorskich lub udostępnionych list przebojów uszytych na Twój event.</p>
                 
                 <ul class="space-y-4 text-sm text-gray-300 font-medium">
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#a855f7] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Gotowe składanki (sety)</strong> starannie ułożonych gatunków m.in POP 00', Największe klasyki Retro, Rap, Electro & House.</span></li>
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#a855f7] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Komplet aż do <strong>3 zróżnicowanych opcji gatunkowych</strong> symultanicznie trafiających na osobny kanał słuchawek.</span></li>
-                    <li class="flex items-start gap-3 border-b border-white/5 pb-3"><svg class="text-[#a855f7] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Możliwość integracji i przygotowania list pod wydarzenia tematyczne.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#a855f7] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Gotowe składanki (sety)</strong> starannie ułożonych gatunków m.in POP 00', Największe klasyki Retro, Rap, Electro & House.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#a855f7] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Komplet aż do <strong>3 zróżnicowanych opcji gatunkowych</strong> symultanicznie trafiających na osobny kanał słuchawek.</span></li>
+                    <li class="flex items-start gap-3 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pb-3"><svg class="text-[#a855f7] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Możliwość integracji i przygotowania list pod wydarzenia tematyczne.</span></li>
                     <li class="flex items-start gap-3"><svg class="text-[#a855f7] mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Idealne rozwiązanie budżetowe - zaledwie jeden telefon i konto premium Spotify wystarczy do obsługi imprezy na setki osób!</span></li>
                 </ul>
             </div>

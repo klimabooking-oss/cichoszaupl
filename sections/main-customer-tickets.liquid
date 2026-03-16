@@ -19,7 +19,7 @@
         </div>
 
         <!-- Pusty Stan -->
-        <div id="tickets-empty" class="text-center py-16 bg-black/30 rounded-3xl border border-white/5 hidden">
+        <div id="tickets-empty" class="text-center py-16 bg-black/30 rounded-3xl border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] hidden">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-gray-600 mb-4"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/><path d="M6 10v4"/></svg>
             <p class="text-gray-400 mb-6 max-w-sm mx-auto">Masz 0 przypisanych wejściówek z ważnym QR kodem na ten adres e-mail ({{ customer.email }}).</p>
             <a href="/" class="inline-block px-8 py-3 bg-[#f20df2] text-white font-black uppercase tracking-widest rounded-xl hover:shadow-[0_0_20px_rgba(242,13,242,0.4)] transition-shadow">Przeglądaj Wypożyczalnię</a>
@@ -109,7 +109,7 @@
             }
 
             const ticketCard = document.createElement('div');
-            ticketCard.className = 'bg-[#221022] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#f20df2]/50 transition-colors flex flex-col justify-between shadow-lg';
+            ticketCard.className = 'glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-3xl p-6 relative overflow-hidden group hover:border-[#f20df2]/50 transition-colors flex flex-col justify-between shadow-lg';
             
             const qrCanvasId = \`qrcode-\${ticket.id}\`;
             
@@ -127,7 +127,7 @@
                         <canvas id="\${qrCanvasId}" class="block mx-auto"></canvas>
                     </div>
 
-                    <div class="space-y-3 border-t border-white/10 pt-4 mt-auto">
+                    <div class="space-y-3 border-t border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] pt-4 mt-auto">
                         <div class="flex items-center gap-2 text-gray-400 text-xs font-medium">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
                             \${eventDate}
@@ -171,7 +171,7 @@
 </script>
 {% else %}
 <div class="min-h-screen bg-[#221022] flex flex-col items-center justify-center p-4">
-    <div class="text-center p-12 border border-white/10 rounded-[40px] bg-black/40 backdrop-blur-xl shadow-2xl max-w-lg w-full relative overflow-hidden group">
+    <div class="text-center p-12 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-[40px] bg-black/40 backdrop-blur-xl shadow-2xl max-w-lg w-full relative overflow-hidden group">
         <div class="absolute inset-0 bg-gradient-to-t from-[#f20df2]/10 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-[#f20df2] mb-6"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         <h2 class="text-white text-3xl font-black uppercase tracking-tight mb-4">Pasażerze, Zaloguj się!</h2>
