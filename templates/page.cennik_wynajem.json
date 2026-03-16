@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "seo_city_landing": {
+      "type": "seo-city-landing",
+      "settings": {
+        "title": "Cennik Silent Disco",
+        "hook": "Przejrzyste pakiety i koszty wynajmu sprzętu bezprzewodowego.",
+        "hero_image": "shopify://shop_images/26.png",
+        "show_roi": true
+      }
+    },
+    "hardware": {
+      "type": "pricing-hardware",
+      "settings": {}
+    },
+    "calculator": {
+      "type": "booking-calculator",
+      "settings": {
+        "title": "Cennik Wynajmu",
+        "highlight": "Silent Disco",
+        "subtitle": "Sprawdź koszt Twojego eventu w kilka sekund."
+      }
+    },
+    "process": {
+      "type": "process",
+      "settings": {
+        "subtitle": "Metodologia",
+        "title": "3 etapy do",
+        "highlight_text": "PERFEKCJI",
+        "step1_title": "1. Konsultacja",
+        "step1_desc": "Analiza potrzeb technicznych, wybór skali oraz rezerwacja terminu.",
+        "step2_title": "2. Przygotowanie",
+        "step2_desc": "Konfiguracja, testy jakościowe oraz bezpieczna wysyłka na czas.",
+        "step3_title": "3. Realizacja",
+        "step3_desc": "Bezproblemowy przebieg wydarzenia z naszym prostym systemem operacyjnym."
+      }
+    },
+    "services_grid": {
+      "type": "services-grid",
+      "settings": {
+        "title": "Nasze",
+        "highlight_text": "Pakiety",
+        "description": "Wybierz bazę swojego wydarzenia i skonfiguruj ją w naszym kalkulatorze."
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "title": "Ready to Party?",
+        "subtitle": "Złap nas na czacie, zanim termin ucieknie.",
+        "btn1_text": "WhatsApp",
+        "btn2_text": "Messenger"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "seo_city_landing",
+    "process",
+    "services_grid",
+    "hardware",
+    "calculator",
+    "cta"
+  ]
+}

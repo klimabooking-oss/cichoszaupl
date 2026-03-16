@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "seo_city_landing": {
+      "type": "seo-city-landing",
+      "settings": {
+        "title": "Wynajem Silent Disco",
+        "hook": "Sprawdź naszą lokalną ofertę sprzętu bezprzewodowego.",
+        "hero_image": "shopify://shop_images/167.png",
+        "show_roi": true
+      }
+    },
+    "what_is_it": {
+      "type": "what-is-it",
+      "settings": {}
+    },
+    "custom_technology": {
+      "type": "custom-technology",
+      "settings": {
+        "tech_video": "shopify://files/videos/0311 (1)(1).mp4",
+        "subtitle": "Poznaj sprzęt",
+        "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
+        "description": "Potężny zasięg RF do 500 metrów, gwarancja 10 godzin pracy na baterii oraz rygorystyczny protokół dezynfekcji UV. Postaw na niezawodną technologię B2B z 3 niezależnymi kanałami audio.",
+        "button_label": "Dowiedz się więcej",
+        "button_link": "/pages/wynajem-sluchawek-silent-disco#nasza-oferta"
+      }
+    },
+    "how_it_works_video": {
+      "type": "how-it-works-video",
+      "settings": {
+        "pill_text": "PLUG & PLAY",
+        "title": "ZOBACZ JAK TO DZIAŁA W PRAKTYCE",
+        "subtitle": "To bajecznie proste. 3 proste kroki do samodzielnego uruchomienia imprezy.",
+        "step1_title": "Odbierasz Paczkę",
+        "step1_desc": "Kurier dostarcza sterylną skrzynię pełną naładowanych w 100% słuchawek prosto pod Twoje drzwi.",
+        "step2_title": "Podpinasz Kable",
+        "step2_desc": "Podłączasz nadajnik do prądu i wpinasz telefon/laptopa załączonym minijackiem. Zero dodatkowej konfiguracji.",
+        "step3_title": "Rozdajesz i Grasz",
+        "step3_desc": "Włączasz słuchawki jednym suwakiem na nauszniku i ustawiasz kanał. Koniec instrukcji. Czas na imprezę!"
+      }
+    },
+    "logo_ticker": {
+      "type": "logo-ticker",
+      "settings": {
+        "heading": "Zaufali nam najlepsi",
+        "columns": 5,
+        "show_stats": true
+      }
+    },
+    "booking_calculator": {
+      "type": "booking-calculator",
+      "settings": {
+        "title": "Kalkulator",
+        "highlight": "Silent Disco",
+        "subtitle": "Skonfiguruj idealny zestaw w 3 minuty."
+      }
+    },
+    "portfolio": {
+      "type": "portfolio",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "cta_banner": {
+      "type": "cta-banner",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "seo_city_landing",
+    "what_is_it",
+    "custom_technology",
+    "how_it_works_video",
+    "logo_ticker",
+    "booking_calculator",
+    "portfolio",
+    "testimonials",
+    "faq",
+    "cta_banner"
+  ]
+}
