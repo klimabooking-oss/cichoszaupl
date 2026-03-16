@@ -16,8 +16,8 @@
     "seo_copywriting": {
       "type": "seo-copywriting",
       "settings": {
-        "title": "Wynajem Silent Disco dla Każdego",
         "pill_text": "Impreza we własnych rękach",
+        "title": "Wynajem Silent Disco dla Każdego",
         "box1_title": "Zastosowanie",
         "box1_content": "<p>Domówki, 18-stki, poprawiny weselne, imprezy urodzinowe i spontaniczne wydarzenia w garażu lub tarasie bez specjalistycznej wiedzy technicznej.</p>",
         "box2_title": "Wyzwanie",
@@ -25,10 +25,35 @@
         "box3_title": "Rozwiązanie",
         "box3_content": "<p>W pełni sparowany i naładowany zestaw sterylizowanych słuchawek, docierający kurierem pod drzwi. Podpinacie telefony przez kable lub bluetooth do 3 nadajników i jednocześnie bawicie się do rapów, disco klasyków i rockowych ballad – żyjąc w całkowitej zgodzie z sąsiadami.</p>"
       }
+    },
+    "pakiety_b2b": {
+      "type": "services-grid",
+      "settings": {
+        "title": "Gotowe Pakiety",
+        "highlight_text": "B2B"
+      }
+    },
+    "features_b2b": {
+      "type": "features",
+      "settings": {
+        "subtitle": "Gwarancja B2B",
+        "title": "Bezpieczeństwo i",
+        "highlight_text": "NIEZAWODNOŚĆ"
+      }
+    },
+    "proces_b2b": {
+      "type": "process",
+      "settings": {
+        "title": "Współpraca w",
+        "highlight_text": "3 KROKACH"
+      }
     }
   },
   "order": [
     "main",
+    "pakiety_b2b",
+    "features_b2b",
+    "proces_b2b",
     "seo_copywriting"
   ]
 }

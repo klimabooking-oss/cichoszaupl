@@ -14,6 +14,7 @@
       "settings": {
         "title": "",
         "hook": "",
+        "hero_video": "shopify://files/videos/freepik_create-cinematic-dark-purple-neon-event-background_kling_720p_16-9_24fps_48051.mp4",
         "show_roi": false,
         "sales_copy": "",
         "seo_text": ""
@@ -28,7 +29,7 @@
         "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
         "description": "Potężny zasięg RF do 500 metrów, gwarancja 10 godzin pracy na baterii oraz rygorystyczny protokół dezynfekcji UV. Postaw na niezawodną technologię wynajmu z 3 niezależnymi kanałami audio.",
         "button_label": "Dowiedz się więcej",
-        "button_link": ""
+        "button_link": "https://cichoszau.pl/pages/wynajem-sluchawek-silent-disco#nasza-oferta"
       }
     },
     "zaufanie": {
@@ -282,17 +283,21 @@
         "prod_1": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/freepik__usun-z-transmitera-te-rozowo-bia-nalepke-i-dodaj-n__65742.png",
+            "video": "shopify://files/videos/freepik_stwrz-wideo-produktowe-do-sklepu-e-comerce_kling_720p_1-1_24fps_65743.mp4",
             "title": "Transmiter",
             "short_desc": "Serce systemu – profesjonalne rozwiązanie przesyłowe o ogromnym zasięgu z zasilaczem i kablami audio.",
-            "full_desc": "<p>- Nadawanie dźwięku na odległość nawet do 500 metrów.<br>- 3 niezależne kanały nadawania, obsługujące różne strefy.<br>- Stabilny, wolny od zakłóceń przesył bezprzewodowy (UHF).</p>"
+            "full_desc": "<p><strong>Nadajnik (Transmiter) Silent Disco – Model SUP (Generacja 3.0 Advanced HD Sound)</strong></p><p><strong>Kluczowe funkcje i zalety:</strong></p><ul><li><strong>Plug & Play:</strong> Błyskawiczna gotowość do pracy. Nadajnik automatycznie łączy się z naszymi słuchawkami Silent Disco.</li><li><strong>3 Niezależne Kanały:</strong> Możliwość nadawania 3 różnych ścieżek dźwiękowych na raz.</li><li><strong>Prosta Obsługa:</strong> Intuicyjna zmiana kanału za pomocą jednego przycisku i wbudowanego wyświetlacza.</li><li><strong>Potężny Zasięg (2 Tryby pracy):</strong> Tryb „Low” (do 100m) idealny do mniejszych przestrzeni, oraz tryb „High” (do 500m zasięgu) na wielkie plenerowe eventy.</li><li><strong>Nielimitowana liczba słuchawek:</strong> Jeden nadajnik obsłuży dowolną liczbę słuchawek w swoim zasięgu.</li><li><strong>Bezstratny Przesył:</strong> Krystaliczna jakość dźwięku (HD Sound) bez irytujących opóźnień (No Delay).</li><li><strong>Obsługa LED Color-Keyboard (Opcjonalnie):</strong> Wejście umożliwiające podłączenie sterownika LED do zdalnej zmiany kolorów w obsługiwanych modelach słuchawek.</li></ul><p><strong>Specyfikacja Techniczna:</strong></p><ul><li><strong>System przesyłu:</strong> UHF / RF (Modulacja FM, Tryb Audio: Stereo)</li><li><strong>Częstotliwość bez licencji:</strong> 863 - 865 MHz (Wersja Advanced)</li><li><strong>Wejście audio:</strong> Złącze Cinch (RCA) z bezproblemowym przejściem na Mini-Jack (np. do telefonu, tabletu czy laptopa).</li><li><strong>Zasilanie:</strong> Sieciowe (DC 12V)</li><li><strong>Wymiary (bez anteny):</strong> 34 x 102 x 130 mm (Długość anteny: 18,5 cm)</li><li><strong>Waga (z pełnym osprzętem):</strong> Zaledwie 500g</li></ul><p><strong>Co wchodzi w skład zestawu?</strong></p><ul><li>✅ Nadajnik SUP (Transmiter)</li><li>✅ Dedykowana antena</li><li>✅ Zasilacz sieciowy 12V</li><li>✅ Zestaw 2 okablowań audio (1x Cinch/Cinch, 1x Cinch na Minijack 3,5mm)</li><li>✅ Instrukcja obsługi krok po kroku</li><li>✅ Wytrzymała torba transportowa</li></ul>"
           }
         },
         "prod_2": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/freepik__use-the-provided-silent-disco-headphones-image-as-__65741.png",
+            "video": "shopify://files/videos/freepik_use-the-provided-silent-disco-headphones-image-as-_kling_720p_1-1_24fps_12745.mp4",
             "title": "Słuchawki",
             "short_desc": "Nowoczesne, higieniczne słuchawki LED gwarantujące krystaliczny dźwięk. Zobacz jak tańczą w kolorach muzyki.",
-            "full_desc": "<p>- Czas pracy: do 10h bez ładowania.<br>- Trzy kolory podświetlenia LED wskazujące aktualny kanał.<br>- Dezynfekcja UV po każdym użyciu i łatwe w czyszczeniu nauszniki.</p>"
+            "full_desc": "<p><strong>Słuchawki Silent Disco – Model: Neon Lights BS Plus+ (Generacja 2.0 HiFi Edition)</strong></p><p><strong>Kluczowe funkcje i zalety:</strong></p><ul><li><strong>3 Niezależne Kanały LED:</strong> Możliwość przełączania między 3 stacjami muzycznymi (Niebieski, Czerwony, Zielony) za pomocą wygodnego suwaka.</li><li><strong>12h Nieprzerwanej Zabawy:</strong> Wydajny akumulator litowo-polimerowy (500mAh) pozwala na całonocną imprezę, a technologia szybkiego ładowania przygotowuje sprzęt w zaledwie 2,5 godziny.</li><li><strong>Pełna Kontrola Audio:</strong> Każdy gość imprezy ustawia własną, idealną głośność dzięki niezależnemu pokrętłu na prawej słuchawce.</li><li><strong>Krystaliczne HiFi (No Delay):</strong> Autorski system Double PLL gwarantuje dźwięk bez żadnych opóźnień, a 40-milimetrowe membrany pompują głęboki bas (pasmo 30 - 20.000 Hz).</li><li><strong>Ochrona Słuchu:</strong> Wbudowany limiter (89 dB) zapewnia bezpieczeństwo, wykluczając ryzyko uszkodzenia słuchu nawet przy muzyce \"na maksa\".</li><li><strong>Ultra Wygodne & Higieniczne:</strong> Lekka (tylko 220g), elastyczna konstrukcja pasuje na każdą głowę. Miękkie nauszniki \"On Ear\" z ekoskóry łatwo czyścić, są odporne na pot/zachlapania i można je wyprać w 60°C.</li><li><strong>Składana Konstrukcja:</strong> Z łatwością układa się w kostkę, oszczędzając miejsce w transporcie.</li><li><strong>Pasywne Wygłuszanie:</strong> Zamknięta forma nauszników odcina gości od hałasów zewnętrznych, potęgując immersję z graną muzyką.</li></ul><p><strong>Specyfikacja Techniczna:</strong></p><ul><li><strong>System przesyłu:</strong> UHF / RF (Modulacja FM, System transmisji Double PLL)</li><li><strong>Częstotliwość bez licencji w EU:</strong> 863 - 865 MHz</li><li><strong>Zasięg:</strong> Od 100m do 500m (w zależności od sparowanego Nadajnika)</li><li><strong>Głośnik (Przetwornik):</strong> Mylar Membran 40mm (Wersja Advanced)</li><li><strong>Czystość dźwięku:</strong> Mode Stereo, Impedancja: 32 Ohm</li><li><strong>Podświetlenie Kanałów:</strong> Niebieski (Kanal 1) | Czerwony (Kanal 2) | Zielony (Kanal 3)</li></ul>"
           }
         },
         "prod_3": {
@@ -337,13 +342,17 @@
         "prod_6"
       ],
       "settings": {
-        "title": "Co wchodzi w skład wynajmu?",
+        "title": "NASZA OFERTA",
         "subtitle": "Poznaj wszystkie elementy i opcje dodatkowe, które sprawią, że Twój event będzie niezapomniany."
       }
     },
     "faq": {
       "type": "faq",
-      "settings": {}
+      "settings": {
+        "title": "Częste",
+        "highlight": "Pytania",
+        "subtitle": "Wszystko, co musisz wiedzieć o organizacji cichej imprezy."
+      }
     }
   },
   "order": [

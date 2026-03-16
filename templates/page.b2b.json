@@ -12,8 +12,8 @@
     "main": {
       "type": "seo-b2b-landing",
       "settings": {
-        "title": "",
-        "hook": "",
+        "title": "Integracja bez chaosu",
+        "hook": "Zamów sprzęt Silent Disco dla swojej firmy. Zero skarg na hałas, 100% skupienia i uśmiech pracowników. Obsługujemy eventy od 20 do 5000+ osób.",
         "hero_image": "shopify://shop_images/freepik__zrb-to-samo-ale-nasza-postac-o-20-w-prawo__37735.png",
         "show_roi": false,
         "sales_copy": "",
@@ -28,8 +28,8 @@
         "subtitle": "Poznaj sprzęt",
         "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
         "description": "Nasze słuchawki to nie tylko rewelacyjny design, ale przede wszystkim genialna izolacja akustyczna i czysty przekaz audio na 3 niezależnych kanałach. Zobacz z bliska, co zamawiasz.",
-        "button_label": "Pobierz PDF (Specyfikacja)",
-        "button_link": ""
+        "button_label": "Dowiedz się więcej",
+        "button_link": "/pages/wynajem-sluchawek-silent-disco#nasza-oferta"
       }
     },
     "zaufanie": {
@@ -269,17 +269,31 @@
         "title": "Nasze Eventy"
       }
     },
-    "kalkulator": {
-      "type": "booking-calculator",
-      "settings": {
-        "title": "Kalkulator",
-        "highlight": "Silent Disco",
-        "subtitle": "Skonfiguruj idealny zestaw w 3 minuty."
-      }
-    },
     "faq": {
       "type": "faq",
       "settings": {}
+    },
+    "features_b2b": {
+      "type": "features",
+      "settings": {
+        "subtitle": "Gwarancja B2B",
+        "title": "Bezpieczeństwo i",
+        "highlight_text": "NIEZAWODNOŚĆ"
+      }
+    },
+    "pakiety_b2b": {
+      "type": "services-grid",
+      "settings": {
+        "title": "Gotowe Pakiety",
+        "highlight_text": "B2B"
+      }
+    },
+    "proces_b2b": {
+      "type": "process",
+      "settings": {
+        "title": "Współpraca w",
+        "highlight_text": "3 KROKACH"
+      }
     },
     "seo_copywriting": {
       "type": "seo-copywriting",
@@ -293,16 +307,33 @@
         "box3_title": "Rozwiązanie",
         "box3_content": "<p>Trzy osobne kanały muzyczne (np. rock, pop i klubowa elektronika) pozwalają każdemu pracownikowi powierzyć swoje muzyczne stery. Doskonały sposób na bezgłośny taniec, bezinwazyjną zabawę i przestrzeń do networkingu dla nie-tańczących.</p>"
       }
+    },
+    "b2b_features_new": {
+      "type": "b2b-features",
+      "settings": {}
+    },
+    "kalkulator_b2b": {
+      "type": "booking-calculator-b2b",
+      "settings": {}
+    },
+    "b2b_explainer": {
+      "type": "b2b-explainer",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "seo_copywriting",
-    "custom_technology_zL7Wqb",
     "zaufanie",
-    "opinie",
+    "b2b_features_new",
+    "seo_copywriting",
+    "features_b2b",
+    "pakiety_b2b",
+    "kalkulator_b2b",
+    "b2b_explainer",
+    "proces_b2b",
     "galeria",
-    "kalkulator",
+    "opinie",
+    "custom_technology_zL7Wqb",
     "faq"
   ]
 }

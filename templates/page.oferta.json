@@ -1,5 +1,10 @@
 {
   "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
     "hero": {
       "type": "service-landing",
       "settings": {
@@ -78,6 +83,7 @@
     }
   },
   "order": [
+    "main",
     "hero",
     "seo_copy",
     "uslugi_grid",

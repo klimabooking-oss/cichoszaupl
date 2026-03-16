@@ -28,8 +28,8 @@
         "subtitle": "Poznaj sprzęt",
         "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
         "description": "Nasze słuchawki to nie tylko rewelacyjny design, ale przede wszystkim genialna izolacja akustyczna i czysty przekaz audio na 3 niezależnych kanałach. Zobacz z bliska, co zamawiasz.",
-        "button_label": "Pobierz PDF (Specyfikacja)",
-        "button_link": ""
+        "button_label": "Dowiedz się więcej",
+        "button_link": "https:\/\/cichoszau.pl\/pages\/wynajem-sluchawek-silent-disco#oferta"
       }
     },
     "zaufanie": {
@@ -269,13 +269,17 @@
         "title": "Nasze Eventy"
       }
     },
-    "kalkulator": {
-      "type": "booking-calculator",
-      "settings": {
-        "title": "Kalkulator",
-        "highlight": "Silent Disco",
-        "subtitle": "Skonfiguruj idealny zestaw w 3 minuty."
-      }
+    "kalkulator_b2b": {
+      "type": "booking-calculator-b2b",
+      "settings": {}
+    },
+    "b2b_features": {
+      "type": "b2b-features",
+      "settings": {}
+    },
+    "b2b_explainer": {
+      "type": "b2b-explainer",
+      "settings": {}
     },
     "faq": {
       "type": "faq",
@@ -300,9 +304,11 @@
     "seo_copywriting",
     "custom_technology_zL7Wqb",
     "zaufanie",
+    "b2b_features",
     "opinie",
     "galeria",
-    "kalkulator",
+    "kalkulator_b2b",
+    "b2b_explainer",
     "faq"
   ]
 }

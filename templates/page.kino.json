@@ -28,8 +28,8 @@
         "subtitle": "Poznaj sprzęt",
         "title": "Technologia <br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Silent Disco</span>",
         "description": "Nasze słuchawki to nie tylko rewelacyjny design, ale przede wszystkim genialna izolacja akustyczna i czysty przekaz audio na 3 niezależnych kanałach. Zobacz z bliska, co zamawiasz.",
-        "button_label": "Pobierz PDF (Specyfikacja)",
-        "button_link": ""
+        "button_label": "Dowiedz się więcej",
+        "button_link": "/pages/wynajem-sluchawek-silent-disco#nasza-oferta"
       }
     },
     "zaufanie": {
@@ -273,8 +273,30 @@
       "type": "booking-calculator",
       "settings": {
         "title": "Kalkulator",
-        "highlight": "Silent Disco",
-        "subtitle": "Skonfiguruj idealny zestaw w 3 minuty."
+        "highlight": "Kina",
+        "subtitle": "Sprawdź koszt obsługi plenerowej"
+      }
+    },
+    "features_b2b": {
+      "type": "features",
+      "settings": {
+        "subtitle": "Gwarancja B2B",
+        "title": "Bezpieczeństwo i",
+        "highlight_text": "NIEZAWODNOŚĆ"
+      }
+    },
+    "pakiety_b2b": {
+      "type": "services-grid",
+      "settings": {
+        "title": "Gotowe Pakiety",
+        "highlight_text": "B2B"
+      }
+    },
+    "proces_b2b": {
+      "type": "process",
+      "settings": {
+        "title": "Współpraca w",
+        "highlight_text": "3 KROKACH"
       }
     },
     "faq": {
@@ -298,11 +320,14 @@
   "order": [
     "main",
     "seo_copywriting",
-    "custom_technology_zL7Wqb",
     "zaufanie",
+    "features_b2b",
+    "pakiety_b2b",
+    "proces_b2b",
     "opinie",
     "galeria",
     "kalkulator",
+    "custom_technology_zL7Wqb",
     "faq"
   ]
 }

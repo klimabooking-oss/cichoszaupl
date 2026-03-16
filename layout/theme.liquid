@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="{{ request.locale.iso_code }}" style="background-color:#221022; color:#ededed">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-59TNWQ5Z');</script>
-  <!-- End Google Tag Manager -->
-  <!-- Global site tag (gtag.js) - Google Ads: 16732141783 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16732141783"></script>
+  <!-- Deferred Marketing Scripts (GTM, Meta, GAds) to improve Mobile LCP/TBT -->
   <script>
-    gtag('js', new Date());
-    gtag('config', 'AW-16732141783', {'allow_enhanced_conversions': true});
-    gtag('config', 'G-PMNKPRT86T');
-  </script>
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-
-  fbq('init', '1916413455709770');
-  
-  // META PIXEL PAGEVIEW SEGMENTATION
-  (function() {
-      let fbSegment = 'General';
-      const path = window.location.pathname;
-      if (path.includes('firmowe') || path.includes('b2b') || path.includes('konferencje') || path.includes('festiwal') || path.includes('teatr')) fbSegment = 'B2B';
-      else if (path.includes('wynajem') || path.includes('cennik')) fbSegment = 'Wynajem';
+    window.marketingScriptsLoaded = false;
+    function loadMarketingScripts() {
+      if (window.marketingScriptsLoaded) return;
+      window.marketingScriptsLoaded = true;
       
-      fbq('track', 'PageView', {
-          content_category: fbSegment
-      });
-  })();
+      // 1. Google Tag Manager
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-59TNWQ5Z');
+
+      // 2. Google Ads / Analytics (gtag.js)
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=AW-16732141783";
+      document.head.appendChild(gtagScript);
+      
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-16732141783', {'allow_enhanced_conversions': true});
+      gtag('config', 'G-PMNKPRT86T');
+
+      // 3. PageView Segmentation for Google Ads
+      let pageSegment = 'General';
+      const path = window.location.pathname;
+      if (path === '/' || path === '') {
+          pageSegment = 'Strona Główna';
+      } else if (path.includes('firmowe') || path.includes('b2b') || path.includes('konferencje') || path.includes('festiwal') || path.includes('teatr')) {
+          pageSegment = 'B2B';
+      } else if (path.includes('wynajem') || path.includes('cennik')) {
+          pageSegment = 'Wynajem';
+      }
+      
+      gtag('event', 'page_view', { page_category: pageSegment, send_to: ['AW-16732141783', 'G-PMNKPRT86T'] });
+
+      // Clean up event listeners
+      ['scroll','mousemove','touchstart'].forEach(function(e){ window.removeEventListener(e, loadMarketingScripts, {passive:true}); });
+    }
+
+    // Trigger on first interaction or max timeout
+    ['scroll','mousemove','touchstart'].forEach(function(e){ window.addEventListener(e, loadMarketingScripts, {passive:true}); });
+    setTimeout(loadMarketingScripts, 3500);
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1916413455709770&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <!-- End Deferred Marketing Scripts -->
   <meta charset="utf-8">
   <style>
     html, body {
@@ -80,20 +85,21 @@
   <meta property="og:site_name" content="{{ shop.name }}">
   <meta property="og:title" content="{% if page_title contains shop.name %}{{ page_title }}{% else %}{{ page_title }} – {{ shop.name }}{% endif %}">
   <meta property="og:description" content="{{ page_description | default: 'Wynajem słuchawek Silent Disco z darmową dostawą kurierską w całej Polsce. Imprezy firmowe, wesela, festiwale, kino plenerowe — sprzęt Plug & Play.' | escape }}">
-  <meta property="og:image" content="{% if page.image %}{{ page.image | image_url: width: 1200 }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 1200 }}{% else %}{{ 'og-cover.png' | asset_url }}{% endif %}">
+  <meta property="og:image" content="{% if article.image %}{{ article.image | image_url: width: 1200 }}{% elsif page.image %}{{ page.image | image_url: width: 1200 }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 1200 }}{% else %}{{ 'og-cover.png' | asset_url }}{% endif %}">
   <meta property="og:locale" content="pl_PL">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% if page_title contains shop.name %}{{ page_title }}{% else %}{{ page_title }} – {{ shop.name }}{% endif %}">
   <meta name="twitter:description" content="{{ page_description | default: 'Wynajem słuchawek Silent Disco w całej Polsce. Imprezy firmowe, wesela, festiwale, kino plenerowe.' | escape }}">
-  <meta name="twitter:image" content="{% if page.image %}{{ page.image | image_url: width: 1200 }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 1200 }}{% else %}{{ 'og-cover.png' | asset_url }}{% endif %}">
+  <meta name="twitter:image" content="{% if article.image %}{{ article.image | image_url: width: 1200 }}{% elsif page.image %}{{ page.image | image_url: width: 1200 }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 1200 }}{% else %}{{ 'og-cover.png' | asset_url }}{% endif %}">
   
   {{ content_for_header }}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-  
+
   {{ 'tailwind-prod.min.css' | asset_url | stylesheet_tag }}
   <script>
     window.CS_CONFIG = {
@@ -190,22 +196,30 @@
 
 
 
-  <!-- LocalBusiness Schema Markup -->
+  <!-- LocalBusiness & Organization Schema Markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "Organization"],
         "@id": "https://cichoszau.pl/#business",
         "name": "Cichoszau",
         "legalName": "Cichoszau",
-        "description": "Wynajem słuchawek Silent Disco z darmową dostawą kurierską do całej Polski. Kompleksowa obsługa imprez firmowych, festiwali, wesel, kina plenerowego i konferencji.",
+        "description": "Wynajem słuchawek Silent Disco z darmową dostawą kurierską do całej Polski. Kompleksowa technika eventowa B2B, obsługa imprez firmowych, festiwali i konferencji.",
         "url": "https://cichoszau.pl",
         "email": "oferty@cichoszau.pl",
         "taxID": "8992994107",
         "logo": "https://cichoszau.pl/cdn/shop/files/cichoszau-logo.png",
         "image": "https://cichoszau.pl/cdn/shop/files/og-cover.jpg",
+        "knowsAbout": [
+          "Silent Disco",
+          "Wynajem słuchawek bezprzewodowych",
+          "Technika eventowa B2B",
+          "Aplikacja CichoszauRent",
+          "Obsługa techniczna konferencji",
+          "Kino plenerowe"
+        ],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "ul. Kobierzycka 3/9",
