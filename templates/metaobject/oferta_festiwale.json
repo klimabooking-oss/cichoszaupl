@@ -1,11 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {}
+    },
+    "hero": {
+      "type": "service-landing",
+      "settings": {
+        "title": "Oferta Wynajmu",
+        "subtitle": "Krystaliczny dźwięk na każdym wydarzeniu.",
+        "cta_text": "Sprawdź warianty",
+        "features_heading": "Co nas wyróżnia?",
+        "show_festival_channels": false
+      }
+    },
+    "tech": {
+      "type": "custom-technology",
+      "settings": {
+        "subtitle": "Nasz sprzęt",
+        "title": "Nowoczesna<br/><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f]\">Technologia</span>",
+        "description": "Profesjonalne słuchawki z zasięgiem do 500m i czasem działania do 10h. 3 niezależne kanały audio gwarantują świetną zabawę i pełną kontrolę nad dźwiękiem.",
+        "button_label": "Więcej o technologii"
+      }
+    },
+    "jak_to_dziala": {
+      "type": "how-it-works-video",
+      "settings": {
+        "title": "Sprawdź sam, jak prosta jest",
+        "subtitle": "Zamów. Podłącz. Gotowe."
+      }
+    },
+    "uslugi_grid": {
+      "type": "services-grid",
+      "settings": {
+        "title": "Nasze",
+        "highlight_text": "Usługi",
+        "description": "Wybierz rodzaj pakietu, który najlepiej pasuje do Twojego eventu."
+      }
+    },
+    "features": {
+      "type": "features",
+      "settings": {
+        "subtitle": "Dlaczego my",
+        "title": "Gwarancja",
+        "highlight_text": "JAKOŚCI"
+      }
+    },
+    "seo_copy": {
+      "type": "seo-copywriting",
+      "settings": {
+        "pill_text": "Kompleksowa Obsługa",
+        "title": "Od koncepcji do imprezy",
+        "box1_title": "Wynajem Sprzętu",
+        "box1_content": "<p>Wypożyczalnia słuchawek Plug&Play na każdą domówkę, imprezę lub wesele z dostawą kurierską prosto pod drzwi w całej Polsce.</p>",
+        "box2_title": "Eventy Firmowe",
+        "box2_content": "<p>Integracje pracownicze, na których wszyscy dobrze się bawią jednocześnie. Wyeliminowaliśmy problem różnego gustu muzycznego i starych hitów.</p>",
+        "box3_title": "Eventy Masowe",
+        "box3_content": "<p>Kina plenerowe, festiwale i spektakle. Tysiące bezprzewodowych słuchawek pozwalających odizolować widzów od uciążliwego gwaru miasta.</p>"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "title": "Najczęściej zadawane",
+        "subtitle": "Masz wątpliwości? My mamy odpowiedzi."
+      }
+    },
+    "cta": {
+      "type": "custom-cta",
+      "settings": {
+        "badge_text": "Sprawdź wolne terminy",
+        "title": "Złóż zamówienie i <br/> <span class=\"text-black\">rozkręć imprezę!</span>",
+        "description": "Nie masz obsługi? Chcesz wypożyczyć tylko same słuchawki? Mamy każdą możliwą opcję dostosowaną do budżetu.",
+        "button_label": "Sprawdź pakiety",
+        "button_link": "/pages/wynajem-sluchawek-silent-disco"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "hero",
+    "seo_copy",
+    "uslugi_grid",
+    "jak_to_dziala",
+    "features",
+    "tech",
+    "faq",
+    "cta"
   ]
 }

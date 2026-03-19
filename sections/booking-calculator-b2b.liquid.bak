@@ -7,7 +7,7 @@
             <div class="mt-6 flex justify-center">
                 <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-6 group cursor-default">
                     <span class="inline-block transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 origin-bottom-left">
-                        {{ section.settings.title | default: 'Wycena' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}
+                        {{ section.settings.title | default: 'Wycena' }}
                     </span>
                     <br class="hidden md:block" />
                     <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ff5f1f] transform rotate-2 group-hover:rotate-0 transition-transform duration-500 origin-bottom-right pb-2">
@@ -35,7 +35,7 @@
                         <div class="flex items-center gap-2">
                             <input
                                 type="number"
-                                id="b2b-calc-ppl-input"
+                                id="calc-ppl-input"
                                 value="50"
                                 min="20" max="2000"
                                 class="w-16 md:w-24 glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-2 py-1.5 text-base md:text-lg font-black text-white text-right focus:border-[#f20df2] outline-none transition-colors"
@@ -45,7 +45,7 @@
 
                     <input
                         type="range"
-                        id="b2b-calc-ppl-slider"
+                        id="calc-ppl-slider"
                         min="20"
                         max="1000"
                         step="10"
@@ -68,11 +68,11 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#f20df2]"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                                 <h3 class="text-[10px] md:text-xs font-bold text-white uppercase tracking-wider">Liczba DJ-ów (Kanały)</h3>
                             </div>
-                            <span id="b2b-calc-ch-val" class="text-xl font-black text-white">3</span>
+                            <span id="calc-ch-val" class="text-xl font-black text-white">3</span>
                         </div>
                         <input
                             type="range"
-                            id="b2b-calc-ch-slider"
+                            id="calc-ch-slider"
                             min="0" max="3" step="1"
                             value="3"
                             class="w-full h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#f20df2]"
@@ -84,16 +84,16 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Od</label>
-                                <input type="date" id="b2b-calc-date-start" onclick="if(this.showPicker) this.showPicker()" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1.5 md:py-2 text-xs md:text-sm text-white outline-none cursor-pointer placeholder-gray-400" />
+                                <input type="date" id="calc-date-start" onclick="if(this.showPicker) this.showPicker()" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1.5 md:py-2 text-xs md:text-sm text-white outline-none cursor-pointer placeholder-gray-400" />
                             </div>
                             <div>
                                 <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Do</label>
-                                <input type="date" id="b2b-calc-date-end" onclick="if(this.showPicker) this.showPicker()" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1.5 md:py-2 text-xs md:text-sm text-white outline-none cursor-pointer placeholder-gray-400" />
+                                <input type="date" id="calc-date-end" onclick="if(this.showPicker) this.showPicker()" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1.5 md:py-2 text-xs md:text-sm text-white outline-none cursor-pointer placeholder-gray-400" />
                             </div>
                         </div>
                         <div>
                             <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Lokalizacja (Miasto)</label>
-                            <input type="text" id="b2b-calc-location" placeholder="np. Wrocław, Warszawa" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1 text-xs text-white outline-none focus:border-[#f20df2] transition-colors" />
+                            <input type="text" id="calc-location" placeholder="np. Wrocław, Warszawa" class="w-full bg-black/30 border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded px-2 py-1 text-xs text-white outline-none focus:border-[#f20df2] transition-colors" />
                         </div>
                     </div>
                 </div>
@@ -101,12 +101,12 @@
                 <!-- Extras -->
                 <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl p-5">
                     <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Opcje Dodatkowe (Wideo & Event Service)</h3>
-                    <div class="grid grid-cols-2 gap-2" id="b2b-calc-extras-group">
-                        <button data-xtra="video" data-color="#a855f7" class="b2b-calc-xt-btn flex flex-col items-center justify-center py-4 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
+                    <div class="grid grid-cols-2 gap-2" id="calc-extras-group">
+                        <button data-xtra="video" data-color="#a855f7" class="calc-xt-btn flex flex-col items-center justify-center py-4 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
                             <span class="text-xs font-bold uppercase">Nagranie Wideo / Reels</span>
                         </button>
-                        <button data-xtra="fullservice" data-color="#3b82f6" class="b2b-calc-xt-btn flex flex-col items-center justify-center py-4 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
+                        <button data-xtra="fullservice" data-color="#3b82f6" class="calc-xt-btn flex flex-col items-center justify-center py-4 rounded-xl border glass-card bg-[#221022]/50 border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] text-gray-400 hover:text-white transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
                             <span class="text-xs font-bold uppercase">Obsługa Wydarzenia</span>
                         </button>
@@ -121,34 +121,34 @@
                         <div class="flex justify-between items-start mb-6">
                             <div>
                                 <h3 class="text-xl font-black text-white uppercase italic">Twoja Wycena (B2B)</h3>
-                                <p class="text-[10px] text-gray-500 font-bold uppercase tracking-wider"><span id="b2b-calc-days-out">1</span> dni wynajmu</p>
+                                <p class="text-[10px] text-gray-500 font-bold uppercase tracking-wider"><span id="calc-days-out">1</span> dni wynajmu</p>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><line x1="4" x2="20" y1="21" y2="14"/><line x1="4" x2="20" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="14"/><line x1="12" x2="12" y1="10" y2="3"/></svg>
                         </div>
 
-                        <div class="space-y-2 mb-6 text-sm border-b border-[#f20df2]/40 pb-6" id="b2b-calc-breakdown">
+                        <div class="space-y-2 mb-6 text-sm border-b border-[#f20df2]/40 pb-6" id="calc-breakdown">
                             <!-- Injected by JS -->
                         </div>
 
                         <div class="mb-2 flex justify-between items-end">
                             <span class="text-gray-500 text-xs font-bold uppercase">Suma Netto</span>
-                            <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ffd700]" id="b2b-calc-total-out">
+                            <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#f20df2] to-[#ffd700]" id="calc-total-out">
                                 0 zł
                             </div>
                         </div>
                         <div class="mb-8 flex justify-between items-end">
                             <span class="text-gray-500 text-[10px] font-bold uppercase">Suma Brutto (z 23% VAT)</span>
-                            <div class="text-sm font-bold text-gray-400" id="b2b-calc-gross-out">
+                            <div class="text-sm font-bold text-gray-400" id="calc-gross-out">
                                 0 zł
                             </div>
                         </div>
 
                         <div class="mb-6 text-center text-gray-400 text-sm">
-                            Szacunkowy koszt per uczestnik: <span id="b2b-calc-price-per">0</span> zł netto
+                            Szacunkowy koszt per uczestnik: <span id="calc-price-per">0</span> zł netto
                         </div>
 
                         <button
-                            id="b2b-btn-open-form"
+                            id="btn-open-form"
                             class="w-full py-5 rounded-2xl font-black uppercase tracking-widest text-sm text-[#0a050a] flex items-center justify-center gap-2 btn-glow hover:scale-[1.03] active:scale-[0.98] transition-transform"
                             style="background: linear-gradient(to right, #f20df2, #ff5f1f, #ffd700);"
                         >
@@ -158,43 +158,59 @@
                     </div>
                 </div>
             </div>
-    <!-- Form removed server fallback -->    <!-- Booking Form Modal -->
-    <div id="b2b-booking-modal" class="fixed inset-0 z-[100] bg-[#221022]/90 backdrop-blur-sm hidden items-center justify-center p-4">
+        </div>
+    </div>
+
+    {% if form.posted_successfully? %}
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const modal = document.getElementById('booking-modal');
+                const formSuccess = document.getElementById('form-success');
+                const bookingForm = document.getElementById('booking-form');
+                if(modal && formSuccess && bookingForm) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    bookingForm.classList.add('hidden');
+                    formSuccess.classList.remove('hidden');
+                    setTimeout(() => {
+                        modal.classList.remove('flex');
+                        modal.classList.add('hidden');
+                    }, 5000);
+                }
+            });
+        </script>
+    {% endif %}
+
+    <!-- Booking Form Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] bg-[#221022]/90 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl animate-fade-in-up">
             <div class="bg-[#221022] p-5 border-b border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] flex justify-between items-center">
                 <h3 class="text-lg font-black text-white uppercase italic">Dane Firmy (B2B)</h3>
-                <button id="b2b-btn-close-form" type="button" class="text-gray-400 hover:text-white">
+                <button id="btn-close-form" type="button" class="text-gray-400 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
             </div>
 
-            <div id="b2b-form-success" class="hidden p-10 text-center">
+            <div id="form-success" class="hidden p-10 text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mx-auto mb-4"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
                 <h4 class="text-xl font-bold text-white mb-2">Zapytanie wysłane!</h4>
                 <p class="text-gray-400 text-sm">Nasz account manager skontaktuje się z Tobą z gotową ofertą.</p>
             </div>
             
-            {% form 'contact', id: 'b2b-booking-form', class: 'p-6 space-y-4' %}
+            {% form 'contact', id: 'booking-form', class: 'p-6 space-y-4' %}
                 <input type="hidden" name="contact[Typ Zapytania]" value="EVENT B2B / FIRMA" />
-                <textarea name="contact[body]" id="b2b-hidden-body" class="hidden"></textarea>
-                <input type="hidden" id="b2b-form-hidden-details" value="" />
+                <textarea name="contact[body]" id="hidden-body" class="hidden"></textarea>
+                <input type="hidden" id="form-hidden-details" value="" />
                 
-                <input required type="text" name="contact[name]" id="b2b-user-name" placeholder="Imię i nazwisko osoby kontaktowej" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                <input required type="text" name="contact[name]" id="user-name" placeholder="Imię i nazwisko osoby kontaktowej" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
                 <div class="grid grid-cols-2 gap-4">
-                    <input required type="email" name="contact[email]" id="b2b-user-email" placeholder="Pracowniczy Email" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
-                    <input required type="tel" name="contact[phone]" id="b2b-user-phone" placeholder="Telefon" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                    <input required type="email" name="contact[email]" id="user-email" placeholder="Pracowniczy Email" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                    <input required type="tel" name="contact[phone]" id="user-phone" placeholder="Telefon" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
                 </div>
-                <input required type="text" name="contact[Firma]" id="b2b-user-company" placeholder="Nazwa Firmy / NIP" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
-                <textarea id="b2b-user-note" placeholder="Dodatkowe informacje (np. budżet, oczekiwania)..." rows="2" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none resize-none transition-colors"></textarea>
+                <input required type="text" name="contact[Firma]" id="user-company" placeholder="Nazwa Firmy / NIP" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none transition-colors" />
+                <textarea id="user-note" placeholder="Dodatkowe informacje (np. budżet, oczekiwania)..." rows="2" class="w-full glass-card border border-[#f20df2]/40 shadow-[0_0_20px_rgba(242,13,242,0.15)] rounded-lg px-4 py-2.5 text-white text-sm focus:border-[#f20df2] outline-none resize-none transition-colors"></textarea>
 
-                <div class="flex items-start gap-2 pt-2 pb-2">
-                    <input type="checkbox" id="b2b-rodo" name="contact[RODO]" required class="mt-1 accent-[#f20df2] cursor-pointer">
-                    <label for="b2b-rodo" class="text-[10px] text-gray-400 leading-tight">
-                        Akceptuję <a href="/pages/regulamin" class="text-[#f20df2] hover:underline" target="_blank">Regulamin</a> i <a href="/pages/polityka-prywatnosci" class="text-[#f20df2] hover:underline" target="_blank">Politykę Prywatności</a>. Rozumiem, że moje dane będą przetwarzane w celu obsługi zapytania.
-                    </label>
-                </div>
-
-                <button type="submit" id="b2b-btn-submit-form" class="w-full py-3 bg-[#f20df2] text-white font-black uppercase text-xs tracking-widest rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                <button type="submit" id="btn-submit-form" class="w-full py-3 bg-[#f20df2] text-white font-black uppercase text-xs tracking-widest rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
                     Wyślij zapytanie
                 </button>
             {% endform %}
@@ -229,28 +245,28 @@
             };
 
             // Elements
-            const pplInput = document.getElementById('b2b-calc-ppl-input');
-            const pplSlider = document.getElementById('b2b-calc-ppl-slider');
-            const chSlider = document.getElementById('b2b-calc-ch-slider');
-            const chVal = document.getElementById('b2b-calc-ch-val');
-            const dateStart = document.getElementById('b2b-calc-date-start');
-            const dateEnd = document.getElementById('b2b-calc-date-end');
-            const locInput = document.getElementById('b2b-calc-location');
+            const pplInput = document.getElementById('calc-ppl-input');
+            const pplSlider = document.getElementById('calc-ppl-slider');
+            const chSlider = document.getElementById('calc-ch-slider');
+            const chVal = document.getElementById('calc-ch-val');
+            const dateStart = document.getElementById('calc-date-start');
+            const dateEnd = document.getElementById('calc-date-end');
+            const locInput = document.getElementById('calc-location');
             
-            const xtBtns = document.querySelectorAll('.b2b-calc-xt-btn');
+            const xtBtns = document.querySelectorAll('.calc-xt-btn');
 
-            const outDays = document.getElementById('b2b-calc-days-out');
-            const outBreakdown = document.getElementById('b2b-calc-breakdown');
-            const outNet = document.getElementById('b2b-calc-total-out');
-            const outGross = document.getElementById('b2b-calc-gross-out');
-            const outPricePer = document.getElementById('b2b-calc-price-per');
+            const outDays = document.getElementById('calc-days-out');
+            const outBreakdown = document.getElementById('calc-breakdown');
+            const outNet = document.getElementById('calc-total-out');
+            const outGross = document.getElementById('calc-gross-out');
+            const outPricePer = document.getElementById('calc-price-per');
 
-            const modal = document.getElementById('b2b-booking-modal');
-            const btnOpen = document.getElementById('b2b-btn-open-form');
-            const btnClose = document.getElementById('b2b-btn-close-form');
-            const form = document.getElementById('b2b-booking-form');
-            const formSuccess = document.getElementById('b2b-form-success');
-            const hiddenDetails = document.getElementById('b2b-form-hidden-details');
+            const modal = document.getElementById('booking-modal');
+            const btnOpen = document.getElementById('btn-open-form');
+            const btnClose = document.getElementById('btn-close-form');
+            const form = document.getElementById('booking-form');
+            const formSuccess = document.getElementById('form-success');
+            const hiddenDetails = document.getElementById('form-hidden-details');
 
             // Init Dates
             dateStart.value = state.startDate;
@@ -397,13 +413,6 @@
 
             // Modal
             btnOpen.addEventListener('click', () => {
-                if (!state.location || state.location.trim() === '') {
-                    alert('Proszę podać lokalizację (Miasto), w której odbędzie się event.');
-                    locInput.focus();
-                    locInput.classList.add('border-red-500');
-                    setTimeout(() => locInput.classList.remove('border-red-500'), 2000);
-                    return;
-                }
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
             });
@@ -413,18 +422,14 @@
             });
 
             form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const btnSubmit = document.getElementById('b2b-btn-submit-form');
+                // Pozwalamy na natywne przeładowanie formularza Shopify (usuwamy e.preventDefault())
+                const btnSubmit = document.getElementById('btn-submit-form');
                 btnSubmit.textContent = 'Trwa wysyłanie...';
 
                 // Build full message with rental details
                 const details = JSON.parse(hiddenDetails.value || '{}');
                 const formatDate = (d) => d ? new Date(d).toLocaleDateString('pl-PL') : '-';
-                const nameVal    = document.getElementById('b2b-user-name').value;
-                const emailVal   = document.getElementById('b2b-user-email').value;
-                const phoneVal   = document.getElementById('b2b-user-phone').value;
-                const companyVal = document.getElementById('b2b-user-company').value;
-                const noteVal    = document.getElementById('b2b-user-note').value;
+                const noteVal    = document.getElementById('user-note').value;
 
                 const msgBody = [
                     `=== ZAZNACZONE USŁUGI I WYCENA B2B ===`,
@@ -439,7 +444,7 @@
                     `${noteVal || 'brak'}`
                 ].join('\n');
 
-                document.getElementById('b2b-hidden-body').value = msgBody;
+                document.getElementById('hidden-body').value = msgBody;
 
                 // ---> CONVERSION TRACKING (META & GOOGLE ADS) DLA B2B <---
                 const leadValue = details.estimated_total || 0;
@@ -449,29 +454,10 @@
                     'event': 'generate_lead',
                     'value': leadValue,
                     'currency': 'PLN',
-                    'lead_type': 'B2B_Quote',
-                    'user_data': {
-                        'email': emailVal ? emailVal.toLowerCase().trim() : undefined,
-                        'phone_number': phoneVal ? phoneVal.replace(/[^\d+]/g, '') : undefined,
-                        'address': {
-                            'first_name': nameVal ? nameVal.trim().split(' ')[0].toLowerCase() : undefined,
-                            'last_name': nameVal && nameVal.trim().includes(' ') ? nameVal.trim().split(' ').slice(1).join(' ').toLowerCase() : undefined,
-                            'city': details.location ? details.location.toLowerCase().trim() : undefined
-                        }
-                    }
+                    'lead_type': 'B2B_Quote'
                 });
 
                 if (typeof fbq !== 'undefined') {
-                    let fbUserData = {};
-                    if(emailVal) fbUserData.em = emailVal.toLowerCase().trim();
-                    if(phoneVal) fbUserData.ph = phoneVal.replace(/[^\d+]/g, '');
-                    if(nameVal) {
-                        let parts = nameVal.trim().split(' ');
-                        fbUserData.fn = parts[0].toLowerCase();
-                        if(parts.length > 1) fbUserData.ln = parts.slice(1).join(' ').toLowerCase();
-                    }
-                    
-                    fbq('init', '506097212132858', fbUserData);
                     fbq('track', 'Lead', {
                         value: leadValue,
                         currency: 'PLN',
@@ -480,82 +466,13 @@
                 }
 
                 if (typeof gtag !== 'undefined') {
-                    gtag('set', 'user_data', {
-                        email: emailVal ? emailVal.toLowerCase().trim() : undefined,
-                        phone_number: phoneVal ? phoneVal.replace(/[^\d+]/g, '') : undefined,
-                        address: {
-                            first_name: nameVal ? nameVal.trim().split(' ')[0].toLowerCase() : undefined,
-                            last_name: nameVal && nameVal.trim().includes(' ') ? nameVal.trim().split(' ').slice(1).join(' ').toLowerCase() : undefined,
-                            city: details.location ? details.location.toLowerCase().trim() : undefined
-                        }
-                    });
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-16732141783/uDDjCNf-n4ccENfxwKo-'
-                    });
                     gtag('event', 'generate_lead', {
                         value: leadValue,
                         currency: 'PLN',
                         event_category: 'B2B'
                     });
                 }
-                
-                // WSZYKNIĘCIE MAKE.COM WEBHOOK (CAPI FB)
-                try {
-                    fetch('https://hook.eu2.make.com/3erqcsdnx2tehg3h4r1sydsi43urt70t', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            event_name: 'Lead',
-                            event_source_url: window.location.href,
-                            value: leadValue,
-                            currency: 'PLN',
-                            email: emailVal ? emailVal.toLowerCase().trim() : '',
-                            phone: phoneVal ? phoneVal.replace(/[^\d+]/g, '') : '',
-                            first_name: nameVal ? nameVal.trim().split(' ')[0].toLowerCase() : '',
-                            last_name: nameVal && nameVal.trim().includes(' ') ? nameVal.trim().split(' ').slice(1).join(' ').toLowerCase() : '',
-                            city: details.location ? details.location.toLowerCase().trim() : '',
-                            company: companyVal ? companyVal.trim() : '',
-                            form_type: 'B2B_Quote'
-                        })
-                    }).catch(err => console.log('Webhook error B2B:', err));
-                } catch(e) {}
-                
-                // ----------------------------------------------------
-                // Proceed with submission programmatically via AJAX to prevent page reload
-                const formData = new FormData(form);
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json, text/javascript, */*; q=0.01'
-                    }
-                })
-                .then(response => {
-                    // Przebiegło pomyślnie
-                    form.classList.add('hidden');
-                    formSuccess.classList.remove('hidden');
-                    
-                    // Zamknij okno po 4 sekundach i przywróć do stanu początkowego
-                    setTimeout(() => {
-                        modal.classList.remove('flex');
-                        modal.classList.add('hidden');
-                        // Reset
-                        form.reset();
-                        form.classList.remove('hidden');
-                        formSuccess.classList.add('hidden');
-                        btnSubmit.textContent = 'Wyślij zapytanie';
-                    }, 4000);
-                })
-                .catch(error => {
-                    console.error('Błąd wysyłania:', error);
-                    btnSubmit.textContent = 'Błąd. Spróbuj ponownie.';
-                    setTimeout(() => {
-                        btnSubmit.textContent = 'Wyślij zapytanie';
-                    }, 3000);
-                });
             });
-
-            // Usunięty fallback sprawdzający URL (contact_posted=true) bo od teraz działa to przez AJAX bez przeładowania strony.
 
             // Initial calculation
             calculate();

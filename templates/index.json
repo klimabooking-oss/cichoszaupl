@@ -12,7 +12,8 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "bg_video": "shopify://files/videos/0311 (1)(1).mp4",
+        "bg_video": "shopify://files/videos/freepik_-model-veo31-task-imagetovideo-durationseconds-8-a_veo3_1_720p_16-9_24fps_66813.mp4",
+        "bg_video_mobile": "shopify://files/videos/0318(1)-kopia.mp4",
         "primary_cta_link": "",
         "secondary_cta_link": ""
       }
@@ -204,9 +205,9 @@
         "title": "Nasze",
         "highlight_text": "Pakiety",
         "description": "Wybierz bazę swojego wydarzenia i skonfiguruj ją w naszym sklepie, aby otrzymać natychmiastową wycenę.",
-        "url_pakiet_a": "",
-        "url_pakiet_b": "",
-        "url_pakiet_c": ""
+        "url_pakiet_a": "/pages/imprezy-firmowe",
+        "url_pakiet_b": "/pages/wynajem-sluchawek-silent-disco",
+        "url_pakiet_c": "/pages/bilety-silent-disco"
       }
     },
     "process": {
@@ -532,7 +533,11 @@
     },
     "faq": {
       "type": "faq",
-      "settings": {}
+      "settings": {
+        "title": "Częste",
+        "highlight": "Pytania",
+        "subtitle": "Wszystko, co musisz wiedzieć o organizacji cichej imprezy."
+      }
     },
     "cta_banner": {
       "type": "cta-banner",

@@ -558,6 +558,9 @@
                             city: details.location ? details.location.toLowerCase().trim() : undefined
                         }
                     });
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-16732141783/uDDjCNf-n4ccENfxwKo-'
+                    });
                     gtag('event', 'generate_lead', {
                         value: leadValue,
                         currency: 'PLN'

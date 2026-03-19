@@ -232,24 +232,50 @@
   }
 
   // ── 6. Parallax Scroll ──────────────────────────────────────────────────
+  // ── 6. Parallax Scroll ──────────────────────────────────────────────────
   function initParallax() {
     var els = document.querySelectorAll('[data-parallax]');
-    if (!els.length) return;
+    var heroBg = document.getElementById('hero-bg-wrapper');
+    if (!els.length && !heroBg) return;
+    
     var ticking = false;
     function onScroll() {
       if (!ticking) {
         requestAnimationFrame(function() {
           var sy = window.scrollY;
-          els.forEach(function(el) {
-            var speed = parseFloat(el.getAttribute('data-parallax')) || 0.1;
-            el.style.transform = 'translateY(' + (sy * speed) + 'px)';
-          });
+          
+          if (els.length) {
+            els.forEach(function(el) {
+              var speed = parseFloat(el.getAttribute('data-parallax')) || 0.1;
+              el.style.transform = 'translateY(' + (sy * speed) + 'px)';
+            });
+          }
+          
+          if (heroBg) {
+            // Parallax fade-out logic: Web vs Mobile
+            var opacity = 1;
+            if (window.innerWidth >= 768) {
+              // Web: fade out smoothly based on screen height to avoid jumps
+              var fadeDistance = window.innerHeight * 0.85;
+              opacity = Math.max(0, 1 - (sy / fadeDistance));
+            } else {
+              // Mobile: fade out 15% earlier than previous setting
+              var startFade = window.innerHeight * 0.20;
+              var endFade = window.innerHeight * 0.90;
+              if (sy > startFade) {
+                opacity = Math.max(0, 1 - ((sy - startFade) / (endFade - startFade)));
+              }
+            }
+            heroBg.style.opacity = opacity.toFixed(3);
+          }
+          
           ticking = false;
         });
         ticking = true;
       }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // initial trigger
   }
 
   // ── 7. Typewriter Hero ──────────────────────────────────────────────────
@@ -293,7 +319,7 @@
     var cities = (window.CS_CONFIG && window.CS_CONFIG.cities) || ['Warszawa','Wrocław','Kraków','Gdańsk','Poznań','Katowice','Łódź','Rzeszów','Lublin','Toruń'];
     var badge = document.createElement('div');
     badge.id = 'live-badge';
-    badge.style.cssText = 'position:fixed;bottom:96px;right:24px;z-index:9997;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(34,16,34,0.92);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:9999px;font-size:11px;font-weight:700;color:#fff;letter-spacing:0.04em;box-shadow:0 8px 24px rgba(0,0,0,0.4);opacity:0;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s;pointer-events:none;';
+    badge.style.cssText = 'position:fixed;z-index:9997;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(34,16,34,0.92);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:9999px;font-size:11px;font-weight:700;color:#fff;letter-spacing:0.04em;box-shadow:0 8px 24px rgba(0,0,0,0.4);pointer-events:none;transition:opacity 0.4s,transform 0.4s;opacity:0;';
     badge.innerHTML = '<span style="width:7px;height:7px;border-radius:50%;background:#f20df2;box-shadow:0 0 6px #f20df2;animation:ping 1.5s ease-in-out infinite;flex-shrink:0"></span><span id="live-badge-text">3 osoby przeglądają ofertę</span>';
     document.body.appendChild(badge);
 
@@ -302,11 +328,14 @@
       var city = cities[Math.floor(Math.random() * cities.length)];
       var textEl = document.getElementById('live-badge-text');
       if (textEl) textEl.textContent = n + ' os. z ' + city + ' przegląda ofertę';
-      badge.style.opacity   = '1';
-      badge.style.transform = 'translateY(0)';
+      
+      badge.classList.add('badge-visible');
+      var ctaBtn = document.getElementById('sticky-booking-cta');
+      if (ctaBtn) ctaBtn.classList.add('badge-active');
+      
       setTimeout(function() {
-        badge.style.opacity   = '0';
-        badge.style.transform = 'translateY(8px)';
+        badge.classList.remove('badge-visible');
+        if (ctaBtn) ctaBtn.classList.remove('badge-active');
       }, 4500);
     }
     setTimeout(function() {

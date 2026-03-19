@@ -12,9 +12,11 @@
     "main": {
       "type": "seo-b2b-landing",
       "settings": {
+        "hero_video": "shopify://files/videos/freepik_create-cinematic-dark-purple-neon-event-background_kling_720p_16-9_24fps_48051.mp4",
         "title": "",
         "hook": "",
-        "hero_video": "shopify://files/videos/freepik_create-cinematic-dark-purple-neon-event-background_kling_720p_16-9_24fps_48051.mp4",
+        "badge_text": "WYNAJEM SŁUCHAWEK SILENT DISCO",
+        "pre_title": "Profesjonalny Wynajem Systemów Silent Disco",
         "show_roi": false,
         "sales_copy": "",
         "seo_text": ""
@@ -346,6 +348,10 @@
         "subtitle": "Poznaj wszystkie elementy i opcje dodatkowe, które sprawią, że Twój event będzie niezapomniany."
       }
     },
+    "seo_content": {
+      "type": "seo-content",
+      "settings": {}
+    },
     "faq": {
       "type": "faq",
       "settings": {
@@ -363,6 +369,7 @@
     "galeria",
     "kalkulator",
     "produkty",
+    "seo_content",
     "faq"
   ]
 }

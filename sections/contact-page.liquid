@@ -121,18 +121,9 @@
                     if (res.ok || res.redirected) {
                         // GOOGLE ADS CONVERSION SEGMENTATION
                         if (typeof gtag === 'function') {
-                            let conversionLabel = 'uDDjCNf-n4ccENfxwKo-'; // Default: Landing
-                            const path = window.location.pathname;
-
-                            if (path.includes('firmowe') || path.includes('b2b') || path.includes('konferencje') || path.includes('festiwal') || path.includes('teatr')) {
-                                conversionLabel = 'Bcl7CPC1mlccENfxwKo-'; // B2B
-                            } else if (path.includes('wynajem') || path.includes('cennik')) {
-                                conversionLabel = 'le3zCPO1mlccENfxwKo-'; // Wynajem
-                            }
-
                             gtag('set', 'user_data', { 'email': payload.email });
                             gtag('event', 'conversion', {
-                                'send_to': 'AW-16732141783/' + conversionLabel
+                                'send_to': 'AW-16732141783/uDDjCNf-n4ccENfxwKo-'
                             });
                             gtag('event', 'generate_lead', {
                                 'content_category': fbSegment // reusing same segment logic

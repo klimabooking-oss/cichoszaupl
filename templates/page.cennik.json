@@ -17,7 +17,9 @@
         "hook": "",
         "show_roi": false,
         "sales_copy": "",
-        "seo_text": ""
+        "seo_text": "",
+        "badge_text": "CENNIK WYNAJMU SILENT DISCO",
+        "pre_title": "Profesjonalny Wynajem Systemów Silent Disco"
       }
     },
     "main": {
@@ -70,9 +72,9 @@
         "title": "Nasze",
         "highlight_text": "Pakiety",
         "description": "Wybierz bazę swojego wydarzenia i skonfiguruj ją w naszym sklepie, aby otrzymać natychmiastową wycenę.",
-        "url_pakiet_a": "",
-        "url_pakiet_b": "",
-        "url_pakiet_c": ""
+        "url_pakiet_a": "/pages/imprezy-firmowe",
+        "url_pakiet_b": "/pages/wynajem-sluchawek-silent-disco",
+        "url_pakiet_c": "/pages/bilety-silent-disco"
       }
     }
   },

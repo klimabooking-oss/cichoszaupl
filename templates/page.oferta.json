@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -28,10 +37,7 @@
       "type": "how-it-works-video",
       "settings": {
         "title": "Sprawdź sam, jak prosta jest",
-        "highlight_word": "WSPÓŁPRACA",
-        "subtitle": "Zamów. Podłącz. Gotowe.",
-        "button_text": "Zarezerwuj teraz",
-        "button_link": "/pages/kontakt"
+        "subtitle": "Zamów. Podłącz. Gotowe."
       }
     },
     "uslugi_grid": {
@@ -67,7 +73,6 @@
       "type": "faq",
       "settings": {
         "title": "Najczęściej zadawane",
-        "highlight_word": "PYTANIA",
         "subtitle": "Masz wątpliwości? My mamy odpowiedzi."
       }
     },

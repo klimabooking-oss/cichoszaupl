@@ -1,62 +1,103 @@
-<section class="w-full bg-[#000000] relative overflow-hidden flex flex-col justify-center" id="b2b-landing" style="aspect-ratio: 16/9; padding-top: clamp(50px, 6vw, 60px); padding-bottom: clamp(50px, 6vw, 60px);">
+<section class="relative min-h-[100svh] md:min-h-[80vh] w-full flex flex-col overflow-x-clip" id="b2b-landing" style="padding-top: clamp(100px, 12vw, 120px); padding-bottom: clamp(50px, 6vw, 60px); background-color: transparent !important;">
 
-    <!-- === WARSTWA 1: Gradient fioletowy (najniżej) === -->
-    <div class="absolute inset-0 pointer-events-none" style="z-index: 0;">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/90 to-[#221022]/30"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#f20df2]/15 to-transparent rounded-full mix-blend-screen filter blur-[120px] opacity-30"></div>
+    <!-- === Tło Hero (Parallax & Video/Image) === -->
+    <div id="hero-bg-wrapper" class="fixed inset-0 w-full h-[100svh] pointer-events-none z-0">
+        <!-- === WARSTWA 1: Zwykłe czarne tło (najniżej) === -->
+        <div class="absolute inset-0 pointer-events-none bg-[#000000]" style="z-index: 0;"></div>
+
+        <!-- === WARSTWA 2: Film / Zdjęcie === -->
+        {% if section.settings.hero_video != blank or section.settings.hero_video_mobile != blank %}
+            <div class="absolute inset-x-0 top-0 h-[100svh] md:h-full md:inset-0 pointer-events-none overflow-hidden" style="z-index: 10;">
+                {% if section.settings.hero_video != blank %}
+                <video
+                    id="hero-bg-video-desktop"
+                    class="w-full h-full object-cover will-change-transform {% if section.settings.hero_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
+                    style="opacity: 0.85; object-position: center 15%;"
+                    autoplay loop muted playsinline preload="auto" fetchpriority="high"
+                >
+                    {% for source in section.settings.hero_video.sources %}
+                        <source src="{{ source.url }}" type="video/{{ source.format }}">
+                    {% endfor %}
+                </video>
+                {% endif %}
+
+                {% if section.settings.hero_video_mobile != blank %}
+                <video
+                    id="hero-bg-video-mobile"
+                    class="w-full h-full object-cover aspect-[9/16] will-change-transform {% if section.settings.hero_video != blank %}block md:hidden{% else %}block{% endif %}"
+                    style="opacity: 0.85; object-position: center 15%;"
+                    autoplay loop muted playsinline preload="auto" fetchpriority="high"
+                >
+                    {% for source in section.settings.hero_video_mobile.sources %}
+                        <source src="{{ source.url }}" type="video/{{ source.format }}">
+                    {% endfor %}
+                </video>
+                {% endif %}
+                <!-- Usunięto zduplikowany gradient wewnętrzny ze wzdgledu na nakladanie -->
+            </div>
+        {% elsif section.settings.hero_image != blank or section.settings.hero_image_mobile != blank %}
+            <div class="absolute inset-x-0 top-0 h-[100svh] md:h-full md:inset-0 pointer-events-none overflow-hidden" style="z-index: 10;">
+                <picture>
+                    {% if section.settings.hero_image_mobile != blank %}
+                    <source media="(max-width: 767px)" srcset="{{ section.settings.hero_image_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ section.settings.hero_image_mobile | image_url: width: 800, format: 'webp' }} 800w">
+                    {% endif %}
+                    {% if section.settings.hero_image != blank %}
+                    <source media="(min-width: 768px)" srcset="{{ section.settings.hero_image | image_url: width: 1200, format: 'webp' }} 1200w, {{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }} 1920w">
+                    <img
+                        src="{{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }}"
+                        alt="{{ section.settings.title | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}"
+                        class="w-full h-full object-cover transition-all duration-1000 will-change-transform"
+                        style="opacity: 0.85;"
+                        loading="eager"
+                        fetchpriority="high"
+                    />
+                    {% elsif section.settings.hero_image_mobile != blank %}
+                    <img
+                        src="{{ section.settings.hero_image_mobile | image_url: width: 800, format: 'webp' }}"
+                        alt="{{ section.settings.title | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }} Mobile"
+                        class="w-full h-full object-cover aspect-[9/16] transition-all duration-1000 will-change-transform"
+                        style="opacity: 0.85;"
+                        loading="eager"
+                        fetchpriority="high"
+                    />
+                    {% endif %}
+                </picture>
+                <!-- Usunięto zduplikowany gradient wewnętrzny ze wzdgledu na nakladanie -->
+            </div>
+        {% endif %}
+
+        <!-- Dynamic overlay gradients (Jednolity i gładki zamiast nakładających się) -->
+        <div class="absolute inset-0 z-[15] pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/90 to-[#221022]/30 z-10 pointer-events-none"></div>
+            
+            <!-- Zachowanie oryginalnego bloba z seo-b2b-landing.liquid -->
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#f20df2]/15 to-transparent rounded-full mix-blend-screen filter blur-[120px] opacity-30 z-20 pointer-events-none"></div>
+        </div>
     </div>
 
-    <!-- === WARSTWA 2: Film / Zdjęcie (po prawej, za napisami) === -->
-    {% if section.settings.hero_video != blank %}
-        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
-            <video
-                class="w-full h-full object-cover"
-                autoplay loop muted playsinline preload="auto"
-                style="opacity: 0.85;"
-            >
-                {% for source in section.settings.hero_video.sources %}
-                    <source src="{{ source.url }}" type="video/{{ source.format }}">
-                {% endfor %}
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
-        </div>
-    {% elsif section.settings.hero_image != blank %}
-        <div class="absolute inset-0 pointer-events-none" style="z-index: 10;">
-            <img
-                src="{{ section.settings.hero_image | image_url: width: 1920, format: 'webp' }}"
-                alt="{{ section.settings.title | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}"
-                class="w-full h-full object-cover"
-                style="opacity: 0.85;"
-                loading="eager"
-                fetchpriority="high"
-            />
-            <div class="absolute inset-0 bg-gradient-to-r from-[#221022] via-[#221022]/70 to-transparent" style="z-index: 20;"></div>
-        </div>
-    {% endif %}
-
     <!-- HERO INNER WRAPPER START -->
-    <div class="relative flex-grow flex items-center overflow-hidden w-full z-30">
+    <div class="relative flex-grow flex items-center overflow-hidden w-full z-30" style="min-height: 100svh;">
         
-        <!-- === WARSTWA 3: Treść (napisów i przycisk po lewej) === -->
-        <div class="relative max-w-7xl mx-auto px-5 w-full py-16 md:py-24 flex items-center">
+        <!-- === WARSTWA 3: Treść (napisów i przycisk w centrum) === -->
+        <div class="relative max-w-7xl m-auto px-5 w-full py-16 md:py-24 flex flex-col justify-center items-center">
             
-            <!-- HERO B2B — lewa kolumna -->
-            <div class="w-full max-w-2xl" data-animate="fade-up">
-                <span class="text-[#f20df2] font-black uppercase tracking-widest text-sm mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#f20df2]/30 bg-[#f20df2]/10 shadow-[0_0_20px_rgba(242,13,242,0.2)]">
+            <!-- HERO B2B — wyśrodkowana kolumna -->
+            <div class="w-full max-w-3xl flex flex-col items-center text-center" data-animate="fade-up">
+                <span class="text-[#f20df2] font-black uppercase tracking-widest text-sm mb-6 inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full border border-[#f20df2]/30 bg-[#f20df2]/10 shadow-[0_0_20px_rgba(242,13,242,0.2)]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    OFERTA WSPÓŁPRACY B2B
+                    {{ section.settings.badge_text | default: 'OFERTA WSPÓŁPRACY B2B' }}
                 </span>
                 
-                <h1 class="flex flex-col items-start text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-8 leading-none" style="text-wrap: balance;">
-                    <span class="text-sm md:text-base text-gray-300 font-bold tracking-widest uppercase mb-4 font-sans">Profesjonalny Wynajem Systemów Silent Disco</span>
+                <h1 class="flex flex-col items-center text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter mb-8 leading-none" style="text-wrap: balance;">
+                    <span class="text-sm md:text-base text-gray-300 font-bold tracking-widest uppercase mb-4 font-sans">{{ section.settings.pre_title | default: 'Profesjonalny Wynajem Systemów Silent Disco' }}</span>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 leading-[1.1]">{{ metaobject.nazwa.value | default: section.settings.title | default: page.title | default: 'OFERTA' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}</span>
                 </h1>
                 
-                <p class="text-lg md:text-xl text-[#ffd700] font-black italic tracking-wide mb-12 drop-shadow-[0_0_15px_rgba(255,215,0,0.3)] max-w-xl" style="text-wrap: balance;">
+                <p class="text-lg md:text-xl text-[#ffd700] font-black italic tracking-wide mb-12 drop-shadow-[0_0_15px_rgba(255,215,0,0.3)] max-w-xl mx-auto" style="text-wrap: balance;">
                     {{ metaobject.krotki_hook.value | default: section.settings.hook | default: 'Wypożyczalnia słuchawek na eventy, wesela i festiwale.' | replace: '[MIASTO]', metaobject.nazwa.value | replace: ' [MIASTO]', '' }}
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-start gap-6">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
                     <a href="#rental" onclick="document.getElementById('rental')?.scrollIntoView({ behavior: 'smooth' })" class="odbierz-wycene-trigger inline-flex items-center justify-center px-12 py-5 text-sm font-black tracking-widest text-[#221022] uppercase bg-gradient-to-r from-[#ffd700] to-[#ffaa00] rounded-full hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,215,0,0.4)] relative overflow-hidden group">
                         <span class="absolute inset-0 w-full h-full bg-white/20 group-hover:translate-x-full transition-transform duration-500 ease-out -skew-x-12 -translate-x-full"></span>
                         Odbierz wycenę
@@ -64,14 +105,17 @@
                 </div>
             </div>
 
+            <div class="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center justify-center opacity-80 cursor-pointer hidden md:flex" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+                <span class="text-[9px] uppercase tracking-widest text-[#f20df2] mb-1 font-black">Scroll</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
         </div>
     </div>
-    <!-- HERO INNER WRAPPER END -->>
+    <!-- HERO INNER WRAPPER END -->
 
-    </div>
-
-    <!-- Reszta sekcji (ROI, features, etc.) -->
-    <div class="relative z-20 max-w-7xl mx-auto px-5">
+    <!-- Reszta sekcji (ROI, features, etc.) NA SOLIDNYM TLE -->
+    <div class="relative z-20 w-full bg-[#0a050a] pt-16 pb-24 border-t border-[#f20df2]/20">
+        <div class="max-w-7xl mx-auto px-5">
 
         <!-- POTĘŻNE WYLICZENIE ROI DLA BEACH BARÓW (Pojawia się tylko gdy `opcja_roi == true`) -->
         {% assign show_roi = false %}
@@ -102,6 +146,7 @@
                         <li class="flex items-center gap-3 text-white font-bold"><span class="w-8 h-8 rounded-full bg-[#f20df2]/20 text-[#f20df2] flex items-center justify-center">1</span> Ty kupujesz ryczałt.</li>
                         <li class="flex items-center gap-3 text-white font-bold"><span class="w-8 h-8 rounded-full bg-[#f20df2]/20 text-[#f20df2] flex items-center justify-center">2</span> Goście wchodzą po darmową atrakcję.</li>
                         <li class="flex items-center gap-3 text-[#ffd700] font-black"><span class="w-8 h-8 rounded-full bg-[#ffd700]/20 text-[#ffd700] flex items-center justify-center">3</span> Ty kasujesz na drinkach do rana.</li>
+                    </ul>a drinkach do rana.</li>
                     </ul>
                 </div>
                 
@@ -169,6 +214,7 @@
         </div>
         {% endif %}
 
+        </div>
     </div>
     
     <!-- Usunięty Pływający przycisk Sticky CTA B2B w wersji mobilnej (na życzenie) -->
@@ -197,6 +243,34 @@
   "name": "B2B Oferty SEO",
   "settings": [
     {
+      "type": "header",
+      "content": "Tło Hero (Przejęte ze strony głównej)"
+    },
+    {
+      "type": "video",
+      "id": "hero_video",
+      "label": "Video tla Hero (Desktop 16:9)"
+    },
+    {
+      "type": "video",
+      "id": "hero_video_mobile",
+      "label": "Video tla Hero (Mobile 9:16)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Zdjecie tla (Desktop 16:9 - fallback dla wideo or standalone)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Zdjecie tla (Mobile 9:16 - fallback dla wideo or standalone)"
+    },
+    {
+      "type": "header",
+      "content": "Główne ustawienia B2B"
+    },
+    {
       "type": "text",
       "id": "title",
       "label": "Tytuł Sekcji (Domyślnie zaciąga Page Title)"
@@ -207,19 +281,18 @@
       "label": "Krótki Hook / Hasło"
     },
     {
-      "type": "header",
-      "content": "Tło Hero (Film / Zdjęcie)"
+      "type": "text",
+      "id": "badge_text",
+      "label": "Tekst w Pigułce (Badge)",
+      "default": "OFERTA WSPÓŁPRACY B2B"
     },
     {
-      "type": "video",
-      "id": "hero_video",
-      "label": "Film w tle Hero (mp4)"
+      "type": "text",
+      "id": "pre_title",
+      "label": "Tekst nad głównym tytułem (np. Profesjonalny Wynajem)",
+      "default": "Profesjonalny Wynajem Systemów Silent Disco"
     },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Zdjęcie w tle Hero (fallback)"
-    },
+
     {
       "type": "checkbox",
       "id": "show_roi",

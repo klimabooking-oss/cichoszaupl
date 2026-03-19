@@ -1,4 +1,4 @@
-<section id="hero-video-section" style="position: relative; width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #000;">
+<section id="hero-video-section" class="relative w-full min-h-[100svh] md:min-h-[80vh] flex flex-col justify-center overflow-hidden bg-black">
     <!-- === WARSTWA: Film / Zdjęcie (video only bez gradientów) === -->
     {% if section.settings.bg_video != blank or section.settings.bg_video_mobile != blank %}
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
@@ -6,7 +6,7 @@
             <video
                 id="hero-bg-parallax-desktop"
                 class="will-change-transform {% if section.settings.bg_video_mobile != blank %}hidden md:block{% else %}block{% endif %}"
-                style="width: 100%; height: 100%; object-fit: cover;"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;"
                 autoplay loop muted playsinline preload="auto" fetchpriority="high"
                 {% if section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 1920 }}"{% endif %}
             >
@@ -20,7 +20,7 @@
             <video
                 id="hero-bg-parallax-mobile"
                 class="will-change-transform {% if section.settings.bg_video != blank %}block md:hidden{% else %}block{% endif %}"
-                style="width: 100%; height: 100%; object-fit: cover;"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;"
                 autoplay loop muted playsinline preload="auto" fetchpriority="high"
                 {% if section.settings.bg_image_mobile %}poster="{{ section.settings.bg_image_mobile | image_url: width: 800 }}"{% elsif section.settings.bg_image %}poster="{{ section.settings.bg_image | image_url: width: 800 }}"{% endif %}
             >
@@ -41,7 +41,7 @@
                 <img
                     alt="{{ section.settings.bg_image.alt | default: 'CICHOSZAU Silent Disco' }}"
                     class="transition-all duration-1000 will-change-transform"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;"
                     id="hero-bg-parallax-img"
                     src="{{ section.settings.bg_image | image_url: width: 1920, format: 'webp' }}"
                     fetchpriority="high"
@@ -51,7 +51,7 @@
                 <img
                     alt="{{ section.settings.bg_image_mobile.alt | default: 'CICHOSZAU Silent Disco Mobile' }}"
                     class="transition-all duration-1000 will-change-transform"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;"
                     id="hero-bg-parallax-img"
                     src="{{ section.settings.bg_image_mobile | image_url: width: 800, format: 'webp' }}"
                     fetchpriority="high"
